@@ -1,0 +1,339 @@
+:root {
+  --blue1: #1473e6;
+  --blue2: #00c8ff;
+  --blue3: #181827;
+  --blue4: #1e76e3;
+  --Main: #d0d0d0;
+  --Second: #181827;
+  --accent: #00e5e5;
+}
+
+html,
+p {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.InActive {
+  display: none !important;
+}
+.Active {
+  /* display: block !important; */
+  display: block !important;
+  /* height: 100vh; */
+}
+
+img {
+  /* position: absolute; */
+  /* width: 400px; */
+  /* width: 100%; */
+}
+
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
+}
+.fade.in {
+  opacity: 1;
+}
+.tooltip {
+  position: absolute;
+  z-index: 1070;
+  display: block;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: left;
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+  white-space: normal;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  line-break: auto;
+}
+.tooltip.in {
+  filter: alpha(opacity=1);
+  opacity: 1;
+}
+.tooltip.top {
+  padding: 5px 0;
+  margin-top: -3px;
+}
+.tooltip.right {
+  padding: 0 5px;
+  margin-left: 3px;
+}
+.tooltip.bottom {
+  padding: 5px 0;
+  margin-top: 3px;
+}
+.tooltip.left {
+  padding: 0 5px;
+  margin-left: -3px;
+}
+.tooltip-inner {
+  max-width: 200px;
+  padding: 5px 10px;
+  color: white;
+  text-align: center;
+  background-color: var(--blue1);
+  border-radius: 6px;
+}
+.tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+.tooltip.top .tooltip-arrow {
+  bottom: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px 5px 0;
+  border-top-color: var(--blue1);
+}
+.tooltip.top-left .tooltip-arrow {
+  top: 50%;
+  right: 0px;
+  margin-top: -7px;
+  width: 8px;
+  height: 8px;
+  background: var(--blue1);
+  transform: rotate(45deg);
+  border-radius: 3px;
+  /* border-width: 8px 0 10px 10px; */
+  border-left-color: var(--blue1);
+  z-index: -1;
+}
+.tooltip.top-right .tooltip-arrow {
+  top: 50%;
+  right: 0px;
+  margin-top: -7px;
+  width: 8px;
+  height: 8px;
+  background: var(--blue1);
+  transform: rotate(45deg);
+  border-radius: 3px;
+  /* border-width: 8px 0 10px 10px; */
+  border-left-color: var(--blue1);
+  z-index: -1;
+}
+.tooltip.right .tooltip-arrow {
+  top: 50%;
+  left: 0;
+  margin-top: -5px;
+  border-width: 5px 5px 5px 0;
+  border-right-color: var(--blue1);
+}
+.tooltip.left .tooltip-arrow {
+  top: 50%;
+  right: 0;
+  margin-top: -5px;
+  border-width: 5px 0 5px 5px;
+  border-left-color: var(--blue1);
+}
+.tooltip.bottom .tooltip-arrow {
+  top: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 0 5px 5px;
+  border-bottom-color: var(--blue1);
+}
+.tooltip.bottom-left .tooltip-arrow {
+  top: 0;
+  right: 5px;
+  margin-top: -5px;
+  border-width: 0 5px 5px;
+  border-bottom-color: var(--blue1);
+}
+.tooltip.bottom-right .tooltip-arrow {
+  top: 0;
+  left: 5px;
+  margin-top: -5px;
+  border-width: 0 5px 5px;
+  border-bottom-color: var(--blue1);
+}
+
+.changecolor + .tooltip > .tooltip-inner {
+  background-color: var(--blue1);
+  color: #000;
+  border: 1px solid var(--blue1);
+}
+
+.changecolor + .tooltip.top > .tooltip-arrow {
+  bottom: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid var(--blue1);
+}
+.changecolor + .tooltip.left > .tooltip-arrow {
+  top: 50%;
+  right: 0;
+  margin-top: -5px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid var(--blue1);
+}
+.changecolor + .tooltip.bottom > .tooltip-arrow {
+  top: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid var(--blue1);
+}
+.changecolor + .tooltip.right > .tooltip-arrow {
+  top: 50%;
+  left: 0;
+  margin-top: -5px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  /* border-right:5px solid #CCC; */
+  border-right: 5px solid var(--blue1);
+}
+
+/* Adjsut button styling */
+.myBtn {
+  margin-right: 0.1em;
+}
+
+.ttHide .tooltip {
+  display: none !important;
+  visibility: hidden !important;
+  /* opacity: 0 !important; */
+}
+.ttShow .tooltip {
+  display: initial;
+  visibility: visible;
+  /* opacity: initial; */
+}
+
+button {
+  /* padding: .25rem; */
+  background-color: rgba(0, 0, 0, 0);
+}
+body.keysActive #btn_videoShortcuts,
+body.onionActive #btn_onionSkin,
+body.favoriteActive #btn_toggleFavorite {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* {
+  background: rgba(0,0,0,0.15);
+  color: rgba(165, 165, 165, 0.5) !important;
+} */
+.keysActive,
+.onionActive,
+.favoriteActive {
+  /* box-shadow: inset 0 0 0px 2px var(--blue1);
+  box-sizing: border-box; */
+  /* border: 2px solid var(--blue1); */
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--blue1);
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  line-height: initial;
+}
+button:hover,
+body.keysDisabled #btn_videoShortcuts:hover,
+body.keysDisabled #btn_onionSkin:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+:focus {
+  border-radius: 4px;
+  outline: 0;
+  /* -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6); */
+  /* box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6); */
+  /* box-shadow: 0 0 2px 2px var(--blue1); */
+}
+
+.debugtools li button {
+  height: 100vh; /*30px;*/
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  padding: 0 6px;
+  margin: auto;
+  border-radius: 0;
+  background: var(--blue1);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.iconSml {
+  font-size: 8px;
+}
+.iconMed {
+  font-size: 10px;
+}
+.iconBig {
+  font-size: 14px;
+}
+
+/* GUIDE */
+.closeGuides {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  height: initial;
+  width: initial;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  padding: 6px 10px;
+  margin: auto;
+  border-radius: 20px;
+  background: #181827;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 200;
+  transition: all 0.2s ease-out;
+  cursor: default;
+  pointer-events: all;
+}
+.closeGuides:hover {
+  color: #181827;
+  background: var(--blue1);
+}
+
+.guideImg {
+  width: 100%;
+  color: white;
+}
+
+#video p {
+  color: white;
+  font-size: 12px;
+}
+
+.navi {
+  position: fixed;
+  top: 7px;
+  right: 10px;
+  height: 36px;
+  width: 36px;
+  border-radius: 6px;
+  line-height: 0;
+  padding: 2px 2px 2px 0;
+  color: var(--blue2);
+  /* background: var(--blue3); */
+  transition: all .2s ease-out;
+}
+.navi:hover {
+  color: var(--blue3);
+  background: var(--blue2);
+}
+
+

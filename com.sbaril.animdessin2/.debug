@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionList>
+    <Extension Id="com.sbaril.animdessin2.Panel">
+        <HostList>
+            <Host Name="PHXS" Port="3030"/>
+            <Host Name="PHSP" Port="3031"/>
+        </HostList>
+    </Extension>
+    <Extension Id="com.sbaril.animdessin2.Panel2">
+        <HostList>
+            <Host Name="PHXS" Port="3300"/>
+            <Host Name="PHSP" Port="8331"/>
+        </HostList>
+    </Extension>
+    <Extension Id="com.sbaril.animdessin2.ModalDialog">
+        <HostList>
+            <Host Name="PHXS" Port="8330"/>
+            <Host Name="PHSP" Port="8331"/>
+        </HostList>
+    </Extension>
+    <Extension Id="com.sbaril.animdessin2.Modeless">
+        <HostList>
+            <Host Name="PHXS" Port="8330"/>
+            <Host Name="PHSP" Port="8331"/>
+        </HostList>
+    </Extension>
+</ExtensionList>

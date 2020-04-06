@@ -1,0 +1,19 @@
+h1 {
+	font-family: helvetica;
+	font-size: 24px;
+}
+table {
+	border: 0;
+}
+tr, th, cell, td {
+	border: 0 !important;
+	border-spacing: 1px;
+	padding: 3px 8px;
+	min-width: auto;
+	-webkit-appearance: none !important;
+	border: none !important;
+	word-break: unset;
+	white-space: nowrap;
+}
+tr:nth-child(even) {background: #eaeaea;}
+tr:nth-child(odd) {background: #FFF}

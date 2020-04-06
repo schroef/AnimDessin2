@@ -1,0 +1,2 @@
+#target photoshop
+app.beep();

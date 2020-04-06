@@ -1,0 +1,262 @@
+<signatures>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="PackageSignature">
+        <SignedInfo>
+            <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+            <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+            <Reference Type="http://www.w3.org/2000/09/xmldsig#Manifest" URI="#PackageContents">
+                <Transforms>
+                    <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+                </Transforms>
+                <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                <DigestValue>nUoAxX91emmePo1WdCD/k7PT4DgAQ7tOZHDFZnWkB4c=</DigestValue>
+            </Reference>
+        </SignedInfo>
+        <SignatureValue Id="PackageSignatureValue">FFh6No58Tq52tohptTDUhdmuetHghLcQ+SWT1epc0/YsE7mTZbDyQpU+sE4LZB59 KvbbjfQez/DXgjbdQ4Oku8gPWCrM3iPDZiJUbW0uyHs2E7I2xjnel3oeGJTYLhgb RhYiQ4W2/7OZ8HE35RlVxPyXLNpDpU9R/aLnR3HMe64=</SignatureValue>
+
+        <KeyInfo>
+            <X509Data>
+                <X509Certificate>MIICAzCCAWwCCQD1cqCSp520/DANBgkqhkiG9w0BAQUFADBGMQswCQYDVQQGEwJG
+UjEOMAwGA1UECBMFUGFyaXMxFjAUBgNVBAoTDVN0ZXBoYW5lQmFyaWwxDzANBgNV
+BAMTBnNiYXJpbDAeFw0xODEwMDgxMzMwMjdaFw0yOTEyMjUxMzMwMjdaMEYxCzAJ
+BgNVBAYTAkZSMQ4wDAYDVQQIEwVQYXJpczEWMBQGA1UEChMNU3RlcGhhbmVCYXJp
+bDEPMA0GA1UEAxMGc2JhcmlsMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDA
+ekEuLXAlXuTibbgORQQ2OlQLFrqaLvTEmEBmAp/wPbsLhS9kO5czQPsm6KSIIk51
+tlGMKjiwD8iiBdjhBmE+mB10lRnhhCZQoIIAATVpRU+NE0WnncajHAUlsh8BomyR
+AMjEplTEOHovc1Of0VCGAq2c0HUWBTJedbJzuiWybwIDAQABMA0GCSqGSIb3DQEB
+BQUAA4GBAHYgVarAFSQmerBAzLNCMgvQ0Z8VrfFmO+Dvw7geYWd1wnlueQOPH0q/
+EL45PAwEGHsexHYDnT3HhnLdhobPy8SoQTX3r55u4LLlEc4YTau5NOzLooRrH9Fb
+liJx8tUz1QNLfN6QbyZxkYMQNBtiyL5leaHGsLWOnpT5HZybqofM
+                </X509Certificate>
+            </X509Data>
+        </KeyInfo>
+        <Object>
+            <Manifest Id="PackageContents">
+                <Reference URI="mimetype">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>b07Onu9cTlGK1WpvgtFOlfk+Tl0HscuNIt6GZtesPX8=</DigestValue>
+                </Reference>
+                <Reference URI="index.html">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>pVFoNlsat2YZsNqaNxJttaPXAy65zsFW1m1GW7HSmpc=</DigestValue>
+                </Reference>
+                <Reference URI="locale/en_US/messages.properties">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>Iglw8YbNCDVOn3VFekj7gE4MlF3X9mOr4UPIHtlN8Qg=</DigestValue>
+                </Reference>
+                <Reference URI="locale/en_NL/messages.properties">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>Iglw8YbNCDVOn3VFekj7gE4MlF3X9mOr4UPIHtlN8Qg=</DigestValue>
+                </Reference>
+                <Reference URI="locale/en_FR/messages.properties">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>Iglw8YbNCDVOn3VFekj7gE4MlF3X9mOr4UPIHtlN8Qg=</DigestValue>
+                </Reference>
+                <Reference URI="css/tooltip.css">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>P/wSZnjGnWhUnYUWDnEU6+xXUyrewtwtvyB3U2Pv0sY=</DigestValue>
+                </Reference>
+                <Reference URI="css/theme.css">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>QFOqXeGYARMDCMBHtwxo//LtnUSHmes/9peKSJug1Fw=</DigestValue>
+                </Reference>
+                <Reference URI="css/styles.css">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>Vrse6PkquY1s0bsNJbHmXGKuB0oyY0AM74zdj9cuu54=</DigestValue>
+                </Reference>
+                <Reference URI="css/table.css">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>rEZY5eIydRrj7ZT/dOkNw/94hWesNq5/t6TBUO+djHo=</DigestValue>
+                </Reference>
+                <Reference URI="js/libs/CSInterface-7.js">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>lphNW5Sjc8Xb/5kJPvWRIfOLUU56t4u2K5B1bY6GJ3I=</DigestValue>
+                </Reference>
+                <Reference URI="js/libs/CSInterface-5.2.js">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>HAZRhXQfarvK4ifNrRJTnGZEZdlpZUl6UCrJUpLRn4s=</DigestValue>
+                </Reference>
+                <Reference URI="js/libs/ps14features.js">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>AP6mbs/s0HfCEaO//tnUzZd6Gme5/XGSWUWhwLI7nsY=</DigestValue>
+                </Reference>
+                <Reference URI="js/libs/jquery-2.0.2.min.js">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>TZWGoHXwgqBP1AF4SZxHIBKzUdtMGk0hCQegiR99itk=</DigestValue>
+                </Reference>
+                <Reference URI="js/libs/CSInterface-5.js">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>xUW2cJ1hogZPJbHaqebBuo8uOB67oBDGPvAX5vbCNcY=</DigestValue>
+                </Reference>
+                <Reference URI="js/main.js">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>ynI5jNNd3WhQIAI2Iyg5FIuCI2t0c26vJsVJsi9IpIo=</DigestValue>
+                </Reference>
+                <Reference URI="js/themeManager.js">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>eBQSfReve34IbvcNd5/xXaBNsaN2eqrO7nqFJtFZ4mk=</DigestValue>
+                </Reference>
+                <!-- ADDED -->
+                <!-- <Reference URI="js/libs/tooltips.js">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>eBQSfReve34IbvcNd5/xXaBNsaN2eqrO7nqFJtFZ4mk=</DigestValue>
+                </Reference> -->
+                <Reference URI="css/tooltips.css">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>NadKAReve34IbvcNd5/xXaBNsaN2eqrO7nqFJtFZ4mk=</DigestValue>
+                </Reference>
+                <Reference URI="iconfont/fonts/ad2toolbar.eot">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>N3/JZaaD4ZvN4shvGHdzudG76/LqOCoF0aIdCQks4AU=</DigestValue>
+                </Reference>
+                <Reference URI="iconfont/fonts/ad2toolbar.ttf">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>tRU/gg/AEMdKh2Iourf4vOYLydOmg3Wqk0yDQ1E3q+w=</DigestValue>
+                </Reference>
+                <Reference URI="iconfont/fonts/ad2toolbar.woff">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>yu3/syKj3td1UOMb5K2Ijpumm6bSlKfddUy8m9Z1eKw=</DigestValue>
+                </Reference>
+                <Reference URI="iconfont/fonts/ad2toolbar.svg">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>AiBXgXtIEdriiccwF7ml+4HGWyMjyro7zZG1yQPHU+Y=</DigestValue>
+                </Reference>
+                <Reference URI="iconfont/iconfont.css">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>nsPF5mj1h9x3P/TIcQOSryL7aDD1qmMB4ESysihMQuc=</DigestValue>
+                </Reference>
+                <Reference URI="CSXS/manifest.xml">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>Cxbhui1Uai6IT4lVi2niKa4lh0B0gCIG+9sauZkcE9s=</DigestValue>
+                </Reference>
+                <Reference URI="icons/iconDarkRollover.png">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>Uo3/eGoVIomVR/lUDZPHNppf/xIc0IAMrjkCQiSY8TQ=</DigestValue>
+                </Reference>
+                <Reference URI="icons/iconDisabled.png">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>KMa5N9M2ktGDHI8iBj5AhWrYuFlOhheEkYJtkvgtgqA=</DigestValue>
+                </Reference>
+                <Reference URI="icons/iconDarkNormal.png">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>aJD7glKgv0eYe6KQgB0NcATLzIBp+nFp7+xpxry104U=</DigestValue>
+                </Reference>
+                <Reference URI="icons/iconRollover.png">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>wal7mJuikhU0uRVe0R2+1DYu7/bwew6I0bfsz95W92A=</DigestValue>
+                </Reference>
+                <Reference URI="icons/iconNormal.png">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>5a3IGSMeOI90ZW40f27WHh3mcV77RcaFsyQ0dlDu7TM=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_colorRed.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>ED0aMHnCuLm7DBxG29+6V/W3m3L6DdLQcpoDD0DOBwY=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_inBetweenPrevious.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>W3rF+LF8exsjM1QO6k4f4DYU/5vfoIDoC02TYrD/MlY=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_canvasSize.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>s8ObfgJIiSidAJ/wKk0Pbf/sLN2Ys7gW4n/g2sPy69c=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_create1Frame.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>wADmhrj7ie9I5UAU6VGnlb+wXCW5y5T/63jEvO+pi9U=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_inBetweenCreate.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>VDgMPnnADfuLLXz95wu//H6KNCRbm9yak4KBiBKH6p4=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_newDoc.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>e6yNQnbKUG7TtVn02EFnHC+cukhZq58pKsy/UHzwb4Q=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_framePlusOne.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>HfviQNLTg0vdPMvMXZNrQRAAlXDhTlzdENP3zlRZ+84=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_commentEdit.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>0t9QgjZyozKgVBqgKQ9m4HL+UTeZErBXlXB9Th6fAe0=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_colorBlue.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>Pp2r//yR3XzdEravdG0JIda41Z8bI8jWLIKwPoJ5o+s=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_onionSkinSettings.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>sY7ozCvMpX0SICUK4tZzoAcKaxWZTXnaIS2nJX9aO5s=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_colorGreen.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>e+0+UG4ATDlcVYFXesA09sUDymzVG4RcweADRe1b67A=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_commentExportHtml.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>peL3PMqG17v2v9L0s3BSKGBdub2T64Nw6FhLSwXspcw=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_newVideoGroup.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>0UmhaOwovhz6H0PIBZ1iPJrt0RGW6mZ1Iqs9/nL5CsQ=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_showTimeline.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>yd+XmEvPIBCXk1n8QueGdhgJxuzpmf0maunMRq92Yf4=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_playheadEnd.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>wQOCLxpFDEx8w310b2BlLUvaAN9/AtV6oWehXPXkTao=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/hostscript.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>i62eTAvSyokda0hdwm3Hd1Ixlo/g2Ap7z0VpODCJJjs=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_save.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>QjLEWlXgAKG82eAi9rtIyKrYMC0M8w1CPJ9kzrobFXA=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_frameMinusOne.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>GN4l7svWxmZjSN0bRfi5UvllpRJTfxUWnDCknTRE30s=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_create2Frames.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>h3snuSk1fS8SYkseyfDdS/Q2kpnFKg1fxL7CtodCSck=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_inBetweenNext.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>eBH283XtA/x4jKhLH3jZkG82k87YmKs7onWzq6m1UnE=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_duplicateFrame.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>toCar0BnmsDA8q9SEPHmC8rxzIbD402T07H7lNcvT4U=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_commentExportText.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>m2bjKTGAtOSqc8bEwDmeEM9XvW7p7Q4EQaecDFmECbM=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_playheadStart.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>Jd2Dk9jlGH+ql34ahiyPRJ00iy/4rfZT9aMHQVHY1KY=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_deleteFrame.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>BcmR4aOZT/ivy3HsB5NaOq4TNVyudGFsNvfgjkIunXE=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_videoShortcuts.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>YG6AQKTzytr1h4s2oGj5JQm9Ww/RNxa3kzTGxnYff90=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_colorNone.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>87mHXLmXFQmZAyUjf+4os3LI2+NrJJjVUmmFXuuHkik=</DigestValue>
+                </Reference>
+                <Reference URI="jsx/AnimD2_onionSkin.jsx">
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>jKoXOIMz6omvtQxk5OkUdtUFu69FE7ehikzmPxuDr0c=</DigestValue>
+                </Reference>
+            </Manifest>
+        </Object>
+    </Signature>
+</signatures>
