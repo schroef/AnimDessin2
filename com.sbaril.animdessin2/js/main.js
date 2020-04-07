@@ -419,6 +419,8 @@
 		$("#btn_playheadStart").click(function (e) {
 			if (e.shiftKey)
 				loadJSXFile("/jsx/AnimD2_playheadTrimStart.jsx");
+			else if (e.altKey)	
+				loadJSXFile("/jsx/AnimD2_playheadMoveStart.jsx");
 			else
 				loadJSXFile("/jsx/AnimD2_playheadStart.jsx");
 		});
@@ -426,6 +428,8 @@
 		$("#btn_playheadEnd").click(function (e) {
 			if (e.shiftKey)
 				loadJSXFile("/jsx/AnimD2_playheadTrimEnd.jsx");
+				else if (e.altKey)	
+				loadJSXFile("/jsx/AnimD2_playheadMoveEnd.jsx");	
 			else
 				loadJSXFile("/jsx/AnimD2_playheadEnd.jsx");
 		});

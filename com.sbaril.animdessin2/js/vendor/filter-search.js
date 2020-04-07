@@ -43,7 +43,7 @@ $(document).ready(function () {
 
             resultTemplate.hide();
 
-            $("dl dt, #videos .vid-container").each(function () {
+            $("dl dt,dl dd, #videos .vid-container").each(function () {
                 var parent = $(this);
                 // var templateName = $(this).find(".title");
                 var templateName = $(this);
@@ -59,6 +59,16 @@ $(document).ready(function () {
                     resultTemplateFilter.show();
                     parent.show();
                     parent.next().show();
+                    // Filters also by body tekst and show parent DT
+                    // console.log(parent.prev("dd")=="dd");
+                    // console.log(parent.closest(".title").find("dt"));
+                    var target = parent.closest(".title").find("dt");; //.find("dt");
+                    // console.log($target.text());
+                    target.css('display','block');
+                    // if (parent.prevUntil( ".title", "dt" )) {
+                    // if (parent.closest(".title").find("dt")) {
+                    //     parent.prev().show();
+                    // }
                     // if (templateName.text().toLowerCase() == $("#search-product-template #searchbar-product").val().toLowerCase()) {
                     // 	$("dt:visible").addClass("active").next().slideDown(150);
                     // 	// if ($("dt:visible").children(".title").next(".text-hover").length == 0)
