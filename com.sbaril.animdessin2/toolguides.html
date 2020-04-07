@@ -3,13 +3,14 @@
 
 <head>
     <meta charset="utf-8">
-    <title data-locale="PNL_Title_ToolGuides">%PNL_Title_ToolGuides</title>
+    <title data-locale="PNL_Title_ToolGuide">%PNL_Title_ToolGuide</title>
     <meta name="viewport" content="width=device-width, initial-scale=2">
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/table.css" />
     <link id="hostStyle" rel="stylesheet" href="css/theme.css" />
     <link id="hostStyle" rel="stylesheet" href="iconfont/iconfont.css" />
     <link id="hostStyle" rel="stylesheet" href="css/vendor/tooltips.css" />
+
 </head>
 
 <body id="body" class="hostElt">
@@ -45,12 +46,13 @@
     <script src="js/vendor/vimeo_popup.js"></script>
 
     <script src="js/themeManager.js"></script>
-    <script src="js/toolguides.js"></script>
+    <script src="js/toolguide.js"></script>
 
-    <!-- Dirty image show fix -->
     <script>
         $(document).ready(function () {
+            // Dirty image show fix
             $(window).scrollTop(1);
+			
             $("#btn_navi").click(function () {
                 $("#guideImg").toggleClass('InActive', 'Active');
             });

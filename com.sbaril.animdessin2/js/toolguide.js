@@ -21,9 +21,8 @@
     // Localize Languages
     function getLocalize() {
         var csInterface = new CSInterface();
-        // csInterface.initResourceBundle();
         var renderBundle = csInterface.initResourceBundle();
-        console.log(renderBundle)
+        // console.log(renderBundle)
         return renderBundle
     }
 
@@ -47,12 +46,12 @@
     function checkSettings() {
         toggleGuide();
     }
+    function callToolMock() {
+        window.location.href = "./toolsguide.html";
+    }
 
     function callVideoMock() {
-        window.location.href = "./videoguides.html";
-    }
-    function callToolMock() {
-        window.location.href = "./toolguides.html";
+        window.location.href = "./videoguide.html";
     }
     // Show helpguide
     function toggleGuide(item) {
@@ -120,7 +119,7 @@
 
 
         function flyoutXML() {
-            return "<Menu> \n<MenuItem Id=\"toolMock\" Label=\"" + (getLocalize().flyout_toolguides) + "\" Checkable=\"true\" Checked=\"false\"/> \n<MenuItem Id=\"videoMock\" Label=\"" + (getLocalize().flyout_videoguides) + "\" Checkable=\"true\" Checked=\"false\"/> \n <MenuItem Label=\"---\" /> \n<MenuItem Id=\"closePanel\" Label=\"" + (getLocalize().flyout_closepanel) + "\" Checkable=\"true\" Checked=\"false\"/> \n</Menu>";
+            return "<Menu> \n<MenuItem Id=\"toolMock\" Label=\"" + (getLocalize().flyout_toolguide) + "\" Checkable=\"true\" Checked=\"false\"/> \n<MenuItem Id=\"videoMock\" Label=\"" + (getLocalize().flyout_videoguide) + "\" Checkable=\"true\" Checked=\"false\"/> \n <MenuItem Label=\"---\" /> \n<MenuItem Id=\"closePanel\" Label=\"" + (getLocalize().flyout_closepanel) + "\" Checkable=\"true\" Checked=\"false\"/> \n</Menu>";
         };
 
         // Uses the XML string to build the menu
@@ -173,22 +172,19 @@
 
     //Dirty workarouned checking which page is loaded,
     // So context menu's can be checked
-    if (document.title == getLocalize().PNL_Title_ToolGuides) {
-        csInterface.updatePanelMenuItem(getLocalize().flyout_toolguides, true, true);
-        csInterface.updatePanelMenuItem(getLocalize().flyout_videoguides, true, false);
+    if (document.title == getLocalize().PNL_Title_ToolGuide) {
+        csInterface.updatePanelMenuItem(getLocalize().flyout_toolguide, true, true);
+        csInterface.updatePanelMenuItem(getLocalize().flyout_videoguide, true, false);
         csInterface.updateContextMenuItem("toolMock", true, true);
         csInterface.updateContextMenuItem("videoMock", true, false);
-        console.log("banananaan")
     }
-    if (document.title == getLocalize().PNL_Title_VideoGuides) {
-        csInterface.updatePanelMenuItem(getLocalize().flyout_toolguides, true, false);
-        csInterface.updatePanelMenuItem(getLocalize().flyout_videoguides, true, true);
+    if (document.title == getLocalize().PNL_Title_VideoGuide) {
+        csInterface.updatePanelMenuItem(getLocalize().flyout_toolguide, true, false);
+        csInterface.updatePanelMenuItem(getLocalize().flyout_videoguide, true, true);
         csInterface.updateContextMenuItem("toolMock", true, false);
         csInterface.updateContextMenuItem("videoMock", true, true);
-        console.log("appels")
     }
     console.log(document.title)
-    // console.log($('img').width());
     // checkSettings();
     // getLocalize();
 }());

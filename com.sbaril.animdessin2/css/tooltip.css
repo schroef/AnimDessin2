@@ -1,10 +1,28 @@
+:root {
+    --blue1: #1473e6;
+    --blueRGB: 20, 115, 230;
+    --blue2: #00c8ff;
+    --blue2RGB: 0, 200, 255;
+    --blue3: #181827;
+    --blue4: #1e76e3;
+    --Main: #d0d0d0;
+    --MainRGB: 208, 208, 208;
+    --Second: #181827;
+    --SecondRGB: 24, 24, 39;
+    --accent: #00e5e5;
+    --accentRGB: 0, 229, 229;
+}
+::selection {
+    background-color: rgb(var(--blue2RGB));
+    color: var(--Second);
+}
 
-.tooltip .tooltip2{
+.tooltip .tooltip2 {
     display: inline-block;
     position: relative;
 }
 
-.tooltip:hover:after{
+.tooltip:hover:after {
     background: #feffcf;
     background: rgba(254, 255, 207, 1);
     border-radius: 0px;
@@ -16,11 +34,11 @@
     padding: 2px 5px;
     position: absolute;
     z-index: 98;
-    width:125px;
+    width: 125px;
     box-shadow: 0px 4px 6px 2px rgba(0, 0, 0, 0.3);
 }
 
-.tooltipbegin:hover:after{
+.tooltipbegin:hover:after {
     background: #feffcf;
     background: rgba(254, 255, 207, 1);
     border-radius: 0px;
@@ -32,11 +50,11 @@
     padding: 2px 5px;
     position: absolute;
     z-index: 98;
-    width:125px;
+    width: 125px;
     box-shadow: 0px 4px 6px 2px rgba(0, 0, 0, 0.3);
 }
 
-.tooltipend:hover:after{
+.tooltipend:hover:after {
     background: #feffcf;
     background: rgba(254, 255, 207, 1);
     border-radius: 0px;
@@ -48,6 +66,6 @@
     padding: 2px 5px;
     position: absolute;
     z-index: 98;
-    width:135px;
+    width: 135px;
     box-shadow: 0px 4px 6px 2px rgba(0, 0, 0, 0.3);
 }

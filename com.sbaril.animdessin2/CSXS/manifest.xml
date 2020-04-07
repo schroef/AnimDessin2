@@ -90,7 +90,7 @@
       <DispatchInfo >
 
         <Resources>
-          <MainPath>./toolguides.html</MainPath>
+          <MainPath>./toolsguide.html</MainPath>
           <CEFCommandLine>
             <Parameter>--persist-session-cookies</Parameter>
           </CEFCommandLine>
@@ -103,7 +103,7 @@
         <UI>
 
           <Type>Panel</Type>
-          <Menu>%PNL_Title_ToolGuides</Menu>
+          <Menu>%PNL_Title_ToolGuide</Menu>
 
           <Geometry>
             <Size>

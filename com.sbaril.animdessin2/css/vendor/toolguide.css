@@ -1,3 +1,23 @@
+/* @import "tooltips.css"; */
+:root {
+	--blue1: #1473e6;
+	--blueRGB: 20, 115, 230;
+	--blue2: #00c8ff;
+	--blue2RGB: 0, 200, 255;
+	--blue3: #181827;
+	--blue4: #1e76e3;
+	--main: #d0d0d0;
+	--mainRGB: 208, 208, 208;
+	--second: #181827;
+	--secondRGB: 24, 24, 39;
+	--accent: #00e5e5;
+	--accentRGB: 0, 229, 229;
+}
+::selection {
+	background-color: rgb(var(--blue2RGB));
+	color: var(--second);
+}
+
 html {
 	background: #333;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -24,7 +44,7 @@ blockquote {
 	width: 100%;
 	padding: 0;
 	border-width: 0;
-	color: #181827;
+	color: var(--second);
 	text-rendering: optimizeSpeed;
 }
 h1 {
@@ -43,12 +63,12 @@ p {
 	padding-top: 2%;
 	width: 100%;
 	height: 100%;
-	opacity: .5;
+	opacity: 0.5;
 }
 
 .fullscreen-bg,
 .fullscreen-bg2,
-.fullscreen-bg3{
+.fullscreen-bg3 {
 	position: fixed;
 	top: 0;
 	right: 0;
@@ -74,7 +94,7 @@ p {
 .popup {
 	text-align: center;
 	margin: auto;
-	background: rgba(0, 0, 0, .8);
+	background: rgba(0, 0, 0, 0.8);
 	width: 100%;
 	position: fixed;
 	bottom: 0;
@@ -119,7 +139,7 @@ p {
 .popup2 {
 	text-align: center;
 	margin: auto;
-	background: rgba(0, 0, 0, .8);
+	background: rgba(0, 0, 0, 0.8);
 	width: 100%;
 	position: fixed;
 	bottom: 0;
@@ -140,7 +160,6 @@ p {
 }
 
 .popup .closebtn {
-	/*    font-family: icons;*/
 	font-size: 22px;
 	color: #fff;
 	position: absolute;
@@ -148,18 +167,17 @@ p {
 	top: 5px;
 	width: 100px;
 	right: 0px;
-	-webkit-transition: color .1s ease-out;
-	-moz-transition: color .1s ease-out;
-	-o-transition: color .1s ease-out;
-	transition: color .1s ease-out
+	-webkit-transition: color 0.1s ease-out;
+	-moz-transition: color 0.1s ease-out;
+	-o-transition: color 0.1s ease-out;
+	transition: color 0.1s ease-out;
 }
 
 .popup .closebtn:hover {
-	color: #05c3f9
+	color: #05c3f9;
 }
 
 /*  END POPUP VIDEO PLAYER	*/
-
 
 div.Video-item {
 	border-style: solid;
@@ -169,7 +187,8 @@ div.Video-thumb {
 	width: 100%;
 	/* margin: 0 20px; */
 }
-div.Basic-Text-Frame {
+div.Basic-Text-Frame,
+#tools.dd {
 	border-style: solid;
 	margin: 0px 15px;
 	width: calc(100% - 30px);
@@ -177,7 +196,7 @@ div.Basic-Text-Frame {
 p.ParaOverride-1 {
 	line-height: 1.4;
 	font-size: 13px;
-	color: rgba(24, 24, 39, 0.65);
+	color: rgba(var(--secondRGB), 0.65);
 	margin: 0;
 }
 span.CharOverride-1 {
@@ -188,14 +207,14 @@ span.CharOverride-1 {
 	font-weight: 300;
 }
 span.CharOverride-2 {
-	color: #181827;
+	color: var(--second);
 	font-family: Helvetica, sans-serif;
 	font-size: 2rem;
 	font-style: normal;
 	font-weight: bold;
 }
 span.CharOverride-3 {
-	color: #181827;
+	color: var(--second);
 	font-family: Helvetica, sans-serif;
 	font-size: 1.5rem;
 	font-style: normal;
@@ -218,10 +237,11 @@ span.CharOverride-5 {
 #nav {
 	height: 36px;
 	left: 0px;
-	position: sticky;
-	background: #181827;
+	/* position: sticky; */
+	position: fixed;
 	top: 0px;
-	width: initial;
+	background: var(--second);
+	width: calc(100% - 40px);
 	padding: 5px 20px;
 	z-index: 1;
 	display: flex;
@@ -260,7 +280,7 @@ span.CharOverride-5 {
 	padding: 8px 20px;
 	background: #00c8ff;
 	display: flex;
-	flex-wrap: wrap;
+	/* flex-wrap: wrap; */
 }
 
 #_idContainer014 {
@@ -319,12 +339,15 @@ span.CharOverride-5 {
 	background-color: #00c8ff;
 }
 
-/* Open anim */
+/* Nav Open anim */
 #nav.opened {
-	height: 140px;
+	height: 90px;
 	transition: all 0.25s;
 }
-
+/* #nav.opened #nav-toggle:hover .hamburger > span {
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+} */
 #nav.opened .hamburger span:nth-child(1) {
 	top: 8px;
 	width: 0;
@@ -371,6 +394,58 @@ span.CharOverride-5 {
 	display: flex;
 	flex-wrap: wrap;
 }
+
+/* Search */
+#nav #search-product-template {
+	display: none;
+}
+#nav.opened #search-product-template {
+	display: block;
+}
+
+#searchbar input {
+	background: none;
+	color: var(--blue2);
+	margin-top: 10px;
+	margin-left: 42px;
+	width: calc(100% - 70px);
+	height: 20px;
+	border: none;
+	font-size: 24px;
+	font-weight: 200;
+	font-family: inherit;
+	border-bottom: 1px solid rgba(var(--blue2RGB), 0.25);
+}
+#searchbar input::placeholder {
+	color: var(--blue2);
+}
+.close-icon {
+	display: block;
+	position: absolute;
+	cursor: pointer;
+	pointer-events: all;
+	width: 16px;
+	height: 16px;
+	top: 64px;
+	right: 20px;
+}
+.close-icon .hamburger span {
+	width: 18px;
+}
+#nav.opened .close-icon:hover .hamburger > span {
+	-webkit-transform: rotate(0deg);
+	transform: rotate(0deg);
+}
+.no-template {
+	position: absolute;
+	top: 100px;
+	display: block;
+	margin: 10px 20px;
+	padding-left: 42px;
+	font-weight: 200;
+	font-size: 24px;
+}
+
 img {
 	height: 100%;
 	width: 100%;
@@ -378,7 +453,7 @@ img {
 .vid-container img {
 	border-radius: 10px;
 }
-div._idGenObjectStyle-Disabled {
+div.nav {
 	background-color: transparent;
 	border-width: 0px;
 }
@@ -387,10 +462,88 @@ p {
 	font-size: 1.5rem;
 	line-height: 2;
 }
+
+/* Tool Guide */
+#tools {
+	top: 100px;
+	position: absolute;
+	background: white;
+}
+dl {
+	display: flex;
+	flex-wrap: wrap;
+	color: var(--main);
+	-webkit-margin-start: 0;
+	-webkit-margin-end: 0;
+	-webkit-margin-before: 0;
+	-webkit-margin-after: 0;
+}
+dt:nth-of-type(odd),
+dd:nth-of-type(odd) {
+	background: #f6f6f6;
+}
+
+dt,
+dd {
+	margin: 0;
+	padding: 0px 20px;
+}
+dt {
+	font-size: 14.5px;
+	font-weight: 600;
+	padding: 4px 20px 0px 70px;
+}
+
+dt span {
+	font-size: 18pt;
+	margin-left: -50px;
+	margin-right: 12px;
+	position: relative;
+	top: 12px;
+}
+
+dd {
+	padding-bottom: 12px;
+	padding-left: 62px;
+	padding-right: 20px;
+}
+
+dd p {
+	font-size: 12.5px;
+	line-height: 1.6;
+	color: rgba(var(--secondRGB), 0.65);
+	width: calc(100% - 45px);
+	flex-grow: 1;
+	margin: 0;
+	padding-right: 1rem;
+	padding-left: 0.8em;
+	text-indent: -0.8em;
+	overflow: hidden;
+	position: relative;
+}
+
+dd p::after {
+	content: "​"; /* zero-width space */
+	position: absolute;
+	border-bottom: 1px dotted;
+	margin-left: 4px;
+	margin-top: -0.55em;
+	width: 100%;
+}
+
+dd span {
+	flex-shrink: 0;
+	position: absolute;
+	right: 20px;
+	margin-top: -20px;
+}
+
+/* Video Guide */
 #videos {
 	top: 130px;
-    position: absolute;
-    padding: 0 20px;
+	position: absolute;
+	padding: 0 20px;
+	background: white;
 }
 .cards {
 	display: flex;
@@ -421,7 +574,7 @@ p {
 .guide-title {
 	font-size: 34px;
 	font-weight: 200;
-	color: #181827;
+	color: var(--second);
 	margin: auto;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

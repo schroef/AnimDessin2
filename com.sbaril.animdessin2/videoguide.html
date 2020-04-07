@@ -3,25 +3,25 @@
 
 <head>
 	<meta charset="utf-8">
-	<title data-locale="PNL_Title_VideoGuides">"%PNL_Title_VideoGuides</title>
+	<title data-locale="PNL_Title_VideoGuide">"%PNL_Title_VideoGuide</title>
 	<meta name="viewport" content="width=device-width, initial-scale=2">
 	<link rel="stylesheet" href="css/styles.css" />
 	<link rel="stylesheet" href="css/table.css" />
 	<link id="hostStyle" rel="stylesheet" href="css/theme.css" />
 	<link id="hostStyle" rel="stylesheet" href="iconfont/iconfont.css" />
 	<link id="hostStyle" rel="stylesheet" href="css/vendor/tooltips.css" />
-	<link rel="stylesheet" type="text/css" href="css/vendor/toolguides.css" >
+	<link rel="stylesheet" type="text/css" href="css/vendor/toolguide.css">
 </head>
 
-<body id="AnimDessin2-ToolGuide-Apr2020" lang="en-GB" style="width: 100%;height:3000px;margin: 0;">
-	<div id="nav" class="_idGenObjectStyle-Disabled ">
+<body id="ToolGuide">
+	<div id="nav" class="nav ">
 		<div id="nav-content">
 			<div id="logomark">
-				<img class="_idGenObjectAttribute-2" src="images/am2-app-icon.png" alt="">
+				<img class="" src="images/am2-app-icon.png" alt="">
 			</div>
 			<div id="lettermark">
 				<span id="_idTextSpan047" class="CharOverride-4">Anim</span><span id="_idTextSpan048"
-					class="Thin CharOverride-5">Dessign</span><span id="_idTextSpan049" class="CharOverride-4">2</span>
+					class="Thin CharOverride-5">Dessign</span><span id="" class="CharOverride-4">2</span>
 			</div>
 			<div id="nav-toggle">
 				<div class="hamburger">
@@ -31,6 +31,19 @@
 					<span class="white">&nbsp;</span>
 				</div>
 			</div>
+		</div>
+		<div id="search-product-template">
+			<span id="searchbar" class="input-holder">
+				<input type="text" id="searchbar-product" autocomplete="off" placeholder="Search">
+				<span class="close-icon close-grey" style="display: none;">
+					<div class="hamburger">
+						<span class="white">&nbsp;</span>
+						<span class="white">&nbsp;</span>
+						<span class="white">&nbsp;</span>
+						<span class="white">&nbsp;</span>
+					</div>
+				</span>
+			</span>
 		</div>
 	</div>
 	<div id="thevideo" style="display:none">
@@ -42,30 +55,33 @@
 			</div>
 		</div>
 	</div>
-	<div id="section-title" class="_idGenObjectStyle-Disabled">
-		<div class="guide-title" data-locale="TG_SectionVideoTitle">
+	<div id="section-title" class="nav">
+		<div class="guide-title" data-locale="TG_SectionVideoGuideTitle">
 			Video Guides
 		</div>
 	</div>
-	<div id="videos" class="cards">
+	<div class="no-template" style="display: none;">
+		Sorry, nothing found...
+	</div>
+	<div id="videos" class="cards filter">
 		<div id="vid01" class="vid-container card">
 			<div id="vidTHumb01" class="Video-thumb play-video" data-youtubeurl="293905562">
-				<img class=" _idGenObjectAttribute-2" src="images/730665959.jpg" alt="" id="play-video"
-					class="playvideo" style="cursor:pointer">
+				<img class=" " src="images/730665959.jpg" alt="" id="play-video" class="playvideo"
+					style="cursor:pointer">
 			</div>
 			<div id="vidCont01" class="Basic-Text-Frame">
 				<h1 class="Video-Title ParaOverride-1">
 					Installing AnimDessign2 Panel
 				</h1>
 				<p class="Video-Body ParaOverride-1">
-					How to install my Photoshop Addons: AnimDessin2, AnimCouleur2 &amp; Colorization
+					How to install my Photoshop Addons: AnimDessin2, AnimCouleur2 & Colorization
 				</p>
 			</div>
 		</div>
 		<div id="vid01" class="vid-container card">
 			<div id="vidTHumb01" class="Video-thumb play-video" data-youtubeurl="96689934">
-				<img class=" _idGenObjectAttribute-2" src="images/476820984.jpg" alt="" id="play-video"
-					class="playvideo" style="cursor:pointer">
+				<img class=" " src="images/476820984.jpg" alt="" id="play-video" class="playvideo"
+					style="cursor:pointer">
 			</div>
 			<div id="vidCont01" class="Basic-Text-Frame">
 				<h1 class="Video-Title ParaOverride-1">
@@ -79,8 +95,8 @@
 		</div>
 		<div id="vid01" class="vid-container card">
 			<div id="vidTHumb01" class="Video-thumb play-video" data-youtubeurl="577351244">
-				<img class=" _idGenObjectAttribute-2" src="images/577351244.jpg" alt="" id="play-video"
-					class="playvideo" style="cursor:pointer">
+				<img class=" " src="images/577351244.jpg" alt="" id="play-video" class="playvideo"
+					style="cursor:pointer">
 			</div>
 
 			<div id="vidCont01" class="Basic-Text-Frame">
@@ -95,8 +111,8 @@
 		</div>
 		<div id="vid01" class="vid-container card">
 			<div id="vidTHumb01" class="Video-thumb play-video" data-youtubeurl="193246288">
-				<img class=" _idGenObjectAttribute-2" src="images/768798906.jpg" alt="" id="play-video"
-					class="playvideo" style="cursor:pointer">
+				<img class=" " src="images/768798906.jpg" alt="" id="play-video" class="playvideo"
+					style="cursor:pointer">
 			</div>
 
 			<div id="vidCont01" class="Basic-Text-Frame">
@@ -111,8 +127,8 @@
 		</div>
 		<div id="vid01" class="vid-container card">
 			<div id="vidTHumb01" class="Video-thumb play-video" data-youtubeurl="138493347">
-				<img class=" _idGenObjectAttribute-2" src="images/533867904.jpg" alt="" id="play-video"
-					class="playvideo" style="cursor:pointer">
+				<img class=" " src="images/533867904.jpg" alt="" id="play-video" class="playvideo"
+					style="cursor:pointer">
 			</div>
 
 			<div id="vidCont01" class="Basic-Text-Frame">
@@ -127,8 +143,8 @@
 		</div>
 		<div id="vid01" class="vid-container card">
 			<div id="vidTHumb01" class="Video-thumb play-video" data-youtubeurl="138045965">
-				<img class=" _idGenObjectAttribute-2" src="images/533202123.jpg" alt="" id="play-video"
-					class="playvideo" style="cursor:pointer">
+				<img class=" " src="images/533202123.jpg" alt="" id="play-video" class="playvideo"
+					style="cursor:pointer">
 			</div>
 
 			<div id="vidCont01" class="Basic-Text-Frame">
@@ -144,8 +160,8 @@
 		</div>
 		<div id="vid01" class="vid-container card">
 			<div id="vidTHumb01" class="Video-thumb play-video" data-youtubeurl="64791568">
-				<img class=" _idGenObjectAttribute-2" src="images/435563712.jpg" alt="" id="play-video"
-					class="playvideo" style="cursor:pointer">
+				<img class=" " src="images/435563712.jpg" alt="" id="play-video" class="playvideo"
+					style="cursor:pointer">
 			</div>
 
 			<div id="vidCont01" class="Basic-Text-Frame">
@@ -169,16 +185,19 @@
 	<!-- <script src="js/libs/jquery-2.0.2.min.js"></script> -->
 	<script src="js/libs/jquery-2.0.2.min.js"></script>
 	<script src="js/vendor/bootstrap.min.js"></script>
+	<script src="js/vendor/filter-search.js"></script>
 
 	<script src="js/vendor/tooltips.js"></script>
 	<script src="js/vendor/vimeo_popup.js"></script>
 
 	<script src="js/themeManager.js"></script>
-	<script src="js/toolguides.js"></script>
+	<script src="js/toolguide.js"></script>
 
 	<script>
 		$(document).ready(function () {
-			// $(window).scrollTop(1);
+			// Dirty image show fix
+			$(window).scrollTop(1);
+
 			$("#nav-toggle").click(function () {
 				$("#nav").toggleClass('opened', '');
 			});
