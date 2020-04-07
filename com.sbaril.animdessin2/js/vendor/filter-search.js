@@ -59,12 +59,16 @@ $(document).ready(function () {
                     resultTemplateFilter.show();
                     parent.show();
                     parent.next().show();
+                    // If query found in DD also show title
+                    $("dd:visible").prev().show();
+                    $("dt:visible").next().show();
+
                     // Filters also by body tekst and show parent DT
                     // console.log(parent.prev("dd")=="dd");
                     // console.log(parent.closest(".title").find("dt"));
-                    var target = parent.closest(".title").find("dt");; //.find("dt");
+                    // var target = parent.closest(".title").find("dt");; //.find("dt");
                     // console.log($target.text());
-                    target.css('display','block');
+                    // target.css('display','block');
                     // if (parent.prevUntil( ".title", "dt" )) {
                     // if (parent.closest(".title").find("dt")) {
                     //     parent.prev().show();

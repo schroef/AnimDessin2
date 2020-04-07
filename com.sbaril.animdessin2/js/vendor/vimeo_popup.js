@@ -27,7 +27,7 @@ $(document).ready(function () {
             $('#thevideo').css('display', 'none');
         }, 400);
         
-        $('#videoPlyr').replaceWith('<iframe id="videoPlyr" class="mbr-embedded-video" src="https://www.youtube.com/embed/' + videoId + '??autoplay=false&enablejsapi=1&origin=1&playsinline=1" width="1280" height="720" frameborder="0" allowfullscreen="allowFullScreen" allow="autoplay; rel;" style="max-width: 100% !important; height: 100% !important;"></iframe>');
+        $('#videoPlyr').replaceWith('<iframe id="videoPlyr" class="mbr-embedded-video" src="https://www.youtube.com/embed/' + videoId + '??autoplay=false&enablejsapi=1&origin=1&playsinline=1" width="1280" height="720" frameborder="0" allowfullscreen="allowFullScreen" style="max-width: 90%;max-height: 65%; "></iframe>f');
         ev.preventDefault();
     });
 });
