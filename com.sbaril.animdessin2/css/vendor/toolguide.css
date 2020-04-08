@@ -494,10 +494,10 @@ dd p {
 	font-size: 12.5px;
 	line-height: 1.6;
 	color: rgba(var(--secondRGB), 0.65);
-	width: calc(100% - 45px);
+	width: calc(100% - 65px);
 	flex-grow: 1;
 	margin: 0;
-	padding-right: 1rem;
+	padding-right: 25px;
 	padding-left: 0.8em;
 	text-indent: -0.8em;
 	overflow: hidden;

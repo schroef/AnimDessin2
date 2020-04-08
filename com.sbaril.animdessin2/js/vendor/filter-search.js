@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    // Dirty trick plceholder to localize
+    var holder = $("#placeholder").text();
+    $("#searchbar-product").attr("placeholder", holder);
+
     if (window.location.hash) {
         var url = window.location.hash;
         $('a' + url).addClass("active").parent().addClass("active").next().show();
