@@ -1,16 +1,17 @@
 :root {
     --blue1: #1473e6;
-    --blueRGB: 20, 115, 230;
-    --blue2: #00c8ff;
-    --blue2RGB: 0, 200, 255;
-    --blue3: #181827;
-    --blue4: #1e76e3;
-    --Main: #d0d0d0;
-    --MainRGB: 208, 208, 208;
-    --Second: #181827;
-    --SecondRGB: 24, 24, 39;
-    --accent: #00e5e5;
-    --accentRGB: 0, 229, 229;
+	--blueRGB: 20, 115, 230;
+	--blue2: #00c8ff;
+	--blue2RGB: 0, 200, 255;
+	--blue3: #181827;
+	--blue4: #ccf1ff;
+	--blue5: #1e76e3;
+	--main: #d0d0d0;
+	--mainRGB: 208, 208, 208;
+	--second: #181827;
+	--secondRGB: 24, 24, 39;
+	--accent: #00e5e5;
+	--accentRGB: 0, 229, 229;
 }
 ::selection {
     background-color: rgb(var(--blue2RGB));

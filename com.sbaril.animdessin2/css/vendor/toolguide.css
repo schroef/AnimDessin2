@@ -5,7 +5,8 @@
 	--blue2: #00c8ff;
 	--blue2RGB: 0, 200, 255;
 	--blue3: #181827;
-	--blue4: #1e76e3;
+	--blue4: #ccf1ff;
+	--blue5: #1e76e3;
 	--main: #d0d0d0;
 	--mainRGB: 208, 208, 208;
 	--second: #181827;
@@ -201,36 +202,17 @@ p.ParaOverride-1 {
 }
 span.CharOverride-1 {
 	color: #000000;
-	font-family: Helvetica, sans-serif;
 	font-size: 1360px;
 	font-style: normal;
 	font-weight: 300;
 }
-span.CharOverride-2 {
-	color: var(--second);
-	font-family: Helvetica, sans-serif;
-	font-size: 2rem;
+span.lettermarkBold {
+	color: #ffffff;
 	font-style: normal;
 	font-weight: bold;
 }
-span.CharOverride-3 {
-	color: var(--second);
-	font-family: Helvetica, sans-serif;
-	font-size: 1.5rem;
-	font-style: normal;
-	font-weight: normal;
-}
-span.CharOverride-4 {
+span.lettermarkThin {
 	color: #ffffff;
-	font-family: Helvetica, sans-serif;
-	/* font-size: 20px; */
-	font-style: normal;
-	font-weight: bold;
-}
-span.CharOverride-5 {
-	color: #ffffff;
-	font-family: Helvetica, sans-serif;
-	/* font-size: 20px; */
 	font-style: normal;
 	font-weight: 300;
 }
@@ -497,7 +479,7 @@ dt {
 dt span {
 	font-size: 18pt;
 	margin-left: -50px;
-	margin-right: 12px;
+	margin-right: 16px;
 	position: relative;
 	top: 12px;
 }
@@ -530,6 +512,13 @@ dd p::after {
 	margin-top: -0.55em;
 	width: 100%;
 }
+/* dd p:nth-child(1)::after {
+    width: 20%;
+}
+
+dd p:nth-child(0)::after {
+    width: 10% !important;
+} */
 
 dd span {
 	flex-shrink: 0;
@@ -537,6 +526,97 @@ dd span {
 	right: 20px;
 	margin-top: -20px;
 }
+/* KEYCBOMBO ICONCS */
+span.kcmb-sh-al-lm {
+    width: 110px;
+}
+span.kcmb-sh-lm {
+    width: 66px;
+}
+span.kcmb-al-lm {
+    width: 56px;
+}
+span.kcmb-lm {
+    width: 34px;
+}
+.k-icon::after {
+	height: 14px;
+	position: absolute;
+	right: 0;
+	background-size: cover;
+}
+.kcmb-sh-al-lm::after {
+	content: "";
+	/* background-image: url(../../images/key-combos/kcmb-sh-al-lm@2x.png); */
+	-webkit-mask-image: url(../../images/key-combos/kcmb-sh-al-lm.svg);
+	mask-image: url(../../images/key-combos/kcmb-sh-al-lm.svg);
+	background: url(../../images/key-combos/kcmb-sh-al-lm.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background: var(--second);
+}
+.kcmb-sh-lm::after {
+	content: "";
+	width: 60px;
+	/* background-image: url(../../images/key-combos/kcmb-sh-lm@2x.png); */
+	-webkit-mask-image: url(../../images/key-combos/kcmb-sh-lm.svg);
+	mask-image: url(../../images/key-combos/kcmb-sh-lm.svg);
+	background: url(../../images/key-combos/kcmb-sh-lm.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background: var(--second);
+}
+.kcmb-al-lm::after {
+	content: "";
+	width: 52px;
+	/* background-image: url(../../images/key-combos/kcmb-al-lm@2x.png); */
+	-webkit-mask-image: url(../../images/key-combos/kcmb-al-lm.svg);
+	mask-image: url(../../images/key-combos/kcmb-al-lm.svg);
+	background: url(../../images/key-combos/kcmb-al-lm.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background: var(--second);
+}
+.kcmb-lm::after {
+	content: "";
+	width: 31px;
+	/* background-image: url(../../images/key-combos/lmb@2x.png); */
+	-webkit-mask-image: url(../../images/key-combos/lmb.svg);
+	mask-image: url(../../images/key-combos/lmb.svg);
+	background: url(../../images/key-combos/lmb.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background: var(--second);
+}
+
+dd:nth-of-type(odd) span.k-icon {
+    background: #f6f6f6;
+}
+
+dd:nth-of-type(even) span.k-icon {
+    background: white;
+}
+
+dd span.k-icon {
+	height: 17px;
+	padding-top: 2px;
+}
+
+/* dd span.k-icon:nth-child(2) {
+	width: 65px;
+}
+
+dd span.k-icon:nth-child(4) {
+	width: 35px;
+}
+
+dd span.k-icon:nth-child(6) {
+	width:50px;
+}
+dd span.k-icon:nth-child(8) {
+	width: 50px;
+} */
+
 
 /* Video Guide */
 #videos {
