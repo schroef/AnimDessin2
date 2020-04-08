@@ -321,8 +321,10 @@
 	<script src="js/vendor/bootstrap.min.js"></script>
 	<script src="js/vendor/filter-search.js"></script>
 
+	<!-- Jquery Helpers -->
 	<script src="js/vendor/tooltips.js"></script>
 	<script src="js/vendor/vimeo_popup.js"></script>
+	<script src="js/vendor/navbar.js"></script>
 
 	<script src="js/themeManager.js"></script>
 	<script src="js/toolguide.js"></script>
@@ -357,33 +359,6 @@
 			$("dt:nth-child(31) span").addClass("bbgreen");
 			$("dt:nth-child(33) span").addClass("bbblue");
 
-			// Dirty image show fix
-			$(window).scrollTop(1);
-
-			$("#nav-toggle").click(function () {
-				$("#nav").toggleClass('opened', '');
-				$("#searchbar-product").focus();
-			});
-
-			// Navbar short
-			$(window).scroll(function () {
-				var fromTop = $(window).scrollTop();
-				if (fromTop >= 60) {
-					$("#nav").addClass('short');
-
-				} else {
-					$("#nav").removeClass('short');
-				}
-				// Auto close search on scroll
-				if (fromTop >= 300) {
-					if ($("#nav").hasClass("opened")) {
-						$("#nav-toggle").trigger("click");
-						$("#searchbar-product").trigger('blur');
-
-						$("#nav").removeClass('opened');
-					}
-				}
-			});
 		});
 	</script>
 </body>
