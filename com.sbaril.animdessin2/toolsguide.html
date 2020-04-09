@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -10,19 +10,22 @@
 	<link id="hostStyle" rel="stylesheet" href="css/theme.css" />
 	<link id="hostStyle" rel="stylesheet" href="iconfont/iconfont.css" />
 	<link id="hostStyle" rel="stylesheet" href="css/vendor/normalize.css" />
-	<link id="hostStyle" rel="stylesheet" href="css/vendor/tooltips.css" />
-	<link rel="stylesheet" type="text/css" href="css/vendor/toolguide.css">
+	<link rel="stylesheet" type="text/css" href="css/vendor/toolguide.css" />
 </head>
 
 <body id="ToolGuide">
 	<div id="nav" class="nav">
+		<div class="subnav">
+			<a href="./toolsguide.html" data-locale="SNAV_toolsGuide">Tool Guide</a>
+			<a href="./videoguide.html" data-locale="SNAV_videoGuide">Video Guide</a>
+		</div>
 		<div id="nav-content">
 			<div id="logomark">
 				<img class="" src="images/branding/am2-app-icon.png" alt="">
 			</div>
 			<div id="lettermark">
 				<span class="lettermarkBold">Anim</span><span class="lettermarkThin">Dessign</span><span
-					lettermarkThinclass="lettermarkBold">2</span>
+					class="lettermarkBold">2</span>
 			</div>
 			<div id="nav-toggle">
 				<div class="hamburger">
@@ -48,289 +51,295 @@
 			</span>
 		</div>
 	</div>
-	<div id="thevideo" style="display:none">
-		<div class="popupcenter">
-			<div class="popup">
-				<iframe id="videoPlyr" class="mbr-embedded-video" src="https://www.youtube.com/embed/" width="1280"
-					height="720" frameborder="0" allowfullscreen="allowFullScreen"
-					style="text-align: center; max-width: 100% !important; height: 720px;"></iframe>
+	<div id="main" data-transition="moveBottom">
+		<div id="thevideo" style="display:none">
+			<div class="popupcenter">
+				<div class="popup">
+					<iframe id="videoPlyr"></iframe>
+					<!-- <iframe id="videoPlyr" class="mbr-embedded-video" src="https://www.youtube.com/embed/"
+						width="1280" height="720" frameborder="0" allowfullscreen="allowFullScreen"
+						style="text-align: center; max-width: 100% !important; height: 720px;"></iframe> -->
+				</div>
 			</div>
 		</div>
-	</div>
-	<div id="section-title" class="nav">
-		<div class="guide-title" data-locale="TG_SectionToolGuideTitle">
-			Tool Guide
-		</div>
-	</div>
-	<div class="no-template" style="display: none;" data-locale="TG_NoResultsFound">
-		No matches found...
-	</div>
-	<div id="tools" class="cards filter">
-		<dl>
-			<dt class="title" data-locale="btn_showTimeline.title">
-				Timeline Panel
-			</dt>
-			<dd>
-				<p data-locale="TG_showTimeline_1">– Show / hide the timeline panel </p>
-				<span class="k-icon kcmb-sh-lm"></span>
-				<p data-locale="TG_showTimeline_2">– Panel animation options</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_newDoc.title">
-				Document
-			</dt>
-			<dd>
-				<p data-locale="">– New document and settings</p>
-				<span class="k-icon kcmb-sh-lm"></span>
-				<p data-locale="">– Render video</p>
-				<span class="k-icon kcmb-al-lm"></span>
-				<p data-locale="">– Go to in timeline</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_canvasSize.title">
-				Canvas Size
-			</dt>
-			<dd>
-				<p data-locale="">– Set size of working canvas</p>
-				<span class="k-icon kcmb-sh-lm"></span>
-				<p data-locale="">– Zoom to 100%</p>
-				<span class="k-icon kcmb-al-lm"></span>
-				<p data-locale="">– Fit in document in window</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_save.title">
-				Save As
-			</dt>
-			<dd>
-				<p data-locale="">– Save document as (copy)</p>
-				<span class="k-icon kcmb-sh-lm"></span>
-				<p data-locale="">– Save document</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_newFrameOne.title">
-				New 1 Frame
-			</dt>
-			<dd>
-				<p data-locale="">– Add new 1 frame</p>
-				<span class="k-icon kcmb-sh-lm"></span>
-				<p data-locale="">– Add new 1 video frame</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_newFrameTwo.title">
-				New 2 Frame
-			</dt>
-			<dd>
-				<p data-locale="">– Add new 2 frame</p>
-				<span class="k-icon kcmb-sh-lm"></span>
-				<p data-locale="">– Add new 2 video frame</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_duplicateFrame.title">
-				Duplicate Frame
-			</dt>
-			<dd>
-				<p data-locale="">– Duplicate selected frame/layer</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_deleteFrame.title">
-				Delete Frame
-			</dt>
-			<dd>
-				<p data-locale="">– Delete selected frame/layer</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_toggleFavorite.title">
-				Toggle Favorites
-			</dt>
-			<dd>
-				<p data-locale="">– Show all layers</p>
-				<span class="k-icon kcmb-sh-lm"></span>
-				<p data-locale="">– Show set favorite layers</p>
-				<span class="k-icon kcmb-al-lm"></span>
-				<p data-locale="">– Sets selected layers as favorites
-					and hides other layers</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_onionSkin.title">
-				Toggle Onion Skin Mode
-			</dt>
-			<dd>
-				<p data-locale="">– Onion skin mode displays content
-					drawn on the current frame plus
-					content drawn on the surrounding frames</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_onionSkinSettings.title">
-				Onion Skin Settings
-			</dt>
-			<dd>
-				<p data-locale="">– Specify how previous and later
-					frames appear when onion skins
-					are enabled</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_newVideoGroup.title">
-				New Video Group
-			</dt>
-			<dd>
-				<p data-locale="">– New video group with 1 frame layer</p>
-				<span class="k-icon kcmb-sh-lm"></span>
-				<p data-locale="">– New video group from selection</p>
-				<span class="k-icon kcmb-al-lm"></span>
-				<p data-locale="">– Ungroup selected video group</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_minus.title">
-				Minus 1 Frame
-			</dt>
-			<dd>
-				<p data-locale="">– Reduce duration layer by 1 frame</p>
-				<span class="k-icon kcmb-sh-lm"></span>
-				<p data-locale="">– Reduce duration layer by 2 frames</p>
-				<span class="k-icon kcmb-al-lm"></span>
-				<p data-locale="">– Reduce duration layer by 10 frames</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_plus.title">
-				Plus 1 Frame
-			</dt>
-			<dd>
-				<p data-locale="">– Extend duration layer by 1 frame</p>
-				<span class="k-icon kcmb-sh-lm"></span>
-				<p data-locale="">– Extend duration layer by 2 frames</p>
-				<span class="k-icon kcmb-al-lm"></span>
-				<p data-locale="">– Extend duration layer by 10 frames</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_red.title">
-				Red Overlay
-			</dt>
-			<dd>
-				<p data-locale="">– Adds/turn on red overlay to the layer</p>
-				<span class="k-icon kcmb-sh-lm"></span>
-				<p data-locale="">– Turn off red overlay</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_green.title">
-				Green Overlay
-			</dt>
-			<dd>
-				<p data-locale="">– Adds/turn on green overlay to the layer</p>
-				<span class="k-icon kcmb-sh-lm"></span>
-				<p data-locale="">– Turn off green overlay</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_blue.title">
-				Blue Overlay
-			</dt>
-			<dd>
-				<p data-locale="">– Adds/turn on blue overlay to the layer</p>
-				<span class="k-icon kcmb-sh-lm"></span>
-				<p data-locale="">– Turn off blue overlay</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_none.title">
-				Clear All Overlays
-			</dt>
-			<dd>
-				<p data-locale="">– Clear all overlays from selection</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_inBetweenPrevious.title">
-				In Between Previous
-			</dt>
-			<dd>
-				<p data-locale="">– Move the selected frame/layer before the Previous one</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_createInBetween.title">
-				In Between New
-			</dt>
-			<dd>
-				<p data-locale="">– Create a new in-between frame/layer</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_inBetweenNext.title">
-				In Between Next
-			</dt>
-			<dd>
-				<p data-locale="">– Move the selected frame/layer after the next one</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_playheadStart.title">
-				Set Playhead Start
-			</dt>
-			<dd>
-				<p data-locale="">– Trim start at playhead</p>
-				<span class="k-icon kcmb-sh-lm"></span>
-				<p data-locale="">– Move start to playhead</p>
-				<span class="k-icon kcmb-sh-lm"></span>
-				<p data-locale="">– Set the start of the work
-					Areat at the playhead</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_playheadEnd.title">
-				Set Playhead End
-			</dt>
-			<dd>
-				<p data-locale="">– Trim end at playhead</p>
-				<span class="k-icon kcmb-sh-lm"></span>
-				<p data-locale="">– Move end to playhead</p>
-				<span class="k-icon kcmb-al-lm"></span>
-				<p data-locale="">– Set the end of the work
-					Areat at the playhead</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_commentEdit.title">
-				Edit Comments
-			</dt>
-			<dd>
-				<p data-locale="">— Add / edit a timeline comment
-					at the playhead.</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_commentsHtml.title">
-				Export Comments as HTML
-			</dt>
-			<dd>
-				<p data-locale="">Export timeline comment as a HTML file</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_commentsText.title">
-				Export Comments as TXT
-			</dt>
-			<dd>
-				<p data-locale="">– Export timeline comment as a structured TEXT file</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-			<dt class="title" data-locale="btn_videoShortcuts.title">
-				Toggle Timeline Shortcuts
-			</dt>
-			<dd>
-				<p data-locale="">– Enable timeline shortcut keys, allows you to use the right and left arrow keys to move playhead, and use the space bar to play / stop</p>
-				<span class="k-icon kcmb-lm"></span>
-			</dd>
-		</dl>
+		<div class="trans">
+			<div id="section-title" class="nav">
+				<div class="guide-title" data-locale="TG_SectionToolGuideTitle">
+					Tool Guide
+				</div>
+			</div>
+			<div class="no-template" style="display: none;" data-locale="TG_NoResultsFound">
+				No matches found...
+			</div>
+			<div id="tools" class="cards filter">
+				<dl>
+					<dt class="title" data-locale="btn_showTimeline.title">
+						Timeline Panel
+					</dt>
+					<dd>
+						<p data-locale="TG_showTimeline_1">– Show / hide the timeline panel </p>
+						<span class="k-icon kcmb-sh-lm"></span>
+						<p data-locale="TG_showTimeline_2">– Animation panel options</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_newDoc.title">
+						Document
+					</dt>
+					<dd>
+						<p data-locale="TG_newDoc_1">– Set timeline frame rate</p>
+						<span class="k-icon kcmb-sh-al-lm"></span>
+						<p data-locale="TG_newDoc_2">– Render video</p>
+						<span class="k-icon kcmb-sh-lm"></span>
+						<p data-locale="TG_newDoc_3">– Go to in timeline</p>
+						<span class="k-icon kcmb-al-lm"></span>
+						<p data-locale="TG_newDoc_4">– New document and settings</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_canvasSize.title">
+						Canvas Size
+					</dt>
+					<dd>
+						<p data-locale="TG_canvasSize_1">– Fit in document in window</p>
+						<span class="k-icon kcmb-sh-lm"></span>
+						<p data-locale="TG_canvasSize_2">– Zoom to 100%</p>
+						<span class="k-icon kcmb-al-lm"></span>
+						<p data-locale="TG_canvasSize_3">– Set size of working canvas</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_save.title">
+						Save As
+					</dt>
+					<dd>
+						<p data-locale="TG_save_1">– Save document as (copy)</p>
+						<span class="k-icon kcmb-sh-lm"></span>
+						<p data-locale="TG_save_2">– Save document</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_newFrameOne.title">
+						New 1 Frame
+					</dt>
+					<dd>
+						<p data-locale="TG_newFrameOne_1">– Add new 1 frame</p>
+						<span class="k-icon kcmb-sh-lm"></span>
+						<p data-locale="TG_newFrameOne_2">– Add new 1 video frame</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_newFrameTwo.title">
+						New 2 Frame
+					</dt>
+					<dd>
+						<p data-locale="TG_newFrameTwo_1">– Add new 2 video frame</p>
+						<span class="k-icon kcmb-sh-lm"></span>
+						<p data-locale="TG_newFrameTwo_2">– Add new 2 frame</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_duplicateFrame.title">
+						Duplicate Frame
+					</dt>
+					<dd>
+						<p data-locale="TG_duplicateFrame_1">– Duplicate selected frame/layer</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_deleteFrame.title">
+						Delete Frame
+					</dt>
+					<dd>
+						<p data-locale="TG_deleteFrame_1">– Delete selected frame/layer</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_toggleFavorite.title">
+						Filters Selected Layers
+					</dt>
+					<dd>
+						<p data-locale="TG_toggleFavorite_1">– Show all layers</p>
+						<span class="k-icon kcmb-sh-lm"></span>
+						<p data-locale="TG_toggleFavorite_2">– Show set favorite layers</p>
+						<span class="k-icon kcmb-al-lm"></span>
+						<p data-locale="TG_toggleFavorite_3">– Sets selected layers as favorites
+							and hides other layers</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_onionSkin.title">
+						Toggle Onion Skin Mode
+					</dt>
+					<dd>
+						<p data-locale="TG_onionSkin_1">– Onion skin mode displays content
+							drawn on the current frame plus
+							content drawn on the surrounding frames</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_onionSkinSettings.title">
+						Onion Skin Settings
+					</dt>
+					<dd>
+						<p data-locale="TG_onionSkinSettings_1">– Specify how previous and later
+							frames appear when onion skins
+							are enabled</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_newVideoGroup.title">
+						New Video Group
+					</dt>
+					<dd>
+						<p data-locale="TG_newVideoGroup_1">– New video group from selection</p>
+						<span class="k-icon kcmb-sh-lm"></span>
+						<p data-locale="TG_newVideoGroup_2">– Ungroup selected video group</p>
+						<span class="k-icon kcmb-al-lm"></span>
+						<p data-locale="TG_newVideoGroup_3">– New video group with blanc 1 frame layer</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_minus.title">
+						Minus 1 Frame
+					</dt>
+					<dd>
+						<p data-locale="TG_frameMinus_1">– Reduce duration selecion by 10 frames</p>
+						<span class="k-icon kcmb-sh-lm"></span>
+						<p data-locale="TG_frameMinus_2">– Reduce duration selecion by 2 frames</p>
+						<span class="k-icon kcmb-al-lm"></span>
+						<p data-locale="TG_frameMinus_2">– Reduce duration selecion by 1 frame</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_plus.title">
+						Plus 1 Frame
+					</dt>
+					<dd>
+						<p data-locale="TG_framePlus_1">– Extend duration selection by 10 frames</p>
+						<span class="k-icon kcmb-sh-lm"></span>
+						<p data-locale="TG_framePlus_2">– Extend duration selection by 2 frames</p>
+						<span class="k-icon kcmb-al-lm"></span>
+						<p data-locale="TG_framePlus_3">– Extend duration selection by 1 frame</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_red.title">
+						Red Overlay
+					</dt>
+					<dd>
+						<p data-locale="">– Adds/turn on red overlay to the layer</p>
+						<span class="k-icon kcmb-sh-lm"></span>
+						<p data-locale="">– Turn off red overlay</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_green.title">
+						Green Overlay
+					</dt>
+					<dd>
+						<p data-locale="">– Adds/turn on green overlay to the layer</p>
+						<span class="k-icon kcmb-sh-lm"></span>
+						<p data-locale="">– Turn off green overlay</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_blue.title">
+						Blue Overlay
+					</dt>
+					<dd>
+						<p data-locale="">– Adds/turn on blue overlay to the layer</p>
+						<span class="k-icon kcmb-sh-lm"></span>
+						<p data-locale="">– Turn off blue overlay</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_none.title">
+						Clear All Overlays
+					</dt>
+					<dd>
+						<p data-locale="">– Clear all overlays from selection</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_inBetweenPrevious.title">
+						In Between Previous
+					</dt>
+					<dd>
+						<p data-locale="">– Move the selected frame/layer before the Previous one</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_createInBetween.title">
+						In Between New
+					</dt>
+					<dd>
+						<p data-locale="">– Create a new in-between frame/layer</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_inBetweenNext.title">
+						In Between Next
+					</dt>
+					<dd>
+						<p data-locale="">– Move the selected frame/layer after the next one</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_playheadStart.title">
+						Set Playhead Start
+					</dt>
+					<dd>
+						<p data-locale="">– Trim start at playhead</p>
+						<span class="k-icon kcmb-sh-lm"></span>
+						<p data-locale="">– Move start to playhead</p>
+						<span class="k-icon kcmb-sh-lm"></span>
+						<p data-locale="">– Set the start of the work
+							Areat at the playhead</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_playheadEnd.title">
+						Set Playhead End
+					</dt>
+					<dd>
+						<p data-locale="">– Trim end at playhead</p>
+						<span class="k-icon kcmb-sh-lm"></span>
+						<p data-locale="">– Move end to playhead</p>
+						<span class="k-icon kcmb-al-lm"></span>
+						<p data-locale="">– Set the end of the work
+							Areat at the playhead</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_commentEdit.title">
+						Edit Comments
+					</dt>
+					<dd>
+						<p data-locale="">— Add / edit a timeline comment
+							at the playhead.</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_commentsHtml.title">
+						Export Comments as HTML
+					</dt>
+					<dd>
+						<p data-locale="">Export timeline comments as a HTML file</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_commentsText.title">
+						Export Comments as TXT
+					</dt>
+					<dd>
+						<p data-locale="">– Export timeline comments as a structured TEXT file</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_videoShortcuts.title">
+						Toggle Timeline Shortcuts
+					</dt>
+					<dd>
+						<p data-locale="">– Enable timeline shortcut keys, allows you to use the right and left arrow
+							keys to move playhead, and use the space bar to play / stop</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+				</dl>
 
+			</div>
+		</div>
 	</div>
 
 	<!-- <script src="js/libs/CSInterface-5.2.js"></script> -->
 	<script src="js/libs/CSInterface-7.js"></script>
 	<!-- <script src="js/libs/ps14features.js"></script> -->
-	<script src="js/libs/jquery-2.0.2.min.js"></script>
+	<script src="js/vendor/jquery-2.2.4.min.js"></script>
+	<!-- <script src="js/libs/jquery-2.0.2.min.js"></script> -->
 	<script src="js/vendor/bootstrap.min.js"></script>
 	<script src="js/vendor/filter-search.js"></script>
 
 	<!-- Jquery Helpers -->
-	<script src="js/vendor/tooltips.js"></script>
+	<!-- <script src="js/vendor/tooltips.js"></script> -->
 	<script src="js/vendor/vimeo_popup.js"></script>
 	<script src="js/vendor/navbar.js"></script>
 
 	<script src="js/themeManager.js"></script>
 	<script src="js/toolguide.js"></script>
-
-
-
 
 	<script>
 		$(document).ready(function () {
@@ -361,6 +370,7 @@
 
 		});
 	</script>
+
 </body>
 
 </html>

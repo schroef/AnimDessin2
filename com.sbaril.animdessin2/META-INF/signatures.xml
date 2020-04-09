@@ -100,7 +100,7 @@ liJx8tUz1QNLfN6QbyZxkYMQNBtiyL5leaHGsLWOnpT5HZybqofM
                     <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
                     <DigestValue>eBQSfReve34IbvcNd5/xXaBNsaN2eqrO7nqFJtFZ4mk=</DigestValue>
                 </Reference> -->
-                <Reference URI="css/tooltips.css">
+                <Reference URI="css/toolguides.css">
                     <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
                     <DigestValue>NadKAReve34IbvcNd5/xXaBNsaN2eqrO7nqFJtFZ4mk=</DigestValue>
                 </Reference>

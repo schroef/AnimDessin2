@@ -65,7 +65,16 @@ $(document).ready(function () {
                     parent.next().show();
                     // If query found in DD also show title
                     $("dd:visible").prev().show();
-                    $("dt:visible").next().show();
+                    $("dt:visible").next("dd").show();
+                    // if ($("dt:visible")){
+                    if (parent.is(":visible")){
+                        // console.log(parent.text());
+                        // parent.next().children().show();
+                        // parent.find("dd").show();
+                        parent.next("dd").show();
+                        // $("dt:visible").next().show();
+                        }
+    
 
                     // Filters also by body tekst and show parent DT
                     // console.log(parent.prev("dd")=="dd");

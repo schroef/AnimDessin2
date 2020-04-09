@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // Dirty image show fix
-    $(window).scrollTop(1);
+    // $(window).scrollTop(1);
 
     $("#nav-toggle").click(function () {
         $("#nav").toggleClass('opened', '');
@@ -16,8 +16,9 @@ $(document).ready(function () {
         } else {
             $("#nav").removeClass('short');
         }
-        // Auto close search on scroll
-        if (fromTop >= 300) {
+        // Auto close search on scroll & focuse search is false
+        console.log($("#searchbar-product").is(":focus") !==false)
+        if ((fromTop >= 300) && (!$("#searchbar-product").is(":focus"))){
             if ($("#nav").hasClass("opened")) {
                 $("#nav-toggle").trigger("click");
                 $("#searchbar-product").trigger('blur');
