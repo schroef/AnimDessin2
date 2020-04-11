@@ -1078,7 +1078,8 @@ dd p {
 	font-size: 12.5px;
 	line-height: 1.6;
 	color: rgba(var(--secondRGB), 0.65);
-	width: calc(100% - 64px);
+	width: calc(100% - 63px);
+	letter-spacing: -.035px;
 	flex-grow: 1;
 	margin: 0;
 	padding-right: 39px;
@@ -1112,7 +1113,7 @@ dd span {
 }
 /* KEYCBOMBO ICONCS */
 span.kcmb-sh-al-lm {
-	width: 88px;
+	width: 72px;
 }
 span.kcmb-sh-lm {
 	width: 50px;

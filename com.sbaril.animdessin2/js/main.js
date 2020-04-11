@@ -400,16 +400,21 @@
 				loadJSXFile("/jsx/AnimD2_colorBlue.jsx");
 		});
 
-		$("#btn_none").click(function () {
-			loadJSXFile("/jsx/AnimD2_colorNone.jsx");
-		});
-
-		$("#btn_createInBetween").click(function () {
-			loadJSXFile("/jsx/AnimD2_inBetweenCreate.jsx");
+		$("#btn_none").click(function (e) {
+			if (e.shiftKey)
+				loadJSXFile("/jsx/AnimD2_colorFxHideAll.jsx");
+			else if (e.altKey)
+			loadJSXFile("/jsx/AnimD2_colorFxShowAll.jsx");
+			else
+				loadJSXFile("/jsx/AnimD2_colorNone.jsx");
 		});
 
 		$("#btn_inBetweenPrevious").click(function () {
 			loadJSXFile("/jsx/AnimD2_inBetweenPrevious.jsx");
+		});
+
+		$("#btn_createInBetween").click(function () {
+			loadJSXFile("/jsx/AnimD2_inBetweenCreate.jsx");
 		});
 
 		$("#btn_inBetweenNext").click(function () {
@@ -428,7 +433,7 @@
 		$("#btn_playheadEnd").click(function (e) {
 			if (e.shiftKey)
 				loadJSXFile("/jsx/AnimD2_playheadTrimEnd.jsx");
-				else if (e.altKey)	
+			else if (e.altKey)	
 				loadJSXFile("/jsx/AnimD2_playheadMoveEnd.jsx");	
 			else
 				loadJSXFile("/jsx/AnimD2_playheadEnd.jsx");
