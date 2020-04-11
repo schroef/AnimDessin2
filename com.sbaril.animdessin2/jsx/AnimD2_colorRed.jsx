@@ -1,6 +1,9 @@
 ﻿// Copyright 2013
 // Compiled (via JavascriptListener or ActionToJavascript Xtools…) by Stéphane Baril
 
+// Updated 2020
+// Modified on April 2020 by Rombout (https://https://github.com/schroef/AnimDessin2)
+
 // enable double clicking from the Finder or Explorer
 #target photoshop
 
@@ -8,12 +11,13 @@
 app.bringToFront();
 docRef = app.activeDocument;
 
+// Call main function from getselected, we can reuse scripts
+var ScriptFilePath = Folder($.fileName).parent.fsName;
+$.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
+
 ///////////////////////////////////////////////////
 // SETUP
 ///////////////////////////////////////////////////
-
-var ScriptFilePath = Folder($.fileName).parent.fsName;
-$.evalFile(new File(ScriptFilePath + '/AnimD2_getSelectedLayers.jsx'));
 
 ///////////////////////////////////////////////////
 // MAIN
@@ -81,7 +85,7 @@ function colorRed() {
 //
 
 colorRed.main = function() {
-    applyToSelected(colorRed);
+    applyToAllLayers(colorRed);
 };
 
 app.activeDocument.suspendHistory("Colorize the Video Frame in Red", 'colorRed.main()');

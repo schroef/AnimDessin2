@@ -14,7 +14,7 @@ docRef = app.activeDocument;
 
 // Call main function from getselected, we can reuse scripts
 var ScriptFilePath = Folder($.fileName).parent.fsName;
-$.evalFile(new File(ScriptFilePath + '/AnimD2_getSelectedLayers.jsx'));
+$.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 
 ///////////////////////////////////////////////////
 // SETUP
@@ -64,7 +64,7 @@ function framePlusOne() {
 //
 
 framePlusOne.main = function () {
-    applyToSelected(framePlusOne);
+    applyToAllLayers(framePlusOne);
 };
 
 app.activeDocument.suspendHistory("Expose 1 frame more", 'framePlusOne.main()');

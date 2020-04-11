@@ -2,10 +2,6 @@
 // Modified on April 2020 by Rombout (https://https://github.com/schroef/AnimDessin2)
 
 //
-// AnimD2_gotoInTimeLine.jsx
-//
-
-//
 // Generated Wed Mar 26 2020 19:14 AST
 //
 #target photoshop;

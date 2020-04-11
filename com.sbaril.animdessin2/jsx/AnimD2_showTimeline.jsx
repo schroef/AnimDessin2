@@ -19,7 +19,6 @@ app.bringToFront();
 //FUNCTIONS
 ///////////////////////////////////////////////////
 
-
 function showTimeline() {
 
     // Show Timeline Panel
@@ -40,8 +39,8 @@ function showTimeline() {
         if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;} 
         else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
     }
-
 };
+
 //=========================================
 // showTimeline.main
 //=========================================

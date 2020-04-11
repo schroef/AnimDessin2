@@ -13,7 +13,7 @@ docRef = app.activeDocument;
 
 // Call main function from getselected, we can reuse scripts
 var ScriptFilePath = Folder($.fileName).parent.fsName;
-$.evalFile(new File(ScriptFilePath + '/AnimD2_getSelectedLayers.jsx'));
+$.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 
 ///////////////////////////////////////////////////
 // SETUP
@@ -57,7 +57,7 @@ function colorGlobalHide() {
 
 colorGlobalHide.main = function() {
     // colorGlobalHide();
-    applyToSelected(colorGlobalHide);
+    applyToAllLayers(colorGlobalHide);
 };
 
 app.activeDocument.suspendHistory("Hide Color overlay on Video Frame", 'colorGlobalHide.main()');

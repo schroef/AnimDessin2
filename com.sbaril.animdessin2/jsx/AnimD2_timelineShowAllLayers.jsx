@@ -1,7 +1,11 @@
-﻿#target photoshop
-//
-// AnimD2_timelineShowAllLayers.jsx
-//
+﻿// Updated 2020
+// Modified on April 2020 by Rombout (https://https://github.com/schroef/AnimDessin2)
+
+// enable double clicking from the Finder or Explorer
+#target photoshop
+
+//Make Photoshop the front most application
+app.bringToFront();
 
 //
 // Generated Wed Mar 26 2020 19:14 AST
@@ -14,8 +18,6 @@
 function AnimD2_timelineShowAllLayers() {
     app.runMenuItem(stringIDToTypeID('timelineShowAllLayers'));
 };
-
-
 
 //=========================================
 // AnimD2_timelineShowAllLayers.main

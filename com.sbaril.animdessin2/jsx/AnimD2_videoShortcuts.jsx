@@ -50,5 +50,5 @@ videoShortcuts.main = function () {
   videoShortcuts();
 };
 
-//app.activeDocument.suspendHistory("Save As...", 'videoShortcuts.main()');
+//app.activeDocument.suspendHistory("Use timline video shortcuts", 'videoShortcuts.main()');
 videoShortcuts.main();

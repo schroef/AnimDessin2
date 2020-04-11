@@ -11,7 +11,7 @@ docRef = app.activeDocument;
 
 // Call main function from getselected, we can reuse scripts
 var ScriptFilePath = Folder($.fileName).parent.fsName;
-$.evalFile(new File(ScriptFilePath + '/AnimD2_getSelectedLayers.jsx'));
+$.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 
 ///////////////////////////////////////////////////
 // SETUP
@@ -29,29 +29,29 @@ $.evalFile(new File(ScriptFilePath + '/AnimD2_getSelectedLayers.jsx'));
 function framePlusTen() {
     // =======================================================
     // Function to get the framerate of the actual document
-    function GetFrameRate(){
+    function GetFrameRate() {
         var ref = new ActionReference();
-        ref.putProperty( charIDToTypeID( 'Prpr' ), stringIDToTypeID("documentTimelineSettings") );
-        ref.putClass( stringIDToTypeID( "timeline" ) );
+        ref.putProperty(charIDToTypeID('Prpr'), stringIDToTypeID("documentTimelineSettings"));
+        ref.putClass(stringIDToTypeID("timeline"));
         var desc = new ActionDescriptor();
-        desc.putReference( charIDToTypeID( 'null' ), ref );
-        var resultDesc = executeAction( charIDToTypeID( 'getd' ), desc, DialogModes.NO );
-        return resultDesc.getDouble( stringIDToTypeID('frameRate') );
+        desc.putReference(charIDToTypeID('null'), ref);
+        var resultDesc = executeAction(charIDToTypeID('getd'), desc, DialogModes.NO);
+        return resultDesc.getDouble(stringIDToTypeID('frameRate'));
     };
     // So here the number of additional frames is difine ( idframe, 1 )
-    var idmoveOutTime = stringIDToTypeID( "moveOutTime" );
+    var idmoveOutTime = stringIDToTypeID("moveOutTime");
     var desc123 = new ActionDescriptor();
-    var idtimeOffset = stringIDToTypeID( "timeOffset" );
+    var idtimeOffset = stringIDToTypeID("timeOffset");
     var desc124 = new ActionDescriptor();
-    var idseconds = stringIDToTypeID( "seconds" );
-    desc124.putInteger( idseconds, 0 );
-    var idframe = stringIDToTypeID( "frame" );
-    desc124.putInteger( idframe, 10 );
-    var idframeRate = stringIDToTypeID( "frameRate" );
-    desc124.putDouble( idframeRate, GetFrameRate() );
-    var idtimecode = stringIDToTypeID( "timecode" );
-    desc123.putObject( idtimeOffset, idtimecode, desc124 );
-    executeAction( idmoveOutTime, desc123, DialogModes.NO );
+    var idseconds = stringIDToTypeID("seconds");
+    desc124.putInteger(idseconds, 0);
+    var idframe = stringIDToTypeID("frame");
+    desc124.putInteger(idframe, 10);
+    var idframeRate = stringIDToTypeID("frameRate");
+    desc124.putDouble(idframeRate, GetFrameRate());
+    var idtimecode = stringIDToTypeID("timecode");
+    desc123.putObject(idtimeOffset, idtimecode, desc124);
+    executeAction(idmoveOutTime, desc123, DialogModes.NO);
 };
 
 //=========================================
@@ -59,8 +59,8 @@ function framePlusTen() {
 //=========================================
 //
 
-framePlusTen.main = function () {
-  applyToSelected(framePlusTen);
+framePlusTen.main = function() {
+    applyToAllLayers(framePlusTen);
 };
 
 app.activeDocument.suspendHistory("Expose 10 frames more", 'framePlusTen.main()');

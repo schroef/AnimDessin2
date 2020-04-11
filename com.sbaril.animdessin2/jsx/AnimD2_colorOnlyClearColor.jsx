@@ -13,7 +13,7 @@ docRef = app.activeDocument;
 
 // Call main function from getselected, we can reuse scripts
 var ScriptFilePath = Folder($.fileName).parent.fsName;
-$.evalFile(new File(ScriptFilePath + '/AnimD2_getSelectedLayers.jsx'));
+$.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 
 ///////////////////////////////////////////////////
 // SETUP
@@ -65,7 +65,7 @@ function colorOnlyClearColor() {
 
 colorOnlyClearColor.main = function() {
     // colorOnlyClearColor();
-    applyToSelected(colorOnlyClearColor);
+    applyToAllLayers(colorOnlyClearColor);
 };
 
 app.activeDocument.suspendHistory("Clear only Color overlay from Video Frame", 'colorOnlyClearColor.main()');

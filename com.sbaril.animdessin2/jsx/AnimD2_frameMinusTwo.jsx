@@ -14,7 +14,7 @@ docRef = app.activeDocument;
 
 // Call main function from getselected, we can reuse scripts
 var ScriptFilePath = Folder($.fileName).parent.fsName;
-$.evalFile(new File(ScriptFilePath + '/AnimD2_getSelectedLayers.jsx'));
+$.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 
 ///////////////////////////////////////////////////
 // SETUP
@@ -31,29 +31,29 @@ $.evalFile(new File(ScriptFilePath + '/AnimD2_getSelectedLayers.jsx'));
 function frameMinusTwo() {
 
     // =======================================================
-    function GetFrameRate(){
+    function GetFrameRate() {
         var ref = new ActionReference();
-        ref.putProperty( charIDToTypeID( 'Prpr' ), stringIDToTypeID("documentTimelineSettings") );
-        ref.putClass( stringIDToTypeID( "timeline" ) );
+        ref.putProperty(charIDToTypeID('Prpr'), stringIDToTypeID("documentTimelineSettings"));
+        ref.putClass(stringIDToTypeID("timeline"));
         var desc = new ActionDescriptor();
-        desc.putReference( charIDToTypeID( 'null' ), ref );
-        var resultDesc = executeAction( charIDToTypeID( 'getd' ), desc, DialogModes.NO );
-        return resultDesc.getDouble( stringIDToTypeID('frameRate') );
+        desc.putReference(charIDToTypeID('null'), ref);
+        var resultDesc = executeAction(charIDToTypeID('getd'), desc, DialogModes.NO);
+        return resultDesc.getDouble(stringIDToTypeID('frameRate'));
     };
 
-    var idmoveOutTime = stringIDToTypeID( "moveOutTime" );
+    var idmoveOutTime = stringIDToTypeID("moveOutTime");
     var desc6 = new ActionDescriptor();
-    var idtimeOffset = stringIDToTypeID( "timeOffset" );
+    var idtimeOffset = stringIDToTypeID("timeOffset");
     var desc7 = new ActionDescriptor();
-    var idseconds = stringIDToTypeID( "seconds" );
-    desc7.putInteger( idseconds, 0 );
-    var idframe = stringIDToTypeID( "frame" );
-    desc7.putInteger( idframe, -2 );
-    var idframeRate = stringIDToTypeID( "frameRate" );
-    desc7.putDouble( idframeRate, GetFrameRate() );
-    var idtimecode = stringIDToTypeID( "timecode" );
-    desc6.putObject( idtimeOffset, idtimecode, desc7 );
-    executeAction( idmoveOutTime, desc6, DialogModes.NO );
+    var idseconds = stringIDToTypeID("seconds");
+    desc7.putInteger(idseconds, 0);
+    var idframe = stringIDToTypeID("frame");
+    desc7.putInteger(idframe, -2);
+    var idframeRate = stringIDToTypeID("frameRate");
+    desc7.putDouble(idframeRate, GetFrameRate());
+    var idtimecode = stringIDToTypeID("timecode");
+    desc6.putObject(idtimeOffset, idtimecode, desc7);
+    executeAction(idmoveOutTime, desc6, DialogModes.NO);
 };
 
 
@@ -63,8 +63,8 @@ function frameMinusTwo() {
 //=========================================
 //
 
-frameMinusTwo.main = function () {
-  applyToSelected(frameMinusTwo);
+frameMinusTwo.main = function() {
+    applyToAllLayers(frameMinusTwo);
 };
 
 app.activeDocument.suspendHistory("Expose 2 frames less", 'frameMinusTwo.main()');

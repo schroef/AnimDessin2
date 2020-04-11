@@ -15,170 +15,176 @@ app.bringToFront();
 ///////////////////////////////////////////////////
 
 // New document 1920x1080p
-var idMk = charIDToTypeID( "Mk  " );
+var idMk = charIDToTypeID("Mk  ");
 var desc1 = new ActionDescriptor();
-var idNw = charIDToTypeID( "Nw  " );
+var idNw = charIDToTypeID("Nw  ");
 var desc2 = new ActionDescriptor();
-var idNm = charIDToTypeID( "Nm  " );
-desc2.putString( idNm, """Anim""" );
-var idMd = charIDToTypeID( "Md  " );
-var idRGBM = charIDToTypeID( "RGBM" );
-desc2.putClass( idMd, idRGBM );
-var idWdth = charIDToTypeID( "Wdth" );
-var idRlt = charIDToTypeID( "#Rlt" );
-desc2.putUnitDouble( idWdth, idRlt, 1920.000000 );
-var idHght = charIDToTypeID( "Hght" );
-var idRlt = charIDToTypeID( "#Rlt" );
-desc2.putUnitDouble( idHght, idRlt, 1080.000000 );
-var idRslt = charIDToTypeID( "Rslt" );
-var idRsl = charIDToTypeID( "#Rsl" );
-desc2.putUnitDouble( idRslt, idRsl, 72.000000 );
-var idpixelScaleFactor = stringIDToTypeID( "pixelScaleFactor" );
-desc2.putDouble( idpixelScaleFactor, 1.000000 );
-var idFl = charIDToTypeID( "Fl  " );
-var idFl = charIDToTypeID( "Fl  " );
-var idWht = charIDToTypeID( "Wht " );
-desc2.putEnumerated( idFl, idFl, idWht );
-var idDpth = charIDToTypeID( "Dpth" );
-desc2.putInteger( idDpth, 8 );
-var idprofile = stringIDToTypeID( "profile" );
-desc2.putString( idprofile, """sRGB IEC61966-2.1""" );
-var idDcmn = charIDToTypeID( "Dcmn" );
-desc1.putObject( idNw, idDcmn, desc2 );
-executeAction( idMk, desc1, DialogModes.NO );
+var idNm = charIDToTypeID("Nm  ");
+desc2.putString(idNm, ""
+    "Anim"
+    "");
+var idMd = charIDToTypeID("Md  ");
+var idRGBM = charIDToTypeID("RGBM");
+desc2.putClass(idMd, idRGBM);
+var idWdth = charIDToTypeID("Wdth");
+var idRlt = charIDToTypeID("#Rlt");
+desc2.putUnitDouble(idWdth, idRlt, 1920.000000);
+var idHght = charIDToTypeID("Hght");
+var idRlt = charIDToTypeID("#Rlt");
+desc2.putUnitDouble(idHght, idRlt, 1080.000000);
+var idRslt = charIDToTypeID("Rslt");
+var idRsl = charIDToTypeID("#Rsl");
+desc2.putUnitDouble(idRslt, idRsl, 72.000000);
+var idpixelScaleFactor = stringIDToTypeID("pixelScaleFactor");
+desc2.putDouble(idpixelScaleFactor, 1.000000);
+var idFl = charIDToTypeID("Fl  ");
+var idFl = charIDToTypeID("Fl  ");
+var idWht = charIDToTypeID("Wht ");
+desc2.putEnumerated(idFl, idFl, idWht);
+var idDpth = charIDToTypeID("Dpth");
+desc2.putInteger(idDpth, 8);
+var idprofile = stringIDToTypeID("profile");
+desc2.putString(idprofile, ""
+    "sRGB IEC61966-2.1"
+    "");
+var idDcmn = charIDToTypeID("Dcmn");
+desc1.putObject(idNw, idDcmn, desc2);
+executeAction(idMk, desc1, DialogModes.NO);
 
 
 function VideoTimeline() {
     // =======================================================
     // Create a new Layer
-    var idMk = charIDToTypeID( "Mk  " );
+    var idMk = charIDToTypeID("Mk  ");
     var desc80 = new ActionDescriptor();
-    var idnull = charIDToTypeID( "null" );
+    var idnull = charIDToTypeID("null");
     var ref60 = new ActionReference();
-    var idLyr = charIDToTypeID( "Lyr " );
-    ref60.putClass( idLyr );
-    desc80.putReference( idnull, ref60 );
-    executeAction( idMk, desc80, DialogModes.NO );
+    var idLyr = charIDToTypeID("Lyr ");
+    ref60.putClass(idLyr);
+    desc80.putReference(idnull, ref60);
+    executeAction(idMk, desc80, DialogModes.NO);
 
     // =======================================================
     // create a Video Timeline
-    var idmakeTimeline = stringIDToTypeID( "makeTimeline" );
-    executeAction( idmakeTimeline, undefined, DialogModes.NO );
-    
+    var idmakeTimeline = stringIDToTypeID("makeTimeline");
+    executeAction(idmakeTimeline, undefined, DialogModes.NO);
+
     // =======================================================
     // Setup the default framerate to 24
-    var idsetd = charIDToTypeID( "setd" );
+    var idsetd = charIDToTypeID("setd");
     var desc243 = new ActionDescriptor();
-    var idnull = charIDToTypeID( "null" );
+    var idnull = charIDToTypeID("null");
     var ref150 = new ActionReference();
-    var idPrpr = charIDToTypeID( "Prpr" );
-    var iddocumentTimelineSettings = stringIDToTypeID( "documentTimelineSettings" );
-    ref150.putProperty( idPrpr, iddocumentTimelineSettings );
-    var idtimeline = stringIDToTypeID( "timeline" );
-    ref150.putClass( idtimeline );
-    desc243.putReference( idnull, ref150 );
-    var idframeRate = stringIDToTypeID( "frameRate" );
-    desc243.putDouble( idframeRate, 24.000000 );
-    executeAction( idsetd, desc243, DialogModes.NO );
+    var idPrpr = charIDToTypeID("Prpr");
+    var iddocumentTimelineSettings = stringIDToTypeID("documentTimelineSettings");
+    ref150.putProperty(idPrpr, iddocumentTimelineSettings);
+    var idtimeline = stringIDToTypeID("timeline");
+    ref150.putClass(idtimeline);
+    desc243.putReference(idnull, ref150);
+    var idframeRate = stringIDToTypeID("frameRate");
+    desc243.putDouble(idframeRate, 24.000000);
+    executeAction(idsetd, desc243, DialogModes.NO);
 
     // =======================================================
     // open dialog box to setup the Duration framerate
-    var idslct = charIDToTypeID( "slct" );
+    var idslct = charIDToTypeID("slct");
     var desc10 = new ActionDescriptor();
-    var idnull = charIDToTypeID( "null" );
+    var idnull = charIDToTypeID("null");
     var ref10 = new ActionReference();
-    var idMn = charIDToTypeID( "Mn  " );
-    var idMnIt = charIDToTypeID( "MnIt" );
-    var idtimelineDocumentSettings = stringIDToTypeID( "timelineDocumentSettings" );
-    ref10.putEnumerated( idMn, idMnIt, idtimelineDocumentSettings );
-    desc10.putReference( idnull, ref10 );
-    executeAction( idslct, desc10, DialogModes.NO );
+    var idMn = charIDToTypeID("Mn  ");
+    var idMnIt = charIDToTypeID("MnIt");
+    var idtimelineDocumentSettings = stringIDToTypeID("timelineDocumentSettings");
+    ref10.putEnumerated(idMn, idMnIt, idtimelineDocumentSettings);
+    desc10.putReference(idnull, ref10);
+    executeAction(idslct, desc10, DialogModes.NO);
 
     // =======================================================
     // Create a Video Group based on the Selected layer(s)
-    var idMk = charIDToTypeID( "Mk  " );
+    var idMk = charIDToTypeID("Mk  ");
     var desc4 = new ActionDescriptor();
-    var idnull = charIDToTypeID( "null" );
+    var idnull = charIDToTypeID("null");
     var ref3 = new ActionReference();
-    var idsceneSection = stringIDToTypeID( "sceneSection" );
-    ref3.putClass( idsceneSection );
-    desc4.putReference( idnull, ref3 );
-    var idFrom = charIDToTypeID( "From" );
+    var idsceneSection = stringIDToTypeID("sceneSection");
+    ref3.putClass(idsceneSection);
+    desc4.putReference(idnull, ref3);
+    var idFrom = charIDToTypeID("From");
     var ref4 = new ActionReference();
-    var idLyr = charIDToTypeID( "Lyr " );
-    var idOrdn = charIDToTypeID( "Ordn" );
-    var idTrgt = charIDToTypeID( "Trgt" );
-    ref4.putEnumerated( idLyr, idOrdn, idTrgt );
-    desc4.putReference( idFrom, ref4 );
-    executeAction( idMk, desc4, DialogModes.NO );
+    var idLyr = charIDToTypeID("Lyr ");
+    var idOrdn = charIDToTypeID("Ordn");
+    var idTrgt = charIDToTypeID("Trgt");
+    ref4.putEnumerated(idLyr, idOrdn, idTrgt);
+    desc4.putReference(idFrom, ref4);
+    executeAction(idMk, desc4, DialogModes.NO);
 
     // =======================================================
     // Rename the Video Group
-    var idsetd = charIDToTypeID( "setd" );
+    var idsetd = charIDToTypeID("setd");
     var desc98 = new ActionDescriptor();
-    var idnull = charIDToTypeID( "null" );
+    var idnull = charIDToTypeID("null");
     var ref76 = new ActionReference();
-    var idLyr = charIDToTypeID( "Lyr " );
-    var idOrdn = charIDToTypeID( "Ordn" );
-    var idTrgt = charIDToTypeID( "Trgt" );
-    ref76.putEnumerated( idLyr, idOrdn, idTrgt );
-    desc98.putReference( idnull, ref76 );
-    var idT = charIDToTypeID( "T   " );
+    var idLyr = charIDToTypeID("Lyr ");
+    var idOrdn = charIDToTypeID("Ordn");
+    var idTrgt = charIDToTypeID("Trgt");
+    ref76.putEnumerated(idLyr, idOrdn, idTrgt);
+    desc98.putReference(idnull, ref76);
+    var idT = charIDToTypeID("T   ");
     var desc99 = new ActionDescriptor();
-    var idNm = charIDToTypeID( "Nm  " );
-    desc99.putString( idNm, """Anim""" );
-    var idLyr = charIDToTypeID( "Lyr " );
-    desc98.putObject( idT, idLyr, desc99 );
-    executeAction( idsetd, desc98, DialogModes.NO );
+    var idNm = charIDToTypeID("Nm  ");
+    desc99.putString(idNm, ""
+        "Anim"
+        "");
+    var idLyr = charIDToTypeID("Lyr ");
+    desc98.putObject(idT, idLyr, desc99);
+    executeAction(idsetd, desc98, DialogModes.NO);
 
     // =======================================================
     // Move (select) the layer below
-    var idslct = charIDToTypeID( "slct" );
+    var idslct = charIDToTypeID("slct");
     var desc7 = new ActionDescriptor();
-    var idnull = charIDToTypeID( "null" );
+    var idnull = charIDToTypeID("null");
     var ref7 = new ActionReference();
-    var idLyr = charIDToTypeID( "Lyr " );
-    var idOrdn = charIDToTypeID( "Ordn" );
-    var idBckw = charIDToTypeID( "Bckw" );
-    ref7.putEnumerated( idLyr, idOrdn, idBckw );
-    desc7.putReference( idnull, ref7 );
-    var idMkVs = charIDToTypeID( "MkVs" );
-    desc7.putBoolean( idMkVs, false );
-    executeAction( idslct, desc7, DialogModes.NO );
+    var idLyr = charIDToTypeID("Lyr ");
+    var idOrdn = charIDToTypeID("Ordn");
+    var idBckw = charIDToTypeID("Bckw");
+    ref7.putEnumerated(idLyr, idOrdn, idBckw);
+    desc7.putReference(idnull, ref7);
+    var idMkVs = charIDToTypeID("MkVs");
+    desc7.putBoolean(idMkVs, false);
+    executeAction(idslct, desc7, DialogModes.NO);
 
     // =======================================================
-    var idsetd = charIDToTypeID( "setd" );
+    var idsetd = charIDToTypeID("setd");
     var desc53 = new ActionDescriptor();
-    var idnull = charIDToTypeID( "null" );
+    var idnull = charIDToTypeID("null");
     var ref38 = new ActionReference();
-    var idPrpr = charIDToTypeID( "Prpr" );
-    var idtime = stringIDToTypeID( "time" );
-    ref38.putProperty( idPrpr, idtime );
-    var idtimeline = stringIDToTypeID( "timeline" );
-    ref38.putClass( idtimeline );
-    desc53.putReference( idnull, ref38 );
-    var idT = charIDToTypeID( "T   " );
+    var idPrpr = charIDToTypeID("Prpr");
+    var idtime = stringIDToTypeID("time");
+    ref38.putProperty(idPrpr, idtime);
+    var idtimeline = stringIDToTypeID("timeline");
+    ref38.putClass(idtimeline);
+    desc53.putReference(idnull, ref38);
+    var idT = charIDToTypeID("T   ");
     var desc54 = new ActionDescriptor();
-    var idseconds = stringIDToTypeID( "seconds" );
-    desc54.putInteger( idseconds, 0 );
-    var idframe = stringIDToTypeID( "frame" );
-    desc54.putInteger( idframe, 2 );
-    var idframeRate = stringIDToTypeID( "frameRate" );
-    desc54.putDouble( idframeRate, 24.000000 );
-    var idtimecode = stringIDToTypeID( "timecode" );
-    desc53.putObject( idT, idtimecode, desc54 );
-    executeAction( idsetd, desc53, DialogModes.NO );
+    var idseconds = stringIDToTypeID("seconds");
+    desc54.putInteger(idseconds, 0);
+    var idframe = stringIDToTypeID("frame");
+    desc54.putInteger(idframe, 2);
+    var idframeRate = stringIDToTypeID("frameRate");
+    desc54.putDouble(idframeRate, 24.000000);
+    var idtimecode = stringIDToTypeID("timecode");
+    desc53.putObject(idT, idtimecode, desc54);
+    executeAction(idsetd, desc53, DialogModes.NO);
 
 
     // =======================================================
-    var idmoveOutTime = stringIDToTypeID( "moveOutTime" );
+    var idmoveOutTime = stringIDToTypeID("moveOutTime");
     var desc49 = new ActionDescriptor();
-    executeAction( idmoveOutTime, desc49, DialogModes.NO );
+    executeAction(idmoveOutTime, desc49, DialogModes.NO);
 
     // =======================================================
-    var idmoveInTime = stringIDToTypeID( "moveInTime" );
+    var idmoveInTime = stringIDToTypeID("moveInTime");
     var desc50 = new ActionDescriptor();
-    executeAction( idmoveInTime, desc50, DialogModes.NO );
+    executeAction(idmoveInTime, desc50, DialogModes.NO);
 
 };
 
@@ -187,8 +193,8 @@ function VideoTimeline() {
 //=========================================
 //
 
-VideoTimeline.main = function () {
-  VideoTimeline();
+VideoTimeline.main = function() {
+    VideoTimeline();
 };
 
 app.activeDocument.suspendHistory("Create a Timeline with a Video Group", 'VideoTimeline.main()');
@@ -197,26 +203,30 @@ app.activeDocument.suspendHistory("Create a Timeline with a Video Group", 'Video
 //==================================================================================
 
 
-cTID = function(s) { return app.charIDToTypeID(s); };
-sTID = function(s) { return app.stringIDToTypeID(s); };
+cTID = function(s) {
+    return app.charIDToTypeID(s);
+};
+sTID = function(s) {
+    return app.stringIDToTypeID(s);
+};
 
 //
 //==================== AnimD2_fitScreen ==============
 //
 function AnimD2_fitScreen() {
-  // Select
-  function step1(enabled, withDialog) {
-    if (enabled != undefined && !enabled)
-      return;
-    var dialogMode = (withDialog ? DialogModes.ALL : DialogModes.NO);
-    var desc1 = new ActionDescriptor();
-    var ref1 = new ActionReference();
-    ref1.putEnumerated(cTID('Mn  '), cTID('MnIt'), cTID('FtOn'));
-    desc1.putReference(cTID('null'), ref1);
-    executeAction(cTID('slct'), desc1, dialogMode);
-  };
+    // Select
+    function step1(enabled, withDialog) {
+        if (enabled != undefined && !enabled)
+            return;
+        var dialogMode = (withDialog ? DialogModes.ALL : DialogModes.NO);
+        var desc1 = new ActionDescriptor();
+        var ref1 = new ActionReference();
+        ref1.putEnumerated(cTID('Mn  '), cTID('MnIt'), cTID('FtOn'));
+        desc1.putReference(cTID('null'), ref1);
+        executeAction(cTID('slct'), desc1, dialogMode);
+    };
 
-  step1();      // Select
+    step1(); // Select
 };
 
 
@@ -226,8 +236,8 @@ function AnimD2_fitScreen() {
 //=========================================
 //
 
-AnimD2_fitScreen.main = function () {
-  AnimD2_fitScreen();
+AnimD2_fitScreen.main = function() {
+    AnimD2_fitScreen();
 };
 
 AnimD2_fitScreen.main();

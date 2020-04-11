@@ -1,6 +1,9 @@
 ﻿// Copyright 2013
 // Compiled (via JavascriptListener or ActionToJavascript Xtools…) by Stéphane Baril
 
+// Updated 2020
+// Modified on April 2020 by Rombout (https://https://github.com/schroef/AnimDessin2)
+
 // enable double clicking from the Finder or Explorer
 #target photoshop
 
@@ -50,5 +53,4 @@ playheadStart.main = function () {
   playheadStart();
 };
 
-//app.activeDocument.suspendHistory("??", 'playheadStart.main()');
-playheadStart.main();
+app.activeDocument.suspendHistory("Set start of work area", 'playheadStart.main()');

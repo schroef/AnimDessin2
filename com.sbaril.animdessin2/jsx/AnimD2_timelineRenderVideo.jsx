@@ -1,5 +1,5 @@
-﻿// Copyright 2013
-// Compiled (via JavascriptListener or ActionToJavascript Xtools…) by Stéphane Baril
+﻿// Updated 2020
+// Modified on April 2020 by Rombout (https://https://github.com/schroef/AnimDessin2)
 
 // enable double clicking from the Finder or Explorer
 #target photoshop
@@ -37,8 +37,8 @@ function timelineRenderVideo() {
         if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;} 
         else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
     }
-
 };
+
 //=========================================
 // timelineRenderVideo.main
 //=========================================

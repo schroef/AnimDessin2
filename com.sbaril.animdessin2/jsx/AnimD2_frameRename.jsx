@@ -11,7 +11,7 @@ docRef = app.activeDocument;
 
 // Call main function from getselected, we can reuse scripts
 var ScriptFilePath = Folder($.fileName).parent.fsName;
-$.evalFile(new File(ScriptFilePath + '/AnimD2_getSelectedLayers.jsx'));
+$.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 
 ///////////////////////////////////////////////////
 // SETUP
@@ -65,7 +65,7 @@ function main() {
         }
         
         if (exportInfo.allLayers){
-            applyToSelected(allLayers);
+            applyToAllLayers(allLayers);
         } else {
             frameRename(exportInfo.renameLayer);
         }
@@ -83,7 +83,9 @@ function allLayers(){
     frameRename(exportInfo.renameLayer);
 }
 
+///////////////////////////////////////////////////
 // Set Defaults Dialog
+///////////////////////////////////////////////////
 function initExportInfo(exportInfo){
     exportInfo.renameLayer = new String("New name...");
     exportInfo.allLayers = false;
@@ -156,7 +158,10 @@ function settingDialog(exportInfo) {
     return result;
 }
 
-
+///////////////////////////////////////////////////
+// Rename function
+// Uses data from dialog window
+///////////////////////////////////////////////////
 function cTID(s) { return app.charIDToTypeID(s); };
 function sTID(s) { return app.stringIDToTypeID(s); };
 

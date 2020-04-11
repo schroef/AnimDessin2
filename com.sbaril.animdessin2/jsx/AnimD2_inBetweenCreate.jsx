@@ -14,7 +14,7 @@ docRef = app.activeDocument;
 
 // Call main function from getselected, we can reuse scripts
 var ScriptFilePath = Folder($.fileName).parent.fsName;
-$.evalFile(new File(ScriptFilePath + '/AnimD2_getSelectedLayers.jsx'));
+$.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 
 ///////////////////////////////////////////////////
 // SETUP
@@ -66,7 +66,7 @@ createInBetween.main = function() {
     // Does single selection
     // createInBetween();
     // Complete selection
-    applyToSelected(createInBetween);
+    applyToAllLayers(createInBetween);
 };
 
 app.activeDocument.suspendHistory("Create an InBetween", 'createInBetween.main()');

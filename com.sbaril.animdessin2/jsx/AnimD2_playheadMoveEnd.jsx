@@ -1,18 +1,23 @@
 ﻿// Copyright 2013
 // Compiled (via JavascriptListener or ActionToJavascript Xtools…) by Stéphane Baril
 
+// Updated 2020
+// Modified on April 2020 by Rombout (https://https://github.com/schroef/AnimDessin2)
+
 // enable double clicking from the Finder or Explorer
 #target photoshop
 
 //Make Photoshop the front most application
 app.bringToFront();
 docRef = app.activeDocument;
+
+// Call main function from getselected, we can reuse scripts
+var ScriptFilePath = Folder($.fileName).parent.fsName;
+$.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
+
 ///////////////////////////////////////////////////
 // SETUP
 ///////////////////////////////////////////////////
-
-var ScriptFilePath = Folder($.fileName).parent.fsName ; 
-$.evalFile(new File(ScriptFilePath + '/AnimD2_getSelectedLayers.jsx'));
 
 ///////////////////////////////////////////////////
 // MAIN
@@ -21,7 +26,6 @@ $.evalFile(new File(ScriptFilePath + '/AnimD2_getSelectedLayers.jsx'));
 ///////////////////////////////////////////////////
 //FUNCTIONS
 ///////////////////////////////////////////////////
-
 
 function playheadMoveEnd() {
 
@@ -42,31 +46,15 @@ function playheadMoveEnd() {
         if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;} 
         else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
     }
-
 };
+
 //=========================================
 // playheadMoveEnd.main
 //=========================================
 //
 
-function playheadMoveEndSelected() {
-    var selectedLayers = getSelectedLayersAMIdx(docRef);
-    var selFromStart = selectedLayers;
-    layerInfo = getLayerInfo(selectedLayers)
-
-    for (var i = 0; i < layerInfo.length; i++) {
-        docRef.activeLayer = docRef.layers[layerInfo[i].name];
-        playheadMoveEnd();
-    }
-    // reselect selected like from start
-    for (var i = 0; i < layerInfo.length; i++) {
-        selLyr(selFromStart[i],1);
-    }
-}
-
 playheadMoveEnd.main = function () {
-  playheadMoveEndSelected();
+    applyToAllLayers(playheadMoveEnd);
 };
 
-//app.activeDocument.suspendHistory("??", 'playheadMoveEnd.main()');
-playheadMoveEnd.main();
+app.activeDocument.suspendHistory("Moves end of frame(s) to playhead", 'playheadMoveEnd.main()');
