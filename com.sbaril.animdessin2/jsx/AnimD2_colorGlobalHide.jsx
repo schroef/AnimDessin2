@@ -29,6 +29,8 @@ $.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 
 function colorGlobalHide() {
 
+    ErrStrs = {}; 
+    ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
     try {
         var idHd = charIDToTypeID("Hd  ");
         var desc11 = new ActionDescriptor();
@@ -45,9 +47,11 @@ function colorGlobalHide() {
         desc11.putList(idnull, list6);
         executeAction(idHd, desc11, DialogModes.NO);
 
-    } catch (e) {
-        alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));
-    }
+    // Allows for cancel without feedback message
+    } catch(e){
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+  }
 };
 
 //=========================================

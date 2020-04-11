@@ -1,7 +1,14 @@
+
 // Updated 2020
 // Modified on April 2020 by Rombout (https://https://github.com/schroef/AnimDessin2)
 
+// enable double clicking from the Finder or Explorer
 #target photoshop
+
+//Make Photoshop the front most application
+app.bringToFront();
+docRef = app.activeDocument;
+
 //
 // AnimD2T_deleteFrame.jsx
 //
@@ -21,18 +28,29 @@ sTID = function(s) {
 //==================== AnimD2_deleteFrame ==============
 //
 function AnimD2_deleteFrame() {
-    // Delete
-    function step1(enabled, withDialog) {
-        if (enabled != undefined && !enabled)
-            return;
-        var dialogMode = (withDialog ? DialogModes.ALL : DialogModes.NO);
-        var desc1 = new ActionDescriptor();
-        var ref1 = new ActionReference();
-        ref1.putEnumerated(cTID('Lyr '), cTID('Ordn'), cTID('Trgt'));
-        desc1.putReference(cTID('null'), ref1);
-        executeAction(cTID('Dlt '), desc1, dialogMode);
-    };
-    step1(); // Delete
+
+    ErrStrs = {}; 
+    ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
+    try{
+        // Delete
+        function step1(enabled, withDialog) {
+            if (enabled != undefined && !enabled)
+                return;
+            var dialogMode = (withDialog ? DialogModes.ALL : DialogModes.NO);
+            var desc1 = new ActionDescriptor();
+            var ref1 = new ActionReference();
+            ref1.putEnumerated(cTID('Lyr '), cTID('Ordn'), cTID('Trgt'));
+            desc1.putReference(cTID('null'), ref1);
+            executeAction(cTID('Dlt '), desc1, dialogMode);
+        };
+        step1(); // Delete
+
+    // Allows for cancel without feedback message
+    } catch(e){
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+  }    
+
 };
 
 

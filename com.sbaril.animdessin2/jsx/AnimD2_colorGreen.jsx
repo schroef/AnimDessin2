@@ -32,6 +32,8 @@ function sTID(s) {return app.stringIDToTypeID(s);};
 
 function colorGreen() {
 
+    ErrStrs = {}; 
+    ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
     try {
         // =======================================================
         // Add Red Overlay to Later
@@ -72,10 +74,12 @@ function colorGreen() {
         // Collaps FX for cleaner look
         var desc41 = new ActionDescriptor();
         executeAction( sTID('collapseAllGroupsEvent'), desc41, DialogModes.NO );
-        
-    } catch (e) {
-        alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));
-    }
+
+    // Allows for cancel without feedback message
+    } catch(e){
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+  }
 };
 
 //=========================================

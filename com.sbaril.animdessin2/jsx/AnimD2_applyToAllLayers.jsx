@@ -228,12 +228,36 @@ function applyToAllLayers(callFunction) {
 ///////////////////////////////////////////////////
 function createProgressWindow(title, message, min, max, parent, useCancel) {
     var win = new Window('palette', title);
-    win.bar = win.add('progressbar', undefined, min, max);
-    win.stProgress = win.add('statictext', [20, 20, 320, 35], "Progress");
-    win.stProgress.alignment = "Centered";
-    win.stProgress.preferredSize.width = 200;
-    win.bar.preferredSize = [300, 20];
+    win.margins = [15, 15, 15, 15];
     win.parent = undefined;
+
+    win.bar = win.add('progressbar', undefined, min, max);
+    win.bar.preferredSize = [300, 20];
+
+    var strDesc = win.add("group", undefined, {
+        name: "strDesc"
+    });
+    strDesc.orientation = "row";
+    strDesc.alignChildren = ["left", "top"];
+    strDesc.spacing = 5;
+    strDesc.margins = [0, 0, 0, 0];
+
+    var stProgress = strDesc.add("statictext", undefined, undefined, {
+        name: "stProgress"
+    });
+    stProgress.text = "Progress";
+    stProgress.preferredSize = [200, 15];
+    stProgress.justify = ["left"];
+    // stProgress.preferredSize.height = 15;
+
+    var stEscape = strDesc.add("statictext", undefined, undefined, {
+        name: "stEscape"
+    });
+    stEscape.text = "[ESC] cancels";
+    stEscape.preferredSize = [100, 15];
+    stEscape.justify = ["right"];
+    // stEscape.preferredSize.height = 15;
+
     if (parent) {
         if (parent instanceof Window) {
             win.parent = parent;
@@ -283,8 +307,8 @@ function createProgressWindow(title, message, min, max, parent, useCancel) {
 // Creat progress bar window
 function progressbar(callFunction) {
     // Timer for code speedtest
-    time = "start: " + GetTime();
-    totProgress = totProgress / 2;
+    // time = "start: " + GetTime();
+    // totProgress = totProgress / 2;
     // var layers = layerInfo.length * 2;
     var layers = layerInfo;
 
@@ -294,46 +318,59 @@ function progressbar(callFunction) {
     progressWindow.show();
     progressWindow.isDone = false;
     // if you code does several things you can change the message under the bar as needed
-    progressWindow.stProgress.text = ("Initaliazing...");
+    progressWindow.strDesc.stProgress.text = ("Initaliazing...");
     // progressWindow.text = ("Initaliazing...");
     progressWindow.updateProgress();
-    // Use steps of 5 to update > less slowdown
-    var progress = 5;
-    for (var i = 0; i < layers.length; i++) {
-        // update the bar as needed
-        // alert(totProgress == 1*i)
-        if (progress == 1 * i) {
-            progressWindow.updateProgress();
-            progress += 5;
+
+    ErrStrs = {}; 
+    ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
+    try {
+        // Use steps of 5 to update > less slowdown
+        var progress = 5;
+        for (var i = 0; i < layers.length; i++) {
+            // update the bar as needed
+            // alert(totProgress == 1*i)
+            if (progress == 1 * i) {
+                progressWindow.updateProgress();
+                progress += 5;
+            }
+            progressWindow.strDesc.stProgress.text = ("Processing: " + (i + 1) + " of " + layers.length + "...");
+            // progressWindow.text = ("Processing: " + (i + 1) + " of " + layers.length + "...");
+            selectById(layerInfo[i].AMid);
+            callFunction();
         }
-        progressWindow.stProgress.text = ("Completed layers " + (i + 1) + " of " + layers.length + "...");
-        // progressWindow.text = ("Completed layers " + (i + 1) + " of " + layers.length + "...");
-        selectById(layerInfo[i].AMid);
-        callFunction();
-    }
-    var progress = 10;
-    for (var i = 0; i < layers.length; i++) {
-        // update the bar as needed
-        if (progress == 1 * i) {
-            progressWindow.updateProgress();
-            progress += 10;
+        var progress = 10;
+        for (var i = 0; i < layers.length; i++) {
+            // update the bar as needed
+            if (progress == 1 * i) {
+                progressWindow.updateProgress();
+                progress += 10;
+            }
+            progressWindow.strDesc.stProgress.text = ("Reselecting layers");
+            // progressWindow.text = ("Reselecting layers");
+            // progressWindow.stProgress.text = ("Reselecting " + (i + 1) + " of " + layers.length + "...");
+            selLyr(layerInfo[i].lyrIndex, 1);
         }
-        progressWindow.stProgress.text = ("Reselecting layers");
-        // progressWindow.text = ("Reselecting layers");
-        // progressWindow.stProgress.text = ("Reselecting " + (i + 1) + " of " + layers.length + "...");
-        selLyr(layerInfo[i].lyrIndex, 1);
+        // when done
+        progressWindow.isDone = true;
+        progressWindow.close();
+
+    // Allows for cancel without feedback message
+    } catch(e){
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+
+    } finally {
+        progressWindow.close();
     }
-    // when done
-    progressWindow.isDone = true;
-    progressWindow.close();
     // the inDone flag is useful if you have code like a function
     // that you may or may not want to update the progress bar
     // in that case you can do something like
-    if (!progressWindow.isDone) progressWindow.upDateProgress();
+    // if (!progressWindow.isDone) progressWindow.upDateProgress();
 
     // Timer for code speedtest
-    time = time + "\nEnd: " + GetTime();
-    alert("Processing time: \n" + time)
+    // time = time + "\nEnd: " + GetTime();
+    // alert("Processing time: \n" + time)
 
 }
 
@@ -406,13 +443,12 @@ function progressbar(callFunction) {
 
 // // And here's an example of how it would be used:
 // // Code: Select all  // we have to process an array of files
-// function progressbar(callfunction) {
+// function progressbar(callFunction) {
 // // function applyToAllLayers(callFunction) {
 
 //     // Timer for code speedtest
 //     // time = "start: "+GetTime();
-//     // var layers = layerInfo;
-
+//     var layers = layerInfo;
 //     totProgress = totProgress/2;
 //     progressWindow = createProgressWindow("Progress...", 0, totProgress, true);
 //     progressWindow.isDone = false;
@@ -449,7 +485,7 @@ function progressbar(callFunction) {
 //         }
 //         // reselect selected like from start
 //         // Makes progress slower > Not much difference
-//         for (var i = 0; i < totProgress; i++) {
+//         for (var i = 0; i < layers.length; i++) {
 //             if (progressWindow.isDone) {
 //                 break;
 //             }

@@ -25,6 +25,9 @@ $.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 ///////////////////////////////////////////////////
 
 function colorGlobalShow() {
+
+    ErrStrs = {}; 
+    ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
     try {
         // Show Color
         var idShw = charIDToTypeID("Shw ");
@@ -41,8 +44,11 @@ function colorGlobalShow() {
         list50.putReference(ref116);
         desc271.putList(idnull, list50);
         executeAction(idShw, desc271, DialogModes.NO);
-    } catch (e) {
-        alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));
+
+    // Allows for cancel without feedback message
+    } catch(e){
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
     }
 };
 

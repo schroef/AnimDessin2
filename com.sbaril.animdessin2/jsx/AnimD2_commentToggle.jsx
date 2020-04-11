@@ -1,5 +1,16 @@
-﻿// #target photoshop
-//
+﻿// Copyright 2013
+// Compiled (via JavascriptListener or ActionToJavascript Xtools…) by Stéphane Baril
+
+// Updated 2020
+// Modified on April 2020 by Rombout (https://https://github.com/schroef/AnimDessin2)
+
+// enable double clicking from the Finder or Explorer
+#target photoshop
+
+//Make Photoshop the front most application
+app.bringToFront();
+docRef = app.activeDocument;
+
 // AnimD2T_commentHide.jsx
 //
 
@@ -10,28 +21,26 @@
 //
 //==================== AnimD2T_commentToggle ==============
 //
-// function AnimD2T_commentToggle() {
-// try {  
-  // var idinvokeCommand = stringIDToTypeID( "invokeCommand" );
-  // var desc7 = new ActionDescriptor();
-  // var idcommandID = stringIDToTypeID( "commandID" );
-  // desc7.putInteger( idcommandID, 4439 );
-  // var idkcanDispatchWhileModal = stringIDToTypeID( "kcanDispatchWhileModal" );
-  // desc7.putBoolean( idkcanDispatchWhileModal, true );
-  // executeAction( idinvokeCommand, desc7, DialogModes.NO );
+function AnimD2T_commentToggle() {
 
-  var idinvokeCommand = stringIDToTypeID( "invokeCommand" );
-  var desc6 = new ActionDescriptor();
-  var idcommandID = stringIDToTypeID( "commandID" );
-  desc6.putInteger( idcommandID, 4439 );
-  var idkcanDispatchWhileModal = stringIDToTypeID( "kcanDispatchWhileModal" );
-  desc6.putBoolean( idkcanDispatchWhileModal, true );
-  // executeAction( idinvokeCommand, desc6, DialogModes.NO );
-  executeAction(desc6, DialogModes.NO );
-// } catch(e){
-//   alert(e)
-// }
-// };
+    ErrStrs = {}; 
+    ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
+    try {
+        var idinvokeCommand = stringIDToTypeID("invokeCommand");
+        var desc6 = new ActionDescriptor();
+        var idcommandID = stringIDToTypeID("commandID");
+        desc6.putInteger(idcommandID, 4439);
+        var idkcanDispatchWhileModal = stringIDToTypeID("kcanDispatchWhileModal");
+        desc6.putBoolean(idkcanDispatchWhileModal, true);
+        // executeAction( idinvokeCommand, desc6, DialogModes.NO );
+        executeAction(desc6, DialogModes.NO);
+
+    // Allows for cancel without feedback message
+    } catch(e){
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+  }    
+};
 
 
 

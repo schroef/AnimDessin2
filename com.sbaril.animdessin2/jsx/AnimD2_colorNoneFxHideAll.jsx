@@ -24,6 +24,8 @@ function sTID(s) {return app.stringIDToTypeID(s);};
 
 function AnimD2_colorNoneFxHideAll() {
 
+    ErrStrs = {}; 
+    ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
     try {
         var desc149 = new ActionDescriptor();
         var ref71 = new ActionReference();
@@ -36,8 +38,10 @@ function AnimD2_colorNoneFxHideAll() {
         desc149.putObject(cTID('T   '), cTID('lfxv'), desc150);
         executeAction(cTID('setd'), desc149, DialogModes.NO);
 
-    } catch (e) {
-        alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));
+    // Allows for cancel without feedback message
+    } catch(e){
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
     }
 };
 

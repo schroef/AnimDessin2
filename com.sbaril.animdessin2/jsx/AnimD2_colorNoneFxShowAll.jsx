@@ -23,6 +23,10 @@ function cTID(s) {return app.charIDToTypeID(s);};
 function sTID(s) {return app.stringIDToTypeID(s);};
 
 function AnimD2_colorNoneFxShowAll() {
+
+    ErrStrs = {}; 
+    ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
+    try{ 
     var desc154 = new ActionDescriptor();
     var ref72 = new ActionReference();
     ref72.putProperty(cTID('Prpr'), cTID('lfxv'));
@@ -32,6 +36,12 @@ function AnimD2_colorNoneFxShowAll() {
     desc155.putBoolean(cTID('lfxv'), true);
     desc154.putObject(cTID('T   '), cTID('lfxv'), desc155);
     executeAction(cTID('setd'), desc154, DialogModes.NO);
+
+    // Allows for cancel without feedback message
+    } catch(e){
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+    }
 };
 
 //=========================================

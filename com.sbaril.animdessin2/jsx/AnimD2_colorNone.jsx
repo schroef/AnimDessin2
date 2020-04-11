@@ -26,7 +26,9 @@ function cTID(s) {return app.charIDToTypeID(s);};
 function sTID(s) {return app.stringIDToTypeID(s);};
 
 function colorNone() {
-    
+
+    ErrStrs = {}; 
+    ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
     try {
         // =======================================================
         // Clear all overlay fx
@@ -35,9 +37,13 @@ function colorNone() {
         ref377.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID('Trgt') );
         desc597.putReference( cTID('null'), ref377 );
         executeAction( sTID('disableLayerStyle'), desc597, DialogModes.NO );
-    } catch (e) {
-        alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"+"Turnovrlays on"));
+    // Allows for cancel without feedback message
+    } catch(e){
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
     }
+
+    // Separated this, runs into issue when layers dont have layer color applied
     try {
         // Clear red layer color
         var desc306 = new ActionDescriptor();
@@ -49,10 +55,12 @@ function colorNone() {
         desc306.putObject(cTID('T   '), cTID('Lyr '), desc307);
         executeAction(cTID('setd'), desc306, DialogModes.NO);
 
-        // Separated this, runs into issue when layers dont have layer color applied
+    
+    // Allows for cancel without feedback message
     } catch(e){
-        // Dont catch this error
-    }
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+  }
 };
 //=========================================
 // colorNone.main
