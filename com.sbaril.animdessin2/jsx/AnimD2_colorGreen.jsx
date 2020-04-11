@@ -67,6 +67,11 @@ function colorGreen() {
         desc25.putEnumerated(cTID('Clr '), cTID('Clr '), cTID('Grn '));
         desc24.putObject(cTID('T   '), cTID('Lyr '), desc25);
         executeAction(cTID('setd'), desc24, DialogModes.NO);
+
+        // =======================================================
+        // Collaps FX for cleaner look
+        var desc41 = new ActionDescriptor();
+        executeAction( sTID('collapseAllGroupsEvent'), desc41, DialogModes.NO );
         
     } catch (e) {
         alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));

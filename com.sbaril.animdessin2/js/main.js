@@ -358,12 +358,7 @@
         });
 
         $("#btn_renameFrame").click(function (e) {
-            if (e.shiftKey)
-                // loadJSXFile("/jsx/AnimD2_progressbar.jsx");
-                // loadJSXFile("/jsx/SnpCreateProgressBar.jsx");
-                loadJSXFile("/jsx/SimpleProgressBar.jsx");
-            else if (!e.altKey || !e.shiftKey)
-                loadJSXFile("/jsx/AnimD2_frameRename.jsx");
+            loadJSXFile("/jsx/AnimD2_frameRename.jsx");
         });
 
         $("#btn_minus").click(function (e) {
