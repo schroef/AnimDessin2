@@ -1,4 +1,7 @@
-﻿//
+﻿// Updated 2020
+// Modified on April 2020 by Rombout (https://https://github.com/schroef/AnimDessin2)
+
+//
 // AnimD2_gotoInTimeLine.jsx
 //
 
@@ -10,31 +13,30 @@
 //Make Photoshop the front most application
 app.bringToFront();
 
-
-
 //
 //==================== AnimD2_gotoInTimeLine ==============
 //
 function AnimD2_gotoInTimeLine() {
-    ErrStrs = {}; 
-    ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation"); 
+    ErrStrs = {};
+    ErrStrs.USER_CANCELLED = localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
     try {
-      app.runMenuItem(stringIDToTypeID('timelineGoToTime'));
-    } catch(e){
-        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;} 
-        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+        app.runMenuItem(stringIDToTypeID('timelineGoToTime'));
+    } catch (e) {
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED) != -1) {
+            ;
+        } else {
+            alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));
+        }
     }
 };
 
-
-
 //=========================================
-//                    AnimD2_gotoInTimeLine.main
+// AnimD2_gotoInTimeLine.main
 //=========================================
 //
 
-AnimD2_gotoInTimeLine.main = function () {
-  AnimD2_gotoInTimeLine();
+AnimD2_gotoInTimeLine.main = function() {
+    AnimD2_gotoInTimeLine();
 };
 
 //AnimD2_gotoInTimeLine.main();

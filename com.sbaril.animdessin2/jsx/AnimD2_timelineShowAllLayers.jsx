@@ -18,7 +18,7 @@ function AnimD2_timelineShowAllLayers() {
 
 
 //=========================================
-//                    AnimD2_timelineShowAllLayers.main
+// AnimD2_timelineShowAllLayers.main
 //=========================================
 //
 

@@ -1,14 +1,16 @@
+// Updated 2020
+// Modified on April 2020 by Rombout (https://https://github.com/schroef/AnimDessin2)
 
 // https://stackoverflow.com/questions/26295492/photoshop-script-new-layer-below-current-layer
 // select [LayerNum], optionally [add] to selection (if add=2: with inclusion)
-function selLyr(LyrN,add){
+function selLyr(LyrN, add) {
     var adesc = new ActionDescriptor();
     var aref = new ActionReference();
     aref.putIndex(charIDToTypeID("Lyr "), LyrN);
     adesc.putReference(charIDToTypeID("null"), aref);
-    if(add){
-        add = (add==2) ? stringIDToTypeID("addToSelectionContinuous") : stringIDToTypeID("addToSelection");
-        adesc.putEnumerated(stringIDToTypeID("selectionModifier"),stringIDToTypeID("selectionModifierType"),add);
+    if (add) {
+        add = (add == 2) ? stringIDToTypeID("addToSelectionContinuous") : stringIDToTypeID("addToSelection");
+        adesc.putEnumerated(stringIDToTypeID("selectionModifier"), stringIDToTypeID("selectionModifierType"), add);
     }
     adesc.putBoolean(charIDToTypeID("MkVs"), false);
     return executeAction(charIDToTypeID("slct"), adesc, DialogModes.NO);
@@ -62,16 +64,16 @@ function getLayerInfo(inArray) {
             obj.name = name
             // alert("selLayName:" + name)
             obj.AMid = Id
-        //     obj.visible = isVisible
-        //     var ab_actDesc = desc.getObjectValue(stringIDToTypeID("artboard"))
-        //     obj.bgType = ab_actDesc.getInteger(stringIDToTypeID("artboardBackgroundType"))
-        //     var abBgColor_desc = ab_actDesc.getObjectValue(charIDToTypeID("Clr "))
-        //     obj.bgColor = [
-        //         abBgColor_desc.getDouble(charIDToTypeID("Rd  ")),
-        //         abBgColor_desc.getDouble(charIDToTypeID("Grn ")),
-        //         abBgColor_desc.getDouble(charIDToTypeID("Bl  "))
-        //     ]
-        //     obj.empty = isArtboardEmpty(inArray[i])
+            //     obj.visible = isVisible
+            //     var ab_actDesc = desc.getObjectValue(stringIDToTypeID("artboard"))
+            //     obj.bgType = ab_actDesc.getInteger(stringIDToTypeID("artboardBackgroundType"))
+            //     var abBgColor_desc = ab_actDesc.getObjectValue(charIDToTypeID("Clr "))
+            //     obj.bgColor = [
+            //         abBgColor_desc.getDouble(charIDToTypeID("Rd  ")),
+            //         abBgColor_desc.getDouble(charIDToTypeID("Grn ")),
+            //         abBgColor_desc.getDouble(charIDToTypeID("Bl  "))
+            //     ]
+            //     obj.empty = isArtboardEmpty(inArray[i])
             infoList.push(obj)
         }
         // alert("array:" + infoList[i].AMid)
@@ -81,11 +83,11 @@ function getLayerInfo(inArray) {
 
 // https://graphicdesign.stackexchange.com/questions/130739/photoshop-scripting-applying-changes-only-to-selected-artboards
 function selectById(AMid) {
-  var desc1 = new ActionDescriptor();
-  var ref1 = new ActionReference();
-  ref1.putIdentifier(charIDToTypeID('Lyr '), AMid);
-  desc1.putReference(charIDToTypeID('null'), ref1);
-  executeAction(charIDToTypeID('slct'), desc1, DialogModes.NO);
+    var desc1 = new ActionDescriptor();
+    var ref1 = new ActionReference();
+    ref1.putIdentifier(charIDToTypeID('Lyr '), AMid);
+    desc1.putReference(charIDToTypeID('null'), ref1);
+    executeAction(charIDToTypeID('slct'), desc1, DialogModes.NO);
 }
 
 // https://stackoverflow.com/questions/26623283/photoshop-javascript-to-get-all-layers-in-the-active-document
@@ -123,6 +125,24 @@ function selectById(AMid) {
 // }
 // alert("all layers: " + allLayers)
 
-function callOther(functionName){
-    functionName();
-};
+// function applySelected(functionName){
+//     functionName();
+// };
+
+
+// Apply Function to selection > called from each JSX file
+var selectedLayers = getSelectedLayersAMIdx(docRef);
+var selFromStart = selectedLayers;
+layerInfo = getLayerInfo(selectedLayers);
+
+function applyToSelected(callFunction) {
+    // Get IDX of each selected layer
+    for (var i = 0; i < layerInfo.length; i++) {
+        selectById(layerInfo[i].AMid);
+        callFunction();
+    }
+    // reselect selected like from start
+    for (var i = 0; i < layerInfo.length; i++) {
+        selLyr(selFromStart[i], 1);
+    }
+}

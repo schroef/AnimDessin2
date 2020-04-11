@@ -40,7 +40,7 @@ function playheadTrimEnd() {
 
 };
 //=========================================
-//                    playheadTrimEnd.main
+// playheadTrimEnd.main
 //=========================================
 //
 

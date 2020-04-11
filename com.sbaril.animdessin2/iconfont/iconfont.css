@@ -74,6 +74,10 @@
 .icon-newvideogroup:before {
   content: "m";
 }
+.icon-framerename:before {
+  content: "z";
+}
+
 .icon-onionskinsettings:before {
   content: "n";
 }

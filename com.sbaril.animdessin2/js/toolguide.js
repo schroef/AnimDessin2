@@ -82,7 +82,7 @@
             callVideoMock();
         }
         if (item == "toolMock") {
-            csInterface.resizeContent(400, 500);
+            csInterface.resizeContent(345, 500);
             callToolMock();
         }
     }

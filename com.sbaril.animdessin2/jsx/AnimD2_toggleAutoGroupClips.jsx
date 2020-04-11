@@ -34,7 +34,15 @@ function sTID(s) { return app.stringIDToTypeID(s); };
 function testCall(){
   alert("call Function from Function");
 }  
-callOther(testCall);
+applySelected(testCall);
+
+
+
+    // var desc6 = new ActionDescriptor();
+    // desc6.putInteger( sTID('commandID'), 4457 );
+    // alert(desc6.putInteger(cTID('commandID'), 4457 ))
+    // // desc6.putBoolean( sTID('kcanDispatchWhileModal'), true );
+    // executeAction( sTID('invokeCommand'), desc6, DialogModes.NO );
 
 // function AnimD2_toggleAutoGroupClips() {
 //     // app.runMenuItem(stringIDToTypeID('EnableAutoGroupingOfClips'));
@@ -126,7 +134,7 @@ callOther(testCall);
 
 
 //=========================================
-//                    AnimD2_toggleAutoGroupClips.main
+// AnimD2_toggleAutoGroupClips.main
 //=========================================
 //
 

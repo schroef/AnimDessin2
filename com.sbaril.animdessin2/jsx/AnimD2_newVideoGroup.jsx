@@ -113,7 +113,7 @@ function AnimD2_newVideoGroup() {
 
 
 //=========================================
-//                    AnimD2_newVideoGroup.main
+// AnimD2_newVideoGroup.main
 //=========================================
 //
 

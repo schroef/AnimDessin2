@@ -18,7 +18,7 @@ function AnimD2_timelineShowFavorites() {
 
 
 //=========================================
-//                    AnimD2_timelineShowFavorites.main
+// AnimD2_timelineShowFavorites.main
 //=========================================
 //
 

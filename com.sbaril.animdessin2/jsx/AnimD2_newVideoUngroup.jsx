@@ -60,7 +60,7 @@ function AnimD2_newVideoGroupSelection() {
 
 
 //=========================================
-//                    AnimD2_newVideoGroupSelection.main
+// AnimD2_newVideoGroupSelection.main
 //=========================================
 //
 

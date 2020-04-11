@@ -1,0 +1,58 @@
+﻿// Updated 2020
+// Modified on April 2020 by Rombout (https://https://github.com/schroef/AnimDessin2)
+
+// enable double clicking from the Finder or Explorer
+#target photoshop
+
+//Make Photoshop the front most application
+app.bringToFront();
+docRef = app.activeDocument;
+
+// Call main function from getselected, we can reuse scripts
+var ScriptFilePath = Folder($.fileName).parent.fsName;
+$.evalFile(new File(ScriptFilePath + '/AnimD2_getSelectedLayers.jsx'));
+
+///////////////////////////////////////////////////
+// SETUP
+///////////////////////////////////////////////////
+
+///////////////////////////////////////////////////
+// MAIN
+///////////////////////////////////////////////////
+
+///////////////////////////////////////////////////
+//FUNCTIONS
+///////////////////////////////////////////////////
+
+function colorGlobalShow() {
+    try {
+        // Show Color
+        var idShw = charIDToTypeID("Shw ");
+        var desc271 = new ActionDescriptor();
+        var idnull = charIDToTypeID("null");
+        var list50 = new ActionList();
+        var ref116 = new ActionReference();
+        var idSoFi = charIDToTypeID("SoFi");
+        ref116.putIndex(idSoFi, 1);
+        var idLyr = charIDToTypeID("Lyr ");
+        var idOrdn = charIDToTypeID("Ordn");
+        var idTrgt = charIDToTypeID("Trgt");
+        ref116.putEnumerated(idLyr, idOrdn, idTrgt);
+        list50.putReference(ref116);
+        desc271.putList(idnull, list50);
+        executeAction(idShw, desc271, DialogModes.NO);
+    } catch (e) {
+        alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));
+    }
+};
+
+//=========================================
+// colorGlobalShow.main
+//=========================================
+//
+
+colorGlobalShow.main = function() {
+    applyToSelected(colorGlobalShow);
+};
+
+app.activeDocument.suspendHistory("Show Color overlay on Video Frame", 'colorGlobalShow.main()');

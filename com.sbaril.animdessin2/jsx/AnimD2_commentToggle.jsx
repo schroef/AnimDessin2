@@ -1,6 +1,6 @@
 ﻿// #target photoshop
 //
-// AnimD2T_commentToggle.jsx
+// AnimD2T_commentHide.jsx
 //
 
 //
@@ -36,7 +36,7 @@
 
 
 //=========================================
-//                    AnimD2T_commentToggle.main
+// AnimD2T_commentToggle.main
 //=========================================
 //
 
@@ -49,5 +49,5 @@
 
 // EOF
 
-// "AnimD2T_commentToggle.jsx"
+// "AnimD2T_commentHide.jsx"
 // EOF

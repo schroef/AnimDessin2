@@ -40,7 +40,7 @@ function AnimD2_setTimelinePanelOptions() {
 
 
 //=========================================
-//                    AnimD2_setTimelinePanelOptions.main
+// AnimD2_setTimelinePanelOptions.main
 //=========================================
 //
 

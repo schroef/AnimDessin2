@@ -43,7 +43,7 @@ function AnimD2_timelineSetFrameRate() {
 }
 
 //=========================================
-//                    AnimD2_timelineSetFrameRate.main
+// AnimD2_timelineSetFrameRate.main
 //=========================================
 //
 
