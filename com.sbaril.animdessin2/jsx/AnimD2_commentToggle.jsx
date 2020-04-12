@@ -23,23 +23,33 @@ docRef = app.activeDocument;
 //
 function AnimD2T_commentToggle() {
 
-    ErrStrs = {}; 
-    ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
-    try {
-        var idinvokeCommand = stringIDToTypeID("invokeCommand");
-        var desc6 = new ActionDescriptor();
-        var idcommandID = stringIDToTypeID("commandID");
-        desc6.putInteger(idcommandID, 4439);
-        var idkcanDispatchWhileModal = stringIDToTypeID("kcanDispatchWhileModal");
-        desc6.putBoolean(idkcanDispatchWhileModal, true);
-        // executeAction( idinvokeCommand, desc6, DialogModes.NO );
-        executeAction(desc6, DialogModes.NO);
+    // ErrStrs = {}; 
+    // ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
+    // try {
+        // var idinvokeCommand = stringIDToTypeID("invokeCommand");
+        // var desc6 = new ActionDescriptor();
+        // var idcommandID = stringIDToTypeID("commandID");
+        // desc6.putInteger(idcommandID, 4439);
+        // var idkcanDispatchWhileModal = stringIDToTypeID("kcanDispatchWhileModal");
+        // desc6.putBoolean(idkcanDispatchWhileModal, true);
+        // // executeAction( idinvokeCommand, desc6, DialogModes.NO );
+        // executeAction(desc6, DialogModes.NO);
+
+        function cTID(s) { return app.charIDToTypeID(s); };
+        function sTID(s) { return app.stringIDToTypeID(s); };
+
+        var desc20 = new ActionDescriptor();
+        desc20.putInteger( sTID('commandID'), 4439 );
+        
+        desc20.putBoolean( sTID('4439'), true );
+        // executeAction( sTID('invokeCommand'), desc20, DialogModes.NO );
+        executeAction( , desc20, DialogModes.NO );
 
     // Allows for cancel without feedback message
-    } catch(e){
-        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
-        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
-  }    
+//     } catch(e){
+//         if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+//         else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+//   }    
 };
 
 
@@ -49,12 +59,12 @@ function AnimD2T_commentToggle() {
 //=========================================
 //
 
-// AnimD2T_commentToggle.main = function () {
-// AnimD2T_commentToggle();
-// };
+AnimD2T_commentToggle.main = function () {
+    AnimD2T_commentToggle();
+};
 
 //AnimD2T_commentToggle.main();
-// app.activeDocument.suspendHistory("Add or Edit a Timeline Comment", 'AnimD2T_commentToggle.main()');
+app.activeDocument.suspendHistory("Add or Edit a Timeline Comment", 'AnimD2T_commentToggle.main()');
 
 // EOF
 

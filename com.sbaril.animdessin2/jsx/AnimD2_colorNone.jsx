@@ -29,6 +29,7 @@ function colorNone() {
 
     ErrStrs = {}; 
     ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
+
     try {
         // =======================================================
         // Clear all overlay fx
@@ -37,14 +38,9 @@ function colorNone() {
         ref377.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID('Trgt') );
         desc597.putReference( cTID('null'), ref377 );
         executeAction( sTID('disableLayerStyle'), desc597, DialogModes.NO );
-    // Allows for cancel without feedback message
-    } catch(e){
-        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
-        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
-    }
 
     // Separated this, runs into issue when layers dont have layer color applied
-    try {
+    
         // Clear red layer color
         var desc306 = new ActionDescriptor();
         var ref120 = new ActionReference();
@@ -58,8 +54,8 @@ function colorNone() {
     
     // Allows for cancel without feedback message
     } catch(e){
-        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
-        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+        // if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+        // else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
   }
 };
 //=========================================

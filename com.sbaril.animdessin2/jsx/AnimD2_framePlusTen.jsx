@@ -27,32 +27,43 @@ $.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 
 
 function framePlusTen() {
-    // =======================================================
-    // Function to get the framerate of the actual document
-    function GetFrameRate() {
-        var ref = new ActionReference();
-        ref.putProperty(charIDToTypeID('Prpr'), stringIDToTypeID("documentTimelineSettings"));
-        ref.putClass(stringIDToTypeID("timeline"));
-        var desc = new ActionDescriptor();
-        desc.putReference(charIDToTypeID('null'), ref);
-        var resultDesc = executeAction(charIDToTypeID('getd'), desc, DialogModes.NO);
-        return resultDesc.getDouble(stringIDToTypeID('frameRate'));
-    };
-    // So here the number of additional frames is difine ( idframe, 1 )
-    var idmoveOutTime = stringIDToTypeID("moveOutTime");
-    var desc123 = new ActionDescriptor();
-    var idtimeOffset = stringIDToTypeID("timeOffset");
-    var desc124 = new ActionDescriptor();
-    var idseconds = stringIDToTypeID("seconds");
-    desc124.putInteger(idseconds, 0);
-    var idframe = stringIDToTypeID("frame");
-    desc124.putInteger(idframe, 10);
-    var idframeRate = stringIDToTypeID("frameRate");
-    desc124.putDouble(idframeRate, GetFrameRate());
-    var idtimecode = stringIDToTypeID("timecode");
-    desc123.putObject(idtimeOffset, idtimecode, desc124);
-    executeAction(idmoveOutTime, desc123, DialogModes.NO);
+
+    ErrStrs = {}; 
+    ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
+    try {
+        // =======================================================
+        // Function to get the framerate of the actual document
+        function GetFrameRate() {
+            var ref = new ActionReference();
+            ref.putProperty(charIDToTypeID('Prpr'), stringIDToTypeID("documentTimelineSettings"));
+            ref.putClass(stringIDToTypeID("timeline"));
+            var desc = new ActionDescriptor();
+            desc.putReference(charIDToTypeID('null'), ref);
+            var resultDesc = executeAction(charIDToTypeID('getd'), desc, DialogModes.NO);
+            return resultDesc.getDouble(stringIDToTypeID('frameRate'));
+        };
+        // So here the number of additional frames is difine ( idframe, 1 )
+        var idmoveOutTime = stringIDToTypeID("moveOutTime");
+        var desc123 = new ActionDescriptor();
+        var idtimeOffset = stringIDToTypeID("timeOffset");
+        var desc124 = new ActionDescriptor();
+        var idseconds = stringIDToTypeID("seconds");
+        desc124.putInteger(idseconds, 0);
+        var idframe = stringIDToTypeID("frame");
+        desc124.putInteger(idframe, 10);
+        var idframeRate = stringIDToTypeID("frameRate");
+        desc124.putDouble(idframeRate, GetFrameRate());
+        var idtimecode = stringIDToTypeID("timecode");
+        desc123.putObject(idtimeOffset, idtimecode, desc124);
+        executeAction(idmoveOutTime, desc123, DialogModes.NO);
+
+    // Allows for cancel without feedback message
+    } catch(e){
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+  }
 };
+
 
 //=========================================
 // framePlusTen.main

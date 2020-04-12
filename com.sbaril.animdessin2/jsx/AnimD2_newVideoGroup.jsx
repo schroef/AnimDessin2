@@ -118,7 +118,8 @@ function AnimD2_newVideoGroup() {
             executeAction(cTID('move'), desc1, dialogMode);
         };
 
-        step1(1, 1); // Make
+        // step1(1, 1); // Make
+        step1(); // Make
         step2(); // Set
         step3(); // Make
         step4(); // Move

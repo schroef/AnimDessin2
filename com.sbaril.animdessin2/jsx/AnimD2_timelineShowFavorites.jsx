@@ -6,6 +6,11 @@
 
 //Make Photoshop the front most application
 app.bringToFront();
+docRef = app.activeDocument;
+
+// Call main function from getselected, we can reuse scripts
+var ScriptFilePath = Folder($.fileName).parent.fsName;
+$.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 
 //
 // Generated Wed Mar 26 2020 19:14 AST
@@ -15,17 +20,28 @@ app.bringToFront();
 //==================== AnimD2_timelineShowFavorites ==============
 //
 function AnimD2_timelineShowFavorites() {
-    app.runMenuItem(stringIDToTypeID('timelineShowFavoriteLayers'));
-};
 
+    ErrStrs = {};
+    ErrStrs.USER_CANCELLED = localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
+    try {
+        app.runMenuItem(stringIDToTypeID('timelineShowFavoriteLayers'));
+
+    // Allows for cancel without feedback message
+    } catch (e) {
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED) != -1) {;}
+        else {alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+    }
+};
 
 //=========================================
 // AnimD2_timelineShowFavorites.main
 //=========================================
 //
 
-AnimD2_timelineShowFavorites.main = function () {
-  AnimD2_timelineShowFavorites();
+AnimD2_timelineShowFavorites.main = function() {
+    // applyToAllLayers(AnimD2_timelineShowFavorites);
+    // Doesnt need to run with applyToAllLayers
+    AnimD2_timelineShowFavorites();
 };
 
 //AnimD2_timelineShowFavorites.main();

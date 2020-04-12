@@ -11,7 +11,6 @@ app.bringToFront();
 // Generated Wed May 14 2014 16:13:27 GMT+0200
 //
 
-
 //
 //==================== AnimD2_timelineSetFrameRate ==============
 //
@@ -35,12 +34,10 @@ function AnimD2_timelineSetFrameRate() {
         desc445.putReference(idnull, ref386);
         executeAction(idslct, desc445, DialogModes.ALL);
 
+    // Allows for cancel without feedback message
     } catch (e) {
-        if (e.toString().indexOf(ErrStrs.USER_CANCELLED) != -1) {
-            ;
-        } else {
-            alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));
-        }
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED) != -1) {;}
+        else {alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
     }
 };
 

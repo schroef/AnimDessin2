@@ -26,15 +26,17 @@ app.bringToFront();
 //==================== AnimD2_canvasSize ==============
 //
 function AnimD2_canvasSize() {
-    // ErrStrs = {};
-    // ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
+    ErrStrs = {};
+    ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
     try {
         var idCnvS = charIDToTypeID('CnvS');
         executeAction(idCnvS, undefined, DialogModes.ALL);
-    } catch (e) {
-      // Turned this off, we dont need an error warning when users cancels
-        // alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available")); 
-    }
+
+    // Allows for cancel without feedback message
+    } catch(e){
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+  }
 };
 
 
@@ -48,8 +50,7 @@ AnimD2_canvasSize.main = function() {
     AnimD2_canvasSize();
 };
 
-AnimD2_canvasSize.main();
-
+app.activeDocument.suspendHistory("Set canvas size of document", 'AnimD2_canvasSize.main()');
 // EOF
 
 "AnimD2_canvasSize.jsx"

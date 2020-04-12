@@ -19,7 +19,6 @@ app.bringToFront();
 //FUNCTIONS
 ///////////////////////////////////////////////////
 
-
 function timelineRenderVideo() {
 
     // Show Timeline Panel
@@ -32,10 +31,11 @@ function timelineRenderVideo() {
         var idvideoExport = stringIDToTypeID( 'videoExport' );
         desc1081.putClass( idUsng, idvideoExport );
         executeAction( idExpr, desc1081, DialogModes.ALL );
-    } 
-    catch(e){
-        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;} 
-        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+
+    // Allows for cancel without feedback message
+    } catch (e) {
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED) != -1) {;}
+        else {alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
     }
 };
 

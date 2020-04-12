@@ -6,17 +6,31 @@
 
 //Make Photoshop the front most application
 app.bringToFront();
+docRef = app.activeDocument;
+
+// Call main function from getselected, we can reuse scripts
+var ScriptFilePath = Folder($.fileName).parent.fsName;
+$.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 
 //
 // Generated Wed Mar 26 2020 19:14 AST
 //
 
-
 //
 //==================== AnimD2_timelineShowAllLayers ==============
 //
 function AnimD2_timelineShowAllLayers() {
-    app.runMenuItem(stringIDToTypeID('timelineShowAllLayers'));
+
+    ErrStrs = {};
+    ErrStrs.USER_CANCELLED = localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
+    try {
+        app.runMenuItem(stringIDToTypeID('timelineShowAllLayers'));
+
+    // Allows for cancel without feedback message
+    } catch (e) {
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED) != -1) {;}
+        else {alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+    }
 };
 
 //=========================================
@@ -24,8 +38,10 @@ function AnimD2_timelineShowAllLayers() {
 //=========================================
 //
 
-AnimD2_timelineShowAllLayers.main = function () {
-  AnimD2_timelineShowAllLayers();
+AnimD2_timelineShowAllLayers.main = function() {
+    // applyToAllLayers(AnimD2_timelineShowAllLayers);
+    // Doesnt need to run with applyToAllLayers
+    AnimD2_timelineShowAllLayers();
 };
 
 //AnimD2_timelineShowAllLayers.main();

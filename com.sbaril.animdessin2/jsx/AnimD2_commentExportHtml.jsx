@@ -51,19 +51,19 @@ function AnimD2T_commentExportHtml() {
 
 
 
-    //=========================================
-    // AnimD2T_commentExportHtml.main
-    //=========================================
-    //
+//=========================================
+// AnimD2T_commentExportHtml.main
+//=========================================
+//
 
-    AnimD2T_commentExportHtml.main = function() {
-        AnimD2T_commentExportHtml();
-    };
+AnimD2T_commentExportHtml.main = function() {
+    AnimD2T_commentExportHtml();
+};
 
-    AnimD2T_commentExportHtml.main();
-    //app.activeDocument.suspendHistory("Export Timeline Comments as HTML…", 'AnimD2T_commentExportHtml.main()');
+AnimD2T_commentExportHtml.main();
+//app.activeDocument.suspendHistory("Export Timeline Comments as HTML…", 'AnimD2T_commentExportHtml.main()');
 
-    // EOF
+// EOF
 
-    "AnimD2T_commentExportHtml.jsx"
-    // EOF
+"AnimD2T_commentExportHtml.jsx"
+// EOF

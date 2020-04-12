@@ -22,18 +22,27 @@ app.bringToFront();
 
 function onSkinSettings() {
 
-    var idslct = charIDToTypeID( "slct" );
+    ErrStrs = {}; 
+    ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
+    try {
+        var idslct = charIDToTypeID( "slct" );
         var desc48 = new ActionDescriptor();
         var idnull = charIDToTypeID( "null" );
-            var ref24 = new ActionReference();
-            var idMn = charIDToTypeID( "Mn  " );
-            var idMnIt = charIDToTypeID( "MnIt" );
-            var idtimelineOnionSkinSettings = stringIDToTypeID( "timelineOnionSkinSettings" );
-            ref24.putEnumerated( idMn, idMnIt, idtimelineOnionSkinSettings );
+        var ref24 = new ActionReference();
+        var idMn = charIDToTypeID( "Mn  " );
+        var idMnIt = charIDToTypeID( "MnIt" );
+        var idtimelineOnionSkinSettings = stringIDToTypeID( "timelineOnionSkinSettings" );
+        ref24.putEnumerated( idMn, idMnIt, idtimelineOnionSkinSettings );
         desc48.putReference( idnull, ref24 );
-    executeAction( idslct, desc48, DialogModes.NO );
+        executeAction( idslct, desc48, DialogModes.NO );
 
+    // Allows for cancel without feedback message
+    } catch(e){
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+  }
 };
+
 //=========================================
 // onSkinSettings.main
 //=========================================

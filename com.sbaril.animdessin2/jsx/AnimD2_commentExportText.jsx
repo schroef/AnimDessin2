@@ -15,7 +15,6 @@ app.bringToFront();
 // Generated Fri May 16 2014 13:28:51 GMT+0200
 //
 
-
 //
 //==================== AnimD2T_commentExportText ==============
 //
@@ -50,19 +49,19 @@ function AnimD2T_commentExportText() {
 
 
 
-    //=========================================
-    // AnimD2T_commentExportText.main
-    //=========================================
-    //
+//=========================================
+// AnimD2T_commentExportText.main
+//=========================================
+//
 
-    AnimD2T_commentExportText.main = function() {
-        AnimD2T_commentExportText();
-    };
+AnimD2T_commentExportText.main = function() {
+    AnimD2T_commentExportText();
+};
 
-    AnimD2T_commentExportText.main();
-    //app.activeDocument.suspendHistory("Export Timeline Comments as TEXT…", 'AnimD2T_commentExportText.main()');
+AnimD2T_commentExportText.main();
+//app.activeDocument.suspendHistory("Export Timeline Comments as TEXT…", 'AnimD2T_commentExportText.main()');
 
-    // EOF
+// EOF
 
-    "AnimD2T_commentExportText.jsx"
-    // EOF
+"AnimD2T_commentExportText.jsx"
+// EOF

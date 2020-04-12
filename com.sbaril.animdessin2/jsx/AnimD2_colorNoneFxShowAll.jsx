@@ -27,15 +27,15 @@ function AnimD2_colorNoneFxShowAll() {
     ErrStrs = {}; 
     ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
     try{ 
-    var desc154 = new ActionDescriptor();
-    var ref72 = new ActionReference();
-    ref72.putProperty(cTID('Prpr'), cTID('lfxv'));
-    ref72.putEnumerated(cTID('Dcmn'), cTID('Ordn'), cTID('Trgt'));
-    desc154.putReference(cTID('null'), ref72);
-    var desc155 = new ActionDescriptor();
-    desc155.putBoolean(cTID('lfxv'), true);
-    desc154.putObject(cTID('T   '), cTID('lfxv'), desc155);
-    executeAction(cTID('setd'), desc154, DialogModes.NO);
+        var desc154 = new ActionDescriptor();
+        var ref72 = new ActionReference();
+        ref72.putProperty(cTID('Prpr'), cTID('lfxv'));
+        ref72.putEnumerated(cTID('Dcmn'), cTID('Ordn'), cTID('Trgt'));
+        desc154.putReference(cTID('null'), ref72);
+        var desc155 = new ActionDescriptor();
+        desc155.putBoolean(cTID('lfxv'), true);
+        desc154.putObject(cTID('T   '), cTID('lfxv'), desc155);
+        executeAction(cTID('setd'), desc154, DialogModes.NO);
 
     // Allows for cancel without feedback message
     } catch(e){

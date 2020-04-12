@@ -17,12 +17,10 @@ function AnimD2_setTimelinePanelOptions() {
     try {
         app.runMenuItem(stringIDToTypeID('timelinePaletteOptions'));
 
+    // Allows for cancel without feedback message
     } catch (e) {
-        if (e.toString().indexOf(ErrStrs.USER_CANCELLED) != -1) {
-            ;
-        } else {
-            alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));
-        }
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED) != -1) {;}
+        else {alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
     }
 };
 

@@ -17,13 +17,12 @@ function AnimD2_gotoInTimeLine() {
     ErrStrs.USER_CANCELLED = localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
     try {
         app.runMenuItem(stringIDToTypeID('timelineGoToTime'));
-    } catch (e) {
-        if (e.toString().indexOf(ErrStrs.USER_CANCELLED) != -1) {
-            ;
-        } else {
-            alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));
-        }
-    }
+
+    // Allows for cancel without feedback message
+    } catch(e){
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+  }
 };
 
 //=========================================

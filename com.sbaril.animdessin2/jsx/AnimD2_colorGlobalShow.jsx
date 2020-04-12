@@ -59,6 +59,7 @@ function colorGlobalShow() {
 
 colorGlobalShow.main = function() {
     applyToAllLayers(colorGlobalShow);
+    // colorGlobalShow();
 };
 
 app.activeDocument.suspendHistory("Show Color overlay on Video Frame", 'colorGlobalShow.main()');

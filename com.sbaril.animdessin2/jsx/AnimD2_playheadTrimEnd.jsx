@@ -29,17 +29,17 @@ $.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 
 function playheadTrimEnd() {
 
-    // ErrStrs = {}; 
-    // ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
+    ErrStrs = {}; 
+    ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
     try {
         var idmoveOutTime = stringIDToTypeID( "moveOutTime" );
         var desc14 = new ActionDescriptor();
         executeAction( idmoveOutTime, desc14, DialogModes.NO );
 
-    }
-    catch(e){
-        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
-        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+    // Allows for cancel without feedback message
+    } catch (e) {
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED) != -1) {;}
+        else {alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
     }
 };
 

@@ -271,7 +271,7 @@
         $("#btn_showTimeline").click(function (e) {
             if (e.shiftKey)
                 loadJSXFile("/jsx/AnimD2_setTimelinePanelOptions.jsx");
-            else
+            else if (!e.altKey || !e.shiftKey)
                 loadJSXFile("/jsx/AnimD2_showTimeline.jsx");
         });
 
@@ -279,10 +279,10 @@
             if (e.altKey && e.shiftKey)
                 loadJSXFile("/jsx/AnimD2_timelineSetFrameRate.jsx");
             else if (e.shiftKey)
-                loadJSXFile("/jsx/AnimD2_timelineRenderVideo.jsx");
-            else if (e.altKey)
                 loadJSXFile("/jsx/AnimD2_gotoInTimeLine.jsx");
-            else
+            else if (e.altKey)
+                loadJSXFile("/jsx/AnimD2_timelineRenderVideo.jsx");
+            else if (!e.altKey || !e.shiftKey)
                 loadJSXFile("/jsx/AnimD2_newDoc.jsx");
         });
 
@@ -291,28 +291,28 @@
                 loadJSXFile("/jsx/AnimD2_canvasFitScreen.jsx");
             else if (e.altKey)
                 loadJSXFile("/jsx/AnimD2_canvasRealSize.jsx");
-            else
+            else if (!e.altKey || !e.shiftKey)
                 loadJSXFile("/jsx/AnimD2_canvasSize.jsx");
         });
 
         $("#btn_save").click(function (e) {
             if (e.shiftKey)
                 loadJSXFile("/jsx/AnimD2_saveAs.jsx");
-            else
+            else if (!e.altKey || !e.shiftKey)
                 loadJSXFile("/jsx/AnimD2_save.jsx");
         });
 
         $("#btn_newFrameOne").click(function (e) {
             if (e.shiftKey)
                 loadJSXFile("/jsx/AnimD2_create1FrameVideoLayer.jsx");
-            else
+            else if (!e.altKey || !e.shiftKey)
                 loadJSXFile("/jsx/AnimD2_create1Frame.jsx");
         });
 
         $("#btn_newFrameTwo").click(function (e) {
             if (e.shiftKey)
                 loadJSXFile("/jsx/AnimD2_create2FrameVideoLayer.jsx");
-            else
+            else if (!e.altKey || !e.shiftKey)
                 loadJSXFile("/jsx/AnimD2_create2Frames.jsx");
         });
 
@@ -329,7 +329,7 @@
                 loadJSXFile("/jsx/AnimD2_timelineShowAllLayers.jsx") || $(this).addClass('favoriteDisabled').removeClass('favoriteActive');
             else if (e.shiftKey)
                 loadJSXFile("/jsx/AnimD2_timelineShowFavorites.jsx") || $(this).addClass('favoriteActive').removeClass('favoriteDisabled');
-            else
+            else if (!e.altKey || !e.shiftKey)
                 loadJSXFile("/jsx/AnimD2_timelineShowSetFavorites.jsx") || $(this).addClass('favoriteActive').removeClass('favoriteDisabled');
             $("body").toggleClass('favoriteDisabled', '');
         });
@@ -338,7 +338,6 @@
             loadJSXFile("/jsx/AnimD2_onionSkin.jsx");
             $(this).toggleClass('onionActive', 'onionDisabled');
             $("body").toggleClass('onionDisabled', '');
-            // storeSettings("onion");
             // sendWarning();
         });
 
@@ -347,9 +346,9 @@
         });
 
         $("#btn_newVideoGroup").click(function (e) {
-            if (e.altKey && e.shiftKey)
-                loadJSXFile("/jsx/AnimD2_toggleAutoGroupClips.jsx");
-            else if (e.shiftKey)
+            // if (e.altKey && e.shiftKey)
+            //     loadJSXFile("/jsx/AnimD2_toggleAutoGroupClips.jsx");
+            if (e.shiftKey)
                 loadJSXFile("/jsx/AnimD2_newVideoGroupSelection.jsx");
             else if (e.altKey)
                 loadJSXFile("/jsx/AnimD2_newVideoUngroup.jsx");
@@ -452,10 +451,10 @@
         });
 
         $("#btn_commentEdit").click(function (e) {
-            if (e.shiftKey)
-                loadJSXFile("/jsx/AnimD2_commentHide.jsx");
-            else if (!e.altKey || !e.shiftKey)
-                loadJSXFile("/jsx/AnimD2_commentEdit.jsx");
+            // if (e.shiftKey)
+            //     loadJSXFile("/jsx/AnimD2_commentToggle.jsx");
+            // else if (!e.altKey || !e.shiftKey)
+            loadJSXFile("/jsx/AnimD2_commentEdit.jsx");
         });
 
         $("#btn_commentsHtml").click(function () {

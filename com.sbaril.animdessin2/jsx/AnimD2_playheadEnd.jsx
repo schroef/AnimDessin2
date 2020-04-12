@@ -22,7 +22,6 @@ app.bringToFront();
 //FUNCTIONS
 ///////////////////////////////////////////////////
 
-
 function playheadEnd() {
 
     ErrStrs = {}; 
@@ -37,13 +36,14 @@ function playheadEnd() {
         var idtimelineSetEndOfWorkArea = stringIDToTypeID( 'timelineSetEndOfWorkArea' );
         ref402.putEnumerated( idMnspsp, idMnIt, idtimelineSetEndOfWorkArea );
         desc461.putReference( idnull, ref402 ); executeAction( idslct, desc461, DialogModes.ALL );
-    }
-    catch(e){
-        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
-        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
-    }
 
+    // Allows for cancel without feedback message
+    } catch (e) {
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED) != -1) {;}
+        else {alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+    }
 };
+
 //=========================================
 // playheadEnd.main
 //=========================================

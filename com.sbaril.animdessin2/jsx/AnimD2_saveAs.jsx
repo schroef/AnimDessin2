@@ -19,8 +19,6 @@ app.bringToFront();
 //FUNCTIONS
 ///////////////////////////////////////////////////
 
-
-
 ErrStrs = {};
 ErrStrs.USER_CANCELLED = localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
 try {
@@ -28,9 +26,8 @@ try {
     aD = app.activeDocument;
     displayDialogs = DialogModes.NO, aD.save(File(aD.fullName)), displayDialogs = DialogModes.NO
 
+// Allows for cancel without feedback message
 } catch (e) {
-    if (e.toString().indexOf(ErrStrs.USER_CANCELLED) != -1) {;} 
-    else {
-        alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));
-    }
+    if (e.toString().indexOf(ErrStrs.USER_CANCELLED) != -1) {;}
+    else {alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
 }

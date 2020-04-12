@@ -32,6 +32,9 @@ function cTID(s) {return app.charIDToTypeID(s);};
 function sTID(s) {return app.stringIDToTypeID(s);};
 
 function colorOnlyClearColor() {
+
+    ErrStrs = {}; 
+    ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
     try {
         var desc1042 = new ActionDescriptor();
         var ref383 = new ActionReference();
@@ -52,11 +55,13 @@ function colorOnlyClearColor() {
         desc111.putObject( cTID('T   '), cTID('Lyr '), desc112 );
         executeAction( cTID('setd'), desc111, DialogModes.NO );
 
-    } catch (e) {
-        // Turned this off, we dont need an error warning when users cancels
-        // alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));
-    }
+    // Allows for cancel without feedback message
+    } catch(e){
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+  }
 };
+
 
 //=========================================
 //          colorOnlyClearColor.main

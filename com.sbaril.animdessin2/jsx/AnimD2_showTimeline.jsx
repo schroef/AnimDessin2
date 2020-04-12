@@ -34,10 +34,11 @@ function showTimeline() {
         var idtoggleAnimationPalette = stringIDToTypeID( 'toggleAnimationPalette' );
         ref637.putEnumerated( idMnspsp, idMnIt, idtoggleAnimationPalette );
         desc766.putReference( idnull, ref637 ); executeAction( idslct, desc766, DialogModes.ALL );
-    } 
-    catch(e){
-        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;} 
-        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+
+    // Allows for cancel without feedback message
+    } catch (e) {
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED) != -1) {;}
+        else {alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
     }
 };
 
