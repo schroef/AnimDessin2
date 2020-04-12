@@ -94,7 +94,7 @@
     function init() {
         themeManager.init();
 
-        //Persistent(true); //persistent to prevent extension from unloading
+        Persistent(true); //persistent to prevent extension from unloading
 
 
         ////////////////////////////////////////////////////////////////////////////////
