@@ -129,7 +129,7 @@ function settingDialog(exportInfo) {
 
     var cancel = group1.add("button", undefined, undefined, {name: "cancel"}); 
         cancel.text = cancelBtnStr; 
-        cancel.preferredSize.width = 70; 
+        // cancel.preferredSize.width = 70; 
     
     cancel.onClick = function() {
         dlgMain.close(cancelButtonID);
@@ -137,7 +137,7 @@ function settingDialog(exportInfo) {
 
     var ok = group1.add("button", undefined, undefined, {name: "ok"}); 
         ok.text = okBtnStr; 
-        ok.preferredSize.width = 80; 
+        // ok.preferredSize.width = 80; 
 
     var renameLayer = newLyrName.text;
     ok.onClick = function() {
