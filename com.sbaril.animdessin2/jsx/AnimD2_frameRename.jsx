@@ -29,15 +29,23 @@ $.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 // Globals
 //=================================================================
 
-// UI strings to be localized
+// Localize strings
 var strAlertSpecifyName = localize("$$$/JavaScripts/LayerCompsToABFiles/SpecifyDestination=Please specify destination.");
 var strAlertRename = localize("$$$/Actions/Event/Rename");
 var strAlertFailure = localize("$$$/AdobePlugin/Shared/failure");
+var renameFrameTitleStr = localize(locRenameFrameTitle);
+var newNameStr = localize(locRenameFrameNewName);
+var alertNameStr = localize(locRenameFrameAlertName);
+var applyToSelectedStr = localize(locRenameFrameApplySelected);
+var cancelBtnStr = localize(locRenameFrameCancelBtn);
+var okBtnStr = localize(locRenameFrameOkBtn);
+
 // ok and cancel button
 var runButtonID = 1;
 var cancelButtonID = 2;
 
 var exportInfo = new Object();
+
 ///////////////////////////////////////////////////////////////////////////////
 // Functions
 ///////////////////////////////////////////////////////////////////////////////
@@ -59,8 +67,8 @@ function main() {
             }
         }
         app.playbackDisplayDialogs = DialogModes.ALL;
-        if (exportInfo.renameLayer == "New name...") {
-            alert("Please give a name")
+        if (exportInfo.renameLayer == newNameStr) {
+            alert(alertNameStr)
             return
         }
         
@@ -87,7 +95,7 @@ function allLayers(){
 // Set Defaults Dialog
 ///////////////////////////////////////////////////
 function initExportInfo(exportInfo){
-    exportInfo.renameLayer = new String("New name...");
+    exportInfo.renameLayer = new String(newNameStr);
     exportInfo.allLayers = false;
 }
 
@@ -95,7 +103,7 @@ function settingDialog(exportInfo) {
     // FRAMERENAME
     // ===========
     var dlgMain = new Window("dialog"); 
-        dlgMain.text = "Rename Frame / Layer"; 
+        dlgMain.text = renameFrameTitleStr; 
         dlgMain.preferredSize.width = 300; 
         dlgMain.orientation = "column"; 
         dlgMain.alignChildren = ["fill","top"]; 
@@ -108,7 +116,7 @@ function settingDialog(exportInfo) {
         newLyrName.active = true; // Set focus on input
 
     var applySelection = dlgMain.add("checkbox", undefined, undefined, {name: "applySelection"}); 
-        applySelection.text = "Apply to selection"; 
+        applySelection.text = applyToSelectedStr; 
         applySelection.value = exportInfo.allLayers;
 
     // GROUP1
@@ -120,7 +128,7 @@ function settingDialog(exportInfo) {
         group1.margins = 0; 
 
     var cancel = group1.add("button", undefined, undefined, {name: "cancel"}); 
-        cancel.text = "Cancel"; 
+        cancel.text = cancelBtnStr; 
         cancel.preferredSize.width = 70; 
     
     cancel.onClick = function() {
@@ -128,7 +136,7 @@ function settingDialog(exportInfo) {
     }
 
     var ok = group1.add("button", undefined, undefined, {name: "ok"}); 
-        ok.text = "OK"; 
+        ok.text = okBtnStr; 
         ok.preferredSize.width = 80; 
 
     var renameLayer = newLyrName.text;
@@ -186,4 +194,4 @@ frameRename.main = function () {
     main();
 };
 
-app.activeDocument.suspendHistory("Expose 10 frames more", 'frameRename.main()');
+app.activeDocument.suspendHistory(locRenameFrameTitle, 'frameRename.main()');

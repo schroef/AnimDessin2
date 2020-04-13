@@ -92,4 +92,12 @@ colorRed.main = function() {
     applyToAllLayers(colorRed);
 };
 
-app.activeDocument.suspendHistory("Colorize the Video Frame in Red", 'colorRed.main()');
+app.activeDocument.suspendHistory(localize(locColorRed), 'colorRed.main()');
+
+// // Localized history outputs
+// colorRed = {
+//     en: "Colorize the Video Frame in Red",
+//     fr: "Coloriser le cadre vidéo en rouge",
+//     nl: "Kleurbedkking Video Frame in Rood"
+// };
+

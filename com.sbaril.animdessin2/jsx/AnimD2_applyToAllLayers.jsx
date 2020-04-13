@@ -1,6 +1,110 @@
 // Updated 2020
 // Modified on April 2020 by Rombout (https://https://github.com/schroef/AnimDessin2)
 
+// Trick to test localize
+// Work only only per local variables
+//$.locale = "fr"; // try your Russian messages
+//$.locale = null; // restore to the locale of the app
+
+///////////////////////////////////////////////////
+// Localize
+// Function:  strings for History messages scipts
+// Usage: each attribute is named by JSX main function
+// Note: Special characters use Unicode to escape
+// See url for codes http://www.fileformat.info/info/unicode/char/e9/index.htm
+// à = \u00E0
+// á = \u00E1
+// é = \u00E9
+// è = \u00E8
+// î = \u00EE
+// ó = \u00F3
+///////////////////////////////////////////////////
+// Localized history outputs
+// PS version alert
+locPhotoshopversionAlert = {
+    en: "Photoshop versions before CS2 are not supported!",
+    fr: "Les versions de Photoshop avant CS2 ne sont pas prises en charge!",
+    nl: "Photoshop-versies v\u00F3\u00F3r CS2 worden niet ondersteund!"
+};
+// Progress Bar Dialog
+locPbarProgressTitle = {
+    en: "Progress",
+    fr: "Le progr\u00E8s",
+    nl: "Vooruitgang"
+};
+locPbarESCcancel = {
+    en: "[ESC] cancels",
+    fr: "[ESC] annule",
+    nl: "[ESC] annuleert"
+};
+locPbarWait = {
+    en: "Please wait...",
+    fr: "S'il vous pla\u00EEt, attendez...",
+    nl: "Een moment..."
+};
+locPbarInit = {
+    en: "Initializing...",
+    fr: "Initialisation ...",
+    nl: "Bezig met initialiseren ..."
+};
+locPbarProcessing = {
+    en: "Processing ",
+    fr: "En traitement ",
+    nl: "Verwerken "
+};
+locPbarReselectLayers = {
+    en: "Reselecting layers ",
+    fr: "S\u00E9lection de calques ",
+    nl: "Lagen selecteren "
+};
+Msg = {
+    en: "",
+    fr: "",
+    nl: ""
+};
+
+locColorRed = {
+    en: "Colorize the Video Frame in Red",
+    fr: "Coloriser le cadre vid\u00E9o en rouge",
+    nl: "Kleurbedkking Video Frame in Rood"
+};
+
+// Rename Frame Dialog
+locRenameFrameTitle = {
+    en: "Rename Frame/Layer",
+    fr: "Renommer le Cadre/Calque",
+    nl: "Frame/laag Hernoemen"
+};
+locRenameFrameNewName = {
+    en: "New name...",
+    fr: "Nouveau nom...",
+    nl: "Nieuwe naam..."
+};
+locRenameFrameAlertName = {
+    en: "Please give a name",
+    fr: "Veuillez donner un nom",
+    nl: "Geef een naam op"
+};
+locRenameFrameApplySelected = {
+    en: "Apply to selection",
+    fr: "Appliquer \u00E0 la s\u00E9lection",
+    nl: "Pas toe op selectie"
+};
+locRenameFrameCancelBtn = {
+    en: "Cancel",
+    fr: "Annuler",
+    nl: "Annuleer"
+};
+locRenameFrameOkBtn = {
+    en: "OK",
+    fr: "OK",
+    nl: "OK"
+};
+
+
+
+
+
 ///////////////////////////////////////////////////
 // Select Layer by LayerIndex
 // Source: https://stackoverflow.com/questions/26295492/photoshop-script-new-layer-below-current-layer
@@ -172,6 +276,15 @@ var progress = 0;
 var progressWindow;
 var cancelButtonID = 2;
 
+// Localize strings
+var PSalertStr = localize(locPhotoshopversionAlert);
+var progressTitleStr = localize(locPbarProgressTitle);
+var ESCcancelStr = localize(locPbarESCcancel);
+var initStr = localize(locPbarInit);
+var waitStr = localize(locPbarWait);
+var processingStr = localize(locPbarProcessing);
+var reselectingLayersStr = localize(locPbarReselectLayers);
+
 ///////////////////////////////////////////////////
 // Timer function
 // source: https://community.adobe.com/t5/get-started/does-csinterface-evalscript-work-asynchronously-in-any-host-application/td-p/9569586?page=1
@@ -190,7 +303,7 @@ var GetTime = function GetTime() {
 ///////////////////////////////////////////////////
 function applyToAllLayers(callFunction) {
     if (env.version < 9) {
-        alert("Photoshop versions before CS2 are not supported!", "Error", true);
+        alert(localize(PSalertStr), "Error", true);
         return "cancel";
     }
     // Timer for code speedtest
@@ -245,7 +358,7 @@ function createProgressWindow(title, message, min, max, parent, useCancel) {
     var stProgress = strDesc.add("statictext", undefined, undefined, {
         name: "stProgress"
     });
-    stProgress.text = "Progress";
+    stProgress.text = waitStr;
     stProgress.preferredSize = [200, 15];
     stProgress.justify = ["left"];
     // stProgress.preferredSize.height = 15;
@@ -253,7 +366,7 @@ function createProgressWindow(title, message, min, max, parent, useCancel) {
     var stEscape = strDesc.add("statictext", undefined, undefined, {
         name: "stEscape"
     });
-    stEscape.text = "[ESC] cancels";
+    stEscape.text = ESCcancelStr;
     stEscape.preferredSize = [100, 15];
     stEscape.justify = ["right"];
     // stEscape.preferredSize.height = 15;
@@ -310,20 +423,19 @@ function progressbar(callFunction) {
     // time = "start: " + GetTime();
     // totProgress = totProgress / 2;
     // var layers = layerInfo.length * 2;
+
     var layers = layerInfo;
-
-
-    progressWindow = createProgressWindow("Please wait...", undefined, 0, (totProgress / 5), undefined, false);
+    progressWindow = createProgressWindow(progressTitleStr, undefined, 0, (totProgress / 5), undefined, false);
     // set up the progress bar with a title and range
     progressWindow.show();
     progressWindow.isDone = false;
     // if you code does several things you can change the message under the bar as needed
-    progressWindow.strDesc.stProgress.text = ("Initaliazing...");
+    progressWindow.strDesc.stProgress.text = initStr;
     // progressWindow.text = ("Initaliazing...");
     progressWindow.updateProgress();
 
-    ErrStrs = {}; 
-    ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
+    ErrStrs = {};
+    ErrStrs.USER_CANCELLED = localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
     try {
         // Use steps of 5 to update > less slowdown
         var progress = 5;
@@ -334,8 +446,8 @@ function progressbar(callFunction) {
                 progressWindow.updateProgress();
                 progress += 5;
             }
-            progressWindow.strDesc.stProgress.text = ("Processing: " + (i + 1) + " of " + layers.length + "...");
-            // progressWindow.text = ("Processing: " + (i + 1) + " of " + layers.length + "...");
+            progressWindow.strDesc.stProgress.text = processingStr + (i + 1) + " / " + layers.length + "...";
+            // progressWindow.text = ("Processing: " + (i + 1) + " / " + layers.length + "...");
             selectById(layerInfo[i].AMid);
             callFunction();
         }
@@ -346,19 +458,22 @@ function progressbar(callFunction) {
                 progressWindow.updateProgress();
                 progress += 10;
             }
-            progressWindow.strDesc.stProgress.text = ("Reselecting layers");
+            progressWindow.strDesc.stProgress.text = reselectingLayersStr + (i + 1) + " / " + layers.length + "...";
             // progressWindow.text = ("Reselecting layers");
-            // progressWindow.stProgress.text = ("Reselecting " + (i + 1) + " of " + layers.length + "...");
+            // progressWindow.stProgress.text = ("Reselecting " + (i + 1) + " / " + layers.length + "...");
             selLyr(layerInfo[i].lyrIndex, 1);
         }
         // when done
         progressWindow.isDone = true;
         progressWindow.close();
 
-    // Allows for cancel without feedback message
-    } catch(e){
-        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
-        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+        // Allows for cancel without feedback message
+    } catch (e) {
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED) != -1) {
+            ;
+        } else {
+            alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));
+        }
 
     } finally {
         progressWindow.close();
@@ -375,152 +490,70 @@ function progressbar(callFunction) {
 }
 
 
-///////////////////////////////////////////////////
-// Show indication of progress > slows by 13s for 60 layers
-// Progress bar
-// Source: https://www.ps-scripts.com/viewtopic.php?f=68&t=9732
-///////////////////////////////////////////////////
 
-// function createProgressWindow(title, min, max, parent, useCancel) {
-//     var win = new Window('palette', title);
-//     win.bar = win.add('progressbar', undefined, min, max);
-//     win.bar.preferredSize = [300, 20];
 
-//     win.progBarLabel = win.add("statictext", [20, 20, 320, 35], "Progress");
-//     win.progBarLabel.alignment = "left";
-//     win.progBarLabel.text = "Progress";
-//     win.parent = undefined;
 
-//     if (parent) {
-//         if (parent instanceof Window) {
-//             win.parent = parent;
-//         } else if (useCancel == undefined) {
-//             useCancel = parent;
-//         }
+
+// Test lcoalize with json file
+////////////////////////////////////////////
+// Load data by JSON
+// Source: Export layers to Files Fast
+// 
+////////////////////////////////////////////
+// function loadResource(file) {
+//     var rsrcString;
+//     if (!file.exists) {
+//         alert("Resource file '" + file.name + "' for the export dialog is missing! Please, download the rest of the files that come with this script.", "Error", true);
+//         return false;
 //     }
-
-//     if (useCancel) {
-//         win.cancel = win.add('button', undefined, 'Cancel');
-//         win.cancel.onClick = function() {
-//             try {
-//                 if (win.onCancel) {
-//                     var rc = win.onCancel();
-//                     if (rc || rc == undefined) {
-//                         win.close();
-//                     }
-//                 } else {
-//                     win.close();
-//                 }
-//             } catch (e) {
-//                 alert(e);
-//             }
-//             win.close();
-//         }
-//     }
-
-//     win.updateProgress = function(val) {
-//         var win = this;
-//         win.bar.value = val;
-//         // recenter the progressWindow if desired
-//         // win.center(win.parent);
-//         // win.update(); // Doesnt seem to work cogs app
-//         // app.refresh(); // Doubles the progress somehow? But cancel can be clicked
-//         win.show();
-//         win.hide();
-//         // win.show(); //Last hide make it appear again?
-//     }
-//     win.center(win.parent);
-//     return win;
-// };
-
-// // Check if update runs faster outside create function
-// // function updateBar(win, val){
-// //         win.bar.value = val;
-// //         win.show();
-// //         win.hide();
-// //     return win;
-// // };
-
-// // And here's an example of how it would be used:
-// // Code: Select all  // we have to process an array of files
-// function progressbar(callFunction) {
-// // function applyToAllLayers(callFunction) {
-
-//     // Timer for code speedtest
-//     // time = "start: "+GetTime();
-//     var layers = layerInfo;
-//     totProgress = totProgress/2;
-//     progressWindow = createProgressWindow("Progress...", 0, totProgress, true);
-//     progressWindow.isDone = false;
-//     progressWindow.onCancel = function() {
-//         this.isDone = true;
-//         progressWindow.close();
-//         return true; // return 'true' to close the window
-//     }
-
 //     try {
-//         // for (var i = 0; i < totProgress; i++) {
-//         //     if (progressWindow.isDone) {
-//         //         // progressWindow.close();
-//         //         break;
-//         //     }
-//         //     // progressWindow.text = ("Processing file " + (i + 1) + " of " + layers.length + "...");
-//         //     // progressWindow.text = ("Progress " + (i + 1) + " of " + totProgress + "...");
-//         //     progressWindow.progBarLabel.text = "Progress " + (i + 1) + " of " + totProgress + "...";
-
-//         //     // now process the next file
-//         //     progressWindow.updateProgress(i);
-//         //     // updateBar(progressWindow, i);
-//         // }
-
-//         // for (var i = 0; i < totProgress; i++) {
-//         for (var i = 0; i < layers.length; i++) {
-//             if (progressWindow.isDone) {
-//                 break;
-//             }
-//             progressWindow.progBarLabel.text = "Layers " + (i + 1) + " of " + layers.length + "...";
-//             selectById(layerInfo[i].AMid);
-//             progressWindow.updateProgress(i);
-//             callFunction();
+//         file.open("r");
+//         if (file.error) throw file.error;
+//         rsrcString = file.read();
+//         if (file.error) throw file.error;
+//         if (!file.close()) {
+//             throw file.error;
 //         }
-//         // reselect selected like from start
-//         // Makes progress slower > Not much difference
-//         for (var i = 0; i < layers.length; i++) {
-//             if (progressWindow.isDone) {
-//                 break;
-//             }
-//             progressWindow.progBarLabel.text = "Reselecting " + (i + 1) + " of " + layers.length + "...";
-//             progressWindow.updateProgress(i);
-//             selLyr(layerInfo[i].lyrIndex, 1);
-//         }
-//     } catch (e) {
-//         alert(e);
-
-//     } finally {
-//         progressWindow.close();
+//     } catch (error) {
+//         alert("Failed to read the resource file '" + file.name + "'!\n\nReason: " + error + "\n\nPlease, check it's available for reading and redownload it in case it became corrupted.", "Error", true);
+//         return false;
 //     }
-//     // Timer for code speedtest
-//     // time = time + "\nEnd: " + GetTime();
-//     // alert("Processing time: \n" + time)
+
+//     return rsrcString;
 // };
 
+// function localizeMessages(){
+//     var env = new Object();
+//     env.version = parseInt(app.version, 10);
+//     env.cs3OrHigher = (env.version >= 10);
 
-///////////////////////////////////////////////////
-// Bugs down Photoshop > not sure how its used properly
-// From Export layers to files (fast)
-// Source: https://github.com/jwa107/Photoshop-Export-Layers-as-Images
-///////////////////////////////////////////////////
-function repaintProgressBar(win, force /* = false*/ ) {
-    if (env.version >= 11) { // CS4 added support for UI updates; the previous method became unbearably slow, as is app.refresh()
-        if (force) {
-            app.refresh();
-        } else {
-            win.update();
-        }
-    } else {
-        // CS3 and below
-        var d = new ActionDescriptor();
-        d.putEnumerated(app.stringIDToTypeID('state'), app.stringIDToTypeID('state'), app.stringIDToTypeID('redrawComplete'));
-        app.executeAction(app.stringIDToTypeID('wait'), d, DialogModes.NO);
-    }
-};
+//     // get script's file name
+//     if (env.cs3OrHigher) {
+//         env.scriptFileName = $.fileName;
+//     } else {
+//         try {
+//             //throw new Error();        // doesn't provide the file name, at least in CS2
+//             var illegal = RUNTIME_ERROR;
+//         } catch (e) {
+//             env.scriptFileName = e.fileName;
+//         }
+//     }
+
+
+//     env.scriptFileDirectory = (new File(env.scriptFileName)).parent;
+//     var rsrcFile = new File(env.scriptFileDirectory + "/" + encodeURI("messages_jsx.json"));
+//     var rsrcString = loadResource(rsrcFile);
+//     if (!rsrcString) {
+//         return false;
+//     }
+//     alert(rsrcString.find("locColorRed"))
+//     // for (var i = 0; i < rsrcString.length; i++){
+// 	//     var obj = rsrcString[i];
+// 	//     alert("Name: " + obj.first_name + ", " + obj.last_name);
+//     // }
+//     // var messages = rsrcString;
+//     // msg = locColorRed.locColorRed;
+//     // alert(msgs[locColorRed])
+//     // return localize(msgs.locColorRed);
+// };
+// app.activeDocument.suspendHistory(localizeMessages(), 'colorRed.main()');
