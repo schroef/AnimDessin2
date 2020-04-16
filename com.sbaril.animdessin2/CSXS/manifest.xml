@@ -28,10 +28,7 @@
     </HostList>
 
     <LocaleList>
-      <!-- <Locale Code="All" /> -->
-      <Locale Code="nl_NL"/>
-      <Locale Code="en_US"/>
-      <Locale Code="fr_FR"/>
+      <Locale Code="All" />
     </LocaleList>
 
     <RequiredRuntimeList>
