@@ -28,7 +28,10 @@
     </HostList>
 
     <LocaleList>
-      <Locale Code="All" />
+      <!-- <Locale Code="All" /> -->
+      <Locale Code="nl_NL"/>
+      <Locale Code="en_US"/>
+      <Locale Code="fr_FR"/>
     </LocaleList>
 
     <RequiredRuntimeList>
@@ -108,7 +111,7 @@
               <Width>325</Width>
             </Size>
             <MinSize>
-              <Height>500</Height>
+              <Height>700</Height>
               <Width>300</Width>
             </MinSize>
             <MaxSize>
