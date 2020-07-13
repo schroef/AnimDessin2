@@ -62,7 +62,7 @@ AnimD2T_commentEdit.main = function() {
 };
 
 //AnimD2T_commentEdit.main();
-app.activeDocument.suspendHistory("Add or Edit a Timeline Comment", 'AnimD2T_commentEdit.main()');
+app.activeDocument.suspendHistory(localize(locCommentEdit), 'AnimD2T_commentEdit.main()');
 
 // EOF
 

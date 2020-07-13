@@ -9,6 +9,10 @@
 app.bringToFront();
 docRef = app.activeDocument;
 
+// Call main function from getselected, we can reuse scripts
+var ScriptFilePath = Folder($.fileName).parent.fsName;
+$.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
+
 //
 // AnimD2T_deleteFrame.jsx
 //
@@ -17,12 +21,8 @@ docRef = app.activeDocument;
 // Generated Thu May 15 2014 11:48:47 GMT+0200
 //
 
-cTID = function(s) {
-    return app.charIDToTypeID(s);
-};
-sTID = function(s) {
-    return app.stringIDToTypeID(s);
-};
+cTID = function(s) {return app.charIDToTypeID(s);};
+sTID = function(s) {return app.stringIDToTypeID(s);};
 
 //
 //==================== AnimD2_deleteFrame ==============
@@ -63,7 +63,7 @@ AnimD2_deleteFrame.main = function() {
     AnimD2_deleteFrame();
 };
 
-app.activeDocument.suspendHistory("Deleta frame/layer", 'AnimD2_deleteFrame.main()');
+app.activeDocument.suspendHistory(localize(locDeleteFrame), 'AnimD2_deleteFrame.main()');
 
 // EOF
 

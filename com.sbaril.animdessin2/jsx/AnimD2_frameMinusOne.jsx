@@ -22,10 +22,9 @@ $.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 
 
 function frameMinusOne() {
-
     ErrStrs = {}; 
     ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
-    try {
+    // try {
         // =======================================================
         function GetFrameRate(){
             var ref = new ActionReference();
@@ -52,10 +51,10 @@ function frameMinusOne() {
         executeAction( idmoveOutTime, desc6, DialogModes.NO );
 
     // Allows for cancel without feedback message
-    } catch(e){
-        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
-        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
-  }
+//     } catch(e){
+//         if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+//         else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+//   }
 };
 
 //=========================================
@@ -64,7 +63,8 @@ function frameMinusOne() {
 //
 
 frameMinusOne.main = function () {
+    // alert("ASDASD")
     applyToAllLayers(frameMinusOne);
 };
 
-app.activeDocument.suspendHistory("Expose 1 frame less", 'frameMinusOne.main()');
+app.activeDocument.suspendHistory(localize(locFrameMinusOne), 'frameMinusOne.main()');

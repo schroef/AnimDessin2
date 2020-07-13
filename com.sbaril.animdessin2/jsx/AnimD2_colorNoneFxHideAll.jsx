@@ -6,6 +6,11 @@
 
 //Make Photoshop the front most application
 app.bringToFront();
+docRef = app.activeDocument;
+
+// Call main function from getselected, we can reuse scripts
+var ScriptFilePath = Folder($.fileName).parent.fsName;
+$.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 
 ///////////////////////////////////////////////////
 // SETUP
@@ -54,4 +59,4 @@ AnimD2_colorNoneFxHideAll.main = function() {
     AnimD2_colorNoneFxHideAll();
 };
 
-app.activeDocument.suspendHistory("Hide all layers Effects", 'AnimD2_colorNoneFxHideAll.main()');
+app.activeDocument.suspendHistory(localize(locColorNoneFXHideAll), 'AnimD2_colorNoneFxHideAll.main()');

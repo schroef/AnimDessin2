@@ -53,4 +53,4 @@ AnimD2_colorNoneFxShowAll.main = function() {
     AnimD2_colorNoneFxShowAll();
 };
 
-app.activeDocument.suspendHistory("Show all layers Effects", 'AnimD2_colorNoneFxShowAll.main()');
+app.activeDocument.suspendHistory(localize(locColorNoneFXShowAll), 'AnimD2_colorNoneFxShowAll.main()');

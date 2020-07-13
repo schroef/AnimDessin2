@@ -73,4 +73,4 @@ colorOnlyClearColor.main = function() {
     applyToAllLayers(colorOnlyClearColor);
 };
 
-app.activeDocument.suspendHistory("Clear only Color overlay from Video Frame", 'colorOnlyClearColor.main()');
+app.activeDocument.suspendHistory(localize(locColorOnlyClearColor), 'colorOnlyClearColor.main()');

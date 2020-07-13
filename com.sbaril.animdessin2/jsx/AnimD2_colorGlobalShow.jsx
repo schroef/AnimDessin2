@@ -62,4 +62,4 @@ colorGlobalShow.main = function() {
     // colorGlobalShow();
 };
 
-app.activeDocument.suspendHistory("Show Color overlay on Video Frame", 'colorGlobalShow.main()');
+app.activeDocument.suspendHistory(localize(locColorGlobalShow), 'colorGlobalShow.main()');

@@ -4,18 +4,24 @@
 <head>
     <meta charset="utf-8">
     <title>AnimDessin2.5</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/table.css" />
     <link id="hostStyle" rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/table.css" />
+    <link rel="stylesheet" href="css/styles.css" />
     <link id="hostStyle" rel="stylesheet" href="iconfont/iconfont.css" />
     <link id="hostStyle" rel="stylesheet" href="css/vendor/toolguide.css" />
 
 </head>
 
-<body id="body" class="hostElt iconSml">
-
+<body id="body" class="hostElt iconSml"><!-- onLoad="onLoaded()" WIP test for errors-->
+    <div id="error"></div>
     <div id="content" class="">
-
+        <div id="loaderBlock">
+            <div class="container-loader">
+                <img alt="" src="images/loaders/radial-blue1-128x.gif" class="loader"></img>
+                <span data-locale="STR_processing">Processing</span>
+            </div>
+        </div>
+        
         <!-- Block 1 -->
 
         <div class="myblock">
@@ -83,8 +89,8 @@
                     data-toggle='tooltip' data-placement='right' rel='tooltip' data-locale="btn_newVideoGroup"></button>
             </div>
             <div class="mybtn">
-                <button id="btn_renameFrame" class="bcol icon-framerename " title="Rename Frame"
-                    data-toggle='tooltip' data-placement='right' rel='tooltip' data-locale="btn_renameFrame"></button>
+                <button id="btn_renameFrame" class="bcol icon-framerename " title="Rename Frame" data-toggle='tooltip'
+                    data-placement='right' rel='tooltip' data-locale="btn_renameFrame"></button>
             </div>
         </div>
 
@@ -147,8 +153,20 @@
                     data-placement='right' rel='tooltip' data-locale="btn_playheadStart"></button>
             </div>
             <div class="mybtn">
+                <button id="btn_playheadSplit" class="bcol icon-playheadsplit" title="Split at Playhead"
+                    data-placement='right' rel='tooltip' data-locale="btn_playheadSplit"></button>
+            </div>
+            <div class="mybtn">
                 <button id="btn_playheadEnd" class="bcol icon-playheadend " title="Set Playhead End"
                     data-placement='right' rel='tooltip' data-locale="btn_playheadEnd"></button>
+            </div>
+            <div class="mybtn">
+                <button id="btn_playheadPrevEdit" class="bcol icon-playheadprev" title="Playhead at previous edit"
+                    data-placement='right' rel='tooltip' data-locale="btn_playheadPrevEdit"></button>
+            </div>
+            <div class="mybtn">
+                <button id="btn_playheadNextEdit" class="bcol icon-playheadnext " title="Playhead at next edit"
+                    data-placement='right' rel='tooltip' data-locale="btn_playheadNextEdit"></button>
             </div>
         </div>
 
@@ -170,7 +188,6 @@
         </div>
 
         <!-- Block 10 -->
-
         <div class="myblock">
             <div class="mybtn">
                 <button id="btn_videoShortcuts" class="bcol icon-videoshortcuts " title="Use Shortcuts"
@@ -195,6 +212,7 @@
             <!-- <li>
                 <button id="btn_reload" class="brf">Rf</button>
             </li> -->
+            <!-- <button id="btn_saveSettings" class="brf">Save</button> -->
         </ul>
 
     </div>

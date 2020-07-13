@@ -8,7 +8,12 @@
 #target photoshop
 
 //Make Photoshop the front most application
-app.bringToFront();
+// app.bringToFront();
+// docRef = app.activeDocument;
+
+// Call main function from getselected, we can reuse scripts
+// var ScriptFilePath = Folder($.fileName).parent.fsName;
+// $.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 
 ///////////////////////////////////////////////////
 //FUNCTIONS
@@ -45,7 +50,7 @@ var idprofile = stringIDToTypeID("profile");
 desc2.putString(idprofile, """sRGB IEC61966-2.1""");
 var idDcmn = charIDToTypeID("Dcmn");
 desc1.putObject(idNw, idDcmn, desc2);
-executeAction(idMk, desc1, DialogModes.NO);
+executeAction(idMk, desc1, DialogModes.ALL);
 
 
 function AnimD2_newDoc() {
@@ -198,8 +203,9 @@ function AnimD2_newDoc() {
 AnimD2_newDoc.main = function() {
     AnimD2_newDoc();
 };
-
-app.activeDocument.suspendHistory("Create a Timeline with a Video Group", 'AnimD2_newDoc.main()');
+AnimD2_newDoc.main()
+// Issues when no doc is open > activeDocument does not excist yet
+// app.activeDocument.suspendHistory(localize(locNewDoc), 'AnimD2_newDoc.main()');
 
 // EOF
 

@@ -17,7 +17,7 @@ $(document).ready(function () {
             $("#nav").removeClass('short');
         }
         // Auto close search on scroll & focuse search is false
-        console.log($("#searchbar-product").is(":focus") !==false)
+        // console.log($("#searchbar-product").is(":focus") !==false)
         if ((fromTop >= 300) && (!$("#searchbar-product").is(":focus"))){
             if ($("#nav").hasClass("opened")) {
                 $("#nav-toggle").trigger("click");

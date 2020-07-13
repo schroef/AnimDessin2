@@ -78,7 +78,7 @@
             csInterface.closeExtension();
         }
         if (item == "videoMock") {
-            csInterface.resizeContent(720, 480);
+            csInterface.resizeContent(345, 480);
             callVideoMock();
         }
         if (item == "toolMock") {
@@ -94,7 +94,7 @@
     function init() {
         themeManager.init();
 
-        Persistent(true); //persistent to prevent extension from unloading
+        //Persistent(true); //persistent to prevent extension from unloading
 
 
         ////////////////////////////////////////////////////////////////////////////////

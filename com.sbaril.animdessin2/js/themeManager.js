@@ -89,6 +89,7 @@ var themeManager = (function () {
 
         addRule(styleId, ".hostBgd", "background-color:" + "#" + bgdColor);
         addRule(styleId, ".hostBgdDark", "background-color: " + "#" + darkBgdColor);
+        addRule(styleId, "#loaderBlock", "background-color: " + "#" + bgdColor);
         addRule(styleId, ".hostBgdLight", "background-color: " + "#" + lightBgdColor);
         addRule(styleId, ".hostFontSize", "font-size:" + appSkinInfo.baseFontSize + "px;");
         addRule(styleId, ".hostFontFamily", "font-family:" + appSkinInfo.baseFontFamily);

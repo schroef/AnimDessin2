@@ -75,7 +75,7 @@ AnimD2_duplicateFrame.main = function() {
 };
 
 //AnimD2_duplicateFrame.main();
-app.activeDocument.suspendHistory("Duplicate Frame", 'AnimD2_duplicateFrame.main()');
+app.activeDocument.suspendHistory(localize(locDuplicateFrame), 'AnimD2_duplicateFrame.main()');
 
 // EOF
 

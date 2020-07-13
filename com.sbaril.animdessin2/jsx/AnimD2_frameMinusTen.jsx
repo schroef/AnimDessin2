@@ -68,4 +68,4 @@ frameMinusTen.main = function () {
     applyToAllLayers(frameMinusTen);
 };
 
-app.activeDocument.suspendHistory("Expose 10 frames less", 'frameMinusTen.main()');
+app.activeDocument.suspendHistory(localize(locFrameMinusTen), 'frameMinusTen.main()');

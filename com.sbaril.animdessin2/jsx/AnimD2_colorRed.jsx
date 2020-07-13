@@ -93,11 +93,3 @@ colorRed.main = function() {
 };
 
 app.activeDocument.suspendHistory(localize(locColorRed), 'colorRed.main()');
-
-// // Localized history outputs
-// colorRed = {
-//     en: "Colorize the Video Frame in Red",
-//     fr: "Coloriser le cadre vidéo en rouge",
-//     nl: "Kleurbedkking Video Frame in Rood"
-// };
-

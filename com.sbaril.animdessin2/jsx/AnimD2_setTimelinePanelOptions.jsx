@@ -33,8 +33,9 @@ AnimD2_setTimelinePanelOptions.main = function() {
     AnimD2_setTimelinePanelOptions();
 };
 
-//AnimD2_setTimelinePanelOptions.main();
-app.activeDocument.suspendHistory("Set timeline Panel Options", 'AnimD2_setTimelinePanelOptions.main()');
+AnimD2_setTimelinePanelOptions.main();
+// Does use history
+// app.activeDocument.suspendHistory("Set timeline Panel Options", 'AnimD2_setTimelinePanelOptions.main()');
 
 // EOF
 

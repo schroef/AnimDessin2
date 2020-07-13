@@ -77,4 +77,4 @@ frameMinusTwo.main = function() {
     applyToAllLayers(frameMinusTwo);
 };
 
-app.activeDocument.suspendHistory("Expose 2 frames less", 'frameMinusTwo.main()');
+app.activeDocument.suspendHistory(localize(locFrameMinusTwo), 'frameMinusTwo.main()');

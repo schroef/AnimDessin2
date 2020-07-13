@@ -74,9 +74,9 @@
 						Timeline Panel
 					</dt>
 					<dd>
-						<p data-locale="TG_showTimeline_1">– Show / hide the timeline panel </p>
+						<p data-locale="TG_showTimeline_1">– Animation panel options</p>
 						<span class="k-icon kcmb-sh-lm"></span>
-						<p data-locale="TG_showTimeline_2">– Animation panel options</p>
+						<p data-locale="TG_showTimeline_2">– Show / hide the timeline panel </p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
 					<dt class="title" data-locale="btn_newDoc.title">
@@ -198,7 +198,7 @@
 					<dd>
 						<p data-locale="TG_frameMinus_1">– Reduce duration selecion by 2 frames</p>
 						<span class="k-icon kcmb-sh-lm"></span>
-						<p data-locale="TG_frameMinus_2">– Reduce duration selecion by 10 frames</p>
+						<p data-locale="TG_frameMinus_2">– Reduce duration selecion by 5 frames</p>
 						<span class="k-icon kcmb-al-lm"></span>
 						<p data-locale="TG_frameMinus_3">– Reduce duration selecion by 1 frame</p>
 						<span class="k-icon kcmb-lm"></span>
@@ -209,7 +209,7 @@
 					<dd>
 						<p data-locale="TG_framePlus_1">– Extend duration selection by 2 frames</p>
 						<span class="k-icon kcmb-sh-lm"></span>
-						<p data-locale="TG_framePlus_2">– Extend duration selection by 10 frames</p>
+						<p data-locale="TG_framePlus_2">– Extend duration selection by 5 frames</p>
 						<span class="k-icon kcmb-al-lm"></span>
 						<p data-locale="TG_framePlus_3">– Extend duration selection by 1 frame</p>
 						<span class="k-icon kcmb-lm"></span>
@@ -298,6 +298,15 @@
 							Areat at the playhead</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
+					<dt class="title" data-locale="btn_playheadSplit.title">
+						Split at playhead
+					</dt>
+					<dd>
+						<p data-locale="TG_playheadSplit_1">– Split at playhead and make video group</p>
+						<span class="k-icon kcmb-sh-lm"></span>
+						<p data-locale="TG_playheadSplit_2">– Split at playhead</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
 					<dt class="title" data-locale="btn_playheadEnd.title">
 						Set Playhead End
 					</dt>
@@ -308,6 +317,28 @@
 						<span class="k-icon kcmb-al-lm"></span>
 						<p data-locale="TG_playheadEnd_3">– Set the end of the work
 							Areat at the playhead</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_playheadPrevEdit.title">
+						Go to previous edit
+					</dt>
+					<dd>
+						<p data-locale="TG_playheadPrevEdit_1">– Go to first frame</p>
+						<span class="k-icon kcmb-sh-lm"></span>
+						<!-- <p data-locale="TG_playheadPrevEdit_1">– Go to start work area</p>
+						<span class="k-icon kcmb-al-lm"></span> -->
+						<p data-locale="TG_playheadPrevEdit_3">– Go to previous edit</p>
+						<span class="k-icon kcmb-lm"></span>
+					</dd>
+					<dt class="title" data-locale="btn_playheadNextEdit.title">
+						Go to next edit
+					</dt>
+					<dd>
+						<p data-locale="TG_playheadNextEdit_1">– Go to last frame</p>
+						<span class="k-icon kcmb-sh-lm"></span>
+						<!-- <p data-locale="TG_playheadNextEdit_2">– Go to end work area</p>
+						<span class="k-icon kcmb-al-lm"></span> -->
+						<p data-locale="TG_playheadNextEdit_3">– Go to next edit</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
 					<dt class="title" data-locale="btn_commentEdit.title">
@@ -356,7 +387,7 @@
 	<!-- Jquery Helpers -->
 	<!-- <script src="js/vendor/tooltips.js"></script> -->
 	<script src="js/vendor/filter-search.js"></script>
-	<script src="js/vendor/vimeo_popup.js"></script>
+	<script src="js/vendor/video_popup.js"></script>
 	<script src="js/vendor/navbar.js"></script>
 
 	<script src="js/themeManager.js"></script>
@@ -372,9 +403,11 @@
 				"newvideogroup", "framerename", "expominus", "expoplus",
 				"colorsquare", "colorsquare",
 				"colorsquare", "colornone", "inbetweenprevious",
-				"inbetweencreat", "inbetweennext", "playheadbegin",
-				"playheadend", "commentedit", "commentshtml",
-				"commentstext", "videoshortcuts"];
+				"inbetweencreat", "inbetweennext",
+				"playheadbegin","playheadsplit", "playheadend",
+				"playheadprevedit","playheadnextedit",
+				"commentedit","commentshtml","commentstext",
+				"videoshortcuts"];
 			$("dl dt").each(function (j) {
 				var parent = $(this);
 				var spanIcon = "<span class=" + "icon-" + bIcon[j] + "></span>";

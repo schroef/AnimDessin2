@@ -68,7 +68,10 @@ function inBetweenPrevious() {
 //
 
 inBetweenPrevious.main = function() {
-    inBetweenPrevious();
+    // Does single selection
+    // inBetweenPrevious();
+    // Complete selection
+    applyToAllLayers(inBetweenPrevious);
 };
 
-app.activeDocument.suspendHistory("Move the InBetween in Previous position", 'inBetweenPrevious.main()');
+app.activeDocument.suspendHistory(localize(locInBetweenPrevious), 'inBetweenPrevious.main()');

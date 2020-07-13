@@ -68,4 +68,4 @@ frameMinusFive.main = function () {
     applyToAllLayers(frameMinusFive);
 };
 
-app.activeDocument.suspendHistory("Expose 5 frames less", 'frameMinusFive.main()');
+app.activeDocument.suspendHistory(localize(locFrameMinusFive), 'frameMinusFive.main()');

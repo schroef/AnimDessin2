@@ -1,13 +1,18 @@
 ﻿// Updated 2020
 // Modified on April 2020 by Rombout (https://https://github.com/schroef/AnimDessin2)
 
-//
-// Generated Wed Mar 26 2020 19:14 AST
-//
+// Updated 2020
+// Modified on April 2020 by Rombout (https://https://github.com/schroef/AnimDessin2)
+
 #target photoshop;
 
 //Make Photoshop the front most application
 app.bringToFront();
+docRef = app.activeDocument;
+
+// Call main function from getselected, we can reuse scripts
+var ScriptFilePath = Folder($.fileName).parent.fsName;
+$.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 
 //
 //==================== AnimD2_gotoInTimeLine ==============
@@ -35,7 +40,7 @@ AnimD2_gotoInTimeLine.main = function() {
 };
 
 //AnimD2_gotoInTimeLine.main();
-app.activeDocument.suspendHistory("Go to in Timeline", 'AnimD2_gotoInTimeLine.main()');
+app.activeDocument.suspendHistory(localize(locGoToInTimeline), 'AnimD2_gotoInTimeLine.main()');
 
 // EOF
 

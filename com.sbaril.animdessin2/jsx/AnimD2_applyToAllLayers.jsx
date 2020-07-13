@@ -11,11 +11,12 @@
 // Function:  strings for History messages scipts
 // Usage: each attribute is named by JSX main function
 // Note: Special characters use Unicode to escape
-// See url for codes http://www.fileformat.info/info/unicode/char/e9/index.htm
+// See url for codes http://www.fileformat.info/info/unicode/char/search.htm
 // à = \u00E0
 // á = \u00E1
 // é = \u00E9
 // è = \u00E8
+// ë = \u00EB
 // î = \u00EE
 // ó = \u00F3
 ///////////////////////////////////////////////////
@@ -63,17 +64,162 @@ Msg = {
     nl: ""
 };
 
-locColorRed = {
-    en: "Colorize the Video Frame in Red",
-    fr: "Coloriser le cadre vid\u00E9o en rouge",
-    nl: "Kleurbedkking Video Frame in Rood"
+// Localize AnimD2_canvasSize.jsx
+locCanvasSize = {
+    en: "Set canvas size of document",
+    fr: "XXXX",
+    nl: "Stel canvasgrootte in van document"
 };
-
+// Localize AnimD2_colorBlue.jsx
+locColorBlue = {
+    en: "Colorize the video frame in blue",
+    fr: "Coloriser le cadre vid\u00E9o en bleue",
+    nl: "Kleurbedekking video frame in blauw"
+};
+// Localize AnimD2_colorGlobalHide.jsx
+locColorGlobalHide = {
+    en: "Hide all overlays",
+    fr: "XXXX",
+    nl: "Verberg alle kleurbedekkingen"
+};
+// Localize AnimD2_colorGlobalShow.jsx
+locColorGlobalShow = {
+    en: "Show all overlays",
+    fr: "XXXX",
+    nl: "Toon alle kleurbedekkingen"
+};
+// Localize AnimD2_colorGreen.jsx
+locColorGreen = {
+    en: "Colorize the video frame in Green",
+    fr: "Coloriser le cadre vid\u00E9o en verte",
+    nl: "Kleurbedekking video frame in groen"
+};
+// Localize AnimD2_colorNone.jsx
+locColorNone = {
+    en: "Clear all layer effects",
+    fr: "XXXX",
+    nl: "Verwijder alle laag effecten"
+};
+// Localize AnimD2_colorNoneFXHideAll.jsx
+locColorNoneFXHideAll = {
+    en: "Hide all layers effects",
+    fr: "XXXX",
+    nl: "Verberg alle laag effecten"
+};
+// Localize AnimD2_colorNoneFXShowAll.jsx
+locColorNoneFXShowAll = {
+    en: "Show all layers effects",
+    fr: "XXXX",
+    nl: "Toon alle laag effecten"
+};
+// Localize AnimD2_colorOnlyClearColor.jsx
+locColorOnlyClearColor = {
+    en: "Clear only color overlay from video frame",
+    fr: "Effacer uniquement la superposition de couleurs de l'image vid\u00E9oo",
+    nl: "Verwijder alleen kleurbedekking van video frame"
+};
+// Localize AnimD2_colorRed.jsx
+locColorRed = {
+    en: "Colorize the video frame in red",
+    fr: "Coloriser le cadre vid\u00E9o en rouge",
+    nl: "Kleurbedekking video frame in rood"
+};
+// Localize AnimD2_commentEdit.jsx
+locCommentEdit = {
+    en: "Add or Edit a timeline comment",
+    fr: "Ajouter ou modifier un commentaire",
+    nl: "Nieuwe of bewerk opmerkingen"
+};
+// Localize AnimD2_creat1Frame.jsx
+locCreate1Frame = {
+    en: "Add 1 frame layer",
+    fr: "Ajouter 1 couche de cadre",
+    nl: "1 frame laag toevoegen"
+};
+// Localize AnimD2_creat1FrameVideoLayer.jsx
+locCreate1FrameVideoLayer = {
+    en: "Add 1 frame video layer",
+    fr: "Ajouter 1 couche de vid\u00E9oo",
+    nl: "1 frame video laag toevoegen"
+};
+// Localize AnimD2_creat2Frame.jsx
+locCreate2Frames = {
+    en: "Add 2 frame layer",
+    fr: "Ajouter 2 couche de cadre",
+    nl: "2 frame laag toevoegen"
+};
+// Localize AnimD2_creat2FrameVideoLayer.jsx
+locCreate2FrameVideoLayer = {
+    en: "Add 2 frame video layer",
+    fr: "Ajouter 2 couche de vid\u00E9oo",
+    nl: "2 frame video laag toevoegen"
+};
+// Localize AnimD2_deleteFrame.jsx
+locDeleteFrame = {
+    en: "Delete selected frame/layer",
+    fr: "Supprimer le cadre/calque s\u00E9lectionn\u00E9",
+    nl: "Verwijder geselecteerde frame/laag"
+};
+// Localize AnimD2_duplicateFrame.jsx
+locDuplicateFrame = {
+    en: "Duplicate frame/layer",
+    fr: "Cadre/calque en double",
+    nl: "Dupliceer frame/layer"
+};
+// Localize AnimD2_frameMinusFive.jsx
+locFrameMinusFive = {
+    en: "Expose 5 frames less",
+    fr: "XXXXXXXXX",
+    nl: "Geef 5 frames minder weer"
+};
+// Localize AnimD2_frameMinusOne.jsx
+locFrameMinusOne = {
+    en: "Expose 1 frame less",
+    fr: "XXXXXXXXX",
+    nl: "Geef 1 frame minder weer"
+};
+// Localize AnimD2_frameMinusTen.jsx
+locFrameMinusTen = {
+    en: "Expose 10 frames less",
+    fr: "XXXXXXXXX",
+    nl: "Geef 10 frames minder weer"
+};
+// Localize AnimD2_frameMinusTwo.jsx
+locFrameMinusTwo = {
+    en: "Expose 2 frames less",
+    fr: "XXXXXXXXX",
+    nl: "Geef 2 frames minder weer"
+};
+// Localize AnimD2_framePlusFive.jsx
+locFramePlusFive = {
+    en: "Expose 5 frames more",
+    fr: "XXXXXXXXX",
+    nl: "Geef 5 frames meer weer"
+};
+// Localize AnimD2_frameMinusOne.jsx
+locFramePlusOne = {
+    en: "Expose 1 frame more",
+    fr: "XXXXXXXXX",
+    nl: "Geef 1 frame meer weer"
+};
+// Localize AnimD2_frameMinusTen.jsx
+locFramePlusTen = {
+    en: "Expose 10 frames more",
+    fr: "XXXXXXXXX",
+    nl: "Geef 10 frames meer weer"
+};
+// Localize AnimD2_frameMinusTwo.jsx
+locFramePlusTwo = {
+    en: "Expose 2 frames more",
+    fr: "XXXXXXXXX",
+    nl: "Geef 2 frames meer weer"
+};
+// Localize AnimD2_frameRename.jsx
 // Rename Frame Dialog
 locRenameFrameTitle = {
-    en: "Rename Frame/Layer",
-    fr: "Renommer le Cadre/Calque",
-    nl: "Frame/laag Hernoemen"
+    en: "Rename frame/Layer",
+    fr: "Renommer le cadre/calque",
+    nl: "Frame/laag hernoemen"
 };
 locRenameFrameNewName = {
     en: "New name...",
@@ -100,8 +246,101 @@ locRenameFrameOkBtn = {
     fr: "OK",
     nl: "OK"
 };
+// Localize AnimD2_gotoInTimeLine.jsx
+locGoToInTimeline = {
+    en: "Go to in timeline",
+    fr: "XXXXXXXXX",
+    nl: "Ga naar in tijdslijn"
+};
+// Localize AnimD2_inBetweenCreate.jsx
+locCreateInBetween = {
+    en: "Create an InBetween",
+    fr: "XXXXXXXXX",
+    nl: "Voeg een InBetween toe"
+};
+// Localize AnimD2_inBetweenNext.jsx
+locInBetweenNext = {
+    en: "Move the InBetween to next position",
+    fr: "XXXXXXXXX",
+    nl: "Verplaats de InBetween naar volgende positie"
+};
+// Localize AnimD2_inBetweenPrevious.jsx
+locInBetweenPrevious = {
+    en: "Move the InBetween to previous position",
+    fr: "XXXXXXXXX",
+    nl: "Verplaats de InBetween naar vorige positie"
+};
+// Localize AnimD2_newDoc.jsx
+locNewDoc = {
+    en: "Create a timeline with a video group",
+    fr: "XXXXXXXXX",
+    nl: "Cre\u00EBer tijdlijn met een video group "
+};
+// Localize AnimD2_newVideoGroup.jsx
+locNewVideoGroup = {
+    en: "New video group with a blank frame",
+    fr: "XXXXXXXXX",
+    nl: "Nieuwe video group met blanco frame "
+};
+// Localize AnimD2_newVideoGroupSelection.jsx
+locNewVideoGroupSelection = {
+    en: "New video group from selection",
+    fr: "XXXXXXXXX",
+    nl: "Nieuwe video group van selectie"
+};
+// Localize AnimD2_newVideoUnGroup.jsx
+locNewVideoUngroup = {
+    en: "Ungroup selected video group",
+    fr: "XXXXXXXXX",
+    nl: "Degroepeer geselecteerde video groep"
+};
+// Localize AnimD2_playheadSplit.jsx
+locPlayheadSplit = {
+    en: "Split at playhead",
+    fr: "XXXXXXXXX",
+    nl: "Splitsen bij afspeelknop"
+};
+// Localize AnimD2_playheadSplitGroup.jsx
+locPlayheadSplitGroup = {
+    en: "Split at playhead and make video group",
+    fr: "XXXXXXXXX",
+    nl: "Splitsen bij afspeelknop en video group maken"
+};
+// // Localize AnimD2_playheadSplitGroup.jsx
+// locPlayheadNextEdit = {
+//     en: "Split at playhead and make video group",
+//     fr: "XXXXXXXXX",
+//     nl: "Splitsen bij afspeelknop en video group maken"
+// };
+
+// Localize AnimD2_playLoopPlayback.jsx
+// locplayLoopPlayback = {
+//     en: "Loop playback",
+//     fr: "Cadre/calque en double",
+//     nl: "Afspelen herhalen"
+// };
+
+// locProseccing = {
+//     en: "Processing",
+//     fr: "En D\u00E9veloppement",
+//     nl: "Verwerken"
+// };
+
+// // Localize 
+// var STR_processing = localize(locProseccing);
 
 
+
+// Localize AnimD2_frameRename.jsx
+var strAlertSpecifyName = localize("$$$/JavaScripts/LayerCompsToABFiles/SpecifyDestination=Please specify destination.");
+var strAlertRename = localize("$$$/Actions/Event/Rename");
+var strAlertFailure = localize("$$$/AdobePlugin/Shared/failure");
+var renameFrameTitleStr = localize(locRenameFrameTitle);
+var newNameStr = localize(locRenameFrameNewName);
+var alertNameStr = localize(locRenameFrameAlertName);
+var applyToSelectedStr = localize(locRenameFrameApplySelected);
+var cancelBtnStr = localize(locRenameFrameCancelBtn);
+var okBtnStr = localize(locRenameFrameOkBtn);
 
 
 
@@ -309,8 +548,18 @@ function applyToAllLayers(callFunction) {
     // Timer for code speedtest
     // time = "start: "+GetTime();
     // time1 = GetTime();
-    if (layerInfo.length >= 15) {
-        progressbar(callFunction);
+    // || (env.version > 18)) 
+    if (layerInfo.length >= 30) {
+        // $.sleep (200);
+        // app.refresh();
+        for (var i = 0; i < layerInfo.length; i++) {
+            selectById(layerInfo[i].AMid);
+            callFunction();
+        }
+        for (var i = 0; i < layerInfo.length; i++) {
+            selLyr(layerInfo[i].lyrIndex, 1);
+        }
+        // progressbar(callFunction);
     } else {
         // Use IDX of each selected layer & run Function
         // Aprox 5s for 60 layers
@@ -323,9 +572,10 @@ function applyToAllLayers(callFunction) {
         // Slows down by aprox 1s with circa 50 layerss
         for (var i = 0; i < layerInfo.length; i++) {
             selLyr(layerInfo[i].lyrIndex, 1);
-            // selLyr(selectedLayers[i], 1);
         }
     }
+    // return layerInfo.length
+    
     // Timer for code speedtest
     // time = time + "\nEnd: " + GetTime();
     // time2 = GetTime();
@@ -399,10 +649,12 @@ function createProgressWindow(title, message, min, max, parent, useCancel) {
 
     win.updateProgress = function(val) {
         var win = this;
-        win.show();
-        win.hide();
+        // win.show();
+        // win.hide();
         // app.refresh();
+        // $.sleep (1000); // waits 2 seconds
         // win.update();
+        // app.refresh(); // refreshes PS
         if (val != undefined) {
             win.bar.value = val;
         } else {
@@ -411,10 +663,24 @@ function createProgressWindow(title, message, min, max, parent, useCancel) {
         if (win.recenter) {
             win.center(win.parentWin);
         }
-        win.update();
+        // win.update();
+        // win.hide();
+    }
+    win.hideWindow = function(){
+        var win = this;
+        win.hide();
     }
     win.center(win.parent);
     return win;
+};
+
+var waitForRedraw = function() {
+  var d;
+  d = new ActionDescriptor();
+  d.putEnumerated(app.stringIDtoTypeID('state'),
+  app.stringIDtoTypeID('state'),
+  app.stringIDtoTypeID('redrawComplete'));
+  return executeAction(app.stringIDtoTypeID('wait'), d, DialogModes.NO);
 };
 
 // Creat progress bar window
@@ -445,6 +711,9 @@ function progressbar(callFunction) {
             if (progress == 1 * i) {
                 progressWindow.updateProgress();
                 progress += 5;
+                // $.sleep (250); // waits 2 seconds
+                // app.refresh();
+                
             }
             progressWindow.strDesc.stProgress.text = processingStr + (i + 1) + " / " + layers.length + "...";
             // progressWindow.text = ("Processing: " + (i + 1) + " / " + layers.length + "...");
@@ -465,6 +734,7 @@ function progressbar(callFunction) {
         }
         // when done
         progressWindow.isDone = true;
+        progressWindow.hideWindow();
         progressWindow.close();
 
         // Allows for cancel without feedback message

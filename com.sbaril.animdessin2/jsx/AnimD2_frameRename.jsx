@@ -29,16 +29,7 @@ $.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 // Globals
 //=================================================================
 
-// Localize strings
-var strAlertSpecifyName = localize("$$$/JavaScripts/LayerCompsToABFiles/SpecifyDestination=Please specify destination.");
-var strAlertRename = localize("$$$/Actions/Event/Rename");
-var strAlertFailure = localize("$$$/AdobePlugin/Shared/failure");
-var renameFrameTitleStr = localize(locRenameFrameTitle);
-var newNameStr = localize(locRenameFrameNewName);
-var alertNameStr = localize(locRenameFrameAlertName);
-var applyToSelectedStr = localize(locRenameFrameApplySelected);
-var cancelBtnStr = localize(locRenameFrameCancelBtn);
-var okBtnStr = localize(locRenameFrameOkBtn);
+//Local See AnimD2_frameRenam.jsx
 
 // ok and cancel button
 var runButtonID = 1;
@@ -194,4 +185,4 @@ frameRename.main = function () {
     main();
 };
 
-app.activeDocument.suspendHistory(locRenameFrameTitle, 'frameRename.main()');
+app.activeDocument.suspendHistory(localize(locRenameFrameTitle), 'frameRename.main()');

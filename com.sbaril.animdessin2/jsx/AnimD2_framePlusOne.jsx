@@ -75,4 +75,4 @@ framePlusOne.main = function () {
     applyToAllLayers(framePlusOne);
 };
 
-app.activeDocument.suspendHistory("Expose 1 frame more", 'framePlusOne.main()');
+app.activeDocument.suspendHistory(localize(locFramePlusOne), 'framePlusOne.main()');

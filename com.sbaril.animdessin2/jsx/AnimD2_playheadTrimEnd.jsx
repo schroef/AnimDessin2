@@ -53,4 +53,3 @@ playheadTrimEnd.main = function () {
 };
 
 app.activeDocument.suspendHistory("Trim end of frame(s) to playhead", 'playheadTrimEnd.main()');
-playheadTrimEnd.main();

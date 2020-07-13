@@ -77,4 +77,4 @@ framePlusTwo.main = function() {
     applyToAllLayers(framePlusTwo);
 };
 
-app.activeDocument.suspendHistory("Expose 2 frames more", 'framePlusTwo.main()');
+app.activeDocument.suspendHistory(localize(locFramePlusTwo), 'framePlusTwo.main()');

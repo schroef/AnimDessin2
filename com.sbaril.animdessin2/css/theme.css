@@ -2,12 +2,11 @@
 This stylesheet represents CC app styles
 Empty classes will be edited at runtime with dynamic app values
 */
-button
-{
+button {
     border:0px none;
     border-radius:4px;
     height:auto;
-    vertical-align:bottom;
+    vertical-align:middle;
     font-family:inherit;
     color:inherit; 
     font-size:2em;
@@ -20,8 +19,8 @@ input[type="radio"] {
     width:12px;
     height:12px;
     background-color: #AAAAAA;
-    //border-color: #AAAAAA;
-    //border-style:solid;
+    border-color: #AAAAAA;
+    border-style:solid;
     border-radius:6px;    
 }
 input[type="radio"] + label{

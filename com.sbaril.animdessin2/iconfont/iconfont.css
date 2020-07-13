@@ -2,8 +2,10 @@
 
 @font-face {
   font-family: "ad2toolbar";
-  src:url("fonts/ad2toolbar.eot");
-  src:url("fonts/ad2toolbar.eot?#iefix") format("embedded-opentype"),
+  /* src:url("fonts/ad2toolbar.eot");
+  src:url("fonts/ad2toolbar.eot?#iefix") format("embedded-opentype"), */
+  src:url("fonts/ad2toolbar.otf");
+  src:url("fonts/ad2toolbar.otf?#iefix") format("opentype"),
     url("fonts/ad2toolbar.woff") format("woff"),
     url("fonts/ad2toolbar.ttf") format("truetype"),
     url("fonts/ad2toolbar.svg#ad2toolbar") format("svg");
@@ -125,5 +127,14 @@
 }
 .icon-naviright:before {
   content: "B";
+}
+.icon-playheadsplit:before {
+  content: "C";
+}
+.icon-playheadprev:before {
+  content: "D";
+}
+.icon-playheadnext:before {
+  content: "E";
 }
 

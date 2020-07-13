@@ -91,4 +91,4 @@ colorGreen.main = function() {
     applyToAllLayers(colorGreen);
 };
 
-app.activeDocument.suspendHistory("Colorize the Video Frame in Green", 'colorGreen.main()');
+app.activeDocument.suspendHistory(localize(locColorGreen), 'colorGreen.main()');

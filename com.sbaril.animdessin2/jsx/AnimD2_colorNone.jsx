@@ -9,6 +9,11 @@
 
 //Make Photoshop the front most application
 app.bringToFront();
+docRef = app.activeDocument;
+
+// Call main function from getselected, we can reuse scripts
+var ScriptFilePath = Folder($.fileName).parent.fsName;
+$.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 
 ///////////////////////////////////////////////////
 // SETUP
@@ -54,8 +59,8 @@ function colorNone() {
     
     // Allows for cancel without feedback message
     } catch(e){
-        // if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
-        // else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
   }
 };
 //=========================================
@@ -65,6 +70,7 @@ function colorNone() {
 
 colorNone.main = function() {
     colorNone();
+    // applyToAllLayers(colorNone);
 };
 
-app.activeDocument.suspendHistory("UnColorize the Video Frame(s)", 'colorNone.main()');
+app.activeDocument.suspendHistory(localize(locColorNone), 'colorNone.main()');

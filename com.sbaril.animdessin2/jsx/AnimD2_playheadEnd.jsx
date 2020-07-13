@@ -54,4 +54,3 @@ playheadEnd.main = function () {
 };
 
 app.activeDocument.suspendHistory("Set end of workarea", 'playheadEnd.main()');
-playheadEnd.main();

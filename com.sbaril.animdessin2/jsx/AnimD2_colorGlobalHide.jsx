@@ -64,4 +64,4 @@ colorGlobalHide.main = function() {
     applyToAllLayers(colorGlobalHide);
 };
 
-app.activeDocument.suspendHistory("Hide Color overlay on Video Frame", 'colorGlobalHide.main()');
+app.activeDocument.suspendHistory(localize(locColorGlobalHide), 'colorGlobalHide.main()');

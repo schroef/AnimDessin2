@@ -144,7 +144,7 @@ AnimD2_newVideoGroup.main = function() {
 };
 
 //AnimD2_newVideoGroup.main();
-app.activeDocument.suspendHistory("New Video Group with a New Frame", 'AnimD2_newVideoGroup.main()');
+app.activeDocument.suspendHistory(localize(locNewVideoGroup), 'AnimD2_newVideoGroup.main()');
 
 // EOF
 

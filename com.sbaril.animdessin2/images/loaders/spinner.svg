@@ -1,0 +1,62 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 26 26" enable-background="new 0 0 32 32" xml:space="preserve" width="26" height="26">
+<circle opacity="0.65" fill-rule="evenodd" clip-rule="evenodd" cx="9" cy="7" r="3">
+  <animate attributeType="XML"
+      attributeName="fill"
+      from="#000" 
+      to="#FFF"
+      repeatCount ="indefinite"
+      fill = "freeze"
+      dur="1s"/>
+</circle>
+<circle opacity="0.65" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="17" cy="7" r="3">
+  <animate attributeType="XML"
+      attributeName="fill"
+      from="#000" 
+      to="#FFF"
+      begin = ".16666s"
+      repeatCount ="indefinite"
+      fill = "freeze"
+      dur="1s"/>
+</circle>
+<circle opacity="0.65" fill-rule="evenodd" clip-rule="evenodd" fill="#CCCCCC" cx="21" cy="13.5" r="3">
+  <animate attributeType="XML"
+      attributeName="fill"
+      from="#000" 
+      to="#FFF"
+      begin = ".333333332666666s"
+      repeatCount ="indefinite"
+      fill = "freeze"
+      dur="1s"/>
+</circle>
+<circle opacity="0.65" fill-rule="evenodd" clip-rule="evenodd" fill="#999999" cx="17" cy="20" r="3">
+  <animate attributeType="XML"
+      attributeName="fill"
+      from="#000" 
+      to="#FFF"
+      begin = ".499999999333332s"
+      repeatCount ="indefinite"
+      fill = "freeze"
+      dur="1s"/>
+</circle>
+<circle opacity="0.65" fill-rule="evenodd" clip-rule="evenodd" fill="#666666" cx="9" cy="20" r="3">
+  <animate attributeType="XML"
+      attributeName="fill"
+      from="#000" 
+      to="#FFF"
+      begin = ".666666665999998s"
+      repeatCount ="indefinite"
+      fill = "freeze"
+      dur="1s"/>
+</circle>
+<circle opacity="0.65" fill-rule="evenodd" clip-rule="evenodd" fill="#333333" cx="5" cy="13.5" r="3">
+  <animate attributeType="XML"
+      attributeName="fill"
+      from="#000" 
+      to="#FFF"
+      begin = ".833333332666664s"
+      repeatCount ="indefinite"
+      fill = "freeze"
+      dur="1s"/>
+</circle>
+</svg>

@@ -9,6 +9,11 @@
 
 //Make Photoshop the front most application
 app.bringToFront();
+docRef = app.activeDocument;
+
+// Call main function from getselected, we can reuse scripts
+var ScriptFilePath = Folder($.fileName).parent.fsName;
+$.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 
 ///////////////////////////////////////////////////
 // SETUP
@@ -66,7 +71,10 @@ function inBetweenNext() {
 //
 
 inBetweenNext.main = function() {
-    inBetweenNext();
+    // Does single selection
+    // inBetweenNext();
+    // Complete selection
+    applyToAllLayers(inBetweenNext);
 };
 
-app.activeDocument.suspendHistory("Move the InBetween in Next position", 'inBetweenNext.main()');
+app.activeDocument.suspendHistory(localize(locInBetweenNext), 'inBetweenNext.main()');

@@ -59,12 +59,12 @@
 
           <Geometry>
             <Size>
-              <Height>45</Height>
+              <Height>30</Height>
               <Width>1000</Width>
             </Size>
             <MinSize>
-              <Height>35</Height>
-              <Width>50</Width>
+              <Height>30</Height>
+              <Width>35</Width>
             </MinSize>
             <MaxSize>
               <Height>1400</Height>

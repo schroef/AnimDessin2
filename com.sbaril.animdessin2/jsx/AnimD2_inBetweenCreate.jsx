@@ -77,4 +77,4 @@ createInBetween.main = function() {
     applyToAllLayers(createInBetween);
 };
 
-app.activeDocument.suspendHistory("Create an InBetween", 'createInBetween.main()');
+app.activeDocument.suspendHistory(localize(locCreateInBetween), 'createInBetween.main()');

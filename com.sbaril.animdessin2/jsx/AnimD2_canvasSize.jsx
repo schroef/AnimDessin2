@@ -9,6 +9,11 @@
 
 //Make Photoshop the front most application
 app.bringToFront();
+docRef = app.activeDocument;
+
+// Call main function from getselected, we can reuse scripts
+var ScriptFilePath = Folder($.fileName).parent.fsName;
+$.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 
 ///////////////////////////////////////////////////
 // SETUP
@@ -50,7 +55,8 @@ AnimD2_canvasSize.main = function() {
     AnimD2_canvasSize();
 };
 
-app.activeDocument.suspendHistory("Set canvas size of document", 'AnimD2_canvasSize.main()');
+app.activeDocument.suspendHistory(localize(locCanvasSize), 'AnimD2_canvasSize.main()');
+
 // EOF
 
 "AnimD2_canvasSize.jsx"

@@ -63,7 +63,7 @@ AnimD2_newVideoGroupSelection.main = function() {
 };
 
 //AnimD2_newVideoGroupSelection.main();
-app.activeDocument.suspendHistory("New Video Group from Selection", 'AnimD2_newVideoGroupSelection.main()');
+app.activeDocument.suspendHistory(localize(locNewVideoGroupSelection), 'AnimD2_newVideoGroupSelection.main()');
 
 // EOF
 

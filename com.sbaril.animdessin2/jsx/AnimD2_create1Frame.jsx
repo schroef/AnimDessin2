@@ -10,6 +10,11 @@
 
 //Make Photoshop the front most application
 app.bringToFront();
+docRef = app.activeDocument;
+
+// Call main function from getselected, we can reuse scripts
+var ScriptFilePath = Folder($.fileName).parent.fsName;
+$.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 
 ///////////////////////////////////////////////////
 // SETUP
@@ -97,4 +102,4 @@ createTwoFrames.main = function() {
     createTwoFrames();
 };
 
-app.activeDocument.suspendHistory("Create a keyframe visible on 1 frame", 'createTwoFrames.main()');
+app.activeDocument.suspendHistory(localize(locCreate1Frame), 'createTwoFrames.main()');
