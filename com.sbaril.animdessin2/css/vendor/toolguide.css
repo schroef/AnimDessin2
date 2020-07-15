@@ -1169,7 +1169,7 @@ dd p::after {
     position: absolute;
     border-bottom: 1px dotted;
     margin-left: 4px;
-    margin-top: -0.55em;
+    margin-top: -0.35em;
     width: 100%;
 }
 /* dd p:nth-child(1)::after {
@@ -1184,17 +1184,21 @@ dd span {
     flex-shrink: 0;
     position: absolute;
     right: 20px;
-    margin-top: -20px;
+    margin-top: -24px;
+    /* margin-top: -20px; */
 }
 /* KEYCBOMBO ICONCS */
 span.kcmb-sh-al-lm {
-    width: 72px;
+    /* width: 72px; */
+    width: 48px;
 }
 span.kcmb-sh-lm {
-    width: 50px;
+    /* width: 50px; */
+    width: 34px;
 }
 span.kcmb-al-lm {
-    width: 40px;
+    /* width: 40px; */
+    width: 28px;
 }
 span.kcmb-lm {
     width: 14px;
@@ -1207,11 +1211,12 @@ span.kcmb-lm {
 }
 .kcmb-sh-al-lm::after {
     content: '';
-    width: 66px;
+    width: 48px;
+    /* width: 66px; */
     /* background-image: url(../../images/key-combos/kcmb-sh-al-lm@2x.png); */
-    -webkit-mask-image: url(../../images/key-combos/kcmb-sh-al-lm-02.svg);
-    mask-image: url(../../images/key-combos/kcmb-sh-al-lm-02.svg);
-    background: url(../../images/key-combos/kcmb-sh-al-lm-02.svg);
+    -webkit-mask-image: url(../../images/key-combos/kcmb-sh-al-lm-03.svg);
+    mask-image: url(../../images/key-combos/kcmb-sh-al-lm-03.svg);
+    background: url(../../images/key-combos/kcmb-sh-al-lm-03.svg);
     background-size: contain;
     background-repeat: no-repeat;
     background: var(--second);
@@ -1219,11 +1224,12 @@ span.kcmb-lm {
 }
 .kcmb-sh-lm::after {
     content: '';
-    width: 44px;
+    width: 32px;
+    /* width: 44px; */
     /* background-image: url(../../images/key-combos/kcmb-sh-lm@2x.png); */
-    -webkit-mask-image: url(../../images/key-combos/kcmb-sh-lm-02.svg);
-    mask-image: url(../../images/key-combos/kcmb-sh-lm-02.svg);
-    background: url(../../images/key-combos/kcmb-sh-lm-02.svg);
+    -webkit-mask-image: url(../../images/key-combos/kcmb-sh-lm-03.svg);
+    mask-image: url(../../images/key-combos/kcmb-sh-lm-03.svg);
+    background: url(../../images/key-combos/kcmb-sh-lm-03.svg);
     background-size: contain;
     background-repeat: no-repeat;
     background: var(--second);
@@ -1231,11 +1237,13 @@ span.kcmb-lm {
 }
 .kcmb-al-lm::after {
     content: '';
-    width: 35px;
+    width: 32px;
+
+    /* width: 35px; */
     /* background-image: url(../../images/key-combos/kcmb-al-lm@2x.png); */
-    -webkit-mask-image: url(../../images/key-combos/kcmb-al-lm-02.svg);
-    mask-image: url(../../images/key-combos/kcmb-al-lm-02.svg);
-    background: url(../../images/key-combos/kcmb-al-lm-02.svg);
+    -webkit-mask-image: url(../../images/key-combos/kcmb-al-lm-03.svg);
+    mask-image: url(../../images/key-combos/kcmb-al-lm-03.svg);
+    background: url(../../images/key-combos/kcmb-al-lm-03.svg);
     background-size: contain;
     background-repeat: no-repeat;
     background: var(--second);
@@ -1264,7 +1272,8 @@ dd:nth-of-type(even) span.k-icon {
 
 dd span.k-icon {
     height: 17px;
-    padding-top: 2px;
+    /* padding-top: 2px; */
+    padding-top: 4px;
 }
 
 /* dd span.k-icon:nth-child(2) {

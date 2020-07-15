@@ -34,7 +34,7 @@ AnimD2_setTimelinePanelOptions.main = function() {
 };
 
 AnimD2_setTimelinePanelOptions.main();
-// Does use history
+// Doesnt use history
 // app.activeDocument.suspendHistory("Set timeline Panel Options", 'AnimD2_setTimelinePanelOptions.main()');
 
 // EOF

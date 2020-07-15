@@ -47,6 +47,6 @@ function timelineRenderVideo() {
 timelineRenderVideo.main = function () {
   timelineRenderVideo();
 };
-
+// Doesnt use history
 //app.activeDocument.suspendHistory("Show / Hide the Timeline Panel", 'timelineRenderVideo.main()');
 timelineRenderVideo.main();

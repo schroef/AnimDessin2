@@ -31,16 +31,6 @@
         location.reload();
     }
 
-    // SHow/hide loader
-    function showLoader(visible) {
-        if (!visible) {
-            console.log("Hide loader");
-            $("#loaderBlock").hide();
-        } else {
-            console.log("Show loader");
-            $("#loaderBlock").show();
-        }
-    }
     // Sleeper
     function sleep(milliseconds) {
         console.log("sleep");
@@ -65,7 +55,6 @@
             for (var i = 2; i < myBtn.length; i++) {
                 myBtn[i].style.opacity = "1";
             }
-            /* myBtn.style.background = "none"; */
         }
 
     }
@@ -81,6 +70,7 @@
         });
     }
 
+    // Panel & New Doc should always be available > but we do check weither or not to show button highlighter
     var firstRun = false;
     function loadNoDoc(pPath) {
         var scriptPath = csInterface.getSystemPath(SystemPath.EXTENSION) + pPath;
@@ -94,23 +84,28 @@
 
     // Loads / executes a jsx file
     function loadJSXFile(pPath) {
-        checkOpenDoc();
-        // var count = Number;
-        // First countlayers, so we can show loader before app freezes due to script running
-        csInterface.evalScript("countLayers()", function (count) {
-            // Show loader
-            if (count > 30) {
-                $("#loaderBlock").show();
-                setTimeout(function () {
-                    var scriptPath = csInterface.getSystemPath(SystemPath.EXTENSION) + pPath;
-                    csInterface.evalScript('evalFile("' + scriptPath + '")', function () {
-                        $("#loaderBlock").hide();
-                    });
-                }, 100);
-                // Dont show loader
+        csInterface.evalScript("checkOpenDoc()", function (count) {    
+            if (count=="true") {
+                // var count = Number;
+                // First countlayers, so we can show loader before app freezes due to script running
+                csInterface.evalScript("countLayers()", function (count) {
+                    // Show loader
+                    if (count > 30) {
+                        $("#loaderBlock").show();
+                        setTimeout(function () {
+                            var scriptPath = csInterface.getSystemPath(SystemPath.EXTENSION) + pPath;
+                            csInterface.evalScript('evalFile("' + scriptPath + '")', function () {
+                                $("#loaderBlock").hide();
+                            });
+                        }, 100);
+                        // Dont show loader
+                    } else {
+                        var scriptPath = csInterface.getSystemPath(SystemPath.EXTENSION) + pPath;
+                        csInterface.evalScript('evalFile("' + scriptPath + '")');
+                    }
+                });
             } else {
-                var scriptPath = csInterface.getSystemPath(SystemPath.EXTENSION) + pPath;
-                csInterface.evalScript('evalFile("' + scriptPath + '")');
+                highlightNewDoc(true);
             }
         });
     }
@@ -670,7 +665,6 @@
         // Uses the XML string to build the menu
         csInterface.setContextMenu(flyoutXML(), contextHandler);
     }
-    // showLoader(false)
     $("#loaderBlock").hide();
     init();
     checkSettings();

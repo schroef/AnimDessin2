@@ -50,6 +50,6 @@ function showTimeline() {
 showTimeline.main = function () {
   showTimeline();
 };
-
+// Doesnt use history
 //app.activeDocument.suspendHistory("Show / Hide the Timeline Panel", 'showTimeline.main()');
 showTimeline.main();

@@ -361,7 +361,148 @@ function selLyr(LyrN, add) {
     adesc.putBoolean(charIDToTypeID("MkVs"), false);
     return executeAction(charIDToTypeID("slct"), adesc, DialogModes.NO);
 }
+///////////////////////////////////////////////////
+// Select Layer Rande by id add to selection
+// https://feedback.photoshop.com/photoshop_family/topics/ps-script-i-can-not-achieve-a-proper-continuous-selection
+// By Paul Riggot
+///////////////////////////////////////////////////
+function selectLayerById(LyrN, add) {
+    var ref = new ActionReference();
+    ref.putIdentifier(charIDToTypeID('Lyr '), LyrN);
+    var desc = new ActionDescriptor();
+    desc.putReference(charIDToTypeID("null"), ref);
+    if (add) desc.putEnumerated(stringIDToTypeID("selectionModifier"), stringIDToTypeID("selectionModifierType"), stringIDToTypeID("addToSelection"));
+    desc.putBoolean(charIDToTypeID("MkVs"), false);
+    try {
+        executeAction(charIDToTypeID("slct"), desc, DialogModes.NO);
+    } catch (e) {
+        alert(e)
+    }
+};
+///////////////////////////////////////////////////
+// Get Layer Kind
+// https://www.ps-scripts.com/viewtopic.php?p=43242#p43242
+// Get return layerkind by layerid
+///////////////////////////////////////////////////
+function getLayerKindByIndex( index ) {
+   var ref, desc, adjustmentDesc, layerSectionType;
+   ref = new ActionReference();
+   ref.putIndex(charIDToTypeID( "Lyr " ), index );
+   desc =  executeActionGet(ref);
+   var layerType = typeIDToStringID(desc.getEnumerationValue( stringIDToTypeID( 'layerSection' )));
+   if( layerType != 'layerSectionContent' ) return;// return if layerSet
+   if( desc.hasKey( stringIDToTypeID( 'textKey' ) ) ) return LayerKind.TEXT;
+   if( desc.hasKey( stringIDToTypeID( 'smartObject' ) ) ) return LayerKind.SMARTOBJECT;// includes LayerKind.VIDEO
+   if( desc.hasKey( stringIDToTypeID( 'layer3D' ) ) ) return LayerKind.LAYER3D;
+   if( desc.hasKey( stringIDToTypeID( 'videoLayer' ) ) ) return LayerKind.VIDEO;
+   if( desc.hasKey( stringIDToTypeID( 'adjustment' ) ) ){
+      switch(typeIDToStringID(desc.getList (stringIDToTypeID('adjustment')).getClass (0))){
+         case 'photoFilter' : return LayerKind.PHOTOFILTER;
+         case 'solidColorLayer' : return LayerKind.SOLIDFILL;
+         case 'gradientMapClass' : return LayerKind.GRADIENTMAP;
+         case 'gradientMapLayer' : return LayerKind.GRADIENTFILL;
+         case 'hueSaturation' : return LayerKind.HUESATURATION;
+         case 'colorLookup' : return udefined; //this does not exist and errors with getting layer kind
+         case 'colorBalance' : return LayerKind.COLORBALANCE;
+         case 'patternLayer' : return LayerKind.PATTERNFILL;
+         case 'invert' : return LayerKind.INVERSION;
+         case 'posterization' : return LayerKind.POSTERIZE;
+         case 'thresholdClassEvent' : return LayerKind.THRESHOLD;
+         case 'blackAndWhite' : return LayerKind.BLACKANDWHITE;
+         case 'selectiveColor' : return LayerKind.SELECTIVECOLOR;
+         case 'vibrance' : return LayerKind.VIBRANCE;
+         case 'brightnessEvent' : return LayerKind.BRIGHTNESSCONTRAST;
+         case  'channelMixer' : return LayerKind.CHANNELMIXER;
+         case 'curves' : return LayerKind.CURVES;
+         case 'exposure' : return LayerKind.EXPOSURE;
+         // if not one of the above adjustments return - adjustment layer type
+         default : return typeIDToStringID(desc.getList (stringIDToTypeID('adjustment')).getClass (0));
+      }
+   }
+    return LayerKind.NORMAL;// if we get here normal should be the only choice left.
+};
 
+/// ////////////////////////////////////////////////////////////////////////////
+// by Paul Riggot 2012
+// http://web.archive.org/web/20141205220915/https://forums.adobe.com/message/4897995
+// Find available keys per layer
+
+function findKeys() {
+    var ref = new ActionReference();  
+    ref.putEnumerated( zTID("Lyr "), zTID("Ordn"), zTID("Trgt") );   
+    var desc = executeActionGet(ref);  
+    // $.writeln(desc);  
+    var c = desc.count  
+    if(desc.typename == 'ActionReference'){  
+        var c = desc.count;  
+        for(var i=0;i<c;i++){ //enumerate reference. use getForm() to determine which get method to use  
+        // $.writeln('AR '+zeroPad( i+1, 2 )+' = '+desc.getReference(i).getIndex());   
+        var AR = 'AR '+zeroPad( i+1, 2 )+' = '+desc.getReference(i).getIndex();   
+        // document.getElementById("error").innerHTML = AR;   
+        alert(AR);   
+        }  
+    }  
+    if(desc.typename == 'ActionList'){  
+        var c = desc.count;  
+        for(var i=0;i<c;i++){ //enumerate list  
+        // $.writeln('AL '+zeroPad( i+1, 2 )+' = '+desc.getType(i)/* added desc.getPath(i) for aliastype */ +' - ' + typeIDToStringID(desc.getClass (i)));  
+        var AL = 'AL '+zeroPad( i+1, 2 )+' = '+desc.getType(i)/* added desc.getPath(i) for aliastype */ +' - ' + typeIDToStringID(desc.getClass (i));  
+        // document.getElementById("error").innerHTML = L ;   
+        alert(AL);   
+        }  
+    }  
+    if(desc.typename == 'ActionDescriptor'){  
+        var c = desc.count;  
+        for(var i=0;i<c;i++){ //enumerate descriptor's keys  
+        // $.writeln('AD '+zeroPad( i+1, 2 )+' = '+IDTz(desc.getKey(i)) +' : '+desc.getType(desc.getKey(i)));
+        var AD = 'AD '+zeroPad( i+1, 2 )+' = '+IDTz(desc.getKey(i)) +' : '+desc.getType(desc.getKey(i));   
+        alert(AD)
+        }  
+    }  
+    function IDTz(id){  
+        try {  
+            var res = typeIDToStringID( id );  
+            if(res == '' ){  
+                var res = typeIDToCharID( id );  
+            }  
+        }catch(e){}  
+        return res;  
+    }  
+    function zTID( s ){  
+        if( s.length == 4 ) var res = charIDToTypeID( s );  
+        if( s.length > 4 ) var res = stringIDToTypeID( s );  
+        return res;  
+    }  
+    function zeroPad(num,pad) {  
+        var z = Math.pow(10,Number(pad))  
+        return num <= z ? ((Number( num) + z).toString().substr(1)): num  
+    } 
+}
+
+function getTimelineLength() {
+    var ref = new ActionReference();
+    ref.putProperty(charIDToTypeID('Prpr'), stringIDToTypeID('duration'));
+    ref.putClass(stringIDToTypeID('timeline'));
+    var desc = new ActionDescriptor();
+    desc.putReference(charIDToTypeID('null'), ref);
+    var TC = executeAction(charIDToTypeID('getd'), desc, DialogModes.NO);
+    TC = TC.getObjectValue(stringIDToTypeID('duration'));
+    var M = 0;
+    try {
+        M = TC.getInteger(stringIDToTypeID('minutes'));
+    } catch (e) {}
+    var S = 0;
+    try {
+        S = TC.getInteger(stringIDToTypeID('seconds'));
+    } catch (e) {}
+    var F = TC.getInteger(stringIDToTypeID('frame'));
+    var FR = TC.getInteger(stringIDToTypeID('frameRate'));
+    var A = new Array();
+    A.push([M+':'+S+':'+F+':'+FR+':']);
+    return A;
+}
+
+/// ////////////////////////////////////////////////////////////////////////////
 
 /// ////////////////////////////////////////////////////////////////////////////
 // Function: Combination of applyToAllLayersAMIdx & getLayerInfo
@@ -394,13 +535,14 @@ function applyToAllLayersInfo(docRef) {
                 // selectedLayers.push(desc.getReference(i).getIndex() + 1)
                 lyrIndex = desc.getReference(i).getIndex() + 1;
             }
-
             // Added from getLayerInfo
             var lyrRef = new ActionReference();
             lyrRef.putIndex(charIDToTypeID("Lyr "), lyrIndex)
             var lyrDesc = executeActionGet(lyrRef);
+            // alert(lyrDesc.getInteger(stringIDToTypeID("layerKind")))
             var Id = lyrDesc.getInteger(stringIDToTypeID("layerID"));
             lyr.AMid = Id;
+            lyr.lyrKind = getLayerKindByIndex(lyrIndex);
             lyr.lyrIndex = lyrIndex;
             selectedLayers.push(lyr);
         }
@@ -554,10 +696,11 @@ function applyToAllLayers(callFunction) {
         // app.refresh();
         for (var i = 0; i < layerInfo.length; i++) {
             selectById(layerInfo[i].AMid);
-            callFunction();
+            callFunction(layerInfo[i].lyrKind);
         }
         for (var i = 0; i < layerInfo.length; i++) {
             selLyr(layerInfo[i].lyrIndex, 1);
+            // selectLayerById(layerInfo[i].lyrIndex, 1)
         }
         // progressbar(callFunction);
     } else {
@@ -565,13 +708,14 @@ function applyToAllLayers(callFunction) {
         // Aprox 5s for 60 layers
         for (var i = 0; i < layerInfo.length; i++) {
             selectById(layerInfo[i].AMid);
-            callFunction();
+            callFunction(layerInfo[i].lyrKind);
         }
 
         // Reselect layers using list of total selected from start & LayerIndex
         // Slows down by aprox 1s with circa 50 layerss
         for (var i = 0; i < layerInfo.length; i++) {
             selLyr(layerInfo[i].lyrIndex, 1);
+            // selectLayerById(layerInfo[i].lyrIndex, true)
         }
     }
     // return layerInfo.length

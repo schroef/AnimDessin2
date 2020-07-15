@@ -27,23 +27,30 @@ $.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 function cTID(s) {return app.charIDToTypeID(s);};
 function sTID(s) {return app.stringIDToTypeID(s);};
 
-function AnimD2_duplicateFrame() {
+function AnimD2_duplicateFrame(lyrKind) {
 
-    ErrStrs = {}; 
-    ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
+    ErrStrs = {};
+    ErrStrs.USER_CANCELLED = localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
     try {
+
+        // alert(lyrKind)
         // Duplicate
         function step1(enabled, withDialog) {
-            if (enabled != undefined && !enabled)
-                return;
-            var dialogMode = (withDialog ? DialogModes.ALL : DialogModes.NO);
-            var desc1 = new ActionDescriptor();
-            var ref1 = new ActionReference();
-            ref1.putEnumerated(cTID('Lyr '), cTID('Ordn'), cTID('Trgt'));
-            desc1.putReference(cTID('null'), ref1);
-            desc1.putInteger(cTID('Vrsn'), 5);
-            executeAction(cTID('Dplc'), desc1, dialogMode);
-        };
+            // check if video layer
+            if (lyrKind == LayerKind.VIDEO) {
+                executeAction(sTID('duplicateFrame'), undefined, DialogModes.NO);
+            } else {
+                if (enabled != undefined && !enabled)
+                    return;
+                var dialogMode = (withDialog ? DialogModes.ALL : DialogModes.NO);
+                var desc1 = new ActionDescriptor();
+                var ref1 = new ActionReference();
+                ref1.putEnumerated(cTID('Lyr '), cTID('Ordn'), cTID('Trgt'));
+                desc1.putReference(cTID('null'), ref1);
+                desc1.putInteger(cTID('Vrsn'), 5);
+                executeAction(cTID('Dplc'), desc1, dialogMode);
+            }
+        }
 
         // Next Frame
         function step2(enabled, withDialog) {
@@ -53,16 +60,19 @@ function AnimD2_duplicateFrame() {
             var desc1 = new ActionDescriptor();
             desc1.putBoolean(sTID("toNextWholeSecond"), false);
             executeAction(sTID('nextFrame'), desc1, dialogMode);
-        };
+        }
 
         step1(); // Duplicate
         step2(); // Next Frame
 
-    // Allows for cancel without feedback message
-    } catch(e){
-        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
-        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
-  }
+        // Allows for cancel without feedback message
+    } catch (e) {
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED) != -1) {
+            ;
+        } else {
+            alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));
+        }
+    }
 };
 
 //=========================================
@@ -71,7 +81,7 @@ function AnimD2_duplicateFrame() {
 //
 
 AnimD2_duplicateFrame.main = function() {
-    AnimD2_duplicateFrame();
+    applyToAllLayers(AnimD2_duplicateFrame);
 };
 
 //AnimD2_duplicateFrame.main();

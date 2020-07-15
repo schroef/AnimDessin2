@@ -39,8 +39,9 @@ AnimD2_gotoInTimeLine.main = function() {
     AnimD2_gotoInTimeLine();
 };
 
-//AnimD2_gotoInTimeLine.main();
-app.activeDocument.suspendHistory(localize(locGoToInTimeline), 'AnimD2_gotoInTimeLine.main()');
+AnimD2_gotoInTimeLine.main();
+// History doesnt for this
+// app.activeDocument.suspendHistory(localize(locGoToInTimeline), 'AnimD2_gotoInTimeLine.main()');
 
 // EOF
 

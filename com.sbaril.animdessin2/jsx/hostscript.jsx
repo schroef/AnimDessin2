@@ -27,7 +27,7 @@ function checkOpenDoc(){
 function countLayers() {
     // alert("Somehow keeps running")
     // alert(app.documents.length)
-    // try {
+    try {
     // if (app.documents.length != 0) {
         // if (app.activeDocument > 0) {
             docRef = app.activeDocument;
@@ -67,14 +67,8 @@ function countLayers() {
                 }
             }
             return selectedLayers.length
-
-        // } else { // No active document
-        //     alert("AnimDessin2 needs an open document.")
-        //     return false
-        // }
-        // return app.documents.length
-    // } catch (e) {
+    } catch (e) {
     //     console.log("Error: " + e)
-// }
+}
 }
 // var layers = countLayers(docRef)
