@@ -5,7 +5,7 @@
     'use strict';
 
     var csInterface = new CSInterface();
-    var gExtensionId = "com.sbaril.animdessin2.Panel2";
+    var gExtensionId = "com.sbaril.animdessin2.Guides";
 
     function Persistent(inOn) { // keep session stored
 
@@ -68,7 +68,7 @@
                 localStorage.setItem('toggleVideo', "videoInActive");
                 $("#guide").addClass("Active").removeClass("InActive");
                 $("#video").addClass("InActive").removeClass("Active");
-                csInterface.resizeContent(400, 500);
+                csInterface.resizeContent(320, 500);
                 csInterface.updateContextMenuItem("toggleGuide", true, true);
                 csInterface.updateContextMenuItem("toggleVideo", true, false);
 
@@ -78,11 +78,11 @@
             csInterface.closeExtension();
         }
         if (item == "videoMock") {
-            csInterface.resizeContent(345, 480);
+            csInterface.resizeContent(320, 500);
             callVideoMock();
         }
         if (item == "toolMock") {
-            csInterface.resizeContent(345, 500);
+            csInterface.resizeContent(320, 500);
             callToolMock();
         }
     }
@@ -107,7 +107,8 @@
         $("#btn_closeGuide").click(toggleGuide);
         $("#btn_closeVideo").click(toggleGuide);
 
-
+        if (navigator.platform === "MacIntel") $("#newDocSet").addClass("kcmb-sh-al-osx-lm");
+        if (navigator.platform === "Win32") $("#newDocSet").addClass("kcmb-sh-al-win-lm");
 
         ////////////////////////////////////////////////////////////////////////////////
         // ANIMDESSIN TOOLGUIDE FLYOUT MENU
@@ -119,8 +120,20 @@
 
 
         function flyoutXML() {
-            return "<Menu> \n<MenuItem Id=\"toolMock\" Label=\"" + (getLocalize().flyout_toolguide) + "\" Checkable=\"true\" Checked=\"false\"/> \n<MenuItem Id=\"videoMock\" Label=\"" + (getLocalize().flyout_videoguide) + "\" Checkable=\"true\" Checked=\"false\"/> \n <MenuItem Label=\"---\" /> \n<MenuItem Id=\"closePanel\" Label=\"" + (getLocalize().flyout_closepanel) + "\" Checkable=\"true\" Checked=\"false\"/> \n</Menu>";
-        };
+            return (
+            '<Menu> \n<MenuItem Id="AboutItemAnimD2" Label="' +
+                getLocalize().flyout_about +
+                '"/> \n<MenuItem Id="OpenWebsiteAnimD2" Label="' +
+                getLocalize().flyout_onlineinfo +
+                '"/> \n <MenuItem Label="---" /> <MenuItem Id="toolMock" Label="' +
+                getLocalize().flyout_toolguide + 
+                '" Checkable="true" Checked="false"/> \n<MenuItem Id="videoMock" Label="' +
+                getLocalize().flyout_videoguide +
+                '" Checkable="true" Checked="false"/> \n<MenuItem Label="---" /> \n<MenuItem Id="closePanel" Label="' +
+                getLocalize().flyout_closepanel + 
+                '" Checkable="true" Checked="false"/>\n</Menu>'
+            )
+        }
 
         // Uses the XML string to build the menu
         csInterface.setPanelFlyoutMenu(flyoutXML());
@@ -131,6 +144,14 @@
             // the event's "data" attribute is an object, which contains "menuId" and "menuName"
             console.dir(e);
             switch (e.data.menuId) {
+                case "AboutItemAnimD2":
+                    csInterface.evalScript("alert('AnimDessin2 \\nVersion 2.2.1\\nPhotoshop CC 2015 to 2018+\\n©2018 Stephane Baril\\nhttp://www.sbaril.me');");
+                    break;
+                case "OpenWebsiteAnimD2":
+                    csInterface.openURLInDefaultBrowser("https://www.youtube.com/playlist?list=PLnNlOgl2T6GAsPqZDaf57TAqBa6ltL_gQ");
+                    LoseFocus();
+                    // csInterface.openURLInDefaultBrowser("http://www.sbaril.me/links"); LoseFocus();
+                    break;
                 case "videoMock":
                     toggleGuide("videoMock");
                     break;
@@ -151,20 +172,29 @@
 
         // Righclick Context Menu > uses exact same structure for now. easier acces
         function contextHandler(menuId) {
-            if (menuId == "toggleGuide") {
-                toggleGuide("guide");
-            }
-            if (menuId == "videoMock") {
-                toggleGuide("videoMock");
-            }
-            if (menuId == "toolMock") {
-                toggleGuide("toolMock");
-            }
-            if (menuId == "closePanel") {
-                toggleGuide("close");
+            switch (menuId) {
+                case "AboutItemAnimD2":
+                    csInterface.evalScript("alert('AnimDessin2 \\nVersion 2.2.1\\nPhotoshop CC 2015 to 2018+\\n©2018 Stephane Baril\\nhttp://www.sbaril.me');");
+                    break;
+                case "OpenWebsiteAnimD2":
+                    csInterface.openURLInDefaultBrowser("https://www.youtube.com/playlist?list=PLnNlOgl2T6GAsPqZDaf57TAqBa6ltL_gQ");
+                    LoseFocus();
+                    // csInterface.openURLInDefaultBrowser("http://www.sbaril.me/links");
+                    LoseFocus();
+                    break;
+                case "videoMock":
+                    toggleGuide("videoMock");
+                    break;
+                case "toolMock":
+                    toggleGuide("toolMock");
+                    break;
+                case "closePanel":
+                    toggleGuide("close");
+                    break;
             }
         }
         // Uses the XML string to build the menu
+        // csInterface.setContextMenu(flyoutXML(), contextHandler);
         csInterface.setContextMenu(flyoutXML(), contextHandler);
 
     }

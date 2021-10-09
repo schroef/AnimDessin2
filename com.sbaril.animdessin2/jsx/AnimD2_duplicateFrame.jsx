@@ -81,7 +81,8 @@ function AnimD2_duplicateFrame(lyrKind) {
 //
 
 AnimD2_duplicateFrame.main = function() {
-    applyToAllLayers(AnimD2_duplicateFrame);
+    AnimD2_duplicateFrame();
+    // applyToAllLayers(AnimD2_duplicateFrame);
 };
 
 //AnimD2_duplicateFrame.main();

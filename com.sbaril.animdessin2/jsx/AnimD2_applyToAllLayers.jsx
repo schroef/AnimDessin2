@@ -25,286 +25,406 @@
 locPhotoshopversionAlert = {
     en: "Photoshop versions before CS2 are not supported!",
     fr: "Les versions de Photoshop avant CS2 ne sont pas prises en charge!",
-    nl: "Photoshop-versies v\u00F3\u00F3r CS2 worden niet ondersteund!"
+    nl: "Photoshop-versies v\u00F3\u00F3r CS2 worden niet ondersteund!",
+    ch: "不支持 CS2 之前的 Photoshop 版本"
 };
 // Progress Bar Dialog
 locPbarProgressTitle = {
     en: "Progress",
     fr: "Le progr\u00E8s",
-    nl: "Vooruitgang"
+    nl: "Vooruitgang",
+    ch: "进展"
 };
 locPbarESCcancel = {
     en: "[ESC] cancels",
     fr: "[ESC] annule",
-    nl: "[ESC] annuleert"
+    nl: "[ESC] annuleert",
+    ch: "[ESC] 取消",
 };
 locPbarWait = {
     en: "Please wait...",
     fr: "S'il vous pla\u00EEt, attendez...",
-    nl: "Een moment..."
+    nl: "Een moment...",
+    ch: "请稍等..."
 };
 locPbarInit = {
     en: "Initializing...",
     fr: "Initialisation ...",
-    nl: "Bezig met initialiseren ..."
+    nl: "Initialiseren ...",
+    ch: "初始化..."
 };
 locPbarProcessing = {
     en: "Processing ",
     fr: "En traitement ",
-    nl: "Verwerken "
+    nl: "Verwerken ",
+    ch: "洗印 "
 };
 locPbarReselectLayers = {
     en: "Reselecting layers ",
     fr: "S\u00E9lection de calques ",
-    nl: "Lagen selecteren "
+    nl: "Lagen selecteren ",
+    ch: "重新选择图层 "
 };
 Msg = {
     en: "",
     fr: "",
-    nl: ""
+    nl: "",
+    ch: ""
 };
 
 // Localize AnimD2_canvasSize.jsx
 locCanvasSize = {
     en: "Set canvas size of document",
     fr: "XXXX",
-    nl: "Stel canvasgrootte in van document"
+    nl: "Stel canvasgrootte in van document",
+    ch: "设置文档的画布大小"
 };
 // Localize AnimD2_colorBlue.jsx
 locColorBlue = {
     en: "Colorize the video frame in blue",
     fr: "Coloriser le cadre vid\u00E9o en bleue",
-    nl: "Kleurbedekking video frame in blauw"
+    nl: "Kleurbedekking video frame in blauw",
+    ch: "将视频帧着色为蓝色"
 };
 // Localize AnimD2_colorGlobalHide.jsx
 locColorGlobalHide = {
     en: "Hide all overlays",
     fr: "XXXX",
-    nl: "Verberg alle kleurbedekkingen"
+    nl: "Verberg alle kleurbedekkingen",
+    ch: "隐藏所有叠加层"
 };
 // Localize AnimD2_colorGlobalShow.jsx
 locColorGlobalShow = {
     en: "Show all overlays",
     fr: "XXXX",
-    nl: "Toon alle kleurbedekkingen"
+    nl: "Toon alle kleurbedekkingen",
+    ch: "显示所有叠加"
 };
 // Localize AnimD2_colorGreen.jsx
 locColorGreen = {
     en: "Colorize the video frame in Green",
     fr: "Coloriser le cadre vid\u00E9o en verte",
-    nl: "Kleurbedekking video frame in groen"
+    nl: "Kleurbedekking video frame in groen",
+    ch: "将视频帧着色为绿色"
 };
 // Localize AnimD2_colorNone.jsx
 locColorNone = {
     en: "Clear all layer effects",
     fr: "XXXX",
-    nl: "Verwijder alle laag effecten"
+    nl: "Verwijder alle laag effecten",
+    ch: "清除所有图层效果"
 };
 // Localize AnimD2_colorNoneFXHideAll.jsx
 locColorNoneFXHideAll = {
     en: "Hide all layers effects",
     fr: "XXXX",
-    nl: "Verberg alle laag effecten"
+    nl: "Verberg alle laag effecten",
+    ch: "隐藏所有图层效果"
 };
 // Localize AnimD2_colorNoneFXShowAll.jsx
 locColorNoneFXShowAll = {
     en: "Show all layers effects",
     fr: "XXXX",
-    nl: "Toon alle laag effecten"
+    nl: "Toon alle laag effecten",
+    ch: "显示所有图层效果"
 };
 // Localize AnimD2_colorOnlyClearColor.jsx
 locColorOnlyClearColor = {
     en: "Clear only color overlay from video frame",
     fr: "Effacer uniquement la superposition de couleurs de l'image vid\u00E9oo",
-    nl: "Verwijder alleen kleurbedekking van video frame"
+    nl: "Verwijder alleen kleurbedekking van video frame",
+    ch: "仅清除视频帧中的颜色叠加"
 };
 // Localize AnimD2_colorRed.jsx
 locColorRed = {
     en: "Colorize the video frame in red",
     fr: "Coloriser le cadre vid\u00E9o en rouge",
-    nl: "Kleurbedekking video frame in rood"
+    nl: "Kleurbedekking video frame in rood",
+    ch: "将视频帧着色为红色"
 };
 // Localize AnimD2_commentEdit.jsx
 locCommentEdit = {
     en: "Add or Edit a timeline comment",
     fr: "Ajouter ou modifier un commentaire",
-    nl: "Nieuwe of bewerk opmerkingen"
+    nl: "Nieuwe of bewerk opmerkingen",
+    ch: "添加或编辑时间线评论"
 };
 // Localize AnimD2_creat1Frame.jsx
 locCreate1Frame = {
     en: "Add 1 frame layer",
     fr: "Ajouter 1 couche de cadre",
-    nl: "1 frame laag toevoegen"
+    nl: "1 frame laag toevoegen",
+    ch: "添加1个框架层"
 };
 // Localize AnimD2_creat1FrameVideoLayer.jsx
 locCreate1FrameVideoLayer = {
     en: "Add 1 frame video layer",
     fr: "Ajouter 1 couche de vid\u00E9oo",
-    nl: "1 frame video laag toevoegen"
+    nl: "1 frame video laag toevoegen",
+    ch: "添加1帧视频层"
 };
 // Localize AnimD2_creat2Frame.jsx
 locCreate2Frames = {
     en: "Add 2 frame layer",
     fr: "Ajouter 2 couche de cadre",
-    nl: "2 frame laag toevoegen"
+    nl: "2 frame laag toevoegen",
+    ch: "添加2个框架层"
 };
 // Localize AnimD2_creat2FrameVideoLayer.jsx
 locCreate2FrameVideoLayer = {
     en: "Add 2 frame video layer",
     fr: "Ajouter 2 couche de vid\u00E9oo",
-    nl: "2 frame video laag toevoegen"
+    nl: "2 frame video laag toevoegen",
+    ch: "添加2帧视频层"
 };
 // Localize AnimD2_deleteFrame.jsx
 locDeleteFrame = {
     en: "Delete selected frame/layer",
     fr: "Supprimer le cadre/calque s\u00E9lectionn\u00E9",
-    nl: "Verwijder geselecteerde frame/laag"
+    nl: "Verwijder geselecteerde frame/laag",
+    ch: "删除选定的帧/层"
+};
+// Localize AnimD2_deleteFrameContent.jsx
+locDeleteFrameContent = {
+    en: "Delete content selected frame/layer",
+    fr: "Supprimer le cadre/calque s\u00E9lectionn\u00E9 de contenu",
+    nl: "Verwijder inhoud geselecteerde frame/laag",
+    ch: "删除内容选定的帧/层"
 };
 // Localize AnimD2_duplicateFrame.jsx
 locDuplicateFrame = {
     en: "Duplicate frame/layer",
     fr: "Cadre/calque en double",
-    nl: "Dupliceer frame/layer"
+    nl: "Dupliceer frame/layer",
+    ch: "复制帧/层"
 };
 // Localize AnimD2_frameMinusFive.jsx
 locFrameMinusFive = {
     en: "Expose 5 frames less",
     fr: "XXXXXXXXX",
-    nl: "Geef 5 frames minder weer"
+    nl: "Geef 5 frames minder weer",
+    ch: "少曝光 5 帧"
 };
 // Localize AnimD2_frameMinusOne.jsx
 locFrameMinusOne = {
     en: "Expose 1 frame less",
     fr: "XXXXXXXXX",
-    nl: "Geef 1 frame minder weer"
+    nl: "Geef 1 frame minder weer",
+    ch: "少曝光一帧"
 };
 // Localize AnimD2_frameMinusTen.jsx
 locFrameMinusTen = {
     en: "Expose 10 frames less",
     fr: "XXXXXXXXX",
-    nl: "Geef 10 frames minder weer"
+    nl: "Geef 10 frames minder weer",
+    ch: "少曝光 10 帧"
 };
 // Localize AnimD2_frameMinusTwo.jsx
 locFrameMinusTwo = {
     en: "Expose 2 frames less",
     fr: "XXXXXXXXX",
-    nl: "Geef 2 frames minder weer"
+    nl: "Geef 2 frames minder weer",
+    ch: "少曝光 2 帧"
 };
 // Localize AnimD2_framePlusFive.jsx
 locFramePlusFive = {
     en: "Expose 5 frames more",
     fr: "XXXXXXXXX",
-    nl: "Geef 5 frames meer weer"
+    nl: "Geef 5 frames meer weer",
+    en: "再曝光5帧"
 };
 // Localize AnimD2_frameMinusOne.jsx
 locFramePlusOne = {
     en: "Expose 1 frame more",
     fr: "XXXXXXXXX",
-    nl: "Geef 1 frame meer weer"
+    nl: "Geef 1 frame meer weer",
+    ch: "多曝光 1 帧"
 };
 // Localize AnimD2_frameMinusTen.jsx
 locFramePlusTen = {
     en: "Expose 10 frames more",
     fr: "XXXXXXXXX",
-    nl: "Geef 10 frames meer weer"
+    nl: "Geef 10 frames meer weer",
+    ch: "再曝光 10 帧"
 };
 // Localize AnimD2_frameMinusTwo.jsx
 locFramePlusTwo = {
     en: "Expose 2 frames more",
     fr: "XXXXXXXXX",
-    nl: "Geef 2 frames meer weer"
+    nl: "Geef 2 frames meer weer",
+    ch: "多曝光 2 帧"
 };
 // Localize AnimD2_frameRename.jsx
 // Rename Frame Dialog
 locRenameFrameTitle = {
     en: "Rename frame/Layer",
     fr: "Renommer le cadre/calque",
-    nl: "Frame/laag hernoemen"
+    nl: "Frame/laag hernoemen",
+    ch: "重命名框架/层"
 };
 locRenameFrameNewName = {
     en: "New name...",
     fr: "Nouveau nom...",
-    nl: "Nieuwe naam..."
+    nl: "Nieuwe naam...",
+    ch: "新名字..."
 };
 locRenameFrameAlertName = {
     en: "Please give a name",
     fr: "Veuillez donner un nom",
-    nl: "Geef een naam op"
+    nl: "Geef een naam op",
+    ch: "请给个名字"
 };
 locRenameFrameApplySelected = {
     en: "Apply to selection",
     fr: "Appliquer \u00E0 la s\u00E9lection",
-    nl: "Pas toe op selectie"
+    nl: "Pas toe op selectie",
+    ch: "适用于选择"
 };
 locRenameFrameCancelBtn = {
     en: "Cancel",
     fr: "Annuler",
-    nl: "Annuleer"
+    nl: "Annuleer",
+    ch: "取消"
 };
 locRenameFrameOkBtn = {
     en: "OK",
     fr: "OK",
-    nl: "OK"
+    nl: "OK",
+    ch: "好",
 };
 // Localize AnimD2_gotoInTimeLine.jsx
 locGoToInTimeline = {
     en: "Go to in timeline",
     fr: "XXXXXXXXX",
-    nl: "Ga naar in tijdslijn"
+    nl: "Ga naar in tijdslijn",
+    ch: "进入时间线"
 };
-// Localize AnimD2_inBetweenCreate.jsx
+// Localize AnimD2_inBetweenCreateAfter.jsx
 locCreateInBetween = {
     en: "Create an InBetween",
     fr: "XXXXXXXXX",
-    nl: "Voeg een InBetween toe"
+    nl: "Voeg een InBetween toe",
+    ch: "创建一个中间"
 };
 // Localize AnimD2_inBetweenNext.jsx
 locInBetweenNext = {
     en: "Move the InBetween to next position",
     fr: "XXXXXXXXX",
-    nl: "Verplaats de InBetween naar volgende positie"
+    nl: "Verplaats de InBetween naar volgende positie",
+    ch: "将中间移动到下一个位置"
 };
 // Localize AnimD2_inBetweenPrevious.jsx
 locInBetweenPrevious = {
     en: "Move the InBetween to previous position",
     fr: "XXXXXXXXX",
-    nl: "Verplaats de InBetween naar vorige positie"
+    nl: "Verplaats de InBetween naar vorige positie",
+    ch: "将中间移动到上一个位置"
 };
 // Localize AnimD2_newDoc.jsx
 locNewDoc = {
     en: "Create a timeline with a video group",
     fr: "XXXXXXXXX",
-    nl: "Cre\u00EBer tijdlijn met een video group "
+    nl: "Cre\u00EBer tijdslijn met een video groep",
+    ch: "使用视频组创建时间线"
 };
+
 // Localize AnimD2_newVideoGroup.jsx
 locNewVideoGroup = {
     en: "New video group with a blank frame",
     fr: "XXXXXXXXX",
-    nl: "Nieuwe video group met blanco frame "
+    nl: "Nieuwe video group met blanco frame",
+    ch: "带有空白帧的新视频组"
 };
 // Localize AnimD2_newVideoGroupSelection.jsx
 locNewVideoGroupSelection = {
     en: "New video group from selection",
     fr: "XXXXXXXXX",
-    nl: "Nieuwe video group van selectie"
+    nl: "Nieuwe video group van selectie",
+    ch: "选择的新视频组"
 };
 // Localize AnimD2_newVideoUnGroup.jsx
 locNewVideoUngroup = {
     en: "Ungroup selected video group",
     fr: "XXXXXXXXX",
-    nl: "Degroepeer geselecteerde video groep"
+    nl: "Degroepeer geselecteerde video groep",
+    ch: "取消对所选视频组的分组"
 };
 // Localize AnimD2_playheadSplit.jsx
 locPlayheadSplit = {
     en: "Split at playhead",
     fr: "XXXXXXXXX",
-    nl: "Splitsen bij afspeelknop"
+    nl: "Splitsen bij afspeelknop",
+    ch: "在播放头处拆分"
+};
+// Localize AnimD2_splitToFramesGroup.jsx
+locSplitToFramesGroup = {
+    en: "Split layer into 1 frames and make video group",
+    fr: "XXXXXXXXX",
+    nl: "Splits laag 1 franes en maak video groep",
+    ch: "将图层拆分为 1 帧并制作视频组"
 };
 // Localize AnimD2_playheadSplitGroup.jsx
 locPlayheadSplitGroup = {
     en: "Split at playhead and make video group",
     fr: "XXXXXXXXX",
-    nl: "Splitsen bij afspeelknop en video group maken"
+    nl: "Splitsen bij afspeelknop en video group maken",
+    ch: "在播放头处拆分并制作视频组"
+};
+// Localize AnimD2_playheadEnd.jsx
+locPlayheadEnd = {
+    en: "Set end of work area",
+    fr: "XXXXXXXXX",
+    nl: "Stel einde werkgebied in op afspeelknop",
+    ch: "设置工作区结束"
+};
+// Localize AnimD2_playheadStart.jsx
+locPlayheadStart = {
+    en: "Set start of work area",
+    fr: "XXXXXXXXX",
+    nl: "Stel begin werkgebied in op afspeelknop",
+    ch: "设置工作区的开始"
+};
+// Localize AnimD2_playheadTrimEnd.jsx
+locPlayheadTrimEnd = {
+    en: "Trim end of frame(s) to playhead",
+    fr: "XXXXXXXXX",
+    nl: "Einde frame/laag bijsnijden naar afspeelknop",
+    ch: "将帧尾修剪为播放头"
+};
+// Localize AnimD2_playheadTrimStart.jsx
+locPlayheadTrimStart = {
+    en: "Trim start of frame(s) to playhead",
+    fr: "XXXXXXXXX",
+    nl: "Begin frame/laag bijsnijden naar afspeelknop",
+    ch: "将帧的开头修剪为播放头"
+};
+// Localize AnimD2_timelineSetFrameRate.jsx
+locTimelineSetFrameRate = {
+    en: "Set timeline frame rate",
+    fr: "XXXXXXXXX",
+    nl: "Stel tijdslijn frame snelheid in",
+    ch: "设置时间线帧率"
+};
+// Localize AnimD2_timelineShowAllLayers.jsx
+locTimelineShowAllLayers = {
+    en: "Timeline show all layers",
+    fr: "XXXXXXXXX",
+    nl: "Toon alle lagen in tijdslijn",
+    ch: "时间轴显示所有图层"
+};
+// Localize AnimD2_timelineShowFavorites.jsx
+locTimelineShowFavorites = {
+    en: "Timeline show favorite",
+    fr: "XXXXXXXXX",
+    nl: "Toon favorieten in tijdslijn",
+    ch: "时间线节目最爱"
+};
+// Localize AnimD2_timelineShowSetFavorites.jsx
+locTimelineShowSetFavorites = {
+    en: "Timeline show set favorite",
+    fr: "XXXXXXXXX",
+    nl: "Toon ingestelde favorieten in tijdslijn",
+    ch: "时间线节目集最爱"
 };
 // // Localize AnimD2_playheadSplitGroup.jsx
 // locPlayheadNextEdit = {
@@ -384,42 +504,61 @@ function selectLayerById(LyrN, add) {
 // https://www.ps-scripts.com/viewtopic.php?p=43242#p43242
 // Get return layerkind by layerid
 ///////////////////////////////////////////////////
-function getLayerKindByIndex( index ) {
-   var ref, desc, adjustmentDesc, layerSectionType;
-   ref = new ActionReference();
-   ref.putIndex(charIDToTypeID( "Lyr " ), index );
-   desc =  executeActionGet(ref);
-   var layerType = typeIDToStringID(desc.getEnumerationValue( stringIDToTypeID( 'layerSection' )));
-   if( layerType != 'layerSectionContent' ) return;// return if layerSet
-   if( desc.hasKey( stringIDToTypeID( 'textKey' ) ) ) return LayerKind.TEXT;
-   if( desc.hasKey( stringIDToTypeID( 'smartObject' ) ) ) return LayerKind.SMARTOBJECT;// includes LayerKind.VIDEO
-   if( desc.hasKey( stringIDToTypeID( 'layer3D' ) ) ) return LayerKind.LAYER3D;
-   if( desc.hasKey( stringIDToTypeID( 'videoLayer' ) ) ) return LayerKind.VIDEO;
-   if( desc.hasKey( stringIDToTypeID( 'adjustment' ) ) ){
-      switch(typeIDToStringID(desc.getList (stringIDToTypeID('adjustment')).getClass (0))){
-         case 'photoFilter' : return LayerKind.PHOTOFILTER;
-         case 'solidColorLayer' : return LayerKind.SOLIDFILL;
-         case 'gradientMapClass' : return LayerKind.GRADIENTMAP;
-         case 'gradientMapLayer' : return LayerKind.GRADIENTFILL;
-         case 'hueSaturation' : return LayerKind.HUESATURATION;
-         case 'colorLookup' : return udefined; //this does not exist and errors with getting layer kind
-         case 'colorBalance' : return LayerKind.COLORBALANCE;
-         case 'patternLayer' : return LayerKind.PATTERNFILL;
-         case 'invert' : return LayerKind.INVERSION;
-         case 'posterization' : return LayerKind.POSTERIZE;
-         case 'thresholdClassEvent' : return LayerKind.THRESHOLD;
-         case 'blackAndWhite' : return LayerKind.BLACKANDWHITE;
-         case 'selectiveColor' : return LayerKind.SELECTIVECOLOR;
-         case 'vibrance' : return LayerKind.VIBRANCE;
-         case 'brightnessEvent' : return LayerKind.BRIGHTNESSCONTRAST;
-         case  'channelMixer' : return LayerKind.CHANNELMIXER;
-         case 'curves' : return LayerKind.CURVES;
-         case 'exposure' : return LayerKind.EXPOSURE;
-         // if not one of the above adjustments return - adjustment layer type
-         default : return typeIDToStringID(desc.getList (stringIDToTypeID('adjustment')).getClass (0));
-      }
-   }
-    return LayerKind.NORMAL;// if we get here normal should be the only choice left.
+function getLayerKindByIndex(index) {
+    var ref, desc, adjustmentDesc, layerSectionType;
+    ref = new ActionReference();
+    ref.putIndex(charIDToTypeID("Lyr "), index);
+    desc = executeActionGet(ref);
+    var layerType = typeIDToStringID(desc.getEnumerationValue(stringIDToTypeID('layerSection')));
+    if (layerType != 'layerSectionContent') return; // return if layerSet
+    if (desc.hasKey(stringIDToTypeID('textKey'))) return LayerKind.TEXT;
+    if (desc.hasKey(stringIDToTypeID('smartObject'))) return LayerKind.SMARTOBJECT; // includes LayerKind.VIDEO
+    if (desc.hasKey(stringIDToTypeID('layer3D'))) return LayerKind.LAYER3D;
+    if (desc.hasKey(stringIDToTypeID('videoLayer'))) return LayerKind.VIDEO;
+    if (desc.hasKey(stringIDToTypeID('adjustment'))) {
+        switch (typeIDToStringID(desc.getList(stringIDToTypeID('adjustment')).getClass(0))) {
+            case 'photoFilter':
+                return LayerKind.PHOTOFILTER;
+            case 'solidColorLayer':
+                return LayerKind.SOLIDFILL;
+            case 'gradientMapClass':
+                return LayerKind.GRADIENTMAP;
+            case 'gradientMapLayer':
+                return LayerKind.GRADIENTFILL;
+            case 'hueSaturation':
+                return LayerKind.HUESATURATION;
+            case 'colorLookup':
+                return udefined; //this does not exist and errors with getting layer kind
+            case 'colorBalance':
+                return LayerKind.COLORBALANCE;
+            case 'patternLayer':
+                return LayerKind.PATTERNFILL;
+            case 'invert':
+                return LayerKind.INVERSION;
+            case 'posterization':
+                return LayerKind.POSTERIZE;
+            case 'thresholdClassEvent':
+                return LayerKind.THRESHOLD;
+            case 'blackAndWhite':
+                return LayerKind.BLACKANDWHITE;
+            case 'selectiveColor':
+                return LayerKind.SELECTIVECOLOR;
+            case 'vibrance':
+                return LayerKind.VIBRANCE;
+            case 'brightnessEvent':
+                return LayerKind.BRIGHTNESSCONTRAST;
+            case 'channelMixer':
+                return LayerKind.CHANNELMIXER;
+            case 'curves':
+                return LayerKind.CURVES;
+            case 'exposure':
+                return LayerKind.EXPOSURE;
+                // if not one of the above adjustments return - adjustment layer type
+            default:
+                return typeIDToStringID(desc.getList(stringIDToTypeID('adjustment')).getClass(0));
+        }
+    }
+    return LayerKind.NORMAL; // if we get here normal should be the only choice left.
 };
 
 /// ////////////////////////////////////////////////////////////////////////////
@@ -428,55 +567,58 @@ function getLayerKindByIndex( index ) {
 // Find available keys per layer
 
 function findKeys() {
-    var ref = new ActionReference();  
-    ref.putEnumerated( zTID("Lyr "), zTID("Ordn"), zTID("Trgt") );   
-    var desc = executeActionGet(ref);  
+    var ref = new ActionReference();
+    ref.putEnumerated(zTID("Lyr "), zTID("Ordn"), zTID("Trgt"));
+    var desc = executeActionGet(ref);
     // $.writeln(desc);  
-    var c = desc.count  
-    if(desc.typename == 'ActionReference'){  
-        var c = desc.count;  
-        for(var i=0;i<c;i++){ //enumerate reference. use getForm() to determine which get method to use  
-        // $.writeln('AR '+zeroPad( i+1, 2 )+' = '+desc.getReference(i).getIndex());   
-        var AR = 'AR '+zeroPad( i+1, 2 )+' = '+desc.getReference(i).getIndex();   
-        // document.getElementById("error").innerHTML = AR;   
-        alert(AR);   
-        }  
-    }  
-    if(desc.typename == 'ActionList'){  
-        var c = desc.count;  
-        for(var i=0;i<c;i++){ //enumerate list  
-        // $.writeln('AL '+zeroPad( i+1, 2 )+' = '+desc.getType(i)/* added desc.getPath(i) for aliastype */ +' - ' + typeIDToStringID(desc.getClass (i)));  
-        var AL = 'AL '+zeroPad( i+1, 2 )+' = '+desc.getType(i)/* added desc.getPath(i) for aliastype */ +' - ' + typeIDToStringID(desc.getClass (i));  
-        // document.getElementById("error").innerHTML = L ;   
-        alert(AL);   
-        }  
-    }  
-    if(desc.typename == 'ActionDescriptor'){  
-        var c = desc.count;  
-        for(var i=0;i<c;i++){ //enumerate descriptor's keys  
-        // $.writeln('AD '+zeroPad( i+1, 2 )+' = '+IDTz(desc.getKey(i)) +' : '+desc.getType(desc.getKey(i)));
-        var AD = 'AD '+zeroPad( i+1, 2 )+' = '+IDTz(desc.getKey(i)) +' : '+desc.getType(desc.getKey(i));   
-        alert(AD)
-        }  
-    }  
-    function IDTz(id){  
-        try {  
-            var res = typeIDToStringID( id );  
-            if(res == '' ){  
-                var res = typeIDToCharID( id );  
-            }  
-        }catch(e){}  
-        return res;  
-    }  
-    function zTID( s ){  
-        if( s.length == 4 ) var res = charIDToTypeID( s );  
-        if( s.length > 4 ) var res = stringIDToTypeID( s );  
-        return res;  
-    }  
-    function zeroPad(num,pad) {  
-        var z = Math.pow(10,Number(pad))  
-        return num <= z ? ((Number( num) + z).toString().substr(1)): num  
-    } 
+    var c = desc.count
+    if (desc.typename == 'ActionReference') {
+        var c = desc.count;
+        for (var i = 0; i < c; i++) { //enumerate reference. use getForm() to determine which get method to use  
+            // $.writeln('AR '+zeroPad( i+1, 2 )+' = '+desc.getReference(i).getIndex());   
+            var AR = 'AR ' + zeroPad(i + 1, 2) + ' = ' + desc.getReference(i).getIndex();
+            // document.getElementById("error").innerHTML = AR;   
+            alert(AR);
+        }
+    }
+    if (desc.typename == 'ActionList') {
+        var c = desc.count;
+        for (var i = 0; i < c; i++) { //enumerate list  
+            // $.writeln('AL '+zeroPad( i+1, 2 )+' = '+desc.getType(i)/* added desc.getPath(i) for aliastype */ +' - ' + typeIDToStringID(desc.getClass (i)));  
+            var AL = 'AL ' + zeroPad(i + 1, 2) + ' = ' + desc.getType(i) /* added desc.getPath(i) for aliastype */ + ' - ' + typeIDToStringID(desc.getClass(i));
+            // document.getElementById("error").innerHTML = L ;   
+            alert(AL);
+        }
+    }
+    if (desc.typename == 'ActionDescriptor') {
+        var c = desc.count;
+        for (var i = 0; i < c; i++) { //enumerate descriptor's keys  
+            // $.writeln('AD '+zeroPad( i+1, 2 )+' = '+IDTz(desc.getKey(i)) +' : '+desc.getType(desc.getKey(i)));
+            var AD = 'AD ' + zeroPad(i + 1, 2) + ' = ' + IDTz(desc.getKey(i)) + ' : ' + desc.getType(desc.getKey(i));
+            alert(AD)
+        }
+    }
+
+    function IDTz(id) {
+        try {
+            var res = typeIDToStringID(id);
+            if (res == '') {
+                var res = typeIDToCharID(id);
+            }
+        } catch (e) {}
+        return res;
+    }
+
+    function zTID(s) {
+        if (s.length == 4) var res = charIDToTypeID(s);
+        if (s.length > 4) var res = stringIDToTypeID(s);
+        return res;
+    }
+
+    function zeroPad(num, pad) {
+        var z = Math.pow(10, Number(pad))
+        return num <= z ? ((Number(num) + z).toString().substr(1)) : num
+    }
 }
 
 function getTimelineLength() {
@@ -498,12 +640,44 @@ function getTimelineLength() {
     var F = TC.getInteger(stringIDToTypeID('frame'));
     var FR = TC.getInteger(stringIDToTypeID('frameRate'));
     var A = new Array();
-    A.push([M+':'+S+':'+F+':'+FR+':']);
+    A.push([M + ':' + S + ':' + F + ':' + FR + ':']);
     return A;
 }
 
 /// ////////////////////////////////////////////////////////////////////////////
 
+// Select top layer
+function selLastLyr() {
+    var desc106 = new ActionDescriptor();
+    var ref59 = new ActionReference();
+    ref59.putEnumerated(cTID('Lyr '), cTID('Ordn'), cTID('Frnt'));
+    desc106.putReference(cTID('null'), ref59);
+    desc106.putBoolean(cTID('MkVs'), false);
+    var list30 = new ActionList();
+    list30.putInteger(14);
+    desc106.putList(cTID('LyrI'), list30);
+    executeAction(cTID('slct'), desc106, DialogModes.NO);
+}
+// Select bottom layer
+function selFirstLyr() {
+    var desc99 = new ActionDescriptor();
+    var ref55 = new ActionReference();
+    ref55.putEnumerated(cTID('Lyr '), cTID('Ordn'), cTID('Back'));
+    desc99.putReference(cTID('null'), ref55);
+    desc99.putBoolean(cTID('MkVs'), false);
+    var list26 = new ActionList();
+    list26.putInteger(1);
+    desc99.putList(cTID('LyrI'), list26);
+    executeAction(cTID('slct'), desc99, DialogModes.NO);
+}
+// Deselect all layer from start
+function deselectAll() {
+    var desc27 = new ActionDescriptor();
+    var ref16 = new ActionReference();
+    ref16.putEnumerated(cTID('Lyr '), cTID('Ordn'), cTID('Trgt'));
+    desc27.putReference(cTID('null'), ref16);
+    executeAction(sTID('selectNoLayers'), desc27, DialogModes.NO);
+}
 /// ////////////////////////////////////////////////////////////////////////////
 // Function: Combination of applyToAllLayersAMIdx & getLayerInfo
 // Usage: extract a list of index values of all the selected layers & ID layernamer
@@ -676,6 +850,14 @@ var GetTime = function GetTime() {
     return t.getMinutes() + ":" + t.getSeconds() + "." + t.getMilliseconds();
 }
 
+
+cTID = function(s) {
+    return app.charIDToTypeID(s);
+};
+sTID = function(s) {
+    return app.stringIDToTypeID(s);
+};
+
 ///////////////////////////////////////////////////
 // Apply to All Layers function
 // Applies function from button to single / all selected layers
@@ -687,6 +869,7 @@ function applyToAllLayers(callFunction) {
         alert(localize(PSalertStr), "Error", true);
         return "cancel";
     }
+    // deselectAll()
     // Timer for code speedtest
     // time = "start: "+GetTime();
     // time1 = GetTime();
@@ -707,10 +890,11 @@ function applyToAllLayers(callFunction) {
         // Use IDX of each selected layer & run Function
         // Aprox 5s for 60 layers
         for (var i = 0; i < layerInfo.length; i++) {
+            // deselectAll()
             selectById(layerInfo[i].AMid);
             callFunction(layerInfo[i].lyrKind);
         }
-
+        // Start by deselecting all
         // Reselect layers using list of total selected from start & LayerIndex
         // Slows down by aprox 1s with circa 50 layerss
         for (var i = 0; i < layerInfo.length; i++) {
@@ -719,7 +903,7 @@ function applyToAllLayers(callFunction) {
         }
     }
     // return layerInfo.length
-    
+
     // Timer for code speedtest
     // time = time + "\nEnd: " + GetTime();
     // time2 = GetTime();
@@ -810,7 +994,7 @@ function createProgressWindow(title, message, min, max, parent, useCancel) {
         // win.update();
         // win.hide();
     }
-    win.hideWindow = function(){
+    win.hideWindow = function() {
         var win = this;
         win.hide();
     }
@@ -819,12 +1003,12 @@ function createProgressWindow(title, message, min, max, parent, useCancel) {
 };
 
 var waitForRedraw = function() {
-  var d;
-  d = new ActionDescriptor();
-  d.putEnumerated(app.stringIDtoTypeID('state'),
-  app.stringIDtoTypeID('state'),
-  app.stringIDtoTypeID('redrawComplete'));
-  return executeAction(app.stringIDtoTypeID('wait'), d, DialogModes.NO);
+    var d;
+    d = new ActionDescriptor();
+    d.putEnumerated(app.stringIDtoTypeID('state'),
+        app.stringIDtoTypeID('state'),
+        app.stringIDtoTypeID('redrawComplete'));
+    return executeAction(app.stringIDtoTypeID('wait'), d, DialogModes.NO);
 };
 
 // Creat progress bar window
@@ -857,7 +1041,7 @@ function progressbar(callFunction) {
                 progress += 5;
                 // $.sleep (250); // waits 2 seconds
                 // app.refresh();
-                
+
             }
             progressWindow.strDesc.stProgress.text = processingStr + (i + 1) + " / " + layers.length + "...";
             // progressWindow.text = ("Processing: " + (i + 1) + " / " + layers.length + "...");

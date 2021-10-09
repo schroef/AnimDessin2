@@ -52,4 +52,4 @@ playheadTrimEnd.main = function () {
   applyToAllLayers(playheadTrimEnd);
 };
 
-app.activeDocument.suspendHistory("Trim end of frame(s) to playhead", 'playheadTrimEnd.main()');
+app.activeDocument.suspendHistory(localize(locPlayheadTrimEnd), 'playheadTrimEnd.main()');

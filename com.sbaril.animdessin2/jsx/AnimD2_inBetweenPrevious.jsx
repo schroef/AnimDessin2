@@ -74,10 +74,10 @@ function inBetweenPrevious() {
 //
 
 inBetweenPrevious.main = function() {
-    // Does single selection
-    // inBetweenPrevious();
-    // Complete selection
-    applyToAllLayers(inBetweenPrevious);
+    // Does single selection > but also works on multiple???
+    inBetweenPrevious();
+    // Complete selection works as, but single also works and is faster
+    // applyToAllLayers(inBetweenPrevious);
 };
 
 app.activeDocument.suspendHistory(localize(locInBetweenPrevious), 'inBetweenPrevious.main()');

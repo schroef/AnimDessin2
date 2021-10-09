@@ -2,18 +2,254 @@
 <html>
 
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F1F6Z9CWRM"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-F1F6Z9CWRM');
+    gtag('send', 'page_view');
+    gtag('send', 'pageview');
+    </script>
+
     <meta charset="utf-8">
     <title>AnimDessin2.5</title>
-    <link id="hostStyle" rel="stylesheet" href="css/theme.css" />
     <link rel="stylesheet" href="css/table.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link id="hostStyle" rel="stylesheet" href="css/theme.css" />
     <link id="hostStyle" rel="stylesheet" href="iconfont/iconfont.css" />
     <link id="hostStyle" rel="stylesheet" href="css/vendor/toolguide.css" />
 
 </head>
 
-<body id="body" class="hostElt iconSml"><!-- onLoad="onLoaded()" WIP test for errors-->
+<body id="body" class="hostElt iconSml" style="overflow: hidden;">
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KPWNVBM"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- onLoad="onLoaded()" WIP test for errors-->
     <div id="error"></div>
+    <div id="toolinfo">
+        <div id="showTimeline" class="btnInfo">
+            <p data-locale="TG_showTimeline_1">– Animation panel options</p>
+            <span class="k-icon kcmb-sh-lm"></span>
+            <p data-locale="TG_showTimeline_2">– Show / hide the timeline panel </p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="newDoc" class="btnInfo">
+            <p data-locale="TG_newDoc_1">– New document custom settings</p>
+            <span id="newDocSet" class="k-icon kcmb-sh-al-os-lm"></span>
+            <p data-locale="TG_newDoc_2">– Set timeline frame rate</p>
+            <span class="k-icon kcmb-sh-al-lm"></span>
+            <p data-locale="TG_newDoc_3">– Render video</p>
+            <span class="k-icon kcmb-sh-lm"></span>
+            <p data-locale="TG_newDoc_4">– Go to in timeline</p>
+            <span class="k-icon kcmb-al-lm"></span>
+            <p data-locale="TG_newDoc_5">– New document and settings</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="canvasSize" class="btnInfo">
+            <p data-locale="TG_canvasSize_1">– Fit in document in window</p>
+            <span class="k-icon kcmb-sh-lm"></span>
+            <p data-locale="TG_canvasSize_2">– Zoom to 100%</p>
+            <span class="k-icon kcmb-al-lm"></span>
+            <p data-locale="TG_canvasSize_3">– Set size of working canvas</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="save" class="btnInfo">
+            <p data-locale="TG_save_1">– Save document as (copy)</p>
+            <span class="k-icon kcmb-sh-lm"></span>
+            <p data-locale="TG_save_2">– Save document</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="newFrameOne" class="btnInfo">
+            <p data-locale="TG_newFrameOne_1">– Add new 1 frame</p>
+            <span class="k-icon kcmb-sh-lm"></span>
+            <p data-locale="TG_newFrameOne_2">– Add new 1 video frame</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="newFrameTwo" class="btnInfo">
+            <p data-locale="TG_newFrameTwo_1">– Add new 2 video frame</p>
+            <span class="k-icon kcmb-sh-lm"></span>
+            <p data-locale="TG_newFrameTwo_2">– Add new 2 frame</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="duplicateFrame" class="btnInfo">
+            <p data-locale="TG_duplicateFrame_1">– Duplicate selected frame/layer</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="deleteFrame" class="btnInfo">
+            <p data-locale="TG_deleteFrame_2">– Delete content selected frame</p>
+            <span class="k-icon kcmb-sh-lm"></span>
+            <p data-locale="TG_deleteFrame_1">– Delete selected frame/layer</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="toggleFavorite" class="btnInfo">
+            <p data-locale="TG_toggleFavorite_1">– Show all layers</p>
+            <span class="k-icon kcmb-sh-lm"></span>
+            <p data-locale="TG_toggleFavorite_2">– Show set favorite layers</p>
+            <span class="k-icon kcmb-al-lm"></span>
+            <p data-locale="TG_toggleFavorite_3">– Sets selected layers as favorites
+                and hides other layers</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="onionSkin" class="btnInfo">
+            <p data-locale="TG_onionSkin_1">– Onion skin mode displays content
+                drawn on the current frame plus
+                content drawn on the surrounding frames</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="onionSkinSettings" class="btnInfo">
+            <p data-locale="TG_onionSkinSettings_1">– Specify how previous and later
+                frames appear when onion skins
+                are enabled</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="newVideoGroup" class="btnInfo">
+            <p data-locale="TG_newVideoGroup_1">– New video group from selection</p>
+            <span class="k-icon kcmb-sh-lm"></span>
+            <p data-locale="TG_newVideoGroup_2">– Ungroup selected video group</p>
+            <span class="k-icon kcmb-al-lm"></span>
+            <p data-locale="TG_newVideoGroup_3">– New video group with blanc 1 frame layer</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="renameFrame" class="btnInfo">
+            <p data-locale="TG_renameFrame_1">– Rename frame, layer or video group with dialog</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="minus" class="btnInfo">
+            <p data-locale="TG_frameMinus_1">– Reduce duration selecion by 2 frames</p>
+            <span class="k-icon kcmb-sh-lm"></span>
+            <p data-locale="TG_frameMinus_2">– Reduce duration selecion by 5 frames</p>
+            <span class="k-icon kcmb-al-lm"></span>
+            <p data-locale="TG_frameMinus_3">– Reduce duration selecion by 1 frame</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="plus" class="btnInfo">
+            <p data-locale="TG_framePlus_1">– Extend duration selection by 2 frames</p>
+            <span class="k-icon kcmb-sh-lm"></span>
+            <p data-locale="TG_framePlus_2">– Extend duration selection by 5 frames</p>
+            <span class="k-icon kcmb-al-lm"></span>
+            <p data-locale="TG_framePlus_3">– Extend duration selection by 1 frame</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="red" class="btnInfo">
+            <p data-locale="TG_colorRedToggle_1">– Clear color overlay, keep others</p>
+            <span class="k-icon kcmb-sh-al-lm"></span>
+            <p data-locale="TG_colorRedToggle_2">– Hide red overlay</p>
+            <span class="k-icon kcmb-sh-lm"></span>
+            <p data-locale="TG_colorRedToggle_3">– Show red overlay</p>
+            <span class="k-icon kcmb-al-lm"></span>
+            <p data-locale="TG_colorRedToggle_4">– Adds red overlay to the layer</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="green" class="btnInfo">
+            <p data-locale="TG_colorGreenToggle_1">– Clear color overlay, keep others</p>
+            <span class="k-icon kcmb-sh-al-lm"></span>
+            <p data-locale="TG_colorGreenToggle_2">– Hide green overlay</p>
+            <span class="k-icon kcmb-sh-lm"></span>
+            <p data-locale="TG_colorGreenToggle_3">– Show green overlay</p>
+            <span class="k-icon kcmb-al-lm"></span>
+            <p data-locale="TG_colorGreenToggle_4">– Adds green overlay to the layer</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="blue" class="btnInfo">
+            <p data-locale="TG_colorBlueToggle_1">– Clear only color overlay keep others</p>
+            <span class="k-icon kcmb-sh-al-lm"></span>
+            <p data-locale="TG_colorBlueToggle_2">– Hide blue overlay</p>
+            <span class="k-icon kcmb-sh-lm"></span>
+            <p data-locale="TG_colorBlueToggle_3">– Show blue overlay</p>
+            <span class="k-icon kcmb-al-lm"></span>
+            <p data-locale="TG_colorBlueToggle_4">– Adds blue overlay to the layer</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="none" class="btnInfo">
+            <p data-locale="TG_colorNone_1">– Hide all overlays/effects</p>
+            <span class="k-icon kcmb-sh-lm"></span>
+            <p data-locale="TG_colorNone_2">– Show all overlays/effects</p>
+            <span class="k-icon kcmb-al-lm"></span>
+            <p data-locale="TG_colorNone_3">– Clear all overlays/effects</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="inBetweenPrevious" class="btnInfo">
+            <p data-locale="TG_inBetweenPrevious_1">– Move the selected frame/layer before the Previous one
+            </p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="createInBetweenAfter" class="btnInfo">
+            <p data-locale="TG_inBetweenCreateBefore_1">– Create a new in-between before selected frame/layer</p>
+            <span class="k-icon kcmb-sh-lm"></span>
+            <p data-locale="TG_inBetweenCreateAfter_1">– Create a new in-between after selected frame/layer</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="inBetweenNext" class="btnInfo">
+            <p data-locale="TG_inBetweenNext_1">– Move the selected frame/layer after the next one</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="playheadStart" class="btnInfo">
+            <p data-locale="TG_playheadStart_1">– Trim start at playhead</p>
+            <span class="k-icon kcmb-sh-lm"></span>
+            <p data-locale="TG_playheadStart_2">– Move start to playhead</p>
+            <span class="k-icon kcmb-al-lm"></span>
+            <p data-locale="TG_playheadStart_3">– Set the start of the work
+                Areat at the playhead</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="playheadSplit" class="btnInfo">
+            <p data-locale="TG_playheadSplit_1">– Split at playhead and make video group</p>
+            <span class="k-icon kcmb-sh-lm"></span>
+            <p data-locale="TG_playheadSplit_2">– Split layer into 1 frames and make video group</p>
+            <span class="k-icon kcmb-al-lm"></span>
+            <p data-locale="TG_playheadSplit_3">– Split at playhead</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="playheadEnd" class="btnInfo">
+            <p data-locale="TG_playheadEnd_1">– Trim end at playhead</p>
+            <span class="k-icon kcmb-sh-lm"></span>
+            <p data-locale="TG_playheadEnd_2">– Move end to playhead</p>
+            <span class="k-icon kcmb-al-lm"></span>
+            <p data-locale="TG_playheadEnd_3">– Set the end of the work
+                Areat at the playhead</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="playheadPrevEdit" class="btnInfo">
+            <p data-locale="TG_playheadPrevEdit_1">– Go to first frame</p>
+            <span class="k-icon kcmb-sh-lm"></span>
+            <!-- <p data-locale="TG_playheadPrevEdit_1">– Go to start work area</p>
+            <span class="k-icon kcmb-al-lm"></span> -->
+            <p data-locale="TG_playheadPrevEdit_3">– Go to previous edit</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="playheadNextEdit" class="btnInfo">
+            <p data-locale="TG_playheadNextEdit_1">– Go to last frame</p>
+            <span class="k-icon kcmb-sh-lm"></span>
+            <!-- <p data-locale="TG_playheadNextEdit_2">– Go to end work area</p>
+            <span class="k-icon kcmb-al-lm"></span> -->
+            <p data-locale="TG_playheadNextEdit_3">– Go to next edit</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="commentEdit" class="btnInfo">
+            <p data-locale="TG_commentEdit_1">— Add / edit a timeline comment
+                at the playhead</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="commentsHtml" class="btnInfo">
+            <p data-locale="TG_commentExportHtml_1">- Export timeline comments as a HTML file</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="commentsText" class="btnInfo">
+            <p data-locale="TG_commentExportText_1">– Export timeline comments as a structured TEXT file</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+        <div id="videoShortcuts" class="btnInfo">
+            <p data-locale="TG_videoShortcuts_1">– Enable timeline shortcut keys, allows you to use the
+                right and left arrow
+                keys to move playhead, and use the space bar to play / stop</p>
+            <span class="k-icon kcmb-lm"></span>
+        </div>
+    </div>
     <div id="content" class="">
         <div id="loaderBlock">
             <div class="container-loader">
@@ -21,200 +257,212 @@
                 <span data-locale="STR_processing">Processing</span>
             </div>
         </div>
-        
-        <!-- Block 1 -->
 
-        <div class="myblock">
-            <div class="mybtn">
-                <button id="btn_showTimeline" class="bcol icon-showtimeline" title="Toggle Timeline Panel"
-                    data-placement='right' rel='tooltip' data-locale="btn_showTimeline"></button>
-            </div>
-            <div class="mybtn">
-                <button id="btn_newDoc" class="bcol icon-newscene" title="New Document" data-placement='right'
-                    rel='tooltip' data-locale="btn_newDoc"></button>
-            </div>
-            <div class="mybtn">
-                <button id="btn_canvasSize" class="bcol icon-canvassize " title="Canvas Size" data-placement='right'
-                    rel='tooltip' data-locale="btn_canvasSize"></button>
-            </div>
-            <div class="mybtn">
-                <button id="btn_save" class="bcol icon-save " title="Save As" data-placement='right' rel='tooltip'
-                    data-locale="btn_save"></button>
-            </div>
-        </div>
+        <div id="ad2btns">
+            <!-- Block 1 -->
 
-        <!-- Block 2 -->
+            <div class="myblock">
+                <div class="mybtn">
+                    <button id="btn_showTimeline" class="bcol icon-showtimeline"
+                        data-placement='right' rel='tooltip' data-locale="btn_showTimeline"></button>
+                </div>
+                <div class="mybtn">
+                    <button id="btn_newDoc" class="bcol icon-newscene" data-placement='right'
+                        rel='tooltip' data-locale="btn_newDoc"></button>
+                </div>
+                <div class="mybtn">
+                    <button id="btn_canvasSize" class="bcol icon-canvassize " data-placement='right'
+                        rel='tooltip' data-locale="btn_canvasSize"></button>
+                </div>
+                <div class="mybtn">
+                    <button id="btn_save" class="bcol icon-save " data-placement='right' rel='tooltip'
+                        data-locale="btn_save"></button>
+                </div>
+            </div>
 
-        <div class="myblock">
-            <div class="mybtn">
-                <button id="btn_newFrameOne" class="bcol icon-newframeone " title="New 1 Frame" data-placement='right'
-                    rel='tooltip' data-locale="btn_newFrameOne"></button>
-            </div>
-            <div class="mybtn">
-                <button id="btn_newFrameTwo" class="bcol icon-newframetwo " title="New 2 Frame" data-placement='right'
-                    rel='tooltip' data-locale="btn_newFrameTwo"></button>
-            </div>
-            <div class="mybtn">
-                <button id="btn_duplicateFrame" class="bcol icon-duplicateframe " title="Duplicate Frame"
-                    data-placement='right' rel='tooltip' data-locale="btn_duplicateFrame"></button>
-            </div>
-            <div class="mybtn">
-                <button id="btn_deleteFrame" class="bcol icon-deleteframe " title="Delete Frame" data-placement='right'
-                    rel='tooltip' data-locale="btn_deleteFrame"></button>
-            </div>
-        </div>
+            <!-- Block 2 -->
 
-        <!-- Block 3 -->
+            <div class="myblock">
+                <div class="mybtn">
+                    <button id="btn_newFrameOne" class="bcol icon-newframeone " 
+                        data-placement='right' rel='tooltip' data-locale="btn_newFrameOne"></button>
+                </div>
+                <div class="mybtn">
+                    <button id="btn_newFrameTwo" class="bcol icon-newframetwo " 
+                        data-placement='right' rel='tooltip' data-locale="btn_newFrameTwo"></button>
+                </div>
+                <div class="mybtn">
+                    <button id="btn_duplicateFrame" class="bcol icon-duplicateframe " 
+                        data-placement='right' rel='tooltip' data-locale="btn_duplicateFrame"></button>
+                </div>
+                <div class="mybtn">
+                    <button id="btn_deleteFrame" class="bcol icon-deleteframe " 
+                        data-placement='right' rel='tooltip' data-locale="btn_deleteFrame"></button>
+                </div>
+            </div>
 
-        <div class="myblock">
-            <div class="mybtn">
-                <button id="btn_toggleFavorite" class="bcol icon-toggleFavorite " title="Filters selected layers"
-                    data-placement='right' rel='tooltip' data-locale="btn_toggleFavorite"></button>
-            </div>
-            <div class="mybtn">
-                <button id="btn_onionSkin" class="bcol icon-onionskin " title="Onion Skin (Toggle)"
-                    data-placement='right' rel='tooltip' data-locale="btn_onionSkin"></button>
-            </div>
-            <div class="mybtn">
-                <button id="btn_onionSkinSettings" class="bcol icon-onionskinsettings " title="Onion skin Settings"
-                    data-placement='right' rel='tooltip' data-locale="btn_onionSkinSettings"></button>
-            </div>
-        </div>
+            <!-- Block 3 -->
 
-        <!-- Block 4 -->
+            <div class="myblock">
+                <div class="mybtn">
+                    <button id="btn_toggleFavorite" class="bcol icon-toggleFavorite " 
+                        data-placement='right' rel='tooltip' data-locale="btn_toggleFavorite"></button>
+                </div>
+                <div class="mybtn">
+                    <button id="btn_onionSkin" class="bcol icon-onionskin " 
+                        data-placement='right' rel='tooltip' data-locale="btn_onionSkin"></button>
+                </div>
+                <div class="mybtn">
+                    <button id="btn_onionSkinSettings" class="bcol icon-onionskinsettings " 
+                        data-placement='right' rel='tooltip' data-locale="btn_onionSkinSettings"></button>
+                </div>
+            </div>
 
-        <div class="myblock">
-            <div class="mybtn">
-                <button id="btn_newVideoGroup" class="bcol icon-newvideogroup " title="New Video Group"
-                    data-toggle='tooltip' data-placement='right' rel='tooltip' data-locale="btn_newVideoGroup"></button>
-            </div>
-            <div class="mybtn">
-                <button id="btn_renameFrame" class="bcol icon-framerename " title="Rename Frame" data-toggle='tooltip'
-                    data-placement='right' rel='tooltip' data-locale="btn_renameFrame"></button>
-            </div>
-        </div>
+            <!-- Block 4 -->
 
-        <!-- Block 5 -->
+            <div class="myblock">
+                <div class="mybtn">
+                    <button id="btn_newVideoGroup" class="bcol icon-newvideogroup " 
+                        data-toggle='tooltip' data-placement='right' rel='tooltip'
+                        data-locale="btn_newVideoGroup"></button>
+                </div>
+                <div class="mybtn">
+                    <button id="btn_renameFrame" class="bcol icon-framerename " 
+                        data-toggle='tooltip' data-placement='right' rel='tooltip'
+                        data-locale="btn_renameFrame"></button>
+                </div>
+            </div>
 
-        <div class="myblock">
-            <div class="mybtn">
-                <button id="btn_minus" class="bcol icon-expominus " title="Minus 1 Frame" data-placement='right'
-                    rel='tooltip' data-locale="btn_minus"></button>
-            </div>
-            <div class="mybtn">
-                <button id="btn_plus" class="bcol icon-expoplus " title="Plus 1 Frame" data-placement='right'
-                    rel='tooltip' data-locale="btn_plus"></button>
-            </div>
-        </div>
+            <!-- Block 5 -->
 
-        <!-- Block 6 -->
+            <div class="myblock">
+                <div class="mybtn">
+                    <button id="btn_minus" class="bcol icon-expominus " 
+                        rel='tooltip' data-locale="btn_minus"></button>
+                </div>
+                <div class="mybtn">
+                    <button id="btn_plus" class="bcol icon-expoplus " data-placement='right'
+                        rel='tooltip' data-locale="btn_plus"></button>
+                </div>
+            </div>
 
-        <div class="myblock">
-            <div class="mybtn">
-                <button id="btn_red" class="bcol icon-colorsquare bbred" title="Red Overlay" data-placement='right'
-                    rel='tooltip' data-locale="btn_red"></button>
-            </div>
-            <div class="mybtn">
-                <button id="btn_green" class="bcol icon-colorsquare bbgreen" title="Green Overlay"
-                    data-placement='right' rel='tooltip' data-locale="btn_green"></button>
-            </div>
-            <div class="mybtn">
-                <button id="btn_blue" class="bcol icon-colorsquare bbblue" title="Blue Overlay" data-placement='right'
-                    rel='tooltip' data-locale="btn_blue"></button>
-            </div>
-            <div class="mybtn">
-                <button id="btn_none" class="bcol icon-colornone " title="Clear All Overlays" data-placement='right'
-                    rel='tooltip' data-locale="btn_none"></button>
-            </div>
-        </div>
+            <!-- Block 6 -->
 
-        <!-- Block 7 -->
+            <div class="myblock">
+                <div class="mybtn">
+                    <button id="btn_red" class="bcol icon-colorsquare bbred" data-placement='right'
+                        rel='tooltip' data-locale="btn_red"></button>
+                </div>
+                <div class="mybtn">
+                    <button id="btn_green" class="bcol icon-colorsquare bbgreen" 
+                        data-placement='right' rel='tooltip' data-locale="btn_green"></button>
+                </div>
+                <div class="mybtn">
+                    <button id="btn_blue" class="bcol icon-colorsquare bbblue" 
+                        data-placement='right' rel='tooltip' data-locale="btn_blue"></button>
+                </div>
+                <div class="mybtn">
+                    <button id="btn_none" class="bcol icon-colornone " data-placement='right'
+                        rel='tooltip' data-locale="btn_none"></button>
+                </div>
+            </div>
 
-        <div class="myblock">
-            <div class="mybtn">
-                <button id="btn_inBetweenPrevious" class="bcol icon-inbetweenprevious " title="In Between Previous"
-                    data-placement='right' rel='tooltip' data-locale="btn_inBetweenPrevious"></button>
-            </div>
-            <div class="mybtn">
-                <button id="btn_createInBetween" class="bcol icon-inbetweencreat " title="In Between New"
-                    data-placement='right' rel='tooltip' data-locale="btn_createInBetween"></button>
-            </div>
-            <div class="mybtn">
-                <button id="btn_inBetweenNext" class="bcol icon-inbetweennext " title="In Between Next"
-                    data-placement='right' rel='tooltip' data-locale="btn_inBetweenNext"></button>
-            </div>
-        </div>
+            <!-- Block 7 -->
 
-        <!-- Block 8 -->
+            <div class="myblock">
+                <div class="mybtn">
+                    <button id="btn_inBetweenPrevious" class="bcol icon-inbetweenprevious " 
+                        data-placement='right' rel='tooltip' data-locale="btn_inBetweenPrevious"></button>
+                </div>
+                <div class="mybtn">
+                    <button id="btn_createInBetweenAfter" class="bcol icon-inbetweencreat " 
+                        data-placement='right' rel='tooltip' data-locale="btn_createInBetweenAfter"></button>
+                </div>
+                <div class="mybtn">
+                    <button id="btn_inBetweenNext" class="bcol icon-inbetweennext " 
+                        data-placement='right' rel='tooltip' data-locale="btn_inBetweenNext"></button>
+                </div>
+            </div>
 
-        <div class="myblock">
-            <div class="mybtn">
-                <button id="btn_playheadStart" class="bcol icon-playheadbegin " title="Set Playhead Start"
-                    data-placement='right' rel='tooltip' data-locale="btn_playheadStart"></button>
-            </div>
-            <div class="mybtn">
-                <button id="btn_playheadSplit" class="bcol icon-playheadsplit" title="Split at Playhead"
-                    data-placement='right' rel='tooltip' data-locale="btn_playheadSplit"></button>
-            </div>
-            <div class="mybtn">
-                <button id="btn_playheadEnd" class="bcol icon-playheadend" title="Set Playhead End"
-                    data-placement='right' rel='tooltip' data-locale="btn_playheadEnd"></button>
-            </div>
-            <div class="mybtn">
-                <button id="btn_playheadPrevEdit" class="bcol icon-playheadprev" title="Playhead at previous edit"
-                    data-placement='right' rel='tooltip' data-locale="btn_playheadPrevEdit"></button>
-            </div>
-            <div class="mybtn">
-                <button id="btn_playheadNextEdit" class="bcol icon-playheadnext" title="Playhead at next edit"
-                    data-placement='right' rel='tooltip' data-locale="btn_playheadNextEdit"></button>
-            </div>
-        </div>
+            <!-- Block 8 -->
 
-        <!-- Block 9 -->
-
-        <div class="myblock">
-            <div class="mybtn">
-                <button id="btn_commentEdit" class="bcol icon-commentedit " title="Edit Comment" data-placement='right'
-                    rel='tooltip' data-locale="btn_commentEdit"></button>
+            <div class="myblock">
+                <div class="mybtn">
+                    <button id="btn_playheadStart" class="bcol icon-playheadbegin " 
+                        data-placement='right' rel='tooltip' data-locale="btn_playheadStart"></button>
+                </div>
+                <div class="mybtn">
+                    <button id="btn_playheadSplit" class="bcol icon-playheadsplit" 
+                        data-placement='right' rel='tooltip' data-locale="btn_playheadSplit"></button>
+                </div>
+                <div class="mybtn">
+                    <button id="btn_playheadEnd" class="bcol icon-playheadend" 
+                        data-placement='right' rel='tooltip' data-locale="btn_playheadEnd"></button>
+                </div>
+                <div class="mybtn">
+                    <button id="btn_playheadPrevEdit" class="bcol icon-playheadprev" 
+                        data-placement='right' rel='tooltip' data-locale="btn_playheadPrevEdit"></button>
+                </div>
+                <div class="mybtn">
+                    <button id="btn_playheadNextEdit" class="bcol icon-playheadnext" 
+                        data-placement='right' rel='tooltip' data-locale="btn_playheadNextEdit"></button>
+                </div>
             </div>
-            <div class="mybtn">
-                <button id="btn_commentsHtml" class="bcol icon-commentshtml " title="Export Comments as HTML"
-                    data-placement='right' rel='tooltip' data-locale="btn_commentsHtml"></button>
-            </div>
-            <div class="mybtn">
-                <button id="btn_commentsText" class="bcol icon-commentstext " title="Export Comments as TEXT"
-                    data-placement='right' rel='tooltip' data-locale="btn_commentsText"></button>
-            </div>
-        </div>
 
-        <!-- Block 10 -->
-        <div class="myblock">
-            <div class="mybtn">
-                <button id="btn_videoShortcuts" class="bcol icon-videoshortcuts " title="Use Shortcuts"
-                    data-placement='right' rel='tooltip' data-locale="btn_videoShortcuts"></button>
+            <!-- Block 9 -->
+
+            <div class="myblock">
+                <div class="mybtn">
+                    <button id="btn_commentEdit" class="bcol icon-commentedit " 
+                        data-placement='right' rel='tooltip' data-locale="btn_commentEdit"></button>
+                </div>
+                <div class="mybtn">
+                    <button id="btn_commentsHtml" class="bcol icon-commentshtml " 
+                        data-placement='right' rel='tooltip' data-locale="btn_commentsHtml"></button>
+                </div>
+                <div class="mybtn">
+                    <button id="btn_commentsText" class="bcol icon-commentstext " 
+                        data-placement='right' rel='tooltip' data-locale="btn_commentsText"></button>
+                </div>
             </div>
-        </div>
 
-        <!-- Block 11 -->
+            <!-- Block 10 -->
+            <div class="myblock">
+                <div class="mybtn">
+                    <button id="btn_videoShortcuts" class="bcol icon-videoshortcuts " 
+                        data-placement='right' rel='tooltip' data-locale="btn_videoShortcuts"></button>
+                </div>
+            </div>
 
-        <!-- TEST BUTTON TO CALL EXTENDSCRIPT -->
-        <!-- <div>                
+            <!-- Block 11 -->
+
+            <!-- TEST BUTTON TO CALL EXTENDSCRIPT -->
+            <!-- <div>                
             <button id="btn_test" class="mybtn hostFontSize">Call ExtendScript</button>                
         </div> -->
 
-        <!-- RELOADER AND JAVASCRIPT -->
-
-        <ul class="debugtools">
-            <!-- Depricated -->
-            <!-- <li>
+            <!-- RELOADER AND JAVASCRIPT -->
+             <ul class="debugtools">
+                <!-- <button id="btn_ga">Dt<span></span></button> -->
+                <!-- Depricated -->
+                <!-- <li>
                 <button id="btn_debug">Dt</button>
             </li> -->
-            <!-- <li>
+                <!-- <li>
                 <button id="btn_reload" class="brf">Rf</button>
             </li> -->
-            <!-- <button id="btn_saveSettings" class="brf">Save</button> -->
-        </ul>
+                <!-- <button id="btn_saveSettings" class="brf">Save</button> -->
+            </ul>
+        </div>
 
+        <div id="track">
+            <div id="errorTimeline"></div>
+            <div id="current"></div>
+            <div id="scrubber">
+                <div id="indicator" class="icon-playheadnext"></div>
+            </div>
+            <div id="timeline"></div>
+        </div>
     </div>
 
     <!-- <script src="js/libs/CSInterface-5.2.js"></script> -->
@@ -223,10 +471,12 @@
     <script src="js/libs/jquery-2.0.2.min.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
 
-    <script src="js/vendor/tooltips.js"></script>
+    <!-- <script src="js/vendor/tooltips.js"></script> -->
 
     <script src="js/themeManager.js"></script>
     <script src="js/main.js"></script>
+
+    <script src="js/vendor/scrubber.js"></script>
 
 </body>
 

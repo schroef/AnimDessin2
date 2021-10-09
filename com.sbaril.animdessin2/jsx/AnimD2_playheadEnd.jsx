@@ -9,6 +9,11 @@
 
 //Make Photoshop the front most application
 app.bringToFront();
+docRef = app.activeDocument;
+
+// Call main function from getselected, we can reuse scripts
+var ScriptFilePath = Folder($.fileName).parent.fsName;
+$.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 
 ///////////////////////////////////////////////////
 // SETUP
@@ -53,4 +58,4 @@ playheadEnd.main = function () {
   playheadEnd();
 };
 
-app.activeDocument.suspendHistory("Set end of workarea", 'playheadEnd.main()');
+app.activeDocument.suspendHistory(localize(locPlayheadEnd), 'playheadEnd.main()');

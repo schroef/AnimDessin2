@@ -29,7 +29,12 @@ $.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 // Globals
 //=================================================================
 
-//Local See AnimD2_frameRenam.jsx
+//Local See AnimD2_newDocPreset.jsx
+
+// UI strings to be localized
+var strddDocSize = localize("$$$/JavaScripts/LayerCompsToABFiles/docSize=Select Layer Comp from document");
+var strLabelUseArtboard = localize("$$$/JavaScripts/LayerCompsToABFiles/UseArtboard=Choose Artboard");
+var strddUseArtBoard = localize("$$$/locale_specific/JavaScripts/LayerCompsToABFiles/docSize=100");
 
 // ok and cancel button
 var runButtonID = 1;
@@ -40,7 +45,22 @@ var exportInfo = new Object();
 ///////////////////////////////////////////////////////////////////////////////
 // Functions
 ///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 
+// Function: StrToIntWithDefault
+// Usage: convert a string to a number, first stripping all characters
+// Input: string and a default number
+// Return: a number
+///////////////////////////////////////////////////////////////////////////
+function StrToIntWithDefault(s, n) {
+    var onlyNumbers = /[^0-9]/g;
+    var t = s.replace(onlyNumbers, "");
+    t = parseInt(t);
+    if (!isNaN(t)) {
+        n = t;
+    }
+    return n;
+}
 // One line prompt method > much easier!!!
 // Ask user for input by showing prompt box and save inputted value to variable:
 //var stemsAmount = prompt("How many stems do you need?", 12, "Processing "+originalStem.name);
@@ -98,7 +118,7 @@ function settingDialog(exportInfo) {
     // ===========
     var dlgMain = new Window("dialog"); 
         dlgMain.text = renameFrameTitleStr; 
-        dlgMain.preferredSize.width = 300; 
+        dlgMain.preferredSize.width = 500; 
         dlgMain.orientation = "column"; 
         dlgMain.alignChildren = ["fill","top"]; 
         dlgMain.spacing = 10; 
@@ -112,6 +132,54 @@ function settingDialog(exportInfo) {
     var applySelection = dlgMain.add("checkbox", undefined, undefined, {name: "applySelection"}); 
         applySelection.text = applyToSelectedStr; 
         applySelection.value = exportInfo.allLayers;
+    
+    var docSizeStr = dlgMain.add("statictext", undefined, strLabelUseArtboard);
+    var docSize = dlgMain.add("dropdownlist");
+        // docSize.preferredSize.width = StrToIntWithDefault(strddUseArtBoard, 120);
+        docSize.alignment = "right";
+        // docSize.helpTip = strddDocSize;
+
+    // var DocSize = countCompsNames(docRef.layerComps);
+    // var DocSizeCount = docRef.layerComps.length;
+        docSize.add("item", "HD 720p");
+        docSize.add("item", "HD 1080p");
+        docSize.add("item", "Cineon Half");
+        docSize.add("item", "Cineon Full");
+        docSize.add("item", "Film 2k");
+        docSize.add("item", "Film 4k");
+        docSize.add("item", "Film 8k");
+        docSize.add("item", "Custom");
+    
+    var colorProfile = dlgMain.add("dropdownlist");
+        // colorProfile.preferredSize.width = StrToIntWithDefault(strddUseArtBoard, 120);
+        colorProfile.alignment = "right";
+        // colorProfile.helpTip = strddDocSize;
+
+    // var DocSize = countCompsNames(docRef.layerComps);
+    // var DocSizeCount = docRef.layerComps.length;
+        colorProfile.add("item", "sRGB");
+        colorProfile.add("item", "AdobeRGB(1998)");
+        colorProfile.add("item", "Adobe");
+    // for (DocSizeIndex = 0; DocSizeIndex < DocSizeCount; DocSizeIndex++) {
+    //     colorProfile.add("item", docRef.layerComps[DocSizeIndex].name);
+    // }
+
+    // Set menu too default
+    // if (!exportInfo.selectionOnly) colorProfile.items["0"].selected = true;
+    // if (exportInfo.selectionOnly) colorProfile.items["1"].selected = true;
+
+    // colorProfile.onChange = function() {
+    //     if ((dlgMain.cbSelection.value) && (colorProfile.items["0"].selected)) {
+    //         dlgMain.cbSelection.value = false;
+    //     }
+    //     if ((!dlgMain.cbSelection.value) && (colorProfile.items["1"].selected)) {
+    //         dlgMain.cbSelection.value = true;
+    //     } else {
+    //         dlgMain.cbSelection.value = false;
+    //     }
+    // }
+
+    
 
     // GROUP1
     // ======

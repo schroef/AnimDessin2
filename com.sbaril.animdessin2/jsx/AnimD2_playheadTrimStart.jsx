@@ -52,4 +52,4 @@ playheadTrimStart.main = function () {
   applyToAllLayers(playheadTrimStart);
 };
 
-app.activeDocument.suspendHistory("Trim start of frame(s) to playhead", 'playheadTrimStart.main()');
+app.activeDocument.suspendHistory(localize(locPlayheadTrimStart), 'playheadTrimStart.main()');

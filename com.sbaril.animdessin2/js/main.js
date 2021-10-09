@@ -41,16 +41,16 @@
             currentDate = Date.now();
         } while (currentDate - date < milliseconds);
     }
-    function highlightNewDoc(show){
+    function highlightNewDoc(show) {
         var newDoc = document.getElementById("btn_newDoc");
         var myBtn = document.getElementsByClassName("mybtn");
-        if (show){
+        if (show) {
             newDoc.style.boxShadow = "0 0 0 1.6px #1473e6";
             for (var i = 2; i < myBtn.length; i++) {
                 myBtn[i].style.opacity = ".3";
             }
-        } 
-        if (!show){
+        }
+        if (!show) {
             newDoc.style.boxShadow = "none";
             for (var i = 2; i < myBtn.length; i++) {
                 myBtn[i].style.opacity = "1";
@@ -61,10 +61,10 @@
     // Check if doc is available
     function checkOpenDoc() {
         csInterface.evalScript("checkOpenDoc()", function (count) {
-            if (count=="false") {
+            if (count == "false") {
                 highlightNewDoc(true);
             }
-            if (count=="true") {
+            if (count == "true") {
                 highlightNewDoc(false);
             }
         });
@@ -74,18 +74,23 @@
     var firstRun = false;
     function loadNoDoc(pPath) {
         var scriptPath = csInterface.getSystemPath(SystemPath.EXTENSION) + pPath;
+        // alert(scriptPath)
         csInterface.evalScript('evalFile("' + scriptPath + '")');
-        checkOpenDoc();
-        if (!firstRun) {
-            highlightNewDoc(false)
-            firstRun = true;
-        }
+        // checkOpenDoc();
+        // if (!firstRun) {
+        //     highlightNewDoc(false);
+        //     firstRun = true;
+        // }
     }
 
     // Loads / executes a jsx file
     function loadJSXFile(pPath) {
-        csInterface.evalScript("checkOpenDoc()", function (count) {    
-            if (count=="true") {
+        csInterface.evalScript("checkOpenDoc()", function (count) {
+            // console.log(count)    
+            if (count == "true") {
+                if (!firstRun) {
+                    highlightNewDoc(false);
+                }
                 // var count = Number;
                 // First countlayers, so we can show loader before app freezes due to script running
                 csInterface.evalScript("countLayers()", function (count) {
@@ -121,17 +126,45 @@
         $("body").toggleClass("iconCenter", "");
         storeSettings(center);
     }
-
+    // GLobal Timeline
+    function globalTimeline(show) {
+        $("#track").toggleClass("globalTimeline", "");
+        $("body").toggleClass("globalTimeline", "");
+        storeSettings(show);
+    }
+    // Set timecode > time or frames
+    function timeCode(timecode) {
+        storeSettings(timecode);
+    }
     // ToolTips
     function toolTips() {
-        $(".mybtn").toggleClass("ttHide", "ttShow");
+        $("#toolinfo").toggleClass("ttHide", "ttShow");
         if (document.getElementsByClassName("ttHide").length == 0) {
             storeSettings("ttShow");
         } else {
             storeSettings("ttHide");
         }
     }
-
+    var getGlobalTimeline = new Boolean();
+    var getTooltips = new Boolean();
+    function resizePanelHeight(getGlobalTimeline,getTooltips){
+        var resize = new Boolean();
+        if (getGlobalTimeline == true || getTooltips == true) {
+            resize = true
+        } 
+        if (getGlobalTimeline == false && getTooltips == false) {
+            resize = false
+        }
+        console.log('Timline: '+getGlobalTimeline+' - Tooltips: '+getTooltips)
+        // alert(typeof(getGlobalTimeline)+' - '+typeof(getTooltips))
+        // alert(getGlobalTimeline+' - '+getTooltips)
+        // alert("check both:'"+(getGlobalTimeline && getTooltips == true)+'"')
+        // alert("either "+getGlobalTimeline == true || getTooltips == true)
+        // alert("both false "+getGlobalTimeline == false && getTooltips == false)
+        // alert(resize)
+        var resizePnl = resize == false ? 35 : 55;
+        csInterface.resizeContent(window.innerWidth, resizePnl);
+    }
     function checkSettings() {
         $("#btn_onionSkin").addClass(localStorage.getItem("onionSkin"));
         $("#btn_videoShortcuts").addClass(localStorage.getItem("keySettings"));
@@ -177,22 +210,61 @@
             iconCenter = iconCenter == "false" ? false : true;
             csInterface.updatePanelMenuItem(getLocalize().flyout_iconCenter, true, iconCenter);
             csInterface.updateContextMenuItem("iconCenter", true, iconCenter);
+            var icnCenter = localStorage.getItem("iconCenter");
+            icnCenter = icnCenter == "false" ? "" : "iconCenter";
+            $("body").addClass(icnCenter);
+        }
+        if (localStorage.getItem("globalTimeline")) {
+            var globalTimeline = localStorage.getItem("globalTimeline");
+            globalTimeline = globalTimeline == "false" ? false : true;
+            // var getGlobalTimeline = globalTimeline
+            getGlobalTimeline = globalTimeline
+            csInterface.updatePanelMenuItem(getLocalize().flyout_globalTimeline, true, globalTimeline);
+            csInterface.updateContextMenuItem("globalTimeline", true, globalTimeline);
+            var globTimeline = localStorage.getItem("globalTimeline");
+            globTimeline = globTimeline == "false" ? "" : "globalTimeline";
+            $("body").addClass(globTimeline);
+            $("#track").addClass(globTimeline);
+        }
+        if (localStorage.getItem("timeCode")) {
+            var timeCode = localStorage.getItem("timeCode");
+            timeCode = timeCode == "false" ? false : true;
+            localStorage.setItem("timeCode", timeCode);
+            csInterface.updatePanelMenuItem(getLocalize().flyout_timeCode, true, timeCode);
+            csInterface.updateContextMenuItem("timeCode", true, timeCode);
         }
         if (localStorage.getItem("toolTips") == "ttHide") {
+            $("body").removeClass("toolTips");
             csInterface.updatePanelMenuItem(getLocalize().flyout_tooltips, true, false);
             csInterface.updateContextMenuItem("toolTips", true, false);
+            // var getTooltips = globalTimeline
+            // var getTooltips = globalTimeline
+            getTooltips = false;
         }
         if (localStorage.getItem("toolTips") == "ttShow") {
+            $("body").addClass("toolTips");
             csInterface.updatePanelMenuItem(getLocalize().flyout_tooltips, true, true);
             csInterface.updateContextMenuItem("toolTips", true, true);
+            // var getTooltips = globalTimeline
+            getTooltips = true;
         }
         $("body").addClass(localStorage.getItem("iconSize"));
-        $(".mybtn").addClass(localStorage.getItem("toolTips"));
+        // var icnCenter = localStorage.getItem("iconCenter") ? "iconCenter" : "";
+        // $("body").addClass(icnCenter);
+        // // $("body").addClass((iconCenter = localStorage.getItem("iconCenter") ? "iconCenter" : ""));
+        // var globTimeline = localStorage.getItem("globalTimeline") ? "globalTimeline" : "";
+        // $("body").addClass(globTimeline);
+        // $("#track").addClass(globTimeline);
+        // $("#track").addClass((globalTimeline = localStorage.getItem("globalTimeline") ? "globalTimeline" : ""));
+        $(".mybtn").addClass("tthide");
+        $("#toolinfo").addClass(localStorage.getItem("toolTips"));
+        resizePanelHeight(getGlobalTimeline,getTooltips)
     }
 
     //Store settings
     function storeSettings(store) {
-        // alert(store)
+        var globalTimeline = localStorage.getItem("globalTimeline");
+        var toolTips = localStorage.getItem("toolTips");
         if (store == "onion") {
             if (localStorage.getItem("onionSkin") == "onionDisabled") {
                 localStorage.setItem("onionSkin", "onionActive");
@@ -241,22 +313,74 @@
             csInterface.updatePanelMenuItem(getLocalize().flyout_iconCenter, true, iconCenter);
             csInterface.updateContextMenuItem("iconCenter", true, iconCenter);
         }
+        if (store == "globalTimeline") {
+            // var globalTimeline = localStorage.getItem("globalTimeline");
+            // var resizePnl = globalTimeline == "false" ? 55 : 35;
+            // csInterface.resizeContent(window.innerWidth, resizePnl);
+            globalTimeline = globalTimeline == "false" ? true : false;
+            localStorage.setItem("globalTimeline", globalTimeline);
+            // toolTips = toolTips == "ttHide" ? false : true;
+            resizePanelHeight(globalTimeline,getTooltips)
+            csInterface.updatePanelMenuItem(getLocalize().flyout_globalTimeline, true, globalTimeline);
+            csInterface.updateContextMenuItem("globalTimeline", true, globalTimeline);
+        }
+        if (store == "openTimeline") {
+            var openTimeline = localStorage.getItem("openTimeline");
+            console.log(openTimeline);
+            openTimeline = openTimeline == "false" ? true : false;
+            localStorage.setItem("openTimeline", openTimeline);
+            csInterface.updatePanelMenuItem(getLocalize().flyout_openTimeline, true, openTimeline);
+            csInterface.updateContextMenuItem("openTimeline", true, openTimeline);
+            console.log(openTimeline);
+        }
+        if (store == "timeCode") {
+            var timeCode = localStorage.getItem("timeCode");
+            timeCode = timeCode == "false" ? true : false;
+            localStorage.setItem("timeCode", timeCode);
+            csInterface.updatePanelMenuItem(getLocalize().flyout_timeCode, true, timeCode);
+            csInterface.updateContextMenuItem("timeCode", true, timeCode);
+        }
         if (store == "ttHide") {
             localStorage.setItem("toolTips", "ttHide");
+            // var tooltips = globalTimeline == "false" ? 35 : 55;
+            // csInterface.resizeContent(window.innerWidth, tooltips);
+            // if (globalTimeline == "false") csInterface.resizeContent(window.innerWidth, 35);
+            resizePanelHeight(globalTimeline,false)
+            $("body").removeClass("toolTips");
             csInterface.updatePanelMenuItem(getLocalize().flyout_tooltips, true, false);
             csInterface.updateContextMenuItem("toolTips", true, false);
         }
         if (store == "ttShow") {
+            // var tooltips = localStorage.getItem("toolTips");
+            // if (globalTimeline == "false") csInterface.resizeContent(window.innerWidth, 55);
+            $("body").addClass("toolTips");
             localStorage.setItem("toolTips", "ttShow");
+            resizePanelHeight(globalTimeline,true)
             csInterface.updatePanelMenuItem(getLocalize().flyout_tooltips, true, true);
             csInterface.updateContextMenuItem("toolTips", true, true);
         }
+        
         console.log(store);
+        // Return variable with nested function
+        // https://stackoverflow.com/questions/40172830/get-variable-inside-the-function
+        return {
+            getglobalTimeline : function () {
+                return globalTimeline
+            }
+        }
     }
 
     function openGuides() {
-        var ext = "com.sbaril.animdessin2.Panel2";
+        var ext = "com.sbaril.animdessin2.Guides";
         csInterface.requestOpenExtension(ext, "");
+    }
+
+    function openTimeline(openTimeline) {
+        var ext = "com.sbaril.animdessin2.Timeline";
+        csInterface.requestOpenExtension(ext, "");
+        var settings = new storeSettings();
+        if (settings.getglobalTimeline()) globalTimeline("globalTimeline"); // if globaltime line true > then close
+        storeSettings(openTimeline);
     }
     // function hostApp(){
     // 	var hostEnv = csInterface.getHostEnvironment();
@@ -272,75 +396,14 @@
         // console.log(renderBundle)
         return renderBundle;
     }
-    // // Show helpguide
-    // function toggleGuide(){
-    // 	if (localStorage.getItem('toggleGuide') == "guideInActive") {
-    // 		localStorage.setItem('toggleGuide', "guideActive");
-    // 		localStorage.setItem('toggleVideo', "videoInActive");
-    // 		$("#content").addClass("InActive").removeClass("Active");
-    // 		$("#guide").addClass("Active").removeClass("InActive");
-    // 		$("#video").addClass("InActive").removeClass("Active");
-    // 		csInterface.resizeContent(400, 500);
-
-    // 	} else {
-    // 		localStorage.setItem('toggleGuide', "guideInActive");
-    // 		localStorage.setItem('toggleVideo', "videoInActive");
-    // 		$("#content").addClass("Active").removeClass("InActive");
-    // 		$("#guide").addClass("InActive").removeClass("Active");
-    // 		$("#video").addClass("InActive").removeClass("Active");
-    // 		csInterface.resizeContent(1000, 45);
-    // 	}
-    // }
-
-    // // Show Video
-    // function toggleVideo(){
-    // 	if (localStorage.getItem('toggleVideo') == "videoInActive") {
-    // 		localStorage.setItem('toggleVideo', "videoActive");
-    // 		localStorage.setItem('toggleGuide', "videoInActive");
-    // 		$("#content").addClass("InActive").removeClass("Active");
-    // 		$("#guide").addClass("InActive").removeClass("Active");
-    // 		$("#video").addClass("Active").removeClass("InActive");
-    // 		csInterface.resizeContent(720, 480);
-
-    // 	} else {
-    // 		localStorage.setItem('toggleGuide', "videoInActive");
-    // 		localStorage.setItem('toggleVideo', "videoInActive");
-    // 		$("#content").addClass("Active").removeClass("InActive");
-    // 		$("#guide").addClass("InActive").removeClass("Active");
-    // 		$("#video").addClass("InActive").removeClass("Active");
-    // 		csInterface.resizeContent(1000, 45);
-    // 	}
-    // }
-
-    function getLocalizes() {
-        var resourceBundle = csInterface.initResourceBundle();
-        // console.log(resourceBundle)
-        // var localizedStr = resourceBundle[key];
-        var btn = ["#btn_showTimeline", "#btn_newDoc", "#btn_canvasSize", "#btn_save", "#btn_newFrameOne"];
-        // csInterface.initResourceBundle();
-        var j = 0;
-        var key = "";
-        var lanValue = [];
-        console.log(resourceBundle);
-        for (key in resourceBundle) {
-            console.log(resourceBundle[key]);
-            lanValue.push(resourceBundle[key]);
-            // console.log(lanValue[j]);
-            console.log("Item: %s - %s", j, lanValue[j]);
-            j++;
-        }
-        // $('#btn_showTimeline').attr('data-original-title', getLocalize().DL_CANCEL)
-        for (var i = 0; i < btn.length; i++) {
-            // console.log("Item: %s - %s",i,lanValue[i]);
-            // console.log(btn[i] +" "+lanValue[i]);
-            $(btn[i]).attr("data-original-title", lanValue[i]);
-        }
-        return resourceBundle;
-    }
 
     function sendWarning() {
         loadJSXFile("/jsx/AnimD2_warning.jsx");
     }
+
+    // Add event listener to AD2 buttons to check open doc
+    const ad2bbtns = document.getElementById("ad2btns");
+    ad2bbtns.addEventListener("mouseenter", checkOpenDoc, false); // only check once prevents fireing 
 
     function init() {
         themeManager.init();
@@ -368,18 +431,41 @@
         // 	csInterface.evalScript('sayHello()');
         // });
 
+        // $("#btn_showTimeline").mouseover(function() { 
+        //     $("#showTimeline").toggleClass("showinfo");
+        // });
+        // $("#btn_showTimeline").mouseout(function() { 
+        //     $("#showTimeline").toggleClass("showinfo");
+        // });
         $("#btn_showTimeline").click(function (e) {
             if (e.shiftKey) loadNoDoc("/jsx/AnimD2_setTimelinePanelOptions.jsx");
             else if (!e.altKey || !e.shiftKey) loadNoDoc("/jsx/AnimD2_showTimeline.jsx");
         });
 
+        // console.log(navigator.platform);
+        // $("#btn_newDoc").mouseover(function() { 
+        //     $("#newDoc").toggleClass("showinfo");
+        // });
+        // $("#btn_newDoc").mouseout(function() { 
+        //     $("#newDoc").toggleClass("showinfo");
+        // });
+        if (navigator.platform === "MacIntel") $("#newDocSet").addClass("kcmb-sh-al-osx-lm");
+        if (navigator.platform === "Win32") $("#newDocSet").addClass("kcmb-sh-al-win-lm");
         $("#btn_newDoc").click(function (e) {
-            if (e.altKey && e.shiftKey) loadJSXFile("/jsx/AnimD2_timelineSetFrameRate.jsx");
+            if (e.altKey && e.shiftKey && e.metaKey) loadNoDoc("/jsx/AnimD2_newDocSettings.jsx");
+            else if (e.altKey && e.shiftKey) loadJSXFile("/jsx/AnimD2_timelineSetFrameRate.jsx");
             else if (e.shiftKey) loadJSXFile("/jsx/AnimD2_gotoInTimeLine.jsx");
             else if (e.altKey) loadJSXFile("/jsx/AnimD2_timelineRenderVideo.jsx");
-            else if (!e.altKey || !e.shiftKey) loadNoDoc("/jsx/AnimD2_newDoc.jsx");
+            else if (!e.altKey || !e.shiftKey) loadNoDoc("/jsx/AnimD2_newDocPreset.jsx");
+            // else if (!e.altKey || !e.shiftKey) loadNoDoc("/jsx/AnimD2_newDoc.jsx");
         });
 
+        // $("#btn_canvasSize").mouseover(function() { 
+        //     $("#canvasSize").toggleClass("showinfo");
+        // });
+        // $("#btn_canvasSize").mouseout(function() { 
+        //     $("#canvasSize").toggleClass("showinfo");
+        // });
         $("#btn_canvasSize").click(function (e) {
             if (e.shiftKey) loadJSXFile("/jsx/AnimD2_canvasFitScreen.jsx");
             else if (e.altKey) loadJSXFile("/jsx/AnimD2_canvasRealSize.jsx");
@@ -405,8 +491,9 @@
             loadJSXFile("/jsx/AnimD2_duplicateFrame.jsx");
         });
 
-        $("#btn_deleteFrame").click(function () {
-            loadJSXFile("/jsx/AnimD2_deleteFrame.jsx");
+        $("#btn_deleteFrame").click(function (e) {
+            if (e.shiftKey) loadJSXFile("/jsx/AnimD2_deleteFrameContent.jsx");
+            else if (!e.altKey || !e.shiftKey) loadJSXFile("/jsx/AnimD2_deleteFrame.jsx");
         });
 
         $("#btn_toggleFavorite").click(function (e) {
@@ -482,8 +569,9 @@
             loadJSXFile("/jsx/AnimD2_inBetweenPrevious.jsx");
         });
 
-        $("#btn_createInBetween").click(function () {
-            loadJSXFile("/jsx/AnimD2_inBetweenCreate.jsx");
+        $("#btn_createInBetweenAfter").click(function (e) {
+            if (e.shiftKey) loadJSXFile("/jsx/AnimD2_inBetweenCreateBefore.jsx");
+            else if (!e.altKey || !e.shiftKey) loadJSXFile("/jsx/AnimD2_inBetweenCreateAfter.jsx");
         });
 
         $("#btn_inBetweenNext").click(function () {
@@ -491,6 +579,7 @@
         });
         $("#btn_playheadSplit").click(function (e) {
             if (e.shiftKey) loadJSXFile("/jsx/AnimD2_playheadSplitGroup.jsx");
+            else if (e.altKey) loadJSXFile("/jsx/AnimD2_splitToFramesGroup.jsx");
             else if (!e.altKey || !e.shiftKey) loadJSXFile("/jsx/AnimD2_playheadSplit.jsx");
         });
 
@@ -516,10 +605,9 @@
             else if (!e.altKey || !e.shiftKey) loadJSXFile("/jsx/AnimD2_playheadNextEdit.jsx");
         });
 
-        $("#btn_commentEdit").click(function () {
-            // if (e.shiftKey)
+        $("#btn_commentEdit").click(function (e) {
             //     loadJSXFile("/jsx/AnimD2_commentToggle.jsx");
-            // else if (!e.altKey || !e.shiftKey)
+            // else if (!e.altKey || !e.shiftKey) 
             loadJSXFile("/jsx/AnimD2_commentEdit.jsx");
         });
 
@@ -539,9 +627,64 @@
             sendWarning();
         });
 
-        /////////////////////////////////////////////////////////////////////////
 
+
+        /////////////////////////////////////////////////////////////////////////
+        // AddEventlisternes buttons
+        /////////////////////////////////////////////////////////////////////////
+        // New Tooltips below buttons
+        // Doesnt give proper behavior, is opstructed by mybtns divs
+        $("#track").mouseover(function () {
+            $("#toolinfo").css("padding","0");
+        });
+
+        document.addEventListener('mouseover', function (event) {
+            // console.log(event.target.id);
+            // console.log(event.target.closest('.bcol'));
+            if (event.target.closest('.bcol')) {
+                var info = event.target.id.replace('btn_','')
+                $('#'+info).toggleClass('showinfo');
+                setTimeout(function() {
+                    $('#'+info).css.display="flex";
+                  }, 250);
+            }
+    
+        }, false);
+        document.addEventListener('mouseout', function (event) {
+            if (event.target.closest('.bcol')) {
+                var info = event.target.id.replace('btn_','')
+                $('#'+info).toggleClass('showinfo');
+                setTimeout(function() {
+                    $('#'+info).css.display="none";
+                }, 250);
+            }
+        }, false);
+        // function showInfo(elem) {
+        //     var el = document.getElementById(elem);
+        //     $(el).toggleClass("showinfo");
+        //     // var el2 = document.getElementById(elem2);
+        //     // el2.style.backgroundColor = "blue";
+        // }
+        // function addEvents(){
+        //     var myBtns = document.getElementsByClassName("bcol");
+        //     var info = document.getElementsByClassName("btnInfo");
+        //     for(var i=0; i < myBtns.length; i++){
+        //         // var k = i + 1;
+        //         // var btn = elem[i].childNode.id;
+        //         // console.log(elemB[i].parentNode.id)
+        //         console.log(myBtns[i].id)
+        //         // console.log(elemB[i].id)
+        //         var divInfo = info[i].id;
+        //     //    var boxb = elem[k].parentNode.id;
+        //         // elem[i].addEventListener("mouseover", showInfo.bind(divInfo), false);
+        //         myBtns[i].addEventListener("mouseover", showInfo.bind(this,divInfo), false);
+        //     //    elem[k].addEventListener("click", makeItHappen.bind(this, boxa, boxb), false);
+        //     }
+        //  }
+        // addEvents()
+        /////////////////////////////////////////////////////////////////////////
         // Main Feature Button
+        /////////////////////////////////////////////////////////////////////////
         /*
 		$("#mainBT").click(function () {
             invokeFeature("Main");
@@ -574,12 +717,20 @@
                 getLocalize().flyout_iconBig +
                 '" Checkable="true" Checked="false"/> \n\n<MenuItem Id="iconCenter" Label="' +
                 getLocalize().flyout_iconCenter +
-                '" Checkable="true" Checked="false"/> \n <MenuItem Label="---" /> \n<MenuItem Id="toolTips" Label="' +
+                '" Checkable="true" Checked="false"/> \n<MenuItem Label="---" />\n<MenuItem Id="globalTimeline" Label="' +
+                getLocalize().flyout_globalTimeline +
+                '" Checkable="true" Checked="false"/> \n<MenuItem Id="openTimeline" Label="' +
+                getLocalize().flyout_openTimeline +
+                '" Checkable="true" Checked="false"/>\n\n<MenuItem Id="timeCode" Label="' +
+                getLocalize().flyout_timeCode +
+                '" Checkable="true" Checked="false"/>\n<MenuItem Label="---" /> \n<MenuItem Id="toolTips" Label="' +
                 getLocalize().flyout_tooltips +
-                '" Checkable="true" Checked="false"/> \n <MenuItem Id="help" Label="' +
+                '" Checkable="true" Checked="false"/>\n<MenuItem Id="help" Label="' +
                 getLocalize().flyout_helpguides +
+                '" Checkable="true" Checked="false"/>\n<MenuItem Label="---" /> \n<MenuItem Id="closePanel" Label="' +
+                getLocalize().flyout_closepanel + 
                 '" Checkable="true" Checked="false"/>\n</Menu>'
-            );
+            )
         }
 
         // Uses the XML string to build the menu
@@ -610,15 +761,27 @@
                 case "iconCenter":
                     iconCenter("iconCenter");
                     break;
+                case "globalTimeline":
+                    globalTimeline("globalTimeline");
+                    break;
+                case "openTimeline":
+                    openTimeline("openTimeline");
+                    break;
+                case "timeCode":
+                    timeCode("timeCode");
+                    break;    
                 case "toolTips":
                     toolTips();
                     break;
                 case "help":
                     openGuides();
                     break;
-                case "localize":
-                    getLocalize();
-                    break;
+                // case "localize":
+                //     getLocalize();
+                //     break;
+                // case "closePanel":
+                //     toggleGuide("close");
+                //     break;
                 default:
                     console.log(e.data.menuName + " panel clicked!");
             }
@@ -649,15 +812,27 @@
                 case "iconCenter":
                     iconCenter("iconCenter");
                     break;
+                case "globalTimeline":
+                    globalTimeline("globalTimeline");
+                    break;
+                case "openTimeline":
+                    openTimeline("openTimeline");
+                    break;
+                case "timeCode":
+                    timeCode("timeCode");
+                    break;
                 case "toolTips":
                     toolTips();
                     break;
                 case "help":
                     openGuides();
                     break;
-                case "localize":
-                    getLocalize();
-                    break;
+                // case "localize":
+                //     getLocalize();
+                //     break;
+                // case "closePanel":
+                //     toggleGuide("close");
+                //     break;
                 default:
                     console.log(menuId + " panel clicked!");
             }
@@ -669,20 +844,3 @@
     init();
     checkSettings();
 })();
-
-// Return error to panel WIP
-// function onLoaded() {
-//     try {
-//         docRef = app.documents.length;
-//         // if (app.documents.length > 0) {
-//     } catch (e) {
-//         console.log("Error: " + e);
-//         // document.writeln("Error: " + e) /* Destroys BODY */
-//         // $.writeln("Error: " + e)
-//     }
-// }
-// document.getElementById("error").addEventListener("click", clearTxt);
-
-// function clearTxt() {
-//   document.getElementById("error").innerHTML = "";
-// }

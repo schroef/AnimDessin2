@@ -26,6 +26,8 @@ $.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 ///////////////////////////////////////////////////
 //FUNCTIONS
 ///////////////////////////////////////////////////
+cTID = function(s) {return app.charIDToTypeID(s);};
+sTID = function(s) {return app.stringIDToTypeID(s);};
 
 function playheadMoveEnd() {
 

@@ -57,6 +57,6 @@ function videoShortcuts() {
 videoShortcuts.main = function () {
   videoShortcuts();
 };
-
+// Doesnt use history
 //app.activeDocument.suspendHistory("Use timline video shortcuts", 'videoShortcuts.main()');
 videoShortcuts.main();

@@ -3,13 +3,16 @@
     <Extension Id="com.sbaril.animdessin2.Panel">
         <HostList>
             <Host Name="PHXS" Port="3030"/>
-            <Host Name="PHSP" Port="3031"/>
         </HostList>
     </Extension>
-    <Extension Id="com.sbaril.animdessin2.Panel2">
+    <Extension Id="com.sbaril.animdessin2.Guides">
         <HostList>
             <Host Name="PHXS" Port="3300"/>
-            <Host Name="PHSP" Port="8331"/>
+        </HostList>
+    </Extension>
+    <Extension Id="com.sbaril.animdessin2.Timeline">
+        <HostList>
+            <Host Name="PHXS" Port="3333"/>
         </HostList>
     </Extension>
     <Extension Id="com.sbaril.animdessin2.ModalDialog">

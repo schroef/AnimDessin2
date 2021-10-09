@@ -50,7 +50,7 @@ var idprofile = stringIDToTypeID("profile");
 desc2.putString(idprofile, """sRGB IEC61966-2.1""");
 var idDcmn = charIDToTypeID("Dcmn");
 desc1.putObject(idNw, idDcmn, desc2);
-executeAction(idMk, desc1, DialogModes.ALL);
+executeAction(idMk, desc1, DialogModes.NO);
 
 
 function AnimD2_newDoc() {

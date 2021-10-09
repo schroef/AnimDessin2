@@ -73,12 +73,14 @@ var themeManager = (function () {
         var bgdColor = toHex(panelBgColor);
        
         var darkBgdColor =  toHex(panelBgColor, 20);
+        var darkBrdColor =  toHex(panelBgColor, 80);
         
         var fontColor = "F0F0F0";
         if (panelBgColor.red > 122) {
             fontColor = "000000";
         }
         var lightBgdColor = toHex(panelBgColor, -100);
+        var lightBrdColor = toHex(panelBgColor, -50);
                 
         var styleId = "hostStyle";
         
@@ -89,7 +91,15 @@ var themeManager = (function () {
 
         addRule(styleId, ".hostBgd", "background-color:" + "#" + bgdColor);
         addRule(styleId, ".hostBgdDark", "background-color: " + "#" + darkBgdColor);
+        // addRule(styleId, ".hostBgdDark #timeline > div", "border-color: " + "#" + darkBrdColor +"!important");
         addRule(styleId, "#loaderBlock", "background-color: " + "#" + bgdColor);
+        addRule(styleId, "#errorTimeline", "background-color: " + "#" + bgdColor);
+        addRule(styleId, "#toolinfo", "background-color: " + "#" + bgdColor);
+        addRule(styleId, "#tools", "background-color: " + "#" + bgdColor);
+        addRule(styleId, "dd span.k-icon", "background-color: " + "#" + bgdColor);
+        addRule(styleId, "span.k-icon::after", "background: " + "#" + fontColor);
+        // addRule(styleId, "dd span.k-icon", "color: " + "#" + lightBgdColor);
+        // addRule(styleId, ".hostBgdLight #timeline > div", "border-color: " + "#" + lightBrdColor +"!important");
         addRule(styleId, ".hostBgdLight", "background-color: " + "#" + lightBgdColor);
         addRule(styleId, ".hostFontSize", "font-size:" + appSkinInfo.baseFontSize + "px;");
         addRule(styleId, ".hostFontFamily", "font-family:" + appSkinInfo.baseFontFamily);

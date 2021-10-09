@@ -45,7 +45,7 @@ AnimD2_timelineShowSetFavorites.main = function() {
 };
 
 //AnimD2_timelineShowSetFavorites.main();
-app.activeDocument.suspendHistory("Timeline Show Set Favorite", 'AnimD2_timelineShowSetFavorites.main()');
+app.activeDocument.suspendHistory(localize(locTimelineShowSetFavorites), 'AnimD2_timelineShowSetFavorites.main()');
 
 // EOF
 

@@ -45,7 +45,7 @@ AnimD2_timelineShowAllLayers.main = function() {
 };
 
 //AnimD2_timelineShowAllLayers.main();
-app.activeDocument.suspendHistory("Timeline Show All Layers", 'AnimD2_timelineShowAllLayers.main()');
+app.activeDocument.suspendHistory(localize(locTimelineShowAllLayers), 'AnimD2_timelineShowAllLayers.main()');
 
 // EOF
 

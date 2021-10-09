@@ -72,8 +72,9 @@ function playheadNextEdit() {
         var idT = charIDToTypeID( "T   " );
         var desc37 = new ActionDescriptor();
         var idseconds = stringIDToTypeID( "seconds" );
-        desc37.putInteger( idseconds, 0 );
+        desc37.putInteger( idseconds, time_Seconds );
         var idframe = stringIDToTypeID( "frame" );
+        // alert(time_Frame)
         desc37.putInteger( idframe, (time_Frame+1));
         var idframeRate = stringIDToTypeID( "frameRate" );
         desc37.putDouble( idframeRate, time_FrameRate );

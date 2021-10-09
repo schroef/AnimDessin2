@@ -9,7 +9,7 @@ $(document).ready(function(){
     trigger : 'hover',
     animation: true, 
     delay: {
-    show: 750,
+    show: 500,
     hide: 100
     }});
   // $("[data-toggle='tooltip']").tooltip({

@@ -13,7 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="css/vendor/toolguide.css" />
 </head>
 
-<body id="ToolGuide">
+<body id="ToolGuide" class="hostElt">
 	<div id="nav" class="nav">
 		<div class="subnav">
 			<a href="./toolsguide.html" data-locale="SNAV_toolsGuide">Tool Guide</a>
@@ -70,7 +70,7 @@
 			</div>
 			<div id="tools" class="cards filter">
 				<dl>
-					<dt class="title" data-locale="btn_showTimeline.title">
+					<dt class="title" data-locale="TG_showTimeline_0">
 						Timeline Panel
 					</dt>
 					<dd>
@@ -79,20 +79,22 @@
 						<p data-locale="TG_showTimeline_2">– Show / hide the timeline panel </p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_newDoc.title">
+					<dt class="title" data-locale="TG_newDoc_0">
 						Document
 					</dt>
 					<dd>
-						<p data-locale="TG_newDoc_1">– Set timeline frame rate</p>
+						<p data-locale="TG_newDoc_1">– New document custom settings</p>
+						<span id="newDocSet" class="k-icon"></span>
+						<p data-locale="TG_newDoc_2">– Set timeline frame rate</p>
 						<span class="k-icon kcmb-sh-al-lm"></span>
-						<p data-locale="TG_newDoc_2">– Render video</p>
+						<p data-locale="TG_newDoc_3">– Render video</p>
 						<span class="k-icon kcmb-sh-lm"></span>
-						<p data-locale="TG_newDoc_3">– Go to in timeline</p>
+						<p data-locale="TG_newDoc_4">– Go to in timeline</p>
 						<span class="k-icon kcmb-al-lm"></span>
-						<p data-locale="TG_newDoc_4">– New document and settings</p>
+						<p data-locale="TG_newDoc_5">– New document and settings</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_canvasSize.title">
+					<dt class="title" data-locale="TG_canvasSize_0">
 						Canvas Size
 					</dt>
 					<dd>
@@ -103,7 +105,7 @@
 						<p data-locale="TG_canvasSize_3">– Set size of working canvas</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_save.title">
+					<dt class="title" data-locale="TG_save_0">
 						Save As
 					</dt>
 					<dd>
@@ -112,7 +114,7 @@
 						<p data-locale="TG_save_2">– Save document</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_newFrameOne.title">
+					<dt class="title" data-locale="TG_newFrameOne_0">
 						New 1 Frame
 					</dt>
 					<dd>
@@ -121,7 +123,7 @@
 						<p data-locale="TG_newFrameOne_2">– Add new 1 video frame</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_newFrameTwo.title">
+					<dt class="title" data-locale="TG_newFrameTwo_0">
 						New 2 Frame
 					</dt>
 					<dd>
@@ -130,21 +132,21 @@
 						<p data-locale="TG_newFrameTwo_2">– Add new 2 frame</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_duplicateFrame.title">
+					<dt class="title" data-locale="TG_duplicateFrame_0">
 						Duplicate Frame
 					</dt>
 					<dd>
 						<p data-locale="TG_duplicateFrame_1">– Duplicate selected frame/layer</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_deleteFrame.title">
+					<dt class="title" data-locale="TG_deleteFrame_0">
 						Delete Frame
 					</dt>
 					<dd>
 						<p data-locale="TG_deleteFrame_1">– Delete selected frame/layer</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_toggleFavorite.title">
+					<dt class="title" data-locale="TG_toggleFavorite_0">
 						Filters Selected Layers
 					</dt>
 					<dd>
@@ -156,7 +158,7 @@
 							and hides other layers</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_onionSkin.title">
+					<dt class="title" data-locale="TG_onionSkin_0">
 						Toggle Onion Skin Mode
 					</dt>
 					<dd>
@@ -165,7 +167,7 @@
 							content drawn on the surrounding frames</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_onionSkinSettings.title">
+					<dt class="title" data-locale="TG_onionSkinSettings_0">
 						Onion Skin Settings
 					</dt>
 					<dd>
@@ -174,7 +176,7 @@
 							are enabled</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_newVideoGroup.title">
+					<dt class="title" data-locale="TG_newVideoGroup_0">
 						New Video Group
 					</dt>
 					<dd>
@@ -185,14 +187,14 @@
 						<p data-locale="TG_newVideoGroup_3">– New video group with blanc 1 frame layer</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_renameFrame.title">
+					<dt class="title" data-locale="TG_renameFrame_0">
 						Rename Frame
 					</dt>
 					<dd>
 						<p data-locale="TG_renameFrame_1">– Rename frame, layer or video group with dialog</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_minus.title">
+					<dt class="title" data-locale="TG_frameMinus_0">
 						Minus 1 Frame
 					</dt>
 					<dd>
@@ -203,7 +205,7 @@
 						<p data-locale="TG_frameMinus_3">– Reduce duration selecion by 1 frame</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_plus.title">
+					<dt class="title" data-locale="TG_framePlus_0">
 						Plus 1 Frame
 					</dt>
 					<dd>
@@ -214,7 +216,7 @@
 						<p data-locale="TG_framePlus_3">– Extend duration selection by 1 frame</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_red.title">
+					<dt class="title" data-locale="TG_colorRedToggle_0">
 						Red Overlay
 					</dt>
 					<dd>
@@ -227,7 +229,7 @@
 						<p data-locale="TG_colorRedToggle_4">– Adds red overlay to the layer</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_green.title">
+					<dt class="title" data-locale="TG_colorGreenToggle_0">
 						Green Overlay
 					</dt>
 					<dd>
@@ -240,7 +242,7 @@
 						<p data-locale="TG_colorGreenToggle_4">– Adds green overlay to the layer</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_blue.title">
+					<dt class="title" data-locale="TG_colorBlueToggle_0">
 						Blue Overlay
 					</dt>
 					<dd>
@@ -253,7 +255,7 @@
 						<p data-locale="TG_colorBlueToggle_4">– Adds blue overlay to the layer</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_none.title">
+					<dt class="title" data-locale="TG_colorNone_0">
 						Clear All Overlays
 					</dt>
 					<dd>
@@ -264,7 +266,7 @@
 						<p data-locale="TG_colorNone_3">– Clear all overlays/effects</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_inBetweenPrevious.title">
+					<dt class="title" data-locale="TG_inBetweenPrevious_0">
 						In Between Previous
 					</dt>
 					<dd>
@@ -272,21 +274,23 @@
 						</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_createInBetween.title">
+					<dt class="title" data-locale="TG_inBetweenCreateBefore_0">
 						In Between New
 					</dt>
 					<dd>
-						<p data-locale="TG_inBetweenCreate_1">– Create a new in-between frame/layer</p>
+						<p data-locale="TG_inBetweenCreateBefore_1">– Create a new in-between before selected frame/layer</p>
+						<span class="k-icon kcmb-sh-lm"></span>
+						<p data-locale="TG_inBetweenCreateAfter_1">– Create a new in-between after selected frame/layer</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_inBetweenNext.title">
+					<dt class="title" data-locale="TG_inBetweenNext_0">
 						In Between Next
 					</dt>
 					<dd>
 						<p data-locale="TG_inBetweenNext_1">– Move the selected frame/layer after the next one</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_playheadStart.title">
+					<dt class="title" data-locale="TG_playheadStart_0">
 						Set Playhead Start
 					</dt>
 					<dd>
@@ -298,7 +302,7 @@
 							Areat at the playhead</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_playheadSplit.title">
+					<dt class="title" data-locale="TG_playheadSplit_0">
 						Split at playhead
 					</dt>
 					<dd>
@@ -307,7 +311,7 @@
 						<p data-locale="TG_playheadSplit_2">– Split at playhead</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_playheadEnd.title">
+					<dt class="title" data-locale="TG_playheadEnd_0">
 						Set Playhead End
 					</dt>
 					<dd>
@@ -319,7 +323,7 @@
 							Areat at the playhead</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_playheadPrevEdit.title">
+					<dt class="title" data-locale="TG_playheadPrevEdit_0">
 						Go to previous edit
 					</dt>
 					<dd>
@@ -330,7 +334,7 @@
 						<p data-locale="TG_playheadPrevEdit_3">– Go to previous edit</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_playheadNextEdit.title">
+					<dt class="title" data-locale="TG_playheadNextEdit_0">
 						Go to next edit
 					</dt>
 					<dd>
@@ -341,7 +345,7 @@
 						<p data-locale="TG_playheadNextEdit_3">– Go to next edit</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_commentEdit.title">
+					<dt class="title" data-locale="TG_commentEdit_0">
 						Edit Comments
 					</dt>
 					<dd>
@@ -349,21 +353,21 @@
 							at the playhead</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_commentsHtml.title">
+					<dt class="title" data-locale="TG_commentExportHtml_0">
 						Export Comments as HTML
 					</dt>
 					<dd>
 						<p data-locale="TG_commentExportHtml_1">- Export timeline comments as a HTML file</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_commentsText.title">
+					<dt class="title" data-locale="TG_commentExportText_0">
 						Export Comments as TXT
 					</dt>
 					<dd>
 						<p data-locale="TG_commentExportText_1">– Export timeline comments as a structured TEXT file</p>
 						<span class="k-icon kcmb-lm"></span>
 					</dd>
-					<dt class="title" data-locale="btn_videoShortcuts.title">
+					<dt class="title" data-locale="TG_videoShortcuts_0">
 						Toggle Timeline Shortcuts
 					</dt>
 					<dd>

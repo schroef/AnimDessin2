@@ -33,6 +33,7 @@ function inBetweenNext() {
     ErrStrs.USER_CANCELLED = localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
     try {
         // =======================================================
+        // Move selected frame layer after
         var idmove = charIDToTypeID("move");
         var desc10 = new ActionDescriptor();
         var idnull = charIDToTypeID("null");
@@ -49,9 +50,11 @@ function inBetweenNext() {
         var idNxt = charIDToTypeID("Nxt ");
         ref8.putEnumerated(idLyr, idOrdn, idNxt);
         desc10.putReference(idT, ref8);
-        executeAction(idmove, desc10, DialogModes.NO);
+        executeAction(idmove, desc10, DialogModes.ALL);
+
 
         // =======================================================
+        // Select frame layer after
         var idnextFrame = stringIDToTypeID("nextFrame");
         var desc43 = new ActionDescriptor();
         var idtoNextWholeSecond = stringIDToTypeID("toNextWholeSecond");
@@ -71,10 +74,10 @@ function inBetweenNext() {
 //
 
 inBetweenNext.main = function() {
-    // Does single selection
-    // inBetweenNext();
-    // Complete selection
-    applyToAllLayers(inBetweenNext);
+    // Does single selection > but also works on multiple???
+    inBetweenNext();
+    // Complete selection > causes issue, somehow nothing moves, no error given
+    // applyToAllLayers(inBetweenNext);
 };
 
 app.activeDocument.suspendHistory(localize(locInBetweenNext), 'inBetweenNext.main()');

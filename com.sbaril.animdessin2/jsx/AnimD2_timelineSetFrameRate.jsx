@@ -6,6 +6,12 @@
 
 //Make Photoshop the front most application
 app.bringToFront();
+docRef = app.activeDocument;
+
+// Call main function from getselected, we can reuse scripts
+var ScriptFilePath = Folder($.fileName).parent.fsName;
+$.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
+
 
 //
 // Generated Wed May 14 2014 16:13:27 GMT+0200
@@ -51,7 +57,7 @@ AnimD2_timelineSetFrameRate.main = function() {
 };
 
 // //AnimD2_timelineSetFrameRate.main();
-app.activeDocument.suspendHistory("Set Timeline Frame Rate", 'AnimD2_timelineSetFrameRate.main()');
+app.activeDocument.suspendHistory(localize(locTimelineSetFrameRate), 'AnimD2_timelineSetFrameRate.main()');
 
 // EOF
 
