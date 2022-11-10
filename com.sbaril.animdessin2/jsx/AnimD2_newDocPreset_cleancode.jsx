@@ -13,236 +13,26 @@ $.evalFile(new File(ScriptFilePath + '/json2.js'));
 
 
 // Localize
-var strLayerNaming = {
-    en: "Layer",
-    fr: "Calque",
-    nl: "Laag",
-    ch: "层",
-    es: "Capa",
-};
-var strDocBackgroundColor = {
-    en: "Background Color:",
-    fr: "Couleur de l'arrière plan:",
-    nl: "Voorgrondgrond Kleur:",
-    ch: "XXXXXXXXX",
-};//localize('$$$/JavaScripts/AD2newDocPreset/ProjectBackgroundColor=Background Color:')
-var strDocColorWhite = {
-    en: "White",
-    fr: "Blanc",
-    nl: "Wit",
-    ch: "XXXXXXXXX",
-};//localize('$$$/JavaScripts/AD2newDocPreset/ColorWhite=White')
-var strDocColorBlack = {
-    en: "Black",
-    fr: "Noir",
-    nl: "Zwart",
-    ch: "XXXXXXXXX",
-};//localize('$$$/JavaScripts/AD2newDocPreset/ColorBlack=Black')
-var strDocColorGray = {
-    en: "Gray",
-    fr: "Gris",
-    nl: "Grijs",
-    ch: "XXXXXXXXX",
-};//localize('$$$/JavaScripts/AD2newDocPreset/ColorGray=Gray')
-var strDocFgColorOther = {
-    en: "Foreground Color",
-    fr: "Couleur de premier plan",
-    nl: "Voorgrondgrond Kleur",
-    ch: "XXXXXXXXX",
-};//localize('$$$/JavaScripts/AD2newDocPreset/ColorForeground=Foreground Color')
-var strDocBgColorOther = {
-    en: "Background Color",
-    fr: "Couleur de l'arrière plan",
-    nl: "Achtergrond Kleur",
-    ch: "XXXXXXXXX",
-};//localize('$$$/JavaScripts/AD2newDocPreset/ColorBackground=Background Color')
-var strDocTransparentOther = {
-    en: "Transparent",
-    fr: "Transparente",
-    nl: "Transparant",
-    ch: "XXXXXXXXX",
-};//localize('$$$/JavaScripts/AD2newDocPreset/ColorTransparent=Transparent')
-var strDocColorOther = {
-    en: "Custom...",
-    fr: "Personnalisé...",
-    nl: "Aangepast...",
-    ch: "XXXXXXXXX",
-};//localize('$$$/JavaScripts/AD2newDocPreset/ColorOther=Other...')
+var strDocBackgroundColor = localize('$$$/JavaScripts/AD2newDocPreset/ProjectBackgroundColor=Background Color:')
+var strDocColorWhite = localize('$$$/JavaScripts/AD2newDocPreset/ColorWhite=White')
+var strDocColorBlack = localize('$$$/JavaScripts/AD2newDocPreset/ColorBlack=Black')
+var strDocColorGray = localize('$$$/JavaScripts/AD2newDocPreset/ColorGray=Gray')
+var strDocFgColorOther = localize('$$$/JavaScripts/AD2newDocPreset/ColorForeground=Foreground Color')
+var strDocBgColorOther = localize('$$$/JavaScripts/AD2newDocPreset/ColorBackground=Background Color')
+var strDocTransparentOther = localize('$$$/JavaScripts/AD2newDocPreset/ColorTransparent=Transparent')
+var strDocColorOther = localize('$$$/JavaScripts/AD2newDocPreset/ColorOther=Other...')
 var strMessage = localize("$$$/JavaScripts/AD2newDocPreset/Message=AD2 New Doc Preset");
 locNewDocPreset1 = {
-    en: "New project ",
-    fr: "Nouveau projet ",
-    nl: "Nieuw project ",
-    ch: "新项目 ",
+    en: "New project \"",
+    fr: "XXXXXXXXX",
+    nl: "Nieuw project \"",
+    ch: "新项目 \"",
 };
 locNewDocPreset2 = {
-    en: " created",
-    fr: " établi",
-    nl: " opgezet",
-    ch: " 创建"
-};
-
-locDelPreset = {
-    en: "Delete Preset",
-    fr: "Supprimer le préréglage",
-    nl: "Voorinstelling Verwijderen",
-    ch: "XXXXXXXX"
-};
-
-locDelPresetDesc = {
-    en: "Delete preset ",//"Do you really want to delete file ",
-    fr: "Supprimer le préréglage ",
-    nl: "Verwijder voorinstelling ",
-    ch: "XXXXXXXX "
-};
-
-// Dialog setting titles
-locSizeSetTitle = {
-    en: "Size:",
-    fr: "XXXXXXXX:",
-    nl: "Grootte:",
-    ch: "XXXXXXXX"
-
-}
-locWidthSetTitle = {
-    en: "Width:",
-    fr: "XXXXXXXX:",
-    nl: "Breedte:",
-    ch: "XXXXXXXX"
-
-}
-locHeightSetTitle = {
-    en: "Height:",
-    fr: "XXXXXXXX:",
-    nl: "Hoogte:",
-    ch: "XXXXXXXX"
-
-}
-locResolutionSetTitle = {
-    en: "Resolution:",
-    fr: "XXXXXXXX:",
-    nl: "Resolutie:",
-    ch: "XXXXXXXX"
-
-}
-locColorModeSetTitle = {
-    en: "Color Mode:",
-    fr: "XXXXXXXX:",
-    nl: "Kleurenmodus:",
-    ch: "XXXXXXXX"
-
-}
-locColorProfileSetTitle = {
-    en: "Color Profile:",
-    fr: "XXXXXXXX:",
-    nl: "Kleurenprofiel:",
-    ch: "XXXXXXXX"
-
-}
-locTimelineSetTitle = {
-    en: "Timeline:",
-    fr: "Chronologie:",
-    nl: "Tijdslijn:",
-    ch: "XXXXXXXX"
-};
-locDurationSetTitle = {
-    en: "Duration:",
+    en: "\" created",
     fr: "XXXXXXXXX",
-    nl: "Looptijd:",
-    ch: "XXXXXXXX"
-};
-locSplitTLSetTitle = {
-    en: "Split Timeline",
-    fr: "Fractionner la chronologie",
-    nl: "Splits tijdslijn",
-    ch: "XXXXXXXX"
-};
-locProjectPresetsSetTitle = {
-    en: "Project Presets",
-    fr: "Préréglages du projet",
-    nl: "Project Voorinstellingen",
-    ch: "XXXXXXXX"
-};
-
-// Buttons
-locCreateBtn = {
-    en: "Create",
-    fr: "Créer",
-    nl: "Maken",
-    ch: "XXXXXXXX"
-};
-locCancelBtn = {
-    en: "Cancel",
-    fr: "Annuler",
-    nl: "Annuleer",
-    ch: "XXXXXXXX"
-};
-// dirty workaround > dialog womnt localize when called?!
-// Localize can only be used once?!
-locDeletePresetBtn = {
-    en: "Delete",
-    fr: "Supprimer",
-    nl: "Verwijder",
-    ch: "XXXXXXXX"
-};
-locCancelPresetBtn = {
-    en: "Cancel",
-    fr: "Annuler",
-    nl: "Annuleer",
-    ch: "XXXXXXXX"
-};
-
-locNewPrsBtn = {
-    en: "New",
-    fr: "Nouveau",
-    nl: "Nieuw",
-    ch: "XXXXXXXX"
-};
-locRemovePrsBtn = {
-    en: "Remove",
-    fr: "Éliminer",
-    nl: "Verwijder",
-    ch: "XXXXXXXX"
-};
-locResetPrsBtn = {
-    en: "Reset",
-    fr: "Réinitialiser",
-    nl: "Herstel",
-    ch: "XXXXXXXX"
-};
-
-// Descriptions
-locDurationDesc = {
-    en: "Timeline duration ",
-    fr: "XXXXXXXXX",
-    nl: "Tijdslijn looptijd ",
-    ch: "XXXXXXXX"
-};
-
-// Tooltips
-locCreateBtnTLTP = {
-    en: "Create document using setting",
-    fr: "XXXXXXXXX",
-    nl: "Maak document met instelling",
-    ch: "XXXXXXXX"
-};
-locCancelBtnTLTP = {
-    en: "Cancel document creation",
-    fr: "XXXXXXXXX",
-    nl: "Annuleer document aanmaken",
-    ch: "XXXXXXXX"
-};
-locSetFrTimecodeTLTP = {
-    en: "Set frames or timecode > 00:00:00:00",
-    fr: "XXXXXXXXX",
-    nl: "Voer frames of tijdsnotering in > 00:00:00:00",
-    ch: "XXXXXXXX"
-};
-locSplitTLTP = {
-    en: "Splits the Timeline by 1 or 2 frames",
-    fr: "XXXXXXXXX",
-    nl: "Splits de tijdslijn in 1 of 2 frames ",
-    ch: "XXXXXXXX"
+    nl: "\" opgezet",
+    ch: "\" 创建"
 };
 // the drop down list indexes for color profiles
 var colorProfile = new String();
@@ -465,20 +255,6 @@ function HSBToRGB(hsb) {
     return { r: Math.round(rgb.r), g: Math.round(rgb.g), b: Math.round(rgb.b) };
 }
 ///////////////////////////////////////////////////////////////////////////
-// Function: hsbToSolid
-// Usage: convert list to solid color
-// Input: HSB list > 0,0,100 > black
-// Return: a solid color in hsb
-///////////////////////////////////////////////////////////////////////////
-// function hsbToSolid(h=0,s=0,b=0){
-function hsbToSolid(h,s,b){
-    var currentColor = new SolidColor();
-    currentColor.hsb.hue = h;
-    currentColor.hsb.saturation = s;
-    currentColor.hsb.brightness = b;
-    return currentColor.hsb;
-}
-///////////////////////////////////////////////////////////////////////////
 // Function: StrToIntWithDefault
 // Usage: convert a string to a number, first stripping all characters
 // Input: string and a default number
@@ -620,14 +396,14 @@ function validate(durationHint,timecode){
     durationHint.enabled = false;
   }
   if(framesResult == true){
-    durationHint.text = localize(locDurationDesc) + framesToTMC(timecode);
+    durationHint.text = "Timeline duration " + framesToTMC(timecode);
     // durationHint.text = "Timeline total frames " + timecode;
     durationHint.visible = true;
     durationHint.enabled = false;
     return "frames"
   }
   if(timecodeResult==true){
-    durationHint.text = localize(locDurationDesc) + timecode;
+    durationHint.text = "Timeline duration " + timecode;
     durationHint.visible = true;
     return "timecode";
   }
@@ -890,10 +666,9 @@ function newProjectDialog(reuse) {
         }
 
         // initExportInfo(exportInfo);
-
-
         if (DialogModes.ALL == app.playbackDisplayDialogs) {
             if (cancelButtonID == settingDialog(exportInfo)) {
+                // alert(settingDialog(exportInfo))
                 return "cancel"; // quit, returning "cancel" (dont localize) makes the actions palette not record our script
             }
         }
@@ -911,7 +686,7 @@ function newProjectDialog(reuse) {
         if(exportInfo){
             var extensionPath = $.fileName.split('/').slice(0, -2).join('/') + '/';
             var presetFilePath = new File(extensionPath + '/docPreset.json');
-            // newDocPreset(exportInfo)
+            // setupDocFromSettings(exportInfo)
 
             presetFilePath.open("w");
             presetFilePath.write(JSON.stringify(exportInfo));
@@ -921,31 +696,32 @@ function newProjectDialog(reuse) {
             var contentDocPreset = presetFilePath.read(); //shows JSON structure
             presetFilePath.close();
 
-            var settings = ["docName","docWidth","docHeight","docColorMode","docColorModeIndex","docICC","docBitD","docDPI","projectBgColor","projectBgColorIndex","tmlnDuration","tmlnFps", "fpsPreset","splitTmln","splitTmlnIndex","addTimeRef"]
-            var readPreset = JSON.parse(contentDocPreset);
-            var priorPreset = [];
-            var colorsHSB = [];
-            for (x in readPreset) {
-                if (x === "projectBgColor" ){
-                    // alert(readPreset[x].length)
-                    for(y in readPreset[x]) {
-                        // alert(x)
-                        // alert(y)
-                        colorsHSB.push(readPreset[x][y])
-                    }
-                    // alert(colorsHSB.length)
-                    //alert(colorsHSB.slice(0,3))
-                }
-                // alert(x) //returns keys
-                // alert(readPreset[x]) //returns value of keys
-                // priorPreset.split(',').slice(0, -1).join(',');
-                // colorsHSB.split(',');
-            }    
+            // Not used
+            // var settings = ["docName","docWidth","docHeight","docColorMode","docColorModeIndex","docICC","docBitD","docDPI","projectBgColor","projectBgColorIndex","tmlnDuration","tmlnFps", "fpsPreset","splitTmln","splitTmlnIndex","addTimeRef"]
+            // var readPreset = JSON.parse(contentDocPreset);
+            // var priorPreset = [];
+            // var colorsHSB = [];
+            // for (x in readPreset) {
+            //     if (x === "projectBgColor" ){
+            //         // alert(readPreset[x].length)
+            //         for(y in readPreset[x]) {
+            //             // alert(x)
+            //             // alert(y)
+            //             colorsHSB.push(readPreset[x][y])
+            //         }
+            //         // alert(colorsHSB.length)
+            //         //alert(colorsHSB.slice(0,3))
+            //     }
+            //     // alert(x) //returns keys
+            //     // alert(readPreset[x]) //returns value of keys
+            //     // priorPreset.split(',').slice(0, -1).join(',');
+            //     // colorsHSB.split(',');
+            // }    
             // alert(priorPreset)
             // alert(priorPreset[1])
         }
         // alert(colorsHSB)
-        newDocPreset(readPreset)
+        setupDocFromSettings(readPreset)
 
         // Use last set items
         var d = objectToDescriptor(exportInfo, strMessage, preProcessExportInfo);
@@ -971,7 +747,7 @@ function newProjectDialog(reuse) {
 function initExportInfo(exportInfo){
     // alert(exportInfo.docName)
     // Document Settings
-    exportInfo.docName = localize(locNewDocPreset1); //"New Project..."; //new String(); //projectnameInput
+    exportInfo.docName = "New Project..."; //new String(); //projectnameInput
     exportInfo.docWidth = "1920"; //new String(); //widthInput 
     exportInfo.docHeight = "1080"; //new String(); //heightInput 
     exportInfo.docColorMode = "RGBM";
@@ -1056,8 +832,30 @@ function objectToDescriptor(o, s, f) {
                     // alert("go")
                     // projectBgGrp.bgSwatchGrp.visible = true
                     // exportInfo.projectBgColor = app.foregroundColor.hsb
-                    // alert(exportInfo.projectBgColor.hue)
-                    HSBcol = exportInfo.projectBgColor;
+                    // projectBgGrp.backgroundColor = exportInfo.projectBgColor
+                    // d.putUnitDouble(k, uc[v.type], v.value);
+                    // var hsbCol = new ActionList();
+                    // // var S = function(k) { return stringIDToTypeID(k);}
+                    // alert(d+" "+k+" "+v)
+                    // hsbCol.putObject(k,d.putDouble(k, v.hue));
+                    // // hsbCol.putObject(k,d.putDouble(k,v.saturation));
+                    // // hsbCol.putObject(k,d.putDouble(k,v.brightness));
+                    // // var S = function(k) { return stringIDToTypeID(k);}
+                    // // hsbCol.putObject(S("hue"),v.hue);
+                    // // hsbCol.putObject(S("saturation"),v.saturation);
+                    // // hsbCol.putObject(S("brightness"),v.brightness);
+                    // d.putObject(k,hsbCol)
+                    // var hsbCol = new ActionList();
+                    // hsbCol.putObject("hue",v.hue);
+                    // hsbCol.putObject("saturation",v.saturation);
+                    // hsbCol.putObject("brightness",v.brightness);
+                    // d.putObject(k,hsbCol)
+                    // d.putList(k,[v.hue,v.saturation,v.brightness])
+                    // alert(v)
+                    // colHue = new ColoraVlue(v,v.hue);
+                    // colSat = new ColoraVlue(v,v.saturation);
+                    // colBri = new ColoraVlue(v,v.brightness);
+                    // alert(v instanceof ColorVlue)
                     
                     // bgDocColr = charIDToTypeID( "Clr " );
                     // var idFl = charIDToTypeID("Fl  ");
@@ -1108,7 +906,7 @@ function objectToDescriptor(o, s, f) {
                         // } else {
                         // 	throw (new Error("Unsupported type in objectToDescriptor " + typeof(v)));
                         // }
-                        // throw (new Error("Unsupported type in objectToDescriptor " + typeof(v) + "\n" + v + " - Error exportinfo: " + o.reflect.properties[i].toString()));
+                        throw (new Error("Unsupported type in objectToDescriptor " + typeof(v) + "\n" + v + " - Error exportinfo: " + o.reflect.properties[i].toString()));
                         // Need to add list here
                         // throw (new Error(v));
                         // throw (new Error(typeof(v)));
@@ -1179,6 +977,8 @@ function descriptorToObject(o, d, s, f) {
             case DescValueType.CLASSTYPE:
             case DescValueType.ENUMERATEDTYPE:
             case DescValueType.LISTTYPE:
+                // alert(d.getList(k))
+                // o[strk] = d.getList(k);
             case DescValueType.OBJECTTYPE:
                 // alert(d)
                 // if (d == "[HSBColor]"){
@@ -1221,12 +1021,9 @@ function descriptorToObject(o, d, s, f) {
 ///////////////////////////////////////////////////////////////////////////////
 function preProcessExportInfo(o) {
     // Needs work
-    // alert(o.projectBgColor.toString())
-    // alert(o.docColorModeIndex.toString())
-    // o.projectBgColor = o.projectBgColor.toString();
-    // o.projectBgColor.hue = o.projectBgColor.hue.toString();
-    // o.projectBgColor.saturation = o.projectBgColor.saturation.toString();
-    // o.projectBgColor.brightness = o.projectBgColor.brightness.toString();
+    o.projectBgColor.hue = o.projectBgColor.hue.toString();
+    o.projectBgColor.saturation = o.projectBgColor.saturation.toString();
+    o.projectBgColor.brightness = o.projectBgColor.brightness.toString();
 	o.docColorModeIndex = o.docColorModeIndex.toString();
 	// o.docICC = o.docICC.toString();
 	o.docBitD = o.docBitD.toString();
@@ -1244,11 +1041,9 @@ function preProcessExportInfo(o) {
 ///////////////////////////////////////////////////////////////////////////////
 function postProcessExportInfo(o) {
     // Needs work
-    // alert(o.projectBgColor)
-    o.projectBgColor = eval(o.projectBgColor);
-    // o.projectBgColor.hue = eval(o.projectBgColor.hue);
-    // o.projectBgColor.saturation = eval(o.projectBgColor.saturation);
-    // o.projectBgColor.brightness = eval(o.projectBgColor.brightness);
+    o.projectBgColor.hue = eval(o.projectBgColor.hue);
+    o.projectBgColor.saturation = eval(o.projectBgColor.saturation);
+    o.projectBgColor.brightness = eval(o.projectBgColor.brightness);
 	o.docColorModeIndex = eval(o.docColorModeIndex);
 	// o.docICC = eval(o.docICC);
 	o.docBitD = eval(o.docBitD);
@@ -1261,12 +1056,11 @@ function postProcessExportInfo(o) {
 
 
 function settingDialog(exportInfo) {
-
     // NEWDOCCUSTOMDIALOGBOX
     // =====================
     // var newDocCustomDialogBox = new Window("dialog", undefined, undefined, {maximizeButton: true, minimizeButton: true}); 
     var newDocCustomDialogBox = new Window("dialog"); 
-        newDocCustomDialogBox.text = localize(locNewDocPreset1); 
+        newDocCustomDialogBox.text = "New Project..."; 
         newDocCustomDialogBox.preferredSize.width = 300; 
         newDocCustomDialogBox.orientation = "column"; 
         newDocCustomDialogBox.alignChildren = ["fill","top"]; 
@@ -1321,7 +1115,7 @@ function settingDialog(exportInfo) {
         sizeGrp.alignment = ["fill","top"]; 
 
     var sizeLabel = sizeGrp.add("statictext", undefined, undefined, {name: "sizeLabel", multiline: true}); 
-        sizeLabel.text = localize(locSizeSetTitle);//"Size:"; 
+        sizeLabel.text = "Size"; 
         sizeLabel.preferredSize.width = 80; 
         sizeLabel.justify = "right"; 
         sizeLabel.alignment = ["center","center"]; 
@@ -1342,7 +1136,7 @@ function settingDialog(exportInfo) {
         widthGrp.alignment = ["center","top"]; 
 
     var widthLabel = widthGrp.add("statictext", undefined, undefined, {name: "widthLabel", multiline: true}); 
-        widthLabel.text = localize(locWidthSetTitle);//"Width:"; 
+        widthLabel.text = "Width"; 
         widthLabel.preferredSize.width = 80; 
         widthLabel.justify = "right"; 
         widthLabel.alignment = ["center","center"]; 
@@ -1364,7 +1158,7 @@ function settingDialog(exportInfo) {
         heightGrp.margins = 0; 
 
     var heightLabel = heightGrp.add("statictext", undefined, undefined, {name: "heightLabel", multiline: true}); 
-        heightLabel.text = localize(locHeightSetTitle);//"Height:"; 
+        heightLabel.text = "Height"; 
         heightLabel.preferredSize.width = 80; 
         heightLabel.justify = "right"; 
         heightLabel.alignment = ["left","center"]; 
@@ -1386,7 +1180,7 @@ function settingDialog(exportInfo) {
         resolutionGrp.margins = 0; 
 
     var resolutionLabel = resolutionGrp.add("statictext", undefined, undefined, {name: "resolutionLabel", multiline: true}); 
-        resolutionLabel.text = localize(locResolutionSetTitle);//"Resolution"; 
+        resolutionLabel.text = "Resolution"; 
         resolutionLabel.preferredSize.width = 80; 
         resolutionLabel.justify = "right"; 
         resolutionLabel.alignment = ["left","center"]; 
@@ -1408,8 +1202,8 @@ function settingDialog(exportInfo) {
         colormodeGrp.margins = 0; 
 
     var colormodeLabel = colormodeGrp.add("statictext", undefined, undefined, {name: "colormodeLabel", multiline: true}); 
-        colormodeLabel.text = localize(locColorModeSetTitle);//"Color Mode:"; 
-        // colormodeLabel.preferredSize.width = 90; 
+        colormodeLabel.text = "Color Mode"; 
+        colormodeLabel.preferredSize.width = 80; 
         colormodeLabel.justify = "right"; 
         colormodeLabel.alignment = ["left","center"]; 
 
@@ -1436,8 +1230,8 @@ function settingDialog(exportInfo) {
         colorprofileGrp.alignment = ["fill","top"]; 
 
     var colorprofileLabel = colorprofileGrp.add("statictext", undefined, undefined, {name: "colorprofileLabel", multiline: true}); 
-        colorprofileLabel.text = localize(locColorProfileSetTitle);//"Color Profile:"; 
-        colorprofileLabel.preferredSize.width = 140; 
+        colorprofileLabel.text = "Color Profile"; 
+        colorprofileLabel.preferredSize.width = 80; 
         colorprofileLabel.justify = "right"; 
         colorprofileLabel.alignment = ["center","center"]; 
 
@@ -1529,7 +1323,7 @@ function settingDialog(exportInfo) {
     // TIMELINELABEL
     // =============
     var timelineLabel = newDocCustomDialogBox.add("panel", undefined, undefined, {name: "timelineLabel"}); 
-        timelineLabel.text = localize(locTimelineSetTitle); 
+        timelineLabel.text = "Timeline"; 
         timelineLabel.orientation = "column"; 
         timelineLabel.alignChildren = ["center","top"]; 
         timelineLabel.spacing = 8; 
@@ -1545,13 +1339,13 @@ function settingDialog(exportInfo) {
         advancedGrp.alignment = ["fill","top"]; 
 
     var durationLabel = advancedGrp.add("statictext", undefined, undefined, {name: "durationLabel", multiline: true}); 
-        durationLabel.text = localize(locDurationSetTitle); 
+        durationLabel.text = "Duration"; 
         durationLabel.preferredSize.width = 64; 
         durationLabel.justify = "right"; 
         durationLabel.alignment = ["center","center"]; 
 
     var durationInput = advancedGrp.add('edittext {properties: {name: "durationInput"}}'); 
-        durationInput.helpTip = localize(locSetFrTimecodeTLTP); 
+        durationInput.helpTip = "Set frames or timecode"; 
         durationInput.text = exportInfo.tmlnDuration;//"Frames / Times..."; 
         durationInput.preferredSize.width = 90; 
 
@@ -1563,7 +1357,7 @@ function settingDialog(exportInfo) {
         hintGrp.alignment = ["fill","top"]; 
 
     var durationHint = hintGrp.add("statictext", undefined, undefined, {name: "durationHint", multiline: true}); 
-        durationHint.text = localize(locDurationDesc); 
+        durationHint.text = "Timeline duration"; 
         durationHint.preferredSize.width = 250; 
         durationHint.justify = "center"; 
         durationHint.enabled = false; 
@@ -1610,7 +1404,7 @@ function settingDialog(exportInfo) {
         setupGrp.alignment = ["fill","top"]; 
 
     var splitTmlnCheck = setupGrp.add("checkbox", undefined, undefined, {name: "splitTmlnCheck"}); 
-        splitTmlnCheck.text = localize(locSplitTLSetTitle); 
+        splitTmlnCheck.text = "Split Timeline"; 
         // splitTmlnCheck.preferredSize.width = 150; 
         // splitTmlnCheck.checked = exportInfo.splitTmln; 
         splitTmlnCheck.value = exportInfo.splitTmln; 
@@ -1622,7 +1416,7 @@ function settingDialog(exportInfo) {
 
     var splitTmlnDropdown_array = ["1 frame","2 frames"]; 
     var splitTmlnDropdown = setupGrp.add("dropdownlist", undefined, undefined, {name: "splitTmlnDropdown", items: splitTmlnDropdown_array}); 
-        splitTmlnDropdown.helpTip = localize(locSplitTLTP); 
+        splitTmlnDropdown.helpTip = "Splits the Timeline by 1 or 2 frames"; 
         splitTmlnDropdown.selection = exportInfo.splitTmlnIndex; 
         // splitTmlnDropdown.preferredSize.width = 60; 
         splitTmlnDropdown.visible = exportInfo.splitTmlnIndex; 
@@ -1676,9 +1470,18 @@ function settingDialog(exportInfo) {
         projectBgGrp.margins = 0; 
         projectBgGrp.alignment = ["fill","top"]; 
 
-        projectBgGrp.add('statictext', undefined, localize(strDocBackgroundColor))
-    var BackgroundColors_array = [localize(strDocColorWhite),localize(strDocColorBlack),localize(strDocColorGray),localize(strDocFgColorOther),localize(strDocBgColorOther),localize(strDocTransparentOther),"-",localize(strDocColorOther)]; 
+        projectBgGrp.add('statictext', undefined, strDocBackgroundColor)
+    var BackgroundColors_array = [strDocColorWhite,strDocColorBlack,strDocColorGray,strDocFgColorOther,strDocBgColorOther,strDocTransparentOther,"-",strDocColorOther]; 
         projectBgGrp.bgSelection = projectBgGrp.add('dropdownlist',undefined, undefined, {name: "backgroundColorDropdown", items: BackgroundColors_array}); 
+        // projectBgGrp.bgSelection = projectBgGrp.add('dropdownlist')
+        // projectBgGrp.bgSelection.add('item', strDocColorWhite)
+        // projectBgGrp.bgSelection.add('item', strDocColorBlack)
+        // projectBgGrp.bgSelection.add('item', strDocColorGray)
+        // // projectBgGrp.bgSelection.add('item', strDocFgColorOther)
+        // projectBgGrp.bgSelection.add('item', strDocBgColorOther)
+        // projectBgGrp.bgSelection.add('item', strDocTransparentOther)
+        // projectBgGrp.bgSelection.add('item', '-')
+        // projectBgGrp.bgSelection.add('item', strDocColorOther)
 
         projectBgGrp.bgSwatchGrp = projectBgGrp.add('group', [0, 0, 20, 20])
     var bgSelectUpdate = true;
@@ -1688,44 +1491,44 @@ function settingDialog(exportInfo) {
         projectBgGrp.bgSelection.onChange = function (select) {
             switch (this.selection.index) {
                 case 0:
-                    projectBgGrp.backgroundColor = hsbToSolid(0,0,100);
-                    projectBgGrp.bgSwatchGrp.visible = true
-                    { break }
+                projectBgGrp.backgroundColor = [255, 255, 255]
+                projectBgGrp.bgSwatchGrp.visible = true
+                { break }
                 case 1:
-                    projectBgGrp.backgroundColor = hsbToSolid(0,0,0);
-                    projectBgGrp.bgSwatchGrp.visible = true
-                    { break }
+                projectBgGrp.backgroundColor = [0, 0, 0]
+                projectBgGrp.bgSwatchGrp.visible = true
+                { break }
                 case 2:
-                    projectBgGrp.backgroundColor = hsbToSolid(0,0,50);
-                    projectBgGrp.bgSwatchGrp.visible = true
-                    { break }
+                projectBgGrp.backgroundColor = [128, 128, 128]
+                projectBgGrp.bgSwatchGrp.visible = true
+                { break }
                 case 3:
-                    // projectBgGrp.backgroundColor = [app.foregroundColor.rgb.red,app.foregroundColor.rgb.green,app.foregroundColor.rgb.blue];
-                    projectBgGrp.backgroundColor = hsbToSolid(app.foregroundColor.hsb.hue,app.foregroundColor.hsb.saturation,app.foregroundColor.hsb.brightness);
-                    projectBgGrp.bgSwatchGrp.visible = true
-                    { break }
+                projectBgGrp.backgroundColor = [app.foregroundColor.rgb.red,app.foregroundColor.rgb.green,app.foregroundColor.rgb.blue];
+                projectBgGrp.bgSwatchGrp.visible = true
+                { break }
                 case 4:
-                    // projectBgGrp.backgroundColor = [app.backgroundColor.rgb.red,app.backgroundColor.rgb.green,app.backgroundColor.rgb.blue];
-                    projectBgGrp.backgroundColor = hsbToSolid(app.backgroundColor.hsb.hue,app.backgroundColor.hsb.saturation,app.backgroundColor.hsb.brightness);
-                    projectBgGrp.bgSwatchGrp.visible = true
-                    { break }
+                projectBgGrp.backgroundColor = [app.backgroundColor.rgb.red,app.backgroundColor.rgb.green,app.backgroundColor.rgb.blue];
+                projectBgGrp.bgSwatchGrp.visible = true
+                { break }
                 case 5:
-                    projectBgGrp.bgSwatchGrp.visible = false
-                    { break }
+                projectBgGrp.bgSwatchGrp.visible = false
+                { break }
                 case 7:
-                    if (bgSelectUpdate){
-                        swatchButton.onClick()
-                    }
-                    projectBgGrp.bgSwatchGrp.visible = true
-                    exportInfo.projectBgColor = app.foregroundColor.hsb
-                    projectBgGrp.backgroundColor = exportInfo.projectBgColor // Works but returns error because of RGB list
-                    
-                    { break }
+                if (bgSelectUpdate){
+                    swatchButton.onClick()
+                }
+                // projectBgGrp.backgroundColor = swatchButton.parent.parent.backgroundColor // Works but returns error because of RGB list
+                projectBgGrp.bgSwatchGrp.visible = true
+                exportInfo.projectBgColor = app.foregroundColor.hsb
+                projectBgGrp.backgroundColor = exportInfo.projectBgColor // Works but returns error because of RGB list
+                
+                { break }
             }
-            // projectBgGrp.bgSwatchGrp.graphics.backgroundColor = projectBgGrp.graphics.newBrush(projectBgGrp.graphics.BrushType.SOLID_COLOR, [projectBgGrp.backgroundColor[0] / 255, projectBgGrp.backgroundColor[1] / 255, projectBgGrp.backgroundColor[2] / 255])
+            // alert(projectBgGrp.backgroundColor[0])
+            projectBgGrp.bgSwatchGrp.graphics.backgroundColor = projectBgGrp.graphics.newBrush(projectBgGrp.graphics.BrushType.SOLID_COLOR, [projectBgGrp.backgroundColor[0] / 255, projectBgGrp.backgroundColor[1] / 255, projectBgGrp.backgroundColor[2] / 255])
             // projectBgGrp.bgSwatchGrp.graphics.backgroundColor = projectBgGrp.graphics.newBrush(projectBgGrp.graphics.BrushType.SOLID_COLOR, [projectBgGrp.backgroundColor.hue / 360, projectBgGrp.backgroundColor.saturation / 100, projectBgGrp.backgroundColor.brightness / 100])
-            var hsbCol = HSBToRGB(projectBgGrp.backgroundColor)
-            projectBgGrp.bgSwatchGrp.graphics.backgroundColor = projectBgGrp.graphics.newBrush(projectBgGrp.graphics.BrushType.SOLID_COLOR, [hsbCol.r / 255, hsbCol.g / 255, hsbCol.b / 255]);
+            // var hsbCol = HSBToRGB(app.foregroundColor.hsb)
+            // projectBgGrp.bgSwatchGrp.graphics.backgroundColor = projectBgGrp.graphics.newBrush(projectBgGrp.graphics.BrushType.SOLID_COLOR, [hsbCol.r / 255, hsbCol.g / 255, hsbCol.b / 255]);
         }
         projectBgGrp.bgSelection.selection = exportInfo.projectBgColorIndex;
         if (exportInfo.projectBgColorIndex == 7){
@@ -1761,10 +1564,7 @@ function settingDialog(exportInfo) {
                 var pickedColor = app.foregroundColor;
                 if (this.bg) {
                     // this.parent.parent.backgroundColor = [pickedColor.rgb.red, pickedColor.rgb.green, pickedColor.rgb.blue]
-                    // this.parent.parent.backgroundColor = [pickedColor.hsb.hue, pickedColor.hsb.saturation, pickedColor.hsb.brightness]
-                    this.parent.parent.backgroundColor = pickedColor.hsb; //[pickedColor.hsb.hue, pickedColor.hsb.saturation, pickedColor.hsb.brightness]
-                    projectBgGrp.backgroundColor = app.foregroundColor.hsb;
-                    // alert(this.parent.backgroundColor)
+                    this.parent.parent.backgroundColor = [pickedColor.hsb.hue, pickedColor.hsb.saturation, pickedColor.hsb.brightness]
                     // exportInfo.projectBgColor = this.parent.parent.backgroundColor > Returns RGB we need HSB
                     exportInfo.projectBgColor = pickedColor.hsb
                     bgSelectUpdate = false; // dont call colorPicker again from background dropdown
@@ -1776,7 +1576,7 @@ function settingDialog(exportInfo) {
                 var gfx = this.parent.graphics
                 // gfx.backgroundColor = gfx.newBrush(gfx.BrushType.SOLID_COLOR, [pickedColor.rgb.red / 255, pickedColor.rgb.green / 255, pickedColor.rgb.blue / 255])
                 // gfx.backgroundColor = gfx.newBrush(gfx.BrushType.SOLID_COLOR, [pickedColor.hsb.hue / 360, pickedColor.hsb.saturation / 100, pickedColor.hsb.brightness / 100])
-                var hsbCol = HSBToRGB(pickedColor.hsb);
+                var hsbCol = HSBToRGB(pickedColor.hsb)
                 gfx.backgroundColor = gfx.newBrush(gfx.BrushType.SOLID_COLOR, [hsbCol.r / 255, hsbCol.g / 255, hsbCol.b / 255]);
             }
             // app.foregroundColor = fg // FG set foreground to wrong color
@@ -1790,7 +1590,7 @@ function settingDialog(exportInfo) {
     // PRESETSDDGRP
     // ==============
     var presetsPanel = newDocCustomDialogBox.add("panel", undefined, undefined, {name: "presetsPanel"}); 
-        presetsPanel.text = localize(locProjectPresetsSetTitle); 
+        presetsPanel.text = "Project Presets"; 
         presetsPanel.orientation = "row"; 
         presetsPanel.alignChildren = ["center","top"]; 
         presetsPanel.spacing = 8; 
@@ -1809,15 +1609,15 @@ function settingDialog(exportInfo) {
         presetListDropDown.preferredSize.width = 163; 
 
     var saveNewPresetButton = presetsPanel.add('button');
-        saveNewPresetButton.text = localize(locNewPrsBtn);
+        saveNewPresetButton.text = "New";
         saveNewPresetButton.preferredSize.width = "44";//[44,24]; 
 
     var deletePresetButton = presetsPanel.add('button');
-        deletePresetButton.text = localize(locRemovePrsBtn);
+        deletePresetButton.text = "Remove";
         deletePresetButton.preferredSize.width = "60";//[60,24]; 
 
     var resetPresetsButton = presetsPanel.add('button');
-        resetPresetsButton.text = localize(locResetPrsBtn);
+        resetPresetsButton.text = "Reset";
         resetPresetsButton.preferredSize.width = "50";//[50,24]; 
 
         ///////////////////////////////////////////////////////////////////////////////
@@ -1862,7 +1662,7 @@ function settingDialog(exportInfo) {
             exportInfo.fpsPreset = fpsDropdown.selection.index;
 
             // Background Color
-            exportInfo.projectBgColor = projectBgGrp.backgroundColor // this is HSB
+            exportInfo.projectBgColor = projectBgGrp.backgroundColor // this is RGB we need HSB
             exportInfo.projectBgColorIndex = projectBgGrp.bgSelection.selection.index;
 
             // Extra Options
@@ -1880,7 +1680,7 @@ function settingDialog(exportInfo) {
             // DELETE FILE DIALOG
             // =============
             var deleteFileDialogBox = new Window("dialog"); 
-                deleteFileDialogBox.text = localize(locDelPreset); 
+                deleteFileDialogBox.text = "Delete File"; 
                 deleteFileDialogBox.preferredSize.width = 300; 
                 deleteFileDialogBox.orientation = "column"; 
                 deleteFileDialogBox.alignChildren = ["fill","top"]; 
@@ -1899,7 +1699,7 @@ function settingDialog(exportInfo) {
                 warningGrp.alignment = ["fill","top"]; 
 
             var warningLabel = warningGrp.add("statictext", undefined, undefined, {name: "warningLabel", multiline: false}); 
-                warningLabel.text = localize(locDelPresetDesc)+exportInfo.docName+".json"; 
+                warningLabel.text = "Do you really want to delete file "+exportInfo.docName+".json"; 
                 // warningLabel.preferredSize.width = 64; 
                 warningLabel.justify = "left"; 
                 warningLabel.alignment = ["center","center"]; 
@@ -1913,13 +1713,13 @@ function settingDialog(exportInfo) {
                 dialogButtons.margins = [0,0,0,0]; 
                 dialogButtons.alignment = ["right","fill"]; 
 
-            var cancelButton = dialogButtons.add("button", undefined, undefined, {name: "cancel"}); 
-                // cancelButton.helpTip = localize(locCancelBtnTLTP); 
-                cancelButton.text = localize(locCancelPresetBtn);//"Cancel";//; 
+            var cancelButton = dialogButtons.add("button", undefined, undefined, {name: "cancelButton"}); 
+                cancelButton.helpTip = "Cancel new create document"; 
+                cancelButton.text = "Cancel"; 
 
-            var okBtn = dialogButtons.add("button", undefined, undefined, {name: "ok"}); 
-                // okBtn.helpTip = localize(locCreateBtnTLTP); 
-                okBtn.text = localize(locDeletePresetBtn); 
+            var okBtn = dialogButtons.add("button", undefined, undefined, {name: "okBtn"}); 
+                okBtn.helpTip = "Create document using setting"; 
+                okBtn.text = "OK"; 
 
             okBtn.onClick = function(){
                 deleteFile=true;
@@ -1941,69 +1741,24 @@ function settingDialog(exportInfo) {
             deleteFileDialogBox.center();
             deleteFileDialogBox.show();
         }
-
+        
         presetListDropDown.onChange = function(){
             // cancel main dialog window
             // load JSON preset
             var presetFile = presetListDropDown.selection.text;
             var presetsJSON = loadJsonPresetDoc(presetFile);
-            
+        
+            // Use last set items
             var d = objectToDescriptor(presetsJSON, strMessage, preProcessExportInfo);
             app.putCustomOptions("d69fc733-75b4-4d5c-ae8a-c6d6f9a899aa", d);
-
+            // alert(presetsJSON)
             var dd = objectToDescriptor(presetsJSON, strMessage);
             app.playbackParameters = dd;
 
             descriptorToObject(presetsJSON, app.playbackParameters, strMessage, postProcessExportInfo);
-            
-            app.playbackDisplayDialogs = DialogModes.ALL;
-        
-            initExportInfo(exportInfo);
-            descriptorToObject(exportInfo, app.playbackParameters, strMessage, postProcessExportInfo);
-        
-            // newDocCustomDialogBox.close(cancelButtonID);
-            // $.sleep(1000)
-            // // settingDialog(exportInfo);
-            // newProjectDialog(reuse=true);
 
-            // Workaround for issue closing reopning dialo where dropdown menu renders useless.
-            // figure out why i need to use exportInfo and presetsJSON mixed here to get the backgroundColor picker to work
-            projectnameInput.text = exportInfo.docName;
-            setColorMode(exportInfo.docColorMode)// = exportInfo.docColorMode = getColorMode(colormodeDropdown);//colormodeDropdown.selection.index
-            colormodeDropdown.selection = exportInfo.docColorModeIndex;
-            heightInput.text = exportInfo.docHeight;
-            widthInput.text = exportInfo.docWidth;
-            colorprofileDropdown.selection = exportInfo.docICC;//getColorProfile(colorprofileDropdown);
-            bitDepthDropdown.selection = exportInfo.docBitD;//getBitDepth(bitDepthDropdown);
-            resolutionInput.text = exportInfo.docDPI;
-
-            // Timeline Settings
-            durationInput.text = exportInfo.tmlnDuration;
-            fpsInput.text = exportInfo.tmlnFps;
-            fpsDropdown.selection = exportInfo.fpsPreset;
-
-            // Set Background Color > Needs more work
-            // Check contach sheet.jsx for parsing color
-            var currentColor = new SolidColor()
-            currentColor.hsb.hue = presetsJSON.projectBgColor.hue;
-            currentColor.hsb.saturation = presetsJSON.projectBgColor.saturation;
-            currentColor.hsb.brightness = presetsJSON.projectBgColor.brightness;
-            app.foregroundColor = currentColor;
-            projectBgGrp.backgroundColor = currentColor;
-
-            // Set Colorpicker swatch color
-            var hsbCol = HSBToRGB(currentColor.hsb);
-            projectBgGrp.bgSwatchGrp.graphics.backgroundColor = projectBgGrp.graphics.newBrush(projectBgGrp.graphics.BrushType.SOLID_COLOR, [hsbCol.r / 255, hsbCol.g / 255, hsbCol.b / 255]);
-            exportInfo.projectBgColor = app.foregroundColor.hsb;
-            projectBgGrp.backgroundColor = app.foregroundColor.hsb;
-
-            // Background Color
-            projectBgGrp.backgroundColor = exportInfo.projectBgColor; // this is RGB we need HSB
-            projectBgGrp.bgSelection.selection = exportInfo.projectBgColorIndex;
-            // alert(exportInfo.projectBgColorIndex)
-            // Extra Options
-            splitTmlnCheck.value = exportInfo.splitTmln;
-            splitTmlnDropdown.selection = exportInfo.splitTmlnIndex;
+            newDocCustomDialogBox.close(cancelButtonID);
+            newProjectDialog(reuse=true);
         }
 
         resetPresetsButton.onClick = function(){
@@ -2057,14 +1812,13 @@ function settingDialog(exportInfo) {
         dialogButtons.margins = [0,0,0,0]; 
         dialogButtons.alignment = ["right","fill"]; 
 
-    var cancelButton = dialogButtons.add("button", undefined, undefined, {name: "cancel"}); 
-        cancelButton.helpTip = localize(locCancelBtnTLTP);
-        cancelButton.text = localize(locCancelBtn); 
+    var cancelButton = dialogButtons.add("button", undefined, undefined, {name: "cancelButton"}); 
+        cancelButton.helpTip = "Cancel new create document"; 
+        cancelButton.text = "Cancel"; 
 
-    var createBtn = dialogButtons.add("button", undefined, undefined, {name: "ok"}); 
-        createBtn.helpTip = localize(locCreateBtnTLTP); 
-        // Strange button doesnt work when localized. Also other then english, buttons get squared?!
-        createBtn.text = localize(locCreateBtn); //"OK";
+    var okBtn = dialogButtons.add("button", undefined, undefined, {name: "okBtn"}); 
+        okBtn.helpTip = "Create document using setting"; 
+        okBtn.text = "OK"; 
 
     //    END SCRIPT UI 
 
@@ -2193,7 +1947,7 @@ function settingDialog(exportInfo) {
                 if(useTimeCode){ 
                     durationInput.text = toFrames(timeCodeStore); // Adjust duration to new fps
                 }
-                durationHint.text = localize(locDurationDesc) + framesToTMC(Number(durationInput.text)); // Adjust frames to time indication
+                durationHint.text = "Timeline duration " + framesToTMC(Number(durationInput.text)); // Adjust frames to time indication
             }
         }
         // Validate numbers only
@@ -2205,7 +1959,7 @@ function settingDialog(exportInfo) {
             if(useTimeCode){ 
                 durationInput.text = toFrames(timeCodeStore); // Adjust duration to new fps
             }
-            durationHint.text = localize(locDurationDesc) + framesToTMC(Number(durationInput.text)); // Adjust frames to time indication
+            durationHint.text = "Timeline duration " + framesToTMC(Number(durationInput.text)); // Adjust frames to time indication
             // durationHint.text = "Tiasdasd " ; // Adjust frames to time indication
         }
         // Color Profile 
@@ -2284,28 +2038,6 @@ function settingDialog(exportInfo) {
             }
             return docColorMode
         }
-        function setColorMode(colormodeDropdown) {
-            switch (colormodeDropdown) {
-                case "Grys":    
-                    // docColorMode = "Grys"; 
-                    colormodeDropdown.selection = grayscale;
-                    break;
-                case "RGBM":          
-                    // docColorMode = "RGBM"; 
-                    colormodeDropdown.selection = rgb;
-                    break;
-                case "CMYM":         
-                    // docColorMode = "CMYM";
-                    colormodeDropdown.selection = cmyk;
-                    break;
-                case "LbCM":          
-                    // docColorMode = "LbCM"; 
-                    colormodeDropdown.selection = lab;
-                    break;
-                default: throw "Bad color mode specified";
-            }
-            return docColorMode
-        }
         
         splitTmlnCheck.onClick = function() {
             exportInfo.splitTmln = this.value;
@@ -2328,7 +2060,7 @@ function settingDialog(exportInfo) {
             newDocCustomDialogBox.close(cancelButtonID);
         }
 
-        createBtn.onClick = function() {
+        okBtn.onClick = function() {
             // check if the setting is properly
             if (renameLayer.length == 0) {
                 alert(strAlertRename); // +" "+ strAlertFailure);
@@ -2340,8 +2072,6 @@ function settingDialog(exportInfo) {
         // in case we double clicked the file
         app.bringToFront();
         newDocCustomDialogBox.center();
-
-        newDocCustomDialogBox.active = true;
 
         // newDocCustomDialogBox.show();
         var result = newDocCustomDialogBox.show();
@@ -2367,7 +2097,7 @@ function settingDialog(exportInfo) {
         exportInfo.fpsPreset = fpsDropdown.selection.index;
 
         // Background Color
-        exportInfo.projectBgColor = projectBgGrp.backgroundColor; // this is RGB we need HSB
+        exportInfo.projectBgColor = projectBgGrp.backgroundColor // this is RGB we need HSB
         exportInfo.projectBgColorIndex = projectBgGrp.bgSelection.selection.index;
 
         // Extra Options
@@ -2383,16 +2113,13 @@ function settingDialog(exportInfo) {
         // Better use layerID here, select by layername can cause issues
         var desc13221 = new ActionDescriptor();
         var ref3857 = new ActionReference();
-        ref3857.putName( cTID('Lyr '), localize(strLayerNaming)+" 1");//"Layer 1" );
+        ref3857.putName( cTID('Lyr '), "Layer 1" );
         desc13221.putReference( cTID('null'), ref3857 );
         desc13221.putBoolean( cTID('MkVs'), false );
         var list1402 = new ActionList();
         list1402.putInteger( 2 );
         desc13221.putList( cTID('LyrI'), list1402 );
         executeAction( cTID('slct'), desc13221, DialogModes.NO );
-        // Select causes error when localized?
-        // Layer names are localized, we need to fix this
-        // localize(strLayerNaming)+" 1");
     }
 
     function selFirstLyr() {
@@ -2474,8 +2201,9 @@ function settingDialog(exportInfo) {
         }
 }
 
-// function newDocPreset(exportInfo){
-function newDocPreset(presetInfo){
+// function setupDocFromSettings(exportInfo){
+function setupDocFromSettings(presetInfo){
+    // alert("newDocPreet")
     // alert(presetInfo.splitTmln)
     // alert(readPreset.docName)
     // alert(readPreset.docColorMode)
@@ -2624,7 +2352,6 @@ function newDocPreset(presetInfo){
     // Suspend history > users doesnt need to see al items
     var historyDesc = localize(locNewDocPreset1)+presetInfo.docName+localize(locNewDocPreset2);
     app.activeDocument.suspendHistory(historyDesc, 'setupProject(presetInfo)');
-    // setupProject(presetInfo);
 }
 
 function setupProject(presetInfo){
@@ -2696,7 +2423,6 @@ function setupProject(presetInfo){
 
     // =======================================================
     // Move (select) the layer below
-    // Select causes error when localized?
     var idslct = charIDToTypeID("slct");
     var desc7 = new ActionDescriptor();
     var idnull = charIDToTypeID("null");
@@ -2756,7 +2482,7 @@ function setupProject(presetInfo){
         // Select layer 1 > default created layer
         var desc921 = new ActionDescriptor();
         var ref250 = new ActionReference();
-        ref250.putName( cTID('Lyr '), localize(strLayerNaming)+" 1");//"Layer 1" );
+        ref250.putName( cTID('Lyr '), "Layer 1" );
         desc921.putReference( cTID('null'), ref250 );
         desc921.putBoolean( cTID('MkVs'), false );
         var list60 = new ActionList();

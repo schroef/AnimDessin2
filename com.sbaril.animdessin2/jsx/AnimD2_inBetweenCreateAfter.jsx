@@ -56,6 +56,7 @@ function createInBetweenAfter() {
         var idnextFrame = stringIDToTypeID("nextFrame");
         var desc11 = new ActionDescriptor();
         var idtoNextWholeSecond = stringIDToTypeID("toNextWholeSecond");
+        // var idtoNextWholeSecond = stringIDToTypeID("toNextWholeSecond");
         desc11.putBoolean(idtoNextWholeSecond, false);
         executeAction(idnextFrame, desc11, DialogModes.NO);
 
@@ -76,7 +77,9 @@ createInBetweenAfter.main = function() {
     // Does single selection
     // createInBetweenAfter();
     // Complete selection
-    applyToAllLayers(createInBetweenAfter);
+    // Doesnt need to run with applyToAllLayers
+    // applyToAllLayers(createInBetweenAfter);
+    createInBetweenAfter()
 };
 
 app.activeDocument.suspendHistory(localize(locCreateInBetween), 'createInBetweenAfter.main()');

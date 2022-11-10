@@ -68,8 +68,8 @@
               <Width>1000</Width>
             </Size>
             <MinSize>
-              <Height>30</Height>
-              <Width>35</Width>
+              <Height>40</Height>
+              <Width>50</Width>
             </MinSize>
             <MaxSize>
               <Height>1400</Height>

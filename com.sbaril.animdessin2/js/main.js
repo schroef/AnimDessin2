@@ -148,7 +148,7 @@
     var getGlobalTimeline = new Boolean();
     var getTooltips = new Boolean();
     function resizePanelHeight(getGlobalTimeline,getTooltips){
-        var resize = new Boolean();
+        var resize = new Boolean(true);
         if (getGlobalTimeline == true || getTooltips == true) {
             resize = true
         } 
@@ -163,7 +163,9 @@
         // alert("both false "+getGlobalTimeline == false && getTooltips == false)
         // alert(resize)
         var resizePnl = resize == false ? 35 : 55;
-        csInterface.resizeContent(window.innerWidth, resizePnl);
+        console.log('panel height: '+resizePnl)
+        console.log('lower panel: '+(getGlobalTimeline == false && getTooltips == false))
+        csInterface.resizeContent(window.innerHeight, resizePnl);
     }
     function checkSettings() {
         $("#btn_onionSkin").addClass(localStorage.getItem("onionSkin"));
@@ -259,6 +261,7 @@
         $(".mybtn").addClass("tthide");
         $("#toolinfo").addClass(localStorage.getItem("toolTips"));
         resizePanelHeight(getGlobalTimeline,getTooltips)
+        console.log("getGlobalTimeline "+getGlobalTimeline+" "+"getTooltips "+getTooltips)
     }
 
     //Store settings
@@ -345,7 +348,8 @@
             // var tooltips = globalTimeline == "false" ? 35 : 55;
             // csInterface.resizeContent(window.innerWidth, tooltips);
             // if (globalTimeline == "false") csInterface.resizeContent(window.innerWidth, 35);
-            resizePanelHeight(globalTimeline,false)
+            getTooltips = false;
+            resizePanelHeight(globalTimeline,getTooltips)
             $("body").removeClass("toolTips");
             csInterface.updatePanelMenuItem(getLocalize().flyout_tooltips, true, false);
             csInterface.updateContextMenuItem("toolTips", true, false);
@@ -353,14 +357,16 @@
         if (store == "ttShow") {
             // var tooltips = localStorage.getItem("toolTips");
             // if (globalTimeline == "false") csInterface.resizeContent(window.innerWidth, 55);
-            $("body").addClass("toolTips");
             localStorage.setItem("toolTips", "ttShow");
-            resizePanelHeight(globalTimeline,true)
+            getTooltips = true;
+            resizePanelHeight(globalTimeline,getTooltips)
+            $("body").addClass("toolTips");
             csInterface.updatePanelMenuItem(getLocalize().flyout_tooltips, true, true);
             csInterface.updateContextMenuItem("toolTips", true, true);
         }
         
         console.log(store);
+        console.log("getGlobalTimeline "+getGlobalTimeline+" "+"getTooltips "+getTooltips)
         // Return variable with nested function
         // https://stackoverflow.com/questions/40172830/get-variable-inside-the-function
         return {
@@ -727,9 +733,7 @@
                 getLocalize().flyout_tooltips +
                 '" Checkable="true" Checked="false"/>\n<MenuItem Id="help" Label="' +
                 getLocalize().flyout_helpguides +
-                '" Checkable="true" Checked="false"/>\n<MenuItem Label="---" /> \n<MenuItem Id="closePanel" Label="' +
-                getLocalize().flyout_closepanel + 
-                '" Checkable="true" Checked="false"/>\n</Menu>'
+                '" Checkable="true" Checked="false"/>\n<MenuItem Label="---" /></Menu>'
             )
         }
 
@@ -776,9 +780,9 @@
                 case "help":
                     openGuides();
                     break;
-                // case "localize":
-                //     getLocalize();
-                //     break;
+                case "localize":
+                    getLocalize();
+                    break;
                 // case "closePanel":
                 //     toggleGuide("close");
                 //     break;
@@ -827,9 +831,9 @@
                 case "help":
                     openGuides();
                     break;
-                // case "localize":
-                //     getLocalize();
-                //     break;
+                case "localize":
+                    getLocalize();
+                    break;
                 // case "closePanel":
                 //     toggleGuide("close");
                 //     break;

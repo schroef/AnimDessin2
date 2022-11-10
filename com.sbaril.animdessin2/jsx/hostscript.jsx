@@ -190,6 +190,18 @@ function centerPlayhead(){
 }
 // Get frame frameCount
 // https://community.adobe.com/t5/photoshop/is-there-any-way-to-get-frame-count-of-timeline-animation-using-jsx-script/td-p/9391244?page=1
+// Items we can get
+// time
+// currentFrame
+// documentTimelineSettings
+// duration
+// enabled
+// frameCount
+// frameRate
+// hasMotion
+// workInTime
+// workOutTime
+
 function timelineFrameCount() {
     // alert("timelineCount")
     var r = new ActionReference();
@@ -207,6 +219,15 @@ function timelineCurrentFrame() {
     var ret = executeActionGet(r);
     var totFr = ret.getInteger(stringIDToTypeID('currentFrame'));
     return totFr
+}
+function timelineFPS() {
+    // alert("currentFr")
+    var r = new ActionReference();
+    r.putProperty(charIDToTypeID('Prpr'), stringIDToTypeID('frameRate'));
+    r.putClass(stringIDToTypeID('timeline'));
+    var ret = executeActionGet(r);
+    var fps = ret.getInteger(stringIDToTypeID('frameRate'));
+    return fps
 }
 
 

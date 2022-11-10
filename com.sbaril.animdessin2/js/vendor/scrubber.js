@@ -1,3 +1,12 @@
+/*
+
+    TODO
+    - scripts should be loaded once and not all the time. 
+    ^ Downside is that when document is change, it does need to be updated.
+    - Call all variables when we set playhead. This should make less demanding
+
+*/
+
 // Variables
 var pos1 = Number;
 var pos2 = Number;
@@ -102,8 +111,10 @@ function dragElement(elmnt) {
 function timecode(curFr) {
     var useTimeCode = localStorage.getItem("timeCode"); // Use timecode yes/no
     if (useTimeCode == "true"){
+        csInterface.evalScript("timelineFPS()", function (result) {
+            fps = result;
+        });
         currentFrame = curFr;
-        var fps = 30;
         var h = Math.floor(currentFrame/(60*60*fps));
         var m = (Math.floor(currentFrame/(60*fps))) % 60;
         var s = (Math.floor(currentFrame/fps)) % 60;

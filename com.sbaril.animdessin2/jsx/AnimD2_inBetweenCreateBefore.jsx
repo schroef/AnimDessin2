@@ -104,7 +104,9 @@ createInBetween.main = function() {
     // Does single selection
     // createInBetween();
     // Complete selection
-    applyToAllLayers(createInBetween);
+    // applyToAllLayers(createInBetween);
+    // Doesnt need to run with applyToAllLayers
+    createInBetween();
 };
 
 app.activeDocument.suspendHistory(localize(locCreateInBetween), 'createInBetween.main()');
