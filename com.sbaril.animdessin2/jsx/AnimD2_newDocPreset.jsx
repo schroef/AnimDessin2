@@ -69,6 +69,12 @@ var strDocColorOther = {
     ch: "XXXXXXXXX",
 };//localize('$$$/JavaScripts/AD2newDocPreset/ColorOther=Other...')
 var strMessage = localize("$$$/JavaScripts/AD2newDocPreset/Message=AD2 New Doc Preset");
+locNewDocPreset1Label = {
+    en: "Name:",
+    fr: "Nombre:",
+    nl: "Naam:",
+    ch: "姓名:",
+};
 locNewDocPreset1 = {
     en: "New project ",
     fr: "Nouveau projet ",
@@ -96,6 +102,13 @@ locDelPresetDesc = {
     ch: "XXXXXXXX "
 };
 
+// Dialog setting Canvas
+locNewDocCanvasLabel = {
+    en: "Canvas ",
+    fr: "Toile ",
+    nl: "Canvas ",
+    ch: "帆布 ",
+};
 // Dialog setting titles
 locSizeSetTitle = {
     en: "Size:",
@@ -162,6 +175,13 @@ locProjectPresetsSetTitle = {
     fr: "Préréglages du projet",
     nl: "Project Voorinstellingen",
     ch: "XXXXXXXX"
+};
+
+locNewSettingArrayLabel = {
+    en: "Select...",
+    fr: "Sélectionner",
+    nl: "Kies...",
+    ch: "选择..."
 };
 
 // Buttons
@@ -1295,7 +1315,7 @@ function settingDialog(exportInfo) {
         projectnameGrp.margins = 0; 
 
     var projectnameLabel = projectnameGrp.add("statictext", undefined, undefined, {name: "projectnameLabel"}); 
-        projectnameLabel.text = "Name"; 
+        projectnameLabel.text = localize(locNewDocPreset1Label); 
 
     var projectnameInput = projectnameGrp.add('edittext {properties: {name: "projectnameInput"}}'); 
         projectnameInput.text = exportInfo.docName; 
@@ -1796,14 +1816,14 @@ function settingDialog(exportInfo) {
         presetsPanel.spacing = 8; 
         presetsPanel.margins = 16; 
 
-    var presetDocList_array = ["Select...",
-                            "1920x1080p-48-24fps-Gray",
-                            "720p-24-24-24fps-Purple",
-                            "1080x1080-72dpi-red",
-                            "1920x1080-72dpi-gray"]; 
+    // var presetDocList_array = [localize(locNewSettingArrayLabel)];
+                            // "1920x1080p-48-24fps-Gray",
+                            // "720p-24-24-24fps-Purple",
+                            // "1080x1080-72dpi-red",
+                            // "1920x1080-72dpi-gray"]; 
     
 
-    var presetListDropDown = presetsPanel.add("dropdownlist", undefined, undefined, {name: "presetListDropDown", items: ["Select..."]}); 
+    var presetListDropDown = presetsPanel.add("dropdownlist", undefined, undefined, {name: "presetListDropDown", items: [localize(locNewSettingArrayLabel)]}); 
         presetListDropDown.helpTip = "Choose, add or remove presets"; 
         presetListDropDown.selection = 0; 
         presetListDropDown.preferredSize.width = 163; 
@@ -1829,7 +1849,8 @@ function settingDialog(exportInfo) {
         function getFileListDocPresets(){
             var fileList = getJsonPresetFileNames()
             presetListDropDown.removeAll()
-            presetListDropDown.add("item","Select...");
+            // presetListDropDown.add("item","Select...");
+            presetListDropDown.add("item",localize(locNewSettingArrayLabel));
             var itemSelected = 0;
             for(i=0;i<fileList.length;i++) {
                     items = fileList[i] == "-" ? "separator" : "item";

@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 - Issue with InBetween After keeping 2 frames selected after new frame is added after > due to applyToAll, it reselect afterwards
 
+### Added
+- New Doc Preset has updated localized labels 
+
 ## [0.0.1] - 2021-10-13
 ### Added
 - Initial release
