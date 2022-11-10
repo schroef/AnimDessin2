@@ -4,13 +4,15 @@ This panel is designed for Photoshop CC 2014 to CC 2020+. It allows you to draw 
 ### Short info
 This [Photoshop Extension](https://helpx.adobe.com/photoshop/kb/plug-ins-extensions-photoshop-cc.html) was created by [Stéphane Baril](https://github.com/sbaril/Photoshop-Animation) aka sbaril with help of others. This repo is my add to this wonderful extension and i hope it helps others. I wanted to expand its functionality while learning the process of creating an Extension. 
 
+I've added many updates and features which for the time being you can [read more about in this issue](https://github.com/sbaril/Photoshop-Animation/issues/8) on his repo
+
 
 ### Installing (manual method)
 Since this extension is still a work in progress currently the only method to try it, i using the manual install method. Below are some steps the users needs to follow, its shows both Mac and Windows.
 
-> Windows: Open regedit > HKEY_CURRENT_USER/Software/Adobe/CSXS.7, then add a new entry `PlayerDebugMode` of type “`string`” with the value of “`1`”.
+> Windows: Open regedit > HKEY_CURRENT_USER/Software/Adobe/CSXS.5, then add a new entry `PlayerDebugMode` of type “`string`” with the value of “`1`”.
 
-> Mac: In the Terminal, type: `defaults write com.adobe.CSXS.8 PlayerDebugMode 1`
+> Mac: In the Terminal, type: `defaults write com.adobe.CSXS.5 PlayerDebugMode 1`
 
 [Source > Adobe](https://github.com/Adobe-CEP/Getting-Started-guides/tree/d85c8e861ef90bb5c3443516d45c631e9fdebd7f/Client-side%20Debugging)
 
