@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 ## [0.8.1] - 2022-11-10
 ### Fixed
 - Issue with InBetween After keeping 2 frames selected after new frame is added after > due to applyToAll, it reselect afterwards
+- Panel height issue when toggling either Tooltips or GLobal Timeline OFF
 
 ### Added
 - New Doc Preset has updated localized labels 
