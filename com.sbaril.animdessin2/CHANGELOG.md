@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 - Issue with InBetween After keeping 2 frames selected after new frame is added after > due to applyToAll, it reselect afterwards
 - Panel height issue when toggling either Tooltips or GLobal Timeline OFF
+- Tooltip for Show All Layers favorite button, corrected key-combo it showed
 
 ### Added
 - New Doc Preset has updated localized labels 
