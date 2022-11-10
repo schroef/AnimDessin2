@@ -148,7 +148,7 @@
     var getGlobalTimeline = new Boolean();
     var getTooltips = new Boolean();
     function resizePanelHeight(getGlobalTimeline,getTooltips){
-        var resize = new Boolean(true);
+        var resize = new Boolean(false);
         if (getGlobalTimeline == true || getTooltips == true) {
             resize = true
         } 
