@@ -484,7 +484,7 @@ function AnimD2_playheadPrevEditCustomfr(customFrameStep, direction) {
 ///////////////////////////////////////////////////
 function frameStepDialog(customFrameStep) {
     customFrameStep = customFrameStep != "Number..." ? customFrameStep : "Number...";
-
+    if (customFrameStep=="undefined") customFrameStep = "Number..."
     var runButtonID = 1;
     var cancelButtonID = 2;
     var frameStepStr = customFrameStep;
@@ -532,7 +532,9 @@ function frameStepDialog(customFrameStep) {
     customFrameStep.onChange = function(){
         frameStepInput = customFrameStep.text;
     }
+    if (frameStepInput == frameStepInput) frameStepInput
     ok.onClick = function() {
+        frameStepInput = customFrameStep.text;
         // check if the setting is properly
         if (frameStepInput.length == 0) {
             alert(strAlertRename); // +" "+ strAlertFailure);
