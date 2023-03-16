@@ -396,3 +396,161 @@ function keyPress(os){
         // app.system( 'osascript -e \'tell application "System Events" to key code "123" using command down\'' );
     }
 }
+
+
+///////////////////////////////////////////////////
+// Custom Frame Step Action from jsx
+///////////////////////////////////////////////////
+function cTID(s) { return app.charIDToTypeID(s); };
+function sTID(s) { return app.stringIDToTypeID(s); };
+
+function AnimD2_playheadPrevEditCustomfr(customFrameStep, direction) {
+    // alert(customFrameStep)
+    // alert(direction)
+    if(customFrameStep=="false") {
+        alert("No Custom Frame Set") 
+        return
+    }
+    ErrStrs = {}; 
+    ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
+    try {
+
+        // Set selection layer panel
+        var desc83 = new ActionDescriptor();
+        var ref48 = new ActionReference();
+        ref48.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID('Bckw') );
+        desc83.putReference( cTID('null'), ref48 );
+        desc83.putBoolean( cTID('MkVs'), false );
+        var list25 = new ActionList();
+        list25.putInteger( 5 );
+        desc83.putList( cTID('LyrI'), list25 );
+        executeAction( cTID('slct'), desc83, DialogModes.NO );
+
+        // https://www.ps-scripts.com/viewtopic.php?f=77&t=40409&p=169007&hilit=timeline#p169007
+        // Get frame numers
+        var ref = new ActionReference();
+        ref.putProperty(stringIDToTypeID('property'), stringIDToTypeID('time'));
+        ref.putClass(stringIDToTypeID('timeline'), stringIDToTypeID('timeline'));
+        var desc = executeActionGet(ref); // <- it's here inside desc
+
+        var time_Seconds = desc.getObjectValue(stringIDToTypeID('time')).getInteger(stringIDToTypeID('seconds'))
+        var time_Frame = desc.getObjectValue(stringIDToTypeID('time')).getInteger(stringIDToTypeID('frame'))
+        var time_FrameRate = desc.getObjectValue(stringIDToTypeID('time')).getDouble(stringIDToTypeID('frameRate'))
+        
+        // check what direction to go and use custom framesteps
+        if(direction=="prev") {
+            var directionTime = time_Frame-=Number(customFrameStep);
+        } else {
+            var directionTime = time_Frame+=Number(customFrameStep);
+        }
+        // set to frame 0 if number is minus
+        if (directionTime.toString().indexOf('-')==0) directionTime = 0;
+        // alert(directionTime.toString().indexOf('-')==0)
+        // alert(directionTime.toString().indexOf('-'))
+        // alert(directionTime.toString().indexOf('-'))
+        // Set playhead to selection
+        // Move playhead 1 second
+        var idsetd = charIDToTypeID( "setd" );
+        var desc36 = new ActionDescriptor();
+        var idnull = charIDToTypeID( "null" );
+        var ref18 = new ActionReference();
+        var idPrpr = charIDToTypeID( "Prpr" );
+        var idtime = stringIDToTypeID( "time" );
+        ref18.putProperty( idPrpr, idtime );
+        var idtimeline = stringIDToTypeID( "timeline" );
+        ref18.putClass( idtimeline );
+        desc36.putReference( idnull, ref18 );
+        var idT = charIDToTypeID( "T   " );
+        var desc37 = new ActionDescriptor();
+        var idseconds = stringIDToTypeID( "seconds" );
+        desc37.putInteger( idseconds, time_Seconds );
+        var idframe = stringIDToTypeID( "frame" );
+        desc37.putInteger( idframe, directionTime );
+        var idframeRate = stringIDToTypeID( "frameRate" );
+        desc37.putDouble( idframeRate, time_FrameRate );
+        var idtimecode = stringIDToTypeID( "timecode" );
+        desc36.putObject( idT, idtimecode, desc37 );
+        executeAction( idsetd, desc36, DialogModes.NO );
+
+    // Allows for cancel without feedback message
+    } catch(e){
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+  }
+};
+
+///////////////////////////////////////////////////
+// custom frame step Dialog
+///////////////////////////////////////////////////
+function frameStepDialog(customFrameStep) {
+    customFrameStep = customFrameStep != "Number..." ? customFrameStep : "Number...";
+
+    var runButtonID = 1;
+    var cancelButtonID = 2;
+    var frameStepStr = customFrameStep;
+
+    // var exportInfo = new Object();
+    //     exportInfo.frameStep = frameStepStr;
+    var cancelBtnStr = "Cancel";
+    var okBtnStr = "OK";
+    // FRAMERENAME
+    // ===========
+    var dlgMain = new Window("dialog"); 
+        dlgMain.text = "Set Custom Frame Step"; //renameFrameTitleStr; 
+        dlgMain.preferredSize.width = 100; 
+        dlgMain.orientation = "column"; 
+        dlgMain.alignChildren = ["fill","top"]; 
+        dlgMain.spacing = 10; 
+        dlgMain.margins = 16; 
+
+    var customFrameStep = dlgMain.add('edittext {properties: {name: "frameStep"}}'); 
+        customFrameStep.helpTip = "Set custom frame step"; 
+        customFrameStep.text = frameStepStr; //exportInfo.frameStep;
+        customFrameStep.active = true; // Set focus on input
+
+    // GROUP1
+    // ======
+    var group1 = dlgMain.add("group", undefined, {name: "group1"}); 
+        group1.orientation = "row"; 
+        group1.alignChildren = ["right","top"]; 
+        group1.spacing = 10; 
+        group1.margins = 0; 
+
+    var cancel = group1.add("button", undefined, undefined, {name: "cancel"}); 
+        cancel.text = cancelBtnStr; 
+        // cancel.preferredSize.width = 70; 
+    
+    cancel.onClick = function() {
+        dlgMain.close(cancelButtonID);
+    }
+
+    var ok = group1.add("button", undefined, undefined, {name: "ok"}); 
+        ok.text = okBtnStr; 
+        // ok.preferredSize.width = 80; 
+
+    var frameStepInput;
+    customFrameStep.onChange = function(){
+        frameStepInput = customFrameStep.text;
+    }
+    ok.onClick = function() {
+        // check if the setting is properly
+        if (frameStepInput.length == 0) {
+            alert(strAlertRename); // +" "+ strAlertFailure);
+            return;
+        }
+        dlgMain.close(runButtonID);
+    }
+
+    // in case we double clicked the file
+    dlgMain.center();
+
+    var result = dlgMain.show();
+
+    if (cancelButtonID == result) {
+        return result; // close to quit
+    }
+
+    // Get settings from Dialog
+    // exportInfo.frameStep = customFrameStep.text;
+    return frameStepInput;
+}

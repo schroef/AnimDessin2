@@ -584,7 +584,8 @@
             loadJSXFile("/jsx/AnimD2_inBetweenNext.jsx");
         });
         $("#btn_playheadSplit").click(function (e) {
-            if (e.shiftKey) loadJSXFile("/jsx/AnimD2_playheadSplitGroup.jsx");
+            if (e.altKey && e.shiftKey) loadJSXFile("/jsx/AnimD2_splitToFrames2FrGroup.jsx");
+            else if (e.shiftKey) loadJSXFile("/jsx/AnimD2_playheadSplitGroup.jsx");
             else if (e.altKey) loadJSXFile("/jsx/AnimD2_splitToFramesGroup.jsx");
             else if (!e.altKey || !e.shiftKey) loadJSXFile("/jsx/AnimD2_playheadSplit.jsx");
         });
@@ -601,13 +602,39 @@
             else if (!e.altKey || !e.shiftKey) loadJSXFile("/jsx/AnimD2_playheadEnd.jsx");
         });
         $("#btn_playheadPrevEdit").click(function (e) {
-            if (e.shiftKey) loadJSXFile("/jsx/AnimD2_playheadPrevEdit2fr.jsx");
-            if (e.altKey) loadJSXFile("/jsx/AnimD2_playheadFirstFrame.jsx");
+            if (e.altKey && e.shiftKey) {
+                var customFrameStep = localStorage.getItem("customFrameStep");
+                csInterface.evalScript(`frameStepDialog('${customFrameStep}')`, function (customFrameStep) {
+                    localStorage.setItem("customFrameStep", customFrameStep);
+                });
+            }
+            // else if (e.shiftKey) loadJSXFile("/jsx/AnimD2_playheadPrevEdit2fr.jsx");
+            else if (e.shiftKey) {
+                var customFrameStep = localStorage.getItem("customFrameStep");
+                customFrameStep = customFrameStep == "false" ? "false" : customFrameStep;
+                csInterface.evalScript(`AnimD2_playheadPrevEditCustomfr('${customFrameStep}',"prev")`);
+            }
+            else if (e.altKey) loadJSXFile("/jsx/AnimD2_playheadFirstFrame.jsx");
             else if (!e.altKey || !e.shiftKey) loadJSXFile("/jsx/AnimD2_playheadPrevEdit.jsx");
         });
         $("#btn_playheadNextEdit").click(function (e) {
-            if (e.shiftKey) loadJSXFile("/jsx/AnimD2_playheadNextEdit2fr.jsx");
-            if (e.altKey) loadJSXFile("/jsx/AnimD2_playheadLastFrame.jsx");
+            // if (e.shiftKey) loadJSXFile("/jsx/AnimD2_playheadNextEdit2fr.jsx");
+            // if (e.metaKey && e.shiftKey) {
+            //     loadJSXFile("/jsx/AnimD2_playheadEndArea.jsx");
+            // }
+            if (e.altKey && e.shiftKey) {
+                var customFrameStep = localStorage.getItem("customFrameStep");
+                csInterface.evalScript(`frameStepDialog('${customFrameStep}')`, function (customFrameStep) {
+                    localStorage.setItem("customFrameStep", customFrameStep);
+                });
+            }
+            // else if (e.shiftKey) loadJSXFile("/jsx/AnimD2_playheadPrevEdit2fr.jsx");
+            else if (e.shiftKey) {
+                var customFrameStep = localStorage.getItem("customFrameStep");
+                customFrameStep = customFrameStep == "false" ? "false" : customFrameStep;
+                csInterface.evalScript(`AnimD2_playheadPrevEditCustomfr('${customFrameStep}',"next")`);
+            }
+            else if (e.altKey) loadJSXFile("/jsx/AnimD2_playheadLastFrame.jsx");
             else if (!e.altKey || !e.shiftKey) loadJSXFile("/jsx/AnimD2_playheadNextEdit.jsx");
         });
 

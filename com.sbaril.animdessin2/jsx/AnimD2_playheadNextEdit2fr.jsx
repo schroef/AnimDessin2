@@ -74,7 +74,7 @@ function playheadNextEdit() {
         var idseconds = stringIDToTypeID( "seconds" );
         desc37.putInteger( idseconds, time_Seconds );
         var idframe = stringIDToTypeID( "frame" );
-        desc37.putInteger( idframe, (time_Frame+1));
+        desc37.putInteger( idframe, (time_Frame+2));
         var idframeRate = stringIDToTypeID( "frameRate" );
         desc37.putDouble( idframeRate, time_FrameRate );
         var idtimecode = stringIDToTypeID( "timecode" );

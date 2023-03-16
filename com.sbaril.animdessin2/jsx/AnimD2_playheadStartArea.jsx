@@ -37,16 +37,16 @@ function playheadStartArea() {
     try {
         
         // VIDEO TIMELINE
-        // var idslct = charIDToTypeID( 'slct' );
-        // var desc471 = new ActionDescriptor();
-        // var idnull = charIDToTypeID( 'null' );
-        // var ref412 = new ActionReference();
-        // var idMnspsp = charIDToTypeID( 'Mn ' );
-        // var idMnIt = charIDToTypeID( 'MnIt' );
-        // var idtimelineGoToWorkAreaEnd = stringIDToTypeID( 'timelineGoToWorkAreaStart' );
-        // ref412.putEnumerated( idMnspsp, idMnIt, idtimelineGoToWorkAreaEnd ); 
-        // desc471.putReference( idnull, ref412 ); 
-        // executeAction( idslct, desc471, DialogModes.ALL ); 
+        var idslct = charIDToTypeID( 'slct' );
+        var desc471 = new ActionDescriptor();
+        var idnull = charIDToTypeID( 'null' );
+        var ref412 = new ActionReference();
+        var idMnspsp = charIDToTypeID( 'Mn ' );
+        var idMnIt = charIDToTypeID( 'MnIt' );
+        var idtimelineGoToWorkAreaEnd = stringIDToTypeID( 'timelineGoToWorkAreaStart' );
+        ref412.putEnumerated( idMnspsp, idMnIt, idtimelineGoToWorkAreaEnd ); 
+        desc471.putReference( idnull, ref412 ); 
+        executeAction( idslct, desc471, DialogModes.ALL ); 
 
 
     // Allows for cancel without feedback message

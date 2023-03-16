@@ -363,6 +363,13 @@ locSplitToFramesGroup = {
     nl: "Splits laag 1 franes en maak video groep",
     ch: "将图层拆分为 1 帧并制作视频组"
 };
+// Localize AnimD2_splitToFrames2FrGroup.jsx
+locSplitToFrames2FrGroup = {
+    en: "Split layer into 2 frames and make video group",
+    fr: "XXXXXXXXX",
+    nl: "Splits laag 2 franes en maak video groep",
+    ch: "将图层拆分为 2 帧并制作视频组"
+};
 // Localize AnimD2_playheadSplitGroup.jsx
 locPlayheadSplitGroup = {
     en: "Split at playhead and make video group",
