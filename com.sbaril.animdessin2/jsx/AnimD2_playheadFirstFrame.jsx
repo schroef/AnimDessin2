@@ -29,11 +29,24 @@ $.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 ///////////////////////////////////////////////////
 
 function playheadFirstFrame() {
+    
+
 
     ErrStrs = {}; 
     ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
     try {
+        // select last layer in layer panel
+        var doc = app.activeDocument;
+        var layers = doc.layers;
+        var layer = layers[0];
+        if(layer.typename == 'LayerSet') {
+            var lyrs = doc.layerSets[0].artLayers[doc.layerSets[0].artLayers.length-1];
+        } else {
+            var lyrs = doc.layers[doc.layers.length-2];
+        }
+        doc.activeLayer = lyrs;
 
+        // Set playhead at first frame
         function ftn1() {
             function cTID(s) { return app.charIDToTypeID(s); };
             function sTID(s) { return app.stringIDToTypeID(s); };
