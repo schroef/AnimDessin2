@@ -128,10 +128,10 @@ function splitToFramesGroup() {
 //=========================================
 //
 
-// splitToFramesGroup.main = function() {
-//     // splitToFramesGroup();
-//     applyToAllLayers(splitToFramesGroup);
-// };
-splitToFramesGroup()
-// app.activeDocument.suspendHistory(localize(locSplitToFramesGroup), 'splitToFramesGroup.main()');
+splitToFramesGroup.main = function() {
+    splitToFramesGroup();
+    // applyToAllLayers(splitToFramesGroup);
+};
+// splitToFramesGroup()
+app.activeDocument.suspendHistory(localize(locSplitToFramesGroup), 'splitToFramesGroup.main()');
 // app.system( 'osascript -e \'tell application \"System Events\" to key code 123\'' ); 
