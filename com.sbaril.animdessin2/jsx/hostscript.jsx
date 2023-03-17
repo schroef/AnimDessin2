@@ -414,17 +414,29 @@ function AnimD2_playheadPrevEditCustomfr(customFrameStep, direction) {
     ErrStrs = {}; 
     ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
     try {
+        // check what direction to go and use custom framesteps
+        if(direction=="prev") {
+            var directionMove = 'Bckw';
+            var directionFrame = 5;
+        } else {
+            var directionMove = 'Frwr';
+            var directionFrame = 6;
+        }
 
-        // Set selection layer panel
-        var desc83 = new ActionDescriptor();
-        var ref48 = new ActionReference();
-        ref48.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID('Bckw') );
-        desc83.putReference( cTID('null'), ref48 );
-        desc83.putBoolean( cTID('MkVs'), false );
-        var list25 = new ActionList();
-        list25.putInteger( 5 );
-        desc83.putList( cTID('LyrI'), list25 );
-        executeAction( cTID('slct'), desc83, DialogModes.NO );
+        // we use loop to jump layers
+        // TODO need to know how long each frame is. When using 2frames it will jump double the time
+        for(i=0;i<customFrameStep;i++){
+            // Set selection layer panel
+            var desc83 = new ActionDescriptor();
+            var ref48 = new ActionReference();
+            ref48.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID(directionMove) );
+            desc83.putReference( cTID('null'), ref48 );
+            desc83.putBoolean( cTID('MkVs'), false );
+            var list25 = new ActionList();
+            list25.putInteger( directionFrame );
+            desc83.putList( cTID('LyrI'), list25 );
+            executeAction( cTID('slct'), desc83, DialogModes.NO );
+        }
 
         // https://www.ps-scripts.com/viewtopic.php?f=77&t=40409&p=169007&hilit=timeline#p169007
         // Get frame numers
