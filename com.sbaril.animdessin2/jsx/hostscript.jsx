@@ -404,9 +404,14 @@ function keyPress(os){
 function cTID(s) { return app.charIDToTypeID(s); };
 function sTID(s) { return app.stringIDToTypeID(s); };
 
-function AnimD2_playheadPrevEditCustomfr(customFrameStep, direction) {
+function AnimD2_playheadPrevEditCustomfr(customFrameStep,frameLength, direction) {
     // alert(customFrameStep)
     // alert(direction)
+    // alert(frameLength)
+    if(frameLength=="false") {
+        alert("Frame Length is not Set") 
+        return
+    }
     if(customFrameStep=="false") {
         alert("No Custom Frame Set") 
         return
@@ -425,7 +430,9 @@ function AnimD2_playheadPrevEditCustomfr(customFrameStep, direction) {
 
         // we use loop to jump layers
         // TODO need to know how long each frame is. When using 2frames it will jump double the time
-        for(i=0;i<customFrameStep;i++){
+        // Divide customframestep / framelength > gets a rough number. Doesnt work nice with uneven frame numbers
+        var stepLayers = Math.round(customFrameStep / frameLength);
+        for(i=0;i<stepLayers;i++){
             // Set selection layer panel
             var desc83 = new ActionDescriptor();
             var ref48 = new ActionReference();
@@ -491,15 +498,23 @@ function AnimD2_playheadPrevEditCustomfr(customFrameStep, direction) {
   }
 };
 
+// Trim Spaces
+// https://community.adobe.com/t5/indesign-discussions/trim-function-not-working-in-extendscript-is-there-a-way-to-replicate-the-functioning/m-p/7671887#M161781
+function trim (str) {
+    return str.replace(/^\s+/,'').replace(/\s+$/,'');
+}
 ///////////////////////////////////////////////////
 // custom frame step Dialog
 ///////////////////////////////////////////////////
-function frameStepDialog(customFrameStep) {
-    customFrameStep = customFrameStep != "Number..." ? customFrameStep : "Number...";
-    if (customFrameStep=="undefined") customFrameStep = "Number..."
+function frameStepDialog(customFrameStep, frameLength) {
+    customFrameStep = customFrameStep != "Set..." ? customFrameStep : "Set...";
+    frameLength = frameLength != "Set..." ? frameLength : "Set...";
+    if (customFrameStep=="undefined") customFrameStep = "Set..."
+    if (frameLength==" undefined") frameLength = "Set..."
     var runButtonID = 1;
     var cancelButtonID = 2;
     var frameStepStr = customFrameStep;
+    var frameLengthStr = frameLength;
 
     // var exportInfo = new Object();
     //     exportInfo.frameStep = frameStepStr;
@@ -515,10 +530,37 @@ function frameStepDialog(customFrameStep) {
         dlgMain.spacing = 10; 
         dlgMain.margins = 16; 
 
-    var customFrameStep = dlgMain.add('edittext {properties: {name: "frameStep"}}'); 
+    var frameStepGrp = dlgMain.add("group", undefined, {name: "frameStepGrp"}); 
+        frameStepGrp.orientation = "row"; 
+        frameStepGrp.alignChildren = ["left","top"]; 
+        frameStepGrp.spacing = 10; 
+        frameStepGrp.margins = 0; 
+
+    var customFrameStepLabel = frameStepGrp.add('statictext {properties: {name: "frameStepLabel"}}'); 
+        customFrameStepLabel.text = "Frame Step"; //exportInfo.frameStep;
+        customFrameStepLabel.preferredSize = [100,15];
+
+    var customFrameStep = frameStepGrp.add('edittext {properties: {name: "frameStep"}}'); 
         customFrameStep.helpTip = "Set custom frame step"; 
-        customFrameStep.text = frameStepStr; //exportInfo.frameStep;
+        customFrameStep.text = trim(frameStepStr); //exportInfo.frameStep;
         customFrameStep.active = true; // Set focus on input
+        customFrameStep.preferredSize = [45,15];
+    
+    var frameLengthGrp = dlgMain.add("group", undefined, {name: "frameLengthGrp"}); 
+        frameLengthGrp.orientation = "row"; 
+        frameLengthGrp.alignChildren = ["left","top"]; 
+        frameLengthGrp.spacing = 10; 
+        frameLengthGrp.margins = 0; 
+
+    var frameLengthLabel = frameLengthGrp.add('statictext {properties: {name: "frameLengthLabel"}}'); 
+        frameLengthLabel.text = "Frame Length"; //exportInfo.frameStep;
+        frameLengthLabel.preferredSize = [100,15];
+
+    var frameLength = frameLengthGrp.add('edittext {properties: {name: "frameStep"}}'); 
+        frameLength.helpTip = "Set length of each frames, this helps with the next and prev actions"; 
+        frameLength.text = trim(frameLengthStr); //exportInfo.frameStep;
+        frameLength.active = false; // Set focus on input
+        frameLength.preferredSize = [45,15];
 
     // GROUP1
     // ======
@@ -540,15 +582,26 @@ function frameStepDialog(customFrameStep) {
         ok.text = okBtnStr; 
         // ok.preferredSize.width = 80; 
 
-    var frameStepInput;
+    var frameStepInput= customFrameStep.text;
+    var frameLengthInput= frameLength.text;
     customFrameStep.onChange = function(){
         frameStepInput = customFrameStep.text;
     }
+    frameLength.onChange = function(){
+        frameLengthInput = frameLength.text;
+    }
     if (frameStepInput == frameStepInput) frameStepInput
+    if (frameLengthInput == frameLengthInput) frameLengthInput
+
     ok.onClick = function() {
         frameStepInput = customFrameStep.text;
+        frameLengthInput = frameLength.text;
         // check if the setting is properly
         if (frameStepInput.length == 0) {
+            alert(strAlertRename); // +" "+ strAlertFailure);
+            return;
+        }
+        if (frameLengthInput.length == 0) {
             alert(strAlertRename); // +" "+ strAlertFailure);
             return;
         }
@@ -561,10 +614,11 @@ function frameStepDialog(customFrameStep) {
     var result = dlgMain.show();
 
     if (cancelButtonID == result) {
-        return result; // close to quit
+        // return result; // close to quit
+        return [frameStepInput, frameLengthInput]
     }
 
     // Get settings from Dialog
     // exportInfo.frameStep = customFrameStep.text;
-    return frameStepInput;
+    return [frameStepInput, frameLengthInput];
 }

@@ -406,7 +406,26 @@
     function sendWarning() {
         loadJSXFile("/jsx/AnimD2_warning.jsx");
     }
+    function setFrameStep(){
+        var customFrameStep = localStorage.getItem("customFrameStep");
+        var frameLength = localStorage.getItem("frameLength");
+        customFrameStep = customFrameStep == "false" ? "false" : customFrameStep;
+        frameLength = frameLength == "false" ? "false" : frameLength;
+        csInterface.evalScript(`frameStepDialog('${customFrameStep}',' ${frameLength}')`, function (frameStepReturn) {
+            console.log(frameStepReturn)
+            var frameStepReturn = frameStepReturn.trim().split(",");
+            localStorage.setItem("customFrameStep", frameStepReturn[0]);
+            localStorage.setItem("frameLength", frameStepReturn[1]);
+        });
+    }
 
+    function customFrameStep(direction){
+        var customFrameStep = localStorage.getItem("customFrameStep");
+        var frameLength = localStorage.getItem("frameLength");
+        customFrameStep = customFrameStep == "false" ? "false" : customFrameStep;
+        frameLength = frameLength == "false" ? "false" : frameLength;
+        csInterface.evalScript(`AnimD2_playheadPrevEditCustomfr('${customFrameStep}',' ${frameLength}','${direction}')`);
+    }
     // Add event listener to AD2 buttons to check open doc
     const ad2bbtns = document.getElementById("ad2btns");
     ad2bbtns.addEventListener("mouseenter", checkOpenDoc, false); // only check once prevents fireing 
@@ -603,16 +622,11 @@
         });
         $("#btn_playheadPrevEdit").click(function (e) {
             if (e.altKey && e.shiftKey) {
-                var customFrameStep = localStorage.getItem("customFrameStep");
-                csInterface.evalScript(`frameStepDialog('${customFrameStep}')`, function (customFrameStep) {
-                    localStorage.setItem("customFrameStep", customFrameStep);
-                });
+                setFrameStep() // open framestepDialog
             }
             // else if (e.shiftKey) loadJSXFile("/jsx/AnimD2_playheadPrevEdit2fr.jsx");
             else if (e.shiftKey) {
-                var customFrameStep = localStorage.getItem("customFrameStep");
-                customFrameStep = customFrameStep == "false" ? "false" : customFrameStep;
-                csInterface.evalScript(`AnimD2_playheadPrevEditCustomfr('${customFrameStep}',"prev")`);
+                customFrameStep('prev');
             }
             else if (e.altKey) loadJSXFile("/jsx/AnimD2_playheadFirstFrame.jsx");
             else if (!e.altKey || !e.shiftKey) loadJSXFile("/jsx/AnimD2_playheadPrevEdit.jsx");
@@ -623,16 +637,11 @@
             //     loadJSXFile("/jsx/AnimD2_playheadEndArea.jsx");
             // }
             if (e.altKey && e.shiftKey) {
-                var customFrameStep = localStorage.getItem("customFrameStep");
-                csInterface.evalScript(`frameStepDialog('${customFrameStep}')`, function (customFrameStep) {
-                    localStorage.setItem("customFrameStep", customFrameStep);
-                });
+                setFrameStep() // open framestepDialog
             }
             // else if (e.shiftKey) loadJSXFile("/jsx/AnimD2_playheadPrevEdit2fr.jsx");
             else if (e.shiftKey) {
-                var customFrameStep = localStorage.getItem("customFrameStep");
-                customFrameStep = customFrameStep == "false" ? "false" : customFrameStep;
-                csInterface.evalScript(`AnimD2_playheadPrevEditCustomfr('${customFrameStep}',"next")`);
+                customFrameStep('next');
             }
             else if (e.altKey) loadJSXFile("/jsx/AnimD2_playheadLastFrame.jsx");
             else if (!e.altKey || !e.shiftKey) loadJSXFile("/jsx/AnimD2_playheadNextEdit.jsx");
