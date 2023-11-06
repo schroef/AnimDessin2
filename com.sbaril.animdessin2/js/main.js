@@ -138,12 +138,14 @@
     }
     // ToolTips
     function toolTips() {
-        $("#toolinfo").toggleClass("ttHide", "ttShow");
-        if (document.getElementsByClassName("ttHide").length == 0) {
+        console.log('IconsShow '+(document.getElementsByClassName("ttHide").length))
+        console.log('IconsShow '+(document.getElementsByClassName("ttHide").length == 0))
+        if (document.getElementsByClassName("ttHide").length == 1) {
             storeSettings("ttShow");
         } else {
             storeSettings("ttHide");
         }
+        $("#toolinfo").toggleClass("ttHide", "ttShow");
     }
     var getGlobalTimeline = new Boolean();
     var getTooltips = new Boolean();
@@ -311,7 +313,12 @@
         }
         if (store == "iconCenter") {
             var iconCenter = localStorage.getItem("iconCenter");
-            iconCenter = iconCenter == "false" ? true : false;
+            console.log('iconCenter '+iconCenter)
+            if (iconCenter == null){
+                iconCenter = true;
+            } else {
+                iconCenter = iconCenter == "false" ? true : false;
+            }
             localStorage.setItem("iconCenter", iconCenter);
             csInterface.updatePanelMenuItem(getLocalize().flyout_iconCenter, true, iconCenter);
             csInterface.updateContextMenuItem("iconCenter", true, iconCenter);
