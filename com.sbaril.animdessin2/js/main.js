@@ -406,11 +406,26 @@
     function sendWarning() {
         loadJSXFile("/jsx/AnimD2_warning.jsx");
     }
+    // Custom Frame Step
     function setFrameStep(){
         var customFrameStep = localStorage.getItem("customFrameStep");
         var frameLength = localStorage.getItem("frameLength");
-        customFrameStep = customFrameStep == "false" ? "false" : customFrameStep;
-        frameLength = frameLength == "false" ? "false" : frameLength;
+        // csInterface.evalScript("alert('"+typeof(customFrameStep)+"')")
+        // csInterface.evalScript("alert('"+customFrameStep == "null"+"')")
+        // console.log(customFrameStep)
+        // console.log(customFrameStep == "null")
+        // console.log(customFrameStep == null)
+        // console.log(frameLength)
+        // console.log(frameLength == "null")
+        // console.log(frameLength == null)
+        customFrameStep = customFrameStep == null ? "1" : customFrameStep;
+        // customFrameStep = customFrameStep == "undefined" ? "1" : customFrameStep;
+        frameLength = frameLength == null ? "1" : frameLength;
+        // frameLength = frameLength == "undefined" ? "1" : frameLength;
+        // csInterface.evalScript("alert('"+customFrameStep+"')")
+        // csInterface.evalScript("alert('"+frameLength+"')")
+        console.log(customFrameStep)
+        console.log(frameLength)
         csInterface.evalScript(`frameStepDialog('${customFrameStep}',' ${frameLength}')`, function (frameStepReturn) {
             console.log(frameStepReturn)
             var frameStepReturn = frameStepReturn.trim().split(",");
@@ -422,10 +437,40 @@
     function customFrameStep(direction){
         var customFrameStep = localStorage.getItem("customFrameStep");
         var frameLength = localStorage.getItem("frameLength");
-        customFrameStep = customFrameStep == "false" ? "false" : customFrameStep;
-        frameLength = frameLength == "false" ? "false" : frameLength;
-        csInterface.evalScript(`AnimD2_playheadPrevEditCustomfr('${customFrameStep}',' ${frameLength}','${direction}')`);
+        // csInterface.evalScript("alert('"+customFrameStep+"')")
+        // csInterface.evalScript("alert('"+frameLength+"')")
+        // csInterface.evalScript("alert('"+customFrameStep == "null"+"')")
+        customFrameStep = customFrameStep == null ? "1" : customFrameStep;
+        frameLength = frameLength == null ? "1" : frameLength;
+        console.log(customFrameStep)
+        console.log(frameLength)
+        console.log(direction)
+        // customFrameStep = customFrameStep == "undefined" ? "1" : customFrameStep;
+        // frameLength = frameLength == "undefined" ? "1" : frameLength;
+        // csInterface.evalScript("alert('"+customFrameStep+"')")
+        // csInterface.evalScript("alert('"+frameLength+"')")
+        // customFrameStep = customFrameStep == "undefined" ? "1" : customFrameStep;
+        // frameLength = frameLength == "undefined" ? "1" : frameLength;
+        csInterface.evalScript(`AnimD2_customFrameStep('${customFrameStep}',' ${frameLength}','${direction}')`);
     }
+    
+    // Create Custom Frame
+    function setCustomeFrame(){
+        var createCustomFrame = localStorage.getItem("createCustomFrame");
+        createCustomFrame = createCustomFrame == null ? "3" : createCustomFrame;
+        // createCustomFrame = createCustomFrame == "undefined" ? "3" : createCustomFrame;
+        csInterface.evalScript(`createCustomFrameDialog('${createCustomFrame}')`, function (createCustomeFrameReturn) {
+            localStorage.setItem("createCustomFrame", createCustomeFrameReturn);
+        });
+    }
+
+    function createCustomFrame(){
+        var createCustomFrame = localStorage.getItem("createCustomFrame");
+        createCustomFrame = createCustomFrame == null ? "3" : createCustomFrame;
+        // createCustomFrame = createCustomFrame == "false" ? "3" : createCustomFrame;
+        csInterface.evalScript(`AnimD2_createCustomFrame('${createCustomFrame}')`);
+    }
+
     // Add event listener to AD2 buttons to check open doc
     const ad2bbtns = document.getElementById("ad2btns");
     ad2bbtns.addEventListener("mouseenter", checkOpenDoc, false); // only check once prevents fireing 
@@ -510,6 +555,11 @@
         $("#btn_newFrameTwo").click(function (e) {
             if (e.shiftKey) loadJSXFile("/jsx/AnimD2_create2FrameVideoLayer.jsx");
             else if (!e.altKey || !e.shiftKey) loadJSXFile("/jsx/AnimD2_create2Frames.jsx");
+        });
+        
+        $("#btn_newFrameCustom").click(function (e) {
+            if (e.shiftKey) setCustomeFrame() // open createCustomFrameDialog
+            else if (!e.altKey || !e.shiftKey) createCustomFrame();
         });
 
         $("#btn_duplicateFrame").click(function () {
@@ -782,7 +832,7 @@
             console.dir(e);
             switch (e.data.menuId) {
                 case "AboutItemAnimD2":
-                    csInterface.evalScript("alert('AnimDessin2 \\nVersion 2.2.1\\nPhotoshop CC 2015 to 2018+\\n©2018 Stephane Baril\\nhttp://www.sbaril.me');");
+                    csInterface.evalScript("alert('AnimDessin2 \\nVersion 2.2.2\\nPhotoshop CC 2015 to 2018+\\n©2018 Stephane Baril\\nhttp://www.sbaril.me');");
                     break;
                 case "OpenWebsiteAnimD2":
                     csInterface.openURLInDefaultBrowser("https://www.youtube.com/playlist?list=PLnNlOgl2T6GAsPqZDaf57TAqBa6ltL_gQ");
@@ -834,7 +884,7 @@
         function contextHandler(menuId) {
             switch (menuId) {
                 case "AboutItemAnimD2":
-                    csInterface.evalScript("alert('AnimDessin2 \\nVersion 2.2.1\\nPhotoshop CC 2015 to 2018+\\n©2018 Stephane Baril\\nhttp://www.sbaril.me');");
+                    csInterface.evalScript("alert('AnimDessin2 \\nVersion 2.2.2\\nPhotoshop CC 2015 to 2018+\\n©2018 Stephane Baril\\nhttp://www.sbaril.me');");
                     break;
                 case "OpenWebsiteAnimD2":
                     csInterface.openURLInDefaultBrowser("http://www.sbaril.me/links");

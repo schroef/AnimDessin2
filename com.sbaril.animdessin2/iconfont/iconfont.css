@@ -70,6 +70,9 @@
 .icon-newframetwo:before {
   content: "c";
 }
+.icon-newframeCustom:before {
+  content: "F";
+}
 .icon-newscene:before {
   content: "l";
 }
@@ -84,7 +87,7 @@
   content: "n";
 }
 .icon-videoshortcuts:before {
-  content: "p";
+  content: "G";
 }
 .icon-commentedit:before {
   content: "q";

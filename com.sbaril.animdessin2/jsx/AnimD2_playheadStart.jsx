@@ -32,6 +32,8 @@ function playheadStart() {
     ErrStrs = {}; 
     ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation"); 
     try {
+
+        // set playhead to start
         var idslct = charIDToTypeID( 'slct' );
         var desc462 = new ActionDescriptor();
         var idnull = charIDToTypeID( 'null' );
