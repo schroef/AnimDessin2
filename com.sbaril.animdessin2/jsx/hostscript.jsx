@@ -404,10 +404,15 @@ function keyPress(os){
 function cTID(s) { return app.charIDToTypeID(s); };
 function sTID(s) { return app.stringIDToTypeID(s); };
 
-function AnimD2_playheadPrevEditCustomfr(customFrameStep,frameLength, direction) {
+function AnimD2_customFrameStep(customFrameStep,frameLength, direction) {
     // alert(customFrameStep)
-    // alert(direction)
+    // alert(direction)0
     // alert(frameLength)
+    if(customFrameStep=="null") customFrameStep = 1;
+    if(customFrameStep=="undefined") customFrameStep = 1;
+    if(frameLength=="null") frameLength = 1;
+    if(frameLength=="undefined") frameLength = 1;
+
     if(frameLength=="false") {
         alert("Frame Length is not Set") 
         return
@@ -446,7 +451,7 @@ function AnimD2_playheadPrevEditCustomfr(customFrameStep,frameLength, direction)
         }
 
         // https://www.ps-scripts.com/viewtopic.php?f=77&t=40409&p=169007&hilit=timeline#p169007
-        // Get frame numers
+        // Get frame numbers
         var ref = new ActionReference();
         ref.putProperty(stringIDToTypeID('property'), stringIDToTypeID('time'));
         ref.putClass(stringIDToTypeID('timeline'), stringIDToTypeID('timeline'));
@@ -507,10 +512,21 @@ function trim (str) {
 // custom frame step Dialog
 ///////////////////////////////////////////////////
 function frameStepDialog(customFrameStep, frameLength) {
-    customFrameStep = customFrameStep != "Set..." ? customFrameStep : "Set...";
-    frameLength = frameLength != "Set..." ? frameLength : "Set...";
-    if (customFrameStep=="undefined") customFrameStep = "Set..."
-    if (frameLength==" undefined") frameLength = "Set..."
+    // var customFrameStep = customFrameStep;
+    // var frameLength = frameLength;
+    // alert(customFrameStep)
+    // alert(frameLength)
+    if(customFrameStep==null) customFrameStep = 1;
+    if(frameLength==null) frameLength = 1;
+    // if(customFrameStep=="undefined") customFrameStep = 1;
+    // if(frameLength=="undefined") frameLength = 1;
+    // alert(customFrameStep)
+    // alert(frameLength)
+
+    // customFrameStep = customFrameStep != "Set..." ? customFrameStep : "Set...";
+    // frameLength = frameLength != "Set..." ? frameLength : "Set...";
+    // if (customFrameStep=="undefined") customFrameStep = "Set..."
+    // if (frameLength==" undefined") frameLength = "Set..."
     var runButtonID = 1;
     var cancelButtonID = 2;
     var frameStepStr = customFrameStep;
@@ -540,11 +556,11 @@ function frameStepDialog(customFrameStep, frameLength) {
         customFrameStepLabel.text = "Frame Step"; //exportInfo.frameStep;
         customFrameStepLabel.preferredSize = [100,15];
 
-    var customFrameStep = frameStepGrp.add('edittext {properties: {name: "frameStep"}}'); 
-        customFrameStep.helpTip = "Set custom frame step"; 
-        customFrameStep.text = trim(frameStepStr); //exportInfo.frameStep;
-        customFrameStep.active = true; // Set focus on input
-        customFrameStep.preferredSize = [45,15];
+    var customFrameStepInput = frameStepGrp.add('edittext {properties: {name: "frameStep"}}'); 
+        customFrameStepInput.helpTip = "Set custom frame step"; 
+        customFrameStepInput.text = trim(frameStepStr); //exportInfo.frameStep;
+        customFrameStepInput.active = true; // Set focus on input
+        customFrameStepInput.preferredSize = [45,15];
     
     var frameLengthGrp = dlgMain.add("group", undefined, {name: "frameLengthGrp"}); 
         frameLengthGrp.orientation = "row"; 
@@ -556,11 +572,11 @@ function frameStepDialog(customFrameStep, frameLength) {
         frameLengthLabel.text = "Frame Length"; //exportInfo.frameStep;
         frameLengthLabel.preferredSize = [100,15];
 
-    var frameLength = frameLengthGrp.add('edittext {properties: {name: "frameStep"}}'); 
-        frameLength.helpTip = "Set length of each frames, this helps with the next and prev actions"; 
-        frameLength.text = trim(frameLengthStr); //exportInfo.frameStep;
-        frameLength.active = false; // Set focus on input
-        frameLength.preferredSize = [45,15];
+    var customFrameLengthInput = frameLengthGrp.add('edittext {properties: {name: "frameStep"}}'); 
+        customFrameLengthInput.helpTip = "Set length of each frames, this helps with the next and prev actions"; 
+        customFrameLengthInput.text = trim(frameLengthStr); //exportInfo.frameStep;
+        customFrameLengthInput.active = false; // Set focus on input
+        customFrameLengthInput.preferredSize = [45,15];
 
     // GROUP1
     // ======
@@ -582,20 +598,21 @@ function frameStepDialog(customFrameStep, frameLength) {
         ok.text = okBtnStr; 
         // ok.preferredSize.width = 80; 
 
-    var frameStepInput= customFrameStep.text;
-    var frameLengthInput= frameLength.text;
-    customFrameStep.onChange = function(){
-        frameStepInput = customFrameStep.text;
+    var frameStepInput= customFrameStepInput.text;
+    var frameLengthInput= customFrameLengthInput.text;
+    customFrameStepInput.onChange = function(){
+        frameStepInput = customFrameStepInput.text;
     }
     frameLength.onChange = function(){
-        frameLengthInput = frameLength.text;
+        frameLengthInput = customFrameLengthInput.text;
     }
     if (frameStepInput == frameStepInput) frameStepInput
     if (frameLengthInput == frameLengthInput) frameLengthInput
 
     ok.onClick = function() {
-        frameStepInput = customFrameStep.text;
-        frameLengthInput = frameLength.text;
+        frameStepInput = customFrameStepInput.text;
+        frameLengthInput = customFrameLengthInput.text;
+
         // check if the setting is properly
         if (frameStepInput.length == 0) {
             alert(strAlertRename); // +" "+ strAlertFailure);
@@ -620,5 +637,226 @@ function frameStepDialog(customFrameStep, frameLength) {
 
     // Get settings from Dialog
     // exportInfo.frameStep = customFrameStep.text;
-    return [frameStepInput, frameLengthInput];
+    return [frameStepInput, frameLengthInput]
+}
+
+
+// /////////////////////////////////////////////////////////////////////
+
+// Localize createCustomFrameDialog
+locCreateCustomFrameDialog = {
+    en: "Set create custom frame",
+    fr: "Ajouter custom couche",
+    nl: "Voorinstelling Custom frame",
+    ch: "设置创建自定义框架"
+};
+// Localize AnimD2_createCustomFrameMain
+locCreateCustomFrame = {
+    en: "Add custom frame",
+    fr: "Ajouter custom couche",
+    nl: "Custom frame toevoegen",
+    ch: "添加自定义框架"
+};
+///////////////////////////////////////////////////
+// Custom Frame Step Action from jsx
+///////////////////////////////////////////////////
+function cTID(s) { return app.charIDToTypeID(s); };
+function sTID(s) { return app.stringIDToTypeID(s); };
+
+function AnimD2_createCustomFrameMain(customFrame) {
+     // set default at 3 if nothing set
+    if(customFrame==null) customFrame = 3
+    // correct start of 0
+    customFrame = customFrame -1;
+    ErrStrs = {}; 
+    ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
+    try {
+        // =======================================================
+        var idMk = charIDToTypeID("Mk  ");
+        var desc13 = new ActionDescriptor();
+        var idnull = charIDToTypeID("null");
+        var ref7 = new ActionReference();
+        var idLyr = charIDToTypeID("Lyr ");
+        ref7.putClass(idLyr);
+        desc13.putReference(idnull, ref7);
+        executeAction(idMk, desc13, DialogModes.NO);
+
+        // =======================================================
+        // Reduze the end of the layer to the actual frame
+        var idmoveOutTime = stringIDToTypeID("moveOutTime");
+        var desc99 = new ActionDescriptor();
+        executeAction(idmoveOutTime, desc99, DialogModes.NO);
+
+
+        // =======================================================
+        // Function to get the framerate of the actual documment
+        function GetFrameRate() {
+            var ref = new ActionReference();
+            ref.putProperty(charIDToTypeID('Prpr'), stringIDToTypeID("documentTimelineSettings"));
+            ref.putClass(stringIDToTypeID("timeline"));
+            var desc = new ActionDescriptor();
+            desc.putReference(charIDToTypeID('null'), ref);
+            var resultDesc = executeAction(charIDToTypeID('getd'), desc, DialogModes.NO);
+
+            return resultDesc.getDouble(stringIDToTypeID('frameRate'));
+        };
+
+        var idmoveOutTime = stringIDToTypeID("moveOutTime");
+        var desc123 = new ActionDescriptor();
+        var idtimeOffset = stringIDToTypeID("timeOffset");
+        var desc124 = new ActionDescriptor();
+        var idseconds = stringIDToTypeID("seconds");
+        desc124.putInteger(idseconds, 0);
+        var idframe = stringIDToTypeID("frame");
+        desc124.putInteger(idframe, customFrame); // Value 0=1; 1=2 …
+        var idframeRate = stringIDToTypeID("frameRate");
+        desc124.putDouble(idframeRate, GetFrameRate());
+        var idtimecode = stringIDToTypeID("timecode");
+        desc123.putObject(idtimeOffset, idtimecode, desc124);
+        executeAction(idmoveOutTime, desc123, DialogModes.NO);
+
+
+        // =======================================================
+        var idnextFrame = stringIDToTypeID("nextFrame");
+        var desc211 = new ActionDescriptor();
+        var idtoNextWholeSecond = stringIDToTypeID("toNextWholeSecond");
+        desc211.putBoolean(idtoNextWholeSecond, false);
+        executeAction(idnextFrame, desc211, DialogModes.NO);
+
+        // // check what direction to go and use custom framesteps
+        // var directionMove = 'Frwr';
+        // var directionFrame = 6;
+
+        // we use loop to jump layers
+        // TODO need to know how long each frame is. When using 2frames it will jump double the time
+        // Divide customFrame / framelength > gets a rough number. Doesnt work nice with uneven frame numbers
+        // var stepLayers = Math.round(customFrame / frameLength);
+        // var directionMove = 'Frwr';
+        // var directionFrame = 6;
+        // for(i=0;i<customFrame;i++){
+        //     // Set selection layer panel
+        //     var desc83 = new ActionDescriptor();
+        //     var ref48 = new ActionReference();
+        //     ref48.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID(directionMove) );
+        //     desc83.putReference( cTID('null'), ref48 );
+        //     desc83.putBoolean( cTID('MkVs'), false );
+        //     var list25 = new ActionList();
+        //     list25.putInteger( directionFrame );
+        //     desc83.putList( cTID('LyrI'), list25 );
+        //     executeAction( cTID('slct'), desc83, DialogModes.NO );
+        // }
+
+    // Allows for cancel without feedback message
+    } catch(e){
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+  }
+};
+
+// AnimD2_createCustomFrameMain.Main =function(customFrame){
+//     AnimD2_createCustomFrameMain(customFrame)
+// }
+function AnimD2_createCustomFrame(customFrame) {
+    app.activeDocument.suspendHistory(localize(locCreateCustomFrame), "AnimD2_createCustomFrameMain('"+customFrame+"')");
+};
+
+///////////////////////////////////////////////////
+// Create Custom Frame Dialog
+///////////////////////////////////////////////////
+// function createCustomFrameDialogMain(createCustomFrame) {
+function createCustomFrameDialog(createCustomFrame) {
+    if(createCustomFrame==null) createCustomFrame = 3;
+    // if(createCustomFrame==null) {
+    //     createCustomFrame = 3
+    // }
+    // if(createCustomFrame=="undefined") createCustomFrame = 3;
+    // if(createCustomFrame=="EvalScript error") {
+    //     createCustomFrame = 3
+    // }
+    // alert(createCustomFrame=="EvalScript error")
+    // createCustomFrame = createCustomFrame != "Set..." ? createCustomFrame : "Set...";
+    // if (createCustomFrame=="undefined") createCustomFrame = "Set..."
+    var runButtonID = 1;
+    var cancelButtonID = 2;
+    var frameStepStr = createCustomFrame;
+
+    // var exportInfo = new Object();
+    //     exportInfo.frameStep = frameStepStr;
+    var cancelBtnStr = "Cancel";
+    var okBtnStr = "OK";
+    // FRAMERENAME
+    // ===========
+    var dlgMain = new Window("dialog"); 
+        dlgMain.text = "Set Custom Frame"; //renameFrameTitleStr; 
+        dlgMain.preferredSize.width = 100; 
+        dlgMain.orientation = "column"; 
+        dlgMain.alignChildren = ["fill","top"]; 
+        dlgMain.spacing = 10; 
+        dlgMain.margins = 16; 
+
+    var customFrameGrp = dlgMain.add("group", undefined, {name: "customFrameGrp"}); 
+        customFrameGrp.orientation = "row"; 
+        customFrameGrp.alignChildren = ["left","top"]; 
+        customFrameGrp.spacing = 10; 
+        customFrameGrp.margins = 0; 
+
+    var createCustomFrameLabel = customFrameGrp.add('statictext {properties: {name: "frameLengthLabel"}}'); 
+        createCustomFrameLabel.text = "Frame length"; //exportInfo.frameStep;
+        createCustomFrameLabel.preferredSize = [100,15];
+
+    var customFrame = customFrameGrp.add('edittext {properties: {name: "customFrame"}}'); 
+        customFrame.helpTip = "Set custom frame length"; 
+        customFrame.text = frameStepStr; //trim(frameStepStr); //exportInfo.frameStep;
+        customFrame.active = true; // Set focus on input
+        customFrame.preferredSize = [45,15];
+
+    // GROUP1
+    // ======
+    var group1 = dlgMain.add("group", undefined, {name: "group1"}); 
+        group1.orientation = "row"; 
+        group1.alignChildren = ["right","top"]; 
+        group1.spacing = 10; 
+        group1.margins = 0; 
+
+    var cancel = group1.add("button", undefined, undefined, {name: "cancel"}); 
+        cancel.text = cancelBtnStr; 
+        // cancel.preferredSize.width = 70; 
+    
+    cancel.onClick = function() {
+        dlgMain.close(cancelButtonID);
+    }
+
+    var ok = group1.add("button", undefined, undefined, {name: "ok"}); 
+        ok.text = okBtnStr; 
+        // ok.preferredSize.width = 80; 
+
+    var customFrameInput= customFrame.text;
+    customFrame.onChange = function(){
+        customFrameInput = customFrame.text;
+    }
+
+    // if (customFrameInput == customFrameInput) customFrameInput
+
+    ok.onClick = function() {
+        customFrameInput = customFrame.text;
+        // check if the setting is properly
+        if (customFrameInput.length == 0) {
+            alert(strAlertRename); // +" "+ strAlertFailure);
+            return;
+        }
+        dlgMain.close(runButtonID);
+    }
+
+    // in case we double clicked the file
+    dlgMain.center();
+
+    var result = dlgMain.show();
+
+    if (cancelButtonID == result) {
+        // return result; // close to quit
+        return customFrameInput
+    }
+
+    // Get settings from Dialog
+    return customFrameInput
 }
