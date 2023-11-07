@@ -45,7 +45,6 @@
           <MainPath>./index.html</MainPath>
           <ScriptPath>./jsx/hostscript.jsx</ScriptPath>
           <CEFCommandLine>
-          <CEFCommandLine>
             <Parameter>--disable-features=SameSiteByDefaultCookies,CookiesWithoutSameSiteMustBeSecure,NetworkService</Parameter>
             <Parameter>--disable-site-isolation-trials</Parameter>
             <!--
