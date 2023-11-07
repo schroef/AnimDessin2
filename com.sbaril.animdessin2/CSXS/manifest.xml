@@ -33,7 +33,7 @@
     </LocaleList>
 
     <RequiredRuntimeList>
-      <RequiredRuntime Name="CSXS" Version="5.0" />
+      <RequiredRuntime Name="CSXS" Version="7.0" />
     </RequiredRuntimeList>
   </ExecutionEnvironment>
 
@@ -44,6 +44,7 @@
         <Resources>
           <MainPath>./index.html</MainPath>
           <ScriptPath>./jsx/hostscript.jsx</ScriptPath>
+          <CEFCommandLine>
           <CEFCommandLine>
             <!--
                <Parameter>- - persist-session-cookies</Parameter>
