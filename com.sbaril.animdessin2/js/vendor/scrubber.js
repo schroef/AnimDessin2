@@ -97,6 +97,7 @@ function dragElement(elmnt) {
             pos = (totFr / window.innerWidth) * e.clientX;
             // gotoFrame(Seconds, Frame)
             posX = Math.floor(pos);
+            // csInterface.evalScript("gotoFrame('" + (posX - 1) + "')");
             csInterface.evalScript("gotoFrame('" + (posX - 1) + "')");
             csInterface.evalScript('keyPress("' + os + '")');
         });

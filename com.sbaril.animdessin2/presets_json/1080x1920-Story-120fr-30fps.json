@@ -1,0 +1,24 @@
+{
+    "docName": "1080x1920-Story-120fr-30fps",
+    "docWidth": "1080",
+    "docHeight": "1920",
+    "docColorMode": "RGBM",
+    "docColorModeIndex": 1,
+    "docICC": 0,
+    "docBitD": 0,
+    "docDPI": "72",
+    "projectBgColor": {
+        "hue":169.4091796875,
+        "saturation":94.9019607843137,
+        "brightness":95.2941176470588,
+        "typename": "HSBColor"
+    },
+    "projectBgColorIndex": 7,
+    "tmlnDuration": "120",
+    "tmlnFps": "30",
+    "fpsPreset": 8,
+    "splitTmln": true,
+    "splitTmlnIndex": 0,
+    "addTimeRef": true,
+    "message": "AD2 New Doc Preset"
+}

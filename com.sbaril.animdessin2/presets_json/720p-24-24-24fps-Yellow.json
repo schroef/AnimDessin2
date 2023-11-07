@@ -1,0 +1,24 @@
+{
+    "docName": "720p-24-24-24fps-Yellow",
+    "docWidth": "720",
+    "docHeight": "720",
+    "docColorMode": "RGBM",
+    "docColorModeIndex": 1,
+    "docICC": 0,
+    "docBitD": 0,
+    "docDPI": "72",
+    "projectBgColor": {
+        "hue": 56.4697265625,
+        "saturation": 100,
+        "brightness": 96.8627450980392,
+        "typename": "HSBColor"
+    },
+    "projectBgColorIndex": 7,
+    "tmlnDuration": "24",
+    "tmlnFps": "24",
+    "fpsPreset": 5,
+    "splitTmln": true,
+    "splitTmlnIndex": 0,
+    "addTimeRef": true,
+    "message": "AD2 New Doc Preset"
+}

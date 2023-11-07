@@ -1,0 +1,24 @@
+{
+    "docName": "1920x1080-72dpi-gray",
+    "docWidth": "1920",
+    "docHeight": "1080",
+    "docColorMode": "RGBM",
+    "docColorModeIndex": 1,
+    "docICC": 0,
+    "docBitD": 0,
+    "docDPI": "72",
+    "projectBgColor": {
+        "hue": 0,
+        "saturation": 0,
+        "brightness": 50,
+        "typename": "HSBColor"
+    },
+    "projectBgColorIndex": 2,
+    "tmlnDuration": "48",
+    "tmlnFps": "12",
+    "fpsPreset": 13,
+    "splitTmln": true,
+    "splitTmlnIndex": 0,
+    "addTimeRef": true,
+    "message": "AD2 New Doc Preset"
+}

@@ -28,7 +28,8 @@ $.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 ///////////////////////////////////////////////////
 
 function playheadEnd() {
-
+    
+    // Set playhead to end of timeline
     ErrStrs = {}; 
     ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
     try {
