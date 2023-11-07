@@ -220,6 +220,7 @@
         }
         if (localStorage.getItem("globalTimeline")) {
             var globalTimeline = localStorage.getItem("globalTimeline");
+            console.log('globalTimeline == "false" '+(globalTimeline == "false"))
             globalTimeline = globalTimeline == "false" ? false : true;
             // var getGlobalTimeline = globalTimeline
             getGlobalTimeline = globalTimeline
@@ -268,7 +269,7 @@
 
     //Store settings
     function storeSettings(store) {
-        var globalTimeline = localStorage.getItem("globalTimeline");
+        var globalTimeline = new Boolean(localStorage.getItem("globalTimeline"));
         var toolTips = localStorage.getItem("toolTips");
         if (store == "onion") {
             if (localStorage.getItem("onionSkin") == "onionDisabled") {
@@ -327,26 +328,29 @@
             // var globalTimeline = localStorage.getItem("globalTimeline");
             // var resizePnl = globalTimeline == "false" ? 55 : 35;
             // csInterface.resizeContent(window.innerWidth, resizePnl);
-            globalTimeline = globalTimeline == "false" ? true : false;
-            localStorage.setItem("globalTimeline", globalTimeline);
+            console.log('globalTimeline '+globalTimeline)
+            globalTimeline =new Boolean(String(globalTimeline) == "false") ? true : false;
+            console.log('store globalTimeline '+globalTimeline)
+            console.log('store globalTimeline == "false" '+( String(globalTimeline) == "false"))
+            localStorage.setItem("globalTimeline", String(globalTimeline));
             // toolTips = toolTips == "ttHide" ? false : true;
             resizePanelHeight(globalTimeline,getTooltips)
             csInterface.updatePanelMenuItem(getLocalize().flyout_globalTimeline, true, globalTimeline);
             csInterface.updateContextMenuItem("globalTimeline", true, globalTimeline);
         }
         if (store == "openTimeline") {
-            var openTimeline = localStorage.getItem("openTimeline");
+            var openTimeline = new Boolean(localStorage.getItem("openTimeline"));
             console.log(openTimeline);
-            openTimeline = openTimeline == "false" ? true : false;
-            localStorage.setItem("openTimeline", openTimeline);
+            openTimeline = new Boolean(String(openTimeline) == "false") ? true : false;
+            localStorage.setItem("openTimeline", String(openTimeline));
             csInterface.updatePanelMenuItem(getLocalize().flyout_openTimeline, true, openTimeline);
             csInterface.updateContextMenuItem("openTimeline", true, openTimeline);
             console.log(openTimeline);
         }
         if (store == "timeCode") {
-            var timeCode = localStorage.getItem("timeCode");
-            timeCode = timeCode == "false" ? true : false;
-            localStorage.setItem("timeCode", timeCode);
+            var timeCode =  new Boolean(localStorage.getItem("timeCode"));
+            timeCode = new Boolean(String(timeCode) == "false") ? true : false;
+            localStorage.setItem("timeCode", String(timeCode));
             csInterface.updatePanelMenuItem(getLocalize().flyout_timeCode, true, timeCode);
             csInterface.updateContextMenuItem("timeCode", true, timeCode);
         }
