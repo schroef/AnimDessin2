@@ -23,7 +23,7 @@ This is the correct info about the install location
 If you are in the midst of development and are not using HTML Extension Builder for debug workflows and want to bypass the need to sign your extensions, you can bypass the check for extension signatures by editing the CSXS preference properties file, located at:
 
 - Win: regedit > `HKEY_CURRENT_USER/Software/Adobe/CSXS.7`, then add a new entry` PlayerDebugMode` of type "string" with the value of "1".
-- Mac: In the terminal, type: `defaults write com.adobe.CSXS.7 PlayerDebugMode `1 (The plist is also located at /Users/<username>/Library/Preferences/com.adobe.CSXS.8.plist)
+- Mac: In the terminal, type: `defaults write com.adobe.CSXS.7 PlayerDebugMode 1` (The plist is also located at /Users/<username>/Library/Preferences/com.adobe.CSXS.8.plist)
 
 These entries will enable debug extensions to be displayed in the host applications. Please note that, CSXS.8 is given with the assumption that, you are developing the extension for CEP 8. If you are developing extension for previous version of CEP, replace 8 with corresponding version number.
 
