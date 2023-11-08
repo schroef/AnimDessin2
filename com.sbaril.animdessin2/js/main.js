@@ -822,7 +822,9 @@
                 getLocalize().flyout_about +
                 '"/> \n<MenuItem Id="OpenWebsiteAnimD2" Label="' +
                 getLocalize().flyout_onlineinfo +
-                '"/> \n <MenuItem Label="---" /> \n<MenuItem Id="iconSml" Label="' +
+                '"/> \n <MenuItem Id="ReportBugAnimD2" Label="' +
+                getLocalize().flyout_reportbug +
+                '"/> \n<MenuItem Label="---" /> \n<MenuItem Id="iconSml" Label="' +
                 getLocalize().flyout_iconSml +
                 '" Checkable="true" Checked="false"/> \n\n<MenuItem Id="iconMed" Label="' +
                 getLocalize().flyout_iconMed +
@@ -853,12 +855,17 @@
             console.dir(e);
             switch (e.data.menuId) {
                 case "AboutItemAnimD2":
-                    csInterface.evalScript("alert('AnimDessin2 \\nVersion 2.2.2\\nPhotoshop CC 2015 to 2018+\\n©2018 Stephane Baril\\n©2020 Rombout Versluijs);");//\\nhttp://www.sbaril.me removed not working anymore
+                    csInterface.evalScript("alert('AnimDessin2 \\nVersion 2.2.2\\nPhotoshop CC 2015 to 2018+\\n©2018 Stephane Baril\\n©2020 Rombout Versluijs');");
+                    //\\nhttp://www.sbaril.me removed not working anymore
                     break;
                 case "OpenWebsiteAnimD2":
                     csInterface.openURLInDefaultBrowser("https://www.youtube.com/playlist?list=PLnNlOgl2T6GAsPqZDaf57TAqBa6ltL_gQ");
                     LoseFocus();
                     // csInterface.openURLInDefaultBrowser("http://www.sbaril.me/links"); LoseFocus();
+                    break;
+                case "ReportBugAnimD2":
+                    csInterface.openURLInDefaultBrowser("https://github.com/sbaril/Photoshop-Animation/issues");
+                    LoseFocus();
                     break;
                 case "iconSml":
                     iconSize("iconSml");
@@ -905,11 +912,16 @@
         function contextHandler(menuId) {
             switch (menuId) {
                 case "AboutItemAnimD2":
-                    csInterface.evalScript("alert('AnimDessin2 \\nVersion 2.2.2\\nPhotoshop CC 2015 to 2018+\\n©2018 Stephane Baril\\n©2020 Rombout Versluijs');");//\\nhttp://www.sbaril.me removed not working anymore
+                    csInterface.evalScript("alert('AnimDessin2 \\nVersion 2.2.2\\nPhotoshop CC 2015 to 2018+\\n©2018 Stephane Baril\\n©2020 Rombout Versluijs');");
+                    //\\nhttp://www.sbaril.me removed not working anymore
                     break;
                 case "OpenWebsiteAnimD2":
                     csInterface.openURLInDefaultBrowser("https://www.youtube.com/playlist?list=PLnNlOgl2T6GAsPqZDaf57TAqBa6ltL_gQ");
                     // csInterface.openURLInDefaultBrowser("http://www.sbaril.me/links");
+                    LoseFocus();
+                    break;
+                case "ReportBugAnimD2":
+                    csInterface.openURLInDefaultBrowser("https://github.com/sbaril/Photoshop-Animation/issues");
                     LoseFocus();
                     break;
                 case "iconSml":
