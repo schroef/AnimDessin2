@@ -83,11 +83,15 @@ function dragElement(elmnt) {
         if (OSVersion.indexOf("Windows") >= 0) {
             // WIP get windows equilant code
             os = "Windows";
-          } else if (OSVersion.indexOf("Mac") >= 0) {
+        } else if (OSVersion.indexOf("Mac") >= 0) {
             os = "Mac";
-          }
+        }
         // var csInterface = new CSInterface();
         csInterface.evalScript("timelineFrameCount()", function (result) {
+            var frameLength = new Number(localStorage.getItem("frameLength"));
+            frameLength = frameLength == null ? 1 : frameLength;
+            console.log(frameLength)
+            // frameLength = new Number(frameLength;
             // Use OS to do keypress so we focus on playhead > dirty trick ;)
             totFr = result;
             e = e || window.event;
@@ -98,7 +102,8 @@ function dragElement(elmnt) {
             // gotoFrame(Seconds, Frame)
             posX = Math.floor(pos);
             // csInterface.evalScript("gotoFrame('" + (posX - 1) + "')");
-            csInterface.evalScript("gotoFrame('" + (posX - 1) + "')");
+            // csInterface.evalScript("gotoFrame('"+(posX)+","+frameLength+"')");
+            csInterface.evalScript("gotoFrame('"+(posX)+"','"+frameLength+"')");
             csInterface.evalScript('keyPress("' + os + '")');
         });
     }
@@ -111,6 +116,8 @@ function dragElement(elmnt) {
 // https://stackoverflow.com/questions/12295375/creating-timecode-from-frames/12295518#12295518
 function timecode(curFr) {
     var useTimeCode = localStorage.getItem("timeCode"); // Use timecode yes/no
+    // var currentFrame = Number();
+    // var fps = Number();
     if (useTimeCode == "true"){
         csInterface.evalScript("timelineFPS()", function (result) {
             fps = result;

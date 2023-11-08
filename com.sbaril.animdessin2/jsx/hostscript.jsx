@@ -116,8 +116,47 @@ function getTimelineLength() {
     return A;
 }
 
+
+
 // Paul Riggot
-function gotoFrame(Frame) {
+function gotoFrame(Frame,frameLength) {
+    var curFr = timelineCurrentFrame();
+    // correct frame on Windows
+    // curFr = curFr - 1;
+    if (Number(Frame) > Number(curFr)) {
+        // return [num1 - num2, 'Frwr', 6]
+        var customFrameStep = Number(Frame) - Number(curFr);
+        var directionMove = 'Frwr';
+        var directionFrame = 6;
+    } else {
+        // return [num2 - num1, 'Bckw', 5]
+        var customFrameStep = Number(curFr) - Number(Frame);
+        var directionMove = 'Bckw';
+        var directionFrame = 5;
+    }
+    // alert(frameLength)
+    // alert(customFrameStep)
+    // Correct layers to step according to frame length
+    var stepLayers = Math.abs(customFrameStep / Number(frameLength));
+
+    // // we use loop to jump layers
+    // // TODO need to know how long each frame is. When using 2frames it will jump double the time
+    // // Divide customframestep / framelength > gets a rough number. Doesnt work nice with uneven frame numbers
+    // var stepLayers = Math.round(customFrameStep / frameLength);
+    // var stepLayers = Math.round(customFrameStep / frameLength);
+    for(i=0;i<stepLayers;i++){
+        // Set selection layer panel
+        var desc83 = new ActionDescriptor();
+        var ref48 = new ActionReference();
+        ref48.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID(directionMove) );
+        desc83.putReference( cTID('null'), ref48 );
+        desc83.putBoolean( cTID('MkVs'), false );
+        var list25 = new ActionList();
+        list25.putInteger( directionFrame );
+        desc83.putList( cTID('LyrI'), list25 );
+        executeAction( cTID('slct'), desc83, DialogModes.NO );
+    }
+
     frameRate = GetFrameRate();
     var desc69 = new ActionDescriptor();
     var ref33 = new ActionReference();
@@ -287,6 +326,7 @@ function keyPress(os){
     // alert(os)
     // $.sleep (100);
     // Check OS
+    // alert(os)
     if (os == "Windows") {
       // WIP get windows equilant code
     //   alert(os)
@@ -358,8 +398,8 @@ function keyPress(os){
             // var mb_keystrF = new File(File('C:/Program Files/Adobe/Adobe Photoshop 2021/Presets/Scripts/left.vbs'));
             // alert(File($.fileName).path)
             var mb_keystrF = new File(File(getPrefFolder()+'/amd2-shortcut.vbs'));
-            var str = 'Set WshShell = WScript.CreateObject("WScript.Shell")\
-                      WshShell.SendKeys "{RIGHT}"';
+            // alert(mb_keystrF)
+            var str = 'Set WshShell = WScript.CreateObject("WScript.Shell")\nWshShell.SendKeys "{UP}"';
             mb_keystrF.open('w');
             mb_keystrF.write(str);
             mb_keystrF.close();
@@ -389,10 +429,13 @@ function keyPress(os){
         // app.system('System.Windows.Forms.SendKeys::SendWait("Hi")') // notworking
     //   app.system('ctypes.windll.user32.mouse_event(2, 0, 0, 0,0)');
     //   app.system('cmd run'); // Works
-
+    // 123 left
+    // 124 right
+    // 125 down
+    // 126 up
     } else if (os == "Mac") {
         // alert(os)
-        app.system( 'osascript -e \'tell application "System Events" to key code "124"\'' ); 
+        app.system( 'osascript -e \'tell application "System Events" to key code "125"\'' ); 
         // app.system( 'osascript -e \'tell application "System Events" to key code "123" using command down\'' );
     }
 }

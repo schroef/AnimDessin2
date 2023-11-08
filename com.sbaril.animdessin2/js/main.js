@@ -144,14 +144,21 @@
             storeSettings("ttShow");
         } else {
             storeSettings("ttHide");
+            $("#toolinfo").removeClass("ttShow");
         }
         $("#toolinfo").toggleClass("ttHide", "ttShow");
     }
-    var getGlobalTimeline = new Boolean();
-    var getTooltips = new Boolean();
+    var getGlobalTimeline = Boolean();
+    var getTooltips = Boolean();
     function resizePanelHeight(getGlobalTimeline,getTooltips){
-        var resize = new Boolean(false);
+        var resize = Boolean(false);
         if (getGlobalTimeline == true || getTooltips == true) {
+            resize = true
+        } 
+        if (getGlobalTimeline == true && getTooltips == false) {
+            resize = true
+        } 
+        if (getGlobalTimeline == false && getTooltips == true) {
             resize = true
         } 
         if (getGlobalTimeline == false && getTooltips == false) {
@@ -221,9 +228,9 @@
         if (localStorage.getItem("globalTimeline")) {
             var globalTimeline = localStorage.getItem("globalTimeline");
             console.log('globalTimeline == "false" '+(globalTimeline == "false"))
-            globalTimeline = globalTimeline == "false" ? false : true;
+            globalTimeline = String(globalTimeline) == "false" ? false : true;
             // var getGlobalTimeline = globalTimeline
-            getGlobalTimeline = globalTimeline
+            getGlobalTimeline = Boolean(globalTimeline);
             csInterface.updatePanelMenuItem(getLocalize().flyout_globalTimeline, true, globalTimeline);
             csInterface.updateContextMenuItem("globalTimeline", true, globalTimeline);
             var globTimeline = localStorage.getItem("globalTimeline");
@@ -263,13 +270,13 @@
         // $("#track").addClass((globalTimeline = localStorage.getItem("globalTimeline") ? "globalTimeline" : ""));
         $(".mybtn").addClass("tthide");
         $("#toolinfo").addClass(localStorage.getItem("toolTips"));
-        resizePanelHeight(getGlobalTimeline,getTooltips)
-        console.log("getGlobalTimeline "+getGlobalTimeline+" "+"getTooltips "+getTooltips)
+        resizePanelHeight(Boolean(getGlobalTimeline),Boolean(getTooltips))
+        console.log("getGlobalTimeline "+Boolean(getGlobalTimeline)+" "+"getTooltips "+Boolean(getTooltips))
     }
 
     //Store settings
     function storeSettings(store) {
-        var globalTimeline = new Boolean(localStorage.getItem("globalTimeline"));
+        var globalTimeline = localStorage.getItem("globalTimeline");
         var toolTips = localStorage.getItem("toolTips");
         if (store == "onion") {
             if (localStorage.getItem("onionSkin") == "onionDisabled") {
@@ -313,46 +320,49 @@
             csInterface.updateContextMenuItem("iconBig", true, true);
         }
         if (store == "iconCenter") {
-            var iconCenter = localStorage.getItem("iconCenter");
+            var iconCenter = Boolean(localStorage.getItem("iconCenter"));
             console.log('iconCenter '+iconCenter)
             if (iconCenter == null){
                 iconCenter = true;
             } else {
-                iconCenter = iconCenter == "false" ? true : false;
+                iconCenter = iconCenter == false ? true : false;
             }
-            localStorage.setItem("iconCenter", iconCenter);
+            localStorage.setItem("iconCenter", String(iconCenter));
             csInterface.updatePanelMenuItem(getLocalize().flyout_iconCenter, true, iconCenter);
             csInterface.updateContextMenuItem("iconCenter", true, iconCenter);
         }
         if (store == "globalTimeline") {
-            // var globalTimeline = localStorage.getItem("globalTimeline");
+            globalTimeline = localStorage.getItem("globalTimeline");
             // var resizePnl = globalTimeline == "false" ? 55 : 35;
             // csInterface.resizeContent(window.innerWidth, resizePnl);
             console.log('globalTimeline '+globalTimeline)
-            globalTimeline =new Boolean(String(globalTimeline) == "false") ? true : false;
+            // console.log('globalTimeline '+typeof(globalTimeline))
+            globalTimeline = globalTimeline == "false" ? "true" : "false";
             console.log('store globalTimeline '+globalTimeline)
-            console.log('store globalTimeline == "false" '+( String(globalTimeline) == "false"))
+            // console.log('store globalTimeline == "false" '+ globalTimeline == false)
+            // console.log('store globalTimeline == "false" '+(globalTimeline == false))
             localStorage.setItem("globalTimeline", String(globalTimeline));
             // toolTips = toolTips == "ttHide" ? false : true;
-            resizePanelHeight(globalTimeline,getTooltips)
-            csInterface.updatePanelMenuItem(getLocalize().flyout_globalTimeline, true, globalTimeline);
-            csInterface.updateContextMenuItem("globalTimeline", true, globalTimeline);
+            resizePanelHeight(JSON.parse(globalTimeline),Boolean(getTooltips))
+            csInterface.updatePanelMenuItem(getLocalize().flyout_globalTimeline, true, JSON.parse(globalTimeline));
+            csInterface.updateContextMenuItem("globalTimeline", true, JSON.parse(globalTimeline));
         }
         if (store == "openTimeline") {
-            var openTimeline = new Boolean(localStorage.getItem("openTimeline"));
+            var openTimeline = localStorage.getItem("openTimeline");
             console.log(openTimeline);
-            openTimeline = new Boolean(String(openTimeline) == "false") ? true : false;
+            openTimeline = openTimeline == "false" ? "true" : "false";
             localStorage.setItem("openTimeline", String(openTimeline));
-            csInterface.updatePanelMenuItem(getLocalize().flyout_openTimeline, true, openTimeline);
-            csInterface.updateContextMenuItem("openTimeline", true, openTimeline);
-            console.log(openTimeline);
+            csInterface.updatePanelMenuItem(getLocalize().flyout_openTimeline, true, JSON.parse(openTimeline));
+            csInterface.updateContextMenuItem("openTimeline", true, JSON.parse(openTimeline));
+            console.log('openTimeline '+openTimeline);
         }
         if (store == "timeCode") {
-            var timeCode =  new Boolean(localStorage.getItem("timeCode"));
-            timeCode = new Boolean(String(timeCode) == "false") ? true : false;
+            var timeCode =  localStorage.getItem("timeCode");
+            timeCode = timeCode == "false" ? "true" : "false";
             localStorage.setItem("timeCode", String(timeCode));
-            csInterface.updatePanelMenuItem(getLocalize().flyout_timeCode, true, timeCode);
-            csInterface.updateContextMenuItem("timeCode", true, timeCode);
+            csInterface.updatePanelMenuItem(getLocalize().flyout_timeCode, true, JSON.parse(timeCode));
+            csInterface.updateContextMenuItem("timeCode", true, JSON.parse(timeCode));
+            console.log('timeCode '+String(timeCode));
         }
         if (store == "ttHide") {
             localStorage.setItem("toolTips", "ttHide");
@@ -360,7 +370,7 @@
             // csInterface.resizeContent(window.innerWidth, tooltips);
             // if (globalTimeline == "false") csInterface.resizeContent(window.innerWidth, 35);
             getTooltips = false;
-            resizePanelHeight(globalTimeline,getTooltips)
+            resizePanelHeight(JSON.parse(globalTimeline),Boolean(getTooltips))
             $("body").removeClass("toolTips");
             csInterface.updatePanelMenuItem(getLocalize().flyout_tooltips, true, false);
             csInterface.updateContextMenuItem("toolTips", true, false);
@@ -370,7 +380,7 @@
             // if (globalTimeline == "false") csInterface.resizeContent(window.innerWidth, 55);
             localStorage.setItem("toolTips", "ttShow");
             getTooltips = true;
-            resizePanelHeight(globalTimeline,getTooltips)
+            resizePanelHeight(JSON.parse(globalTimeline),Boolean(getTooltips))
             $("body").addClass("toolTips");
             csInterface.updatePanelMenuItem(getLocalize().flyout_tooltips, true, true);
             csInterface.updateContextMenuItem("toolTips", true, true);

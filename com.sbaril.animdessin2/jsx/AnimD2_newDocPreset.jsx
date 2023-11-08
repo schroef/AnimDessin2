@@ -1640,7 +1640,7 @@ function settingDialog(exportInfo) {
         splitTmlnLabel.alignment = ["left","center"]; 
         splitTmlnLabel.visible = exportInfo.splitTmln; 
 
-    var splitTmlnDropdown_array = ["1 frame","2 frames"]; 
+    var splitTmlnDropdown_array = ["1 frame","2 frames" ,"3 frames" ,"4 frames" ,"5 frames","6 frames"]; 
     var splitTmlnDropdown = setupGrp.add("dropdownlist", undefined, undefined, {name: "splitTmlnDropdown", items: splitTmlnDropdown_array}); 
         splitTmlnDropdown.helpTip = localize(locSplitTLTP); 
         splitTmlnDropdown.selection = exportInfo.splitTmlnIndex; 
@@ -2493,7 +2493,7 @@ function settingDialog(exportInfo) {
         } catch(e){
             alert(e)
         }
-}
+    }
 
 // function newDocPreset(exportInfo){
 function newDocPreset(presetInfo){
