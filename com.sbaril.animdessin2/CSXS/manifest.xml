@@ -45,7 +45,6 @@
           <MainPath>./index.html</MainPath>
           <ScriptPath>./jsx/hostscript.jsx</ScriptPath>
           <CEFCommandLine>
-          <CEFCommandLine>
             <!--
                <Parameter>- - persist-session-cookies</Parameter>
              -->
