@@ -853,7 +853,7 @@
             console.dir(e);
             switch (e.data.menuId) {
                 case "AboutItemAnimD2":
-                    csInterface.evalScript("alert('AnimDessin2 \\nVersion 2.2.2\\nPhotoshop CC 2015 to 2018+\\n©2018 Stephane Baril\\nhttp://www.sbaril.me');");
+                    csInterface.evalScript("alert('AnimDessin2 \\nVersion 2.2.2\\nPhotoshop CC 2015 to 2018+\\n©2018 Stephane Baril\\n©2020 Rombout Versluijs);");//\\nhttp://www.sbaril.me removed not working anymore
                     break;
                 case "OpenWebsiteAnimD2":
                     csInterface.openURLInDefaultBrowser("https://www.youtube.com/playlist?list=PLnNlOgl2T6GAsPqZDaf57TAqBa6ltL_gQ");
@@ -905,10 +905,11 @@
         function contextHandler(menuId) {
             switch (menuId) {
                 case "AboutItemAnimD2":
-                    csInterface.evalScript("alert('AnimDessin2 \\nVersion 2.2.2\\nPhotoshop CC 2015 to 2018+\\n©2018 Stephane Baril\\nhttp://www.sbaril.me');");
+                    csInterface.evalScript("alert('AnimDessin2 \\nVersion 2.2.2\\nPhotoshop CC 2015 to 2018+\\n©2018 Stephane Baril\\n©2020 Rombout Versluijs');");//\\nhttp://www.sbaril.me removed not working anymore
                     break;
                 case "OpenWebsiteAnimD2":
-                    csInterface.openURLInDefaultBrowser("http://www.sbaril.me/links");
+                    csInterface.openURLInDefaultBrowser("https://www.youtube.com/playlist?list=PLnNlOgl2T6GAsPqZDaf57TAqBa6ltL_gQ");
+                    // csInterface.openURLInDefaultBrowser("http://www.sbaril.me/links");
                     LoseFocus();
                     break;
                 case "iconSml":
