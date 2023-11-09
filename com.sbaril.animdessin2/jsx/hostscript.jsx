@@ -137,7 +137,8 @@ function gotoFrame(Frame,frameLength) {
     // alert(frameLength)
     // alert(customFrameStep)
     // Correct layers to step according to frame length
-    var stepLayers = Math.abs(customFrameStep / Number(frameLength));
+    // var stepLayers = Math.abs(customFrameStep / Number(frameLength));
+    var stepLayers = Math.floor(customFrameStep / Number(frameLength));
 
     // // we use loop to jump layers
     // // TODO need to know how long each frame is. When using 2frames it will jump double the time
@@ -294,7 +295,24 @@ isMac = function() {
 };
 
 
-// Create AnimDessin folder romaing
+// Create AnimDessin in extension folder
+function getExtensionFolder(){
+//   var userData = Folder.userData;
+    // alert(SystemPath.EXTENSION)
+    alert(getSystemPath(SystemPath.EXTENSION))
+    // var extension = getSystemPath(SystemPath.EXTENSION);
+    // if (!extension || !extension.exists) {
+    //     extension = Folder("~");
+    // }
+//   var folder = new Folder(userData + "/animdessin2");
+
+//   if (!folder.exists) {
+//     folder.create();
+//   }
+//   return getSystemPath(SystemPath.EXTENSION)
+};
+
+// Create AnimDessin folder romaing Windows
 function getPrefFolder(){
   var userData = Folder.userData;
   if (!userData || !userData.exists) {
@@ -397,7 +415,9 @@ function keyPress(os){
             // var mb_keystrF = new File(File(app.path +'/Presets/Scripts/amd2-shortcut.vbs'));
             // var mb_keystrF = new File(File('C:/Program Files/Adobe/Adobe Photoshop 2021/Presets/Scripts/left.vbs'));
             // alert(File($.fileName).path)
+
             var mb_keystrF = new File(File(getPrefFolder()+'/amd2-shortcut.vbs'));
+            // var mb_keystrF = new File(File(getExtensionFolder()+'/amd2-shortcut.vbs'));
             // alert(mb_keystrF)
             var str = 'Set WshShell = WScript.CreateObject("WScript.Shell")\nWshShell.SendKeys "{UP}"';
             mb_keystrF.open('w');
@@ -479,7 +499,8 @@ function AnimD2_customFrameStep(customFrameStep,frameLength, direction) {
         // we use loop to jump layers
         // TODO need to know how long each frame is. When using 2frames it will jump double the time
         // Divide customframestep / framelength > gets a rough number. Doesnt work nice with uneven frame numbers
-        var stepLayers = Math.round(customFrameStep / frameLength);
+        // var stepLayers = Math.round(customFrameStep / frameLength);
+        var stepLayers = Math.floor(customFrameStep / frameLength);
         for(i=0;i<stepLayers;i++){
             // Set selection layer panel
             var desc83 = new ActionDescriptor();
@@ -551,6 +572,42 @@ function AnimD2_customFrameStep(customFrameStep,frameLength, direction) {
 function trim (str) {
     return str.replace(/^\s+/,'').replace(/\s+$/,'');
 }
+
+
+// /////////////////////////////////////////////////////////////////////
+
+// Localize CustomFrameStepDialog
+locCustomFrameStepDialog = {
+    en: "Set Custom Frame Step",
+    fr: "Définir une étape de cadre personnalisée",
+    nl: "Stel in aangepaste frame stap",
+    ch: "设置自定义框架步骤"
+};
+
+locFrameStep = {
+    en: "Frame Step",
+    fr: "Étape du cadre",
+    nl: "Stap frames",
+    ch: "框架步骤"
+};
+locFrameStepTooltipTwo = {
+    en: "The number is the amount of frames which will be stepped over.",
+    fr: "Le nombre correspond au nombre d'images qui seront franchies.",
+    nl: "Het getal is het aantal frames waarover wordt gestapt.",
+    ch: "该数字是要跨越的帧数。"
+};
+locFrameLength = {
+    en: "Frame length",
+    fr: "Longueur du cadre",
+    nl: "Lengte frame",
+    ch: "帧长"
+};
+locFrameLengthTooltipTwo = {
+    en: "The length of each frame on the time. This is needed to select the correct frame.",
+    fr: "La durée de chaque image à l'heure. Ceci est nécessaire pour sélectionner le bon cadre.",
+    nl: "De lengte van de frames op de tijdlijn. Deze is nodig om de juiste frame te selecteren.",
+    ch: "时间上每帧的长度。 这是选择正确框架所必需的。"
+};
 ///////////////////////////////////////////////////
 // custom frame step Dialog
 ///////////////////////////////////////////////////
@@ -582,8 +639,8 @@ function frameStepDialog(customFrameStep, frameLength) {
     // FRAMERENAME
     // ===========
     var dlgMain = new Window("dialog"); 
-        dlgMain.text = "Set Custom Frame Step"; //renameFrameTitleStr; 
-        dlgMain.preferredSize.width = 100; 
+        dlgMain.text = localize(locCustomFrameStepDialog); //renameFrameTitleStr; 
+        dlgMain.preferredSize.width = 200; 
         dlgMain.orientation = "column"; 
         dlgMain.alignChildren = ["fill","top"]; 
         dlgMain.spacing = 10; 
@@ -596,11 +653,11 @@ function frameStepDialog(customFrameStep, frameLength) {
         frameStepGrp.margins = 0; 
 
     var customFrameStepLabel = frameStepGrp.add('statictext {properties: {name: "frameStepLabel"}}'); 
-        customFrameStepLabel.text = "Frame Step"; //exportInfo.frameStep;
+        customFrameStepLabel.text = localize(locFrameStep); //exportInfo.frameStep;
         customFrameStepLabel.preferredSize = [100,15];
 
     var customFrameStepInput = frameStepGrp.add('edittext {properties: {name: "frameStep"}}'); 
-        customFrameStepInput.helpTip = "Set custom frame step"; 
+        customFrameStepInput.helpTip = localize(locFrameStepTooltipTwo); 
         customFrameStepInput.text = trim(frameStepStr); //exportInfo.frameStep;
         customFrameStepInput.active = true; // Set focus on input
         customFrameStepInput.preferredSize = [45,15];
@@ -612,11 +669,11 @@ function frameStepDialog(customFrameStep, frameLength) {
         frameLengthGrp.margins = 0; 
 
     var frameLengthLabel = frameLengthGrp.add('statictext {properties: {name: "frameLengthLabel"}}'); 
-        frameLengthLabel.text = "Frame Length"; //exportInfo.frameStep;
+        frameLengthLabel.text = localize(locFrameLength); //exportInfo.frameStep;
         frameLengthLabel.preferredSize = [100,15];
 
-    var customFrameLengthInput = frameLengthGrp.add('edittext {properties: {name: "frameStep"}}'); 
-        customFrameLengthInput.helpTip = "Set length of each frames, this helps with the next and prev actions"; 
+    var customFrameLengthInput = frameLengthGrp.add('edittext {properties: {name: "customFrameLengthInput"}}'); 
+        customFrameLengthInput.helpTip = localize(locFrameLengthTooltipTwo); 
         customFrameLengthInput.text = trim(frameLengthStr); //exportInfo.frameStep;
         customFrameLengthInput.active = false; // Set focus on input
         customFrameLengthInput.preferredSize = [45,15];
@@ -690,15 +747,27 @@ function frameStepDialog(customFrameStep, frameLength) {
 locCreateCustomFrameDialog = {
     en: "Set create custom frame",
     fr: "Ajouter custom couche",
-    nl: "Voorinstelling Custom frame",
+    nl: "Stel in aangepaste frame",
     ch: "设置创建自定义框架"
 };
 // Localize AnimD2_createCustomFrameMain
 locCreateCustomFrame = {
     en: "Add custom frame",
     fr: "Ajouter custom couche",
-    nl: "Custom frame toevoegen",
+    nl: "Aangepaste frame toevoegen",
     ch: "添加自定义框架"
+};
+locFrameLength = {
+    en: "Frame length",
+    fr: "Longueur du cadre",
+    nl: "Lengte frame",
+    ch: "帧长"
+};
+locFrameLengthTooltip = {
+    en: "Length of the custom frame",
+    fr: "Longueur du cadre personnalisé",
+    nl: "De lengte van de aangepaste frame",
+    ch: "自定义框架的长度"
 };
 ///////////////////////////////////////////////////
 // Custom Frame Step Action from jsx
@@ -830,7 +899,7 @@ function createCustomFrameDialog(createCustomFrame) {
     // FRAMERENAME
     // ===========
     var dlgMain = new Window("dialog"); 
-        dlgMain.text = "Set Custom Frame"; //renameFrameTitleStr; 
+        dlgMain.text = localize(locCreateCustomFrameDialog); //renameFrameTitleStr; 
         dlgMain.preferredSize.width = 100; 
         dlgMain.orientation = "column"; 
         dlgMain.alignChildren = ["fill","top"]; 
@@ -844,11 +913,11 @@ function createCustomFrameDialog(createCustomFrame) {
         customFrameGrp.margins = 0; 
 
     var createCustomFrameLabel = customFrameGrp.add('statictext {properties: {name: "frameLengthLabel"}}'); 
-        createCustomFrameLabel.text = "Frame length"; //exportInfo.frameStep;
+        createCustomFrameLabel.text = localize(locFrameLength); //exportInfo.frameStep;
         createCustomFrameLabel.preferredSize = [100,15];
 
     var customFrame = customFrameGrp.add('edittext {properties: {name: "customFrame"}}'); 
-        customFrame.helpTip = "Set custom frame length"; 
+        customFrame.helpTip = localize(locFrameLengthTooltip); 
         customFrame.text = frameStepStr; //trim(frameStepStr); //exportInfo.frameStep;
         customFrame.active = true; // Set focus on input
         customFrame.preferredSize = [45,15];
@@ -902,4 +971,69 @@ function createCustomFrameDialog(createCustomFrame) {
 
     // Get settings from Dialog
     return customFrameInput
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Function: getExtensionFolder
+// Usage: return list of file names
+// Input: folder
+// Return: list of filenames
+///////////////////////////////////////////////////////////////////////////////
+function getExtensionFolder(){
+    // alert($.fileName)
+    alert('Filename '+$.fileName)
+    // alert($.fileName.split('/').slice(0, -2))
+    var extensionPath = $.fileName.split('/').slice(0, -2).join('/') + '/';
+    // var folderPath = extensionPath+'presets_json/';
+    // alert(extensionPath)
+    if(!Folder(extensionPath).exists){
+        alert("Can not find extension folder", "Warning")
+    } else {
+        return extensionPath
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Function: loadJsonPresetDoc
+// Usage: load preset in JSON format
+// Input: JOSN format file
+// Return: properties for document setup
+///////////////////////////////////////////////////////////////////////////////
+function loadJsonPresetDoc(presetFile){
+    extensionPath = getExtensionFolder();
+
+    // var extensionPath = $.fileName.split('/').slice(0, -2).join('/') + '/';
+    // var presetFilePath = new File(extensionPath + '/presets_json/'+ presetFile+'.json');
+    // new File(extensionPath + '/docPreset.json');
+    var presetFilePath = new File(extensionPath+ presetFile+'.json');
+
+    presetFilePath.open('r');
+    var contentDocPreset = presetFilePath.read(); //shows JSON structure
+    presetFilePath.close();
+    var readPreset = JSON.parse(contentDocPreset);
+
+    return readPreset
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Function: saveJsonPresetDoc
+// Usage: Save preset in JSON format
+// Input: exportInfo
+// Return: saved document in JSON format
+///////////////////////////////////////////////////////////////////////////////
+function saveJsonPresetDoc(exportInfo){
+    extensionPath = getExtensionFolder();
+    // var extensionPath = $.fileName.split('/').slice(0, -2).join('/') + '/';
+    // var presetFilePath = new File(extensionPath + '/presets_json/'+ exportInfo.docName+'.json');
+    alert('exportInfo '+exportInfo)
+    // alert(exportInfo.docName)
+    // var presetFilePath = new File(extensionPath+'/'+exportInfo.docName+'.json');
+    var presetFilePath = new File(extensionPath+'/frameLength.json');
+    // alert(presetFilePath)
+
+    presetFilePath.open("w");
+    presetFilePath.write(JSON.stringify(exportInfo));
+    presetFilePath.close();
+    // getJsonPresetFileNames(exportInfo);
+    return presetFilePath
 }

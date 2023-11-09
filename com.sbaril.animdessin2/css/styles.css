@@ -300,6 +300,34 @@ img.loader {
     font-size: 34px;
 }
 
+/* Show framenumber in indicator */
+#curFr {
+    font-size: 8px !important;
+    color: white;
+    z-index: 999;
+    cursor: -webkit-grab;
+    margin-top: 8px;
+    text-align: center;
+    padding-left: 1px;
+    display: table;
+    position: absolute;
+    width: 100% !important;
+    clear: left;
+}
+.iconBig #curFr{
+    font-size: 14px !important;
+    margin-top: 22px;
+    padding-left: 2px;
+}
+.iconMed #curFr{
+    font-size: 12px !important;
+    margin-top: 16px;
+    padding-left: 2px;
+}
+}
+.iconSml #curFr{
+    font-size: 8px !important;
+}
 /* Scrubber icons big */
 .iconBig #track {
     height: 30px !important;

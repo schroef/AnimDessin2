@@ -797,7 +797,9 @@ function sTID(s) { return app.stringIDToTypeID(s); };
 // Return: list of filenames
 ///////////////////////////////////////////////////////////////////////////////
 function getPresetsFolder(){
+    // alert($.fileName)
     var extensionPath = $.fileName.split('/').slice(0, -2).join('/') + '/';
+    // alert(extensionPath)
     var folderPath = extensionPath+'presets_json/';
     if(!Folder(folderPath).exists){
         alert("There is no preset folder names presets_json", "Warning")

@@ -251,6 +251,11 @@
         }
         // Uses the XML string to build the menu
         csInterface.setContextMenu(flyoutXML(), contextHandler);
+
+        csInterface.addEventListener("com.sbaril.animdessin2.Panel.foo", function(e){
+            // console.log("event: "+e.data);
+            localStorage.setItem("frameLength", e.data)
+        });
     }
     // $("#loaderBlock").hide();
     init();
