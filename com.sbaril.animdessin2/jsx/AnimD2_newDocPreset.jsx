@@ -24,56 +24,56 @@ var strDocBackgroundColor = {
     en: "Background Color:",
     fr: "Couleur de l'arrière plan:",
     nl: "Voorgrondgrond Kleur:",
-    ch: "XXXXXXXXX",
+    ch: "背景色",
 };//localize('$$$/JavaScripts/AD2newDocPreset/ProjectBackgroundColor=Background Color:')
 var strDocColorWhite = {
     en: "White",
     fr: "Blanc",
     nl: "Wit",
-    ch: "XXXXXXXXX",
+    ch: "白色",
 };//localize('$$$/JavaScripts/AD2newDocPreset/ColorWhite=White')
 var strDocColorBlack = {
     en: "Black",
     fr: "Noir",
     nl: "Zwart",
-    ch: "XXXXXXXXX",
+    ch: "黑色",
 };//localize('$$$/JavaScripts/AD2newDocPreset/ColorBlack=Black')
 var strDocColorGray = {
     en: "Gray",
     fr: "Gris",
     nl: "Grijs",
-    ch: "XXXXXXXXX",
+    ch: "灰色",
 };//localize('$$$/JavaScripts/AD2newDocPreset/ColorGray=Gray')
 var strDocFgColorOther = {
     en: "Foreground Color",
     fr: "Couleur de premier plan",
     nl: "Voorgrondgrond Kleur",
-    ch: "XXXXXXXXX",
+    ch: "前景色",
 };//localize('$$$/JavaScripts/AD2newDocPreset/ColorForeground=Foreground Color')
 var strDocBgColorOther = {
     en: "Background Color",
     fr: "Couleur de l'arrière plan",
     nl: "Achtergrond Kleur",
-    ch: "XXXXXXXXX",
+    ch: "背景色",
 };//localize('$$$/JavaScripts/AD2newDocPreset/ColorBackground=Background Color')
 var strDocTransparentOther = {
     en: "Transparent",
     fr: "Transparente",
     nl: "Transparant",
-    ch: "XXXXXXXXX",
+    ch: "透明",
 };//localize('$$$/JavaScripts/AD2newDocPreset/ColorTransparent=Transparent')
 var strDocColorOther = {
     en: "Custom...",
     fr: "Personnalisé...",
     nl: "Aangepast...",
-    ch: "XXXXXXXXX",
+    ch: "自定义",
 };//localize('$$$/JavaScripts/AD2newDocPreset/ColorOther=Other...')
 var strMessage = localize("$$$/JavaScripts/AD2newDocPreset/Message=AD2 New Doc Preset");
 locNewDocPreset1Label = {
     en: "Name:",
     fr: "Nombre:",
     nl: "Naam:",
-    ch: "姓名:",
+    ch: "命名:",
 };
 locNewDocPreset1 = {
     en: "New project ",
@@ -85,21 +85,21 @@ locNewDocPreset2 = {
     en: " created",
     fr: " établi",
     nl: " opgezet",
-    ch: " 创建"
+    ch: " 创建",
 };
 
 locDelPreset = {
     en: "Delete Preset",
     fr: "Supprimer le préréglage",
     nl: "Voorinstelling Verwijderen",
-    ch: "XXXXXXXX"
+    ch: "删除预设 "
 };
 
 locDelPresetDesc = {
     en: "Delete preset ",//"Do you really want to delete file ",
     fr: "Supprimer le préréglage ",
     nl: "Verwijder voorinstelling ",
-    ch: "XXXXXXXX "
+    ch: "删除预设 ",//"确定删除文件 ",
 };
 
 // Dialog setting Canvas
@@ -112,69 +112,69 @@ locNewDocCanvasLabel = {
 // Dialog setting titles
 locSizeSetTitle = {
     en: "Size:",
-    fr: "XXXXXXXX:",
+    fr: "Taille:",
     nl: "Grootte:",
-    ch: "XXXXXXXX"
+    ch: "尺寸:"
 
 }
 locWidthSetTitle = {
     en: "Width:",
-    fr: "XXXXXXXX:",
+    fr: "Largeur:",
     nl: "Breedte:",
-    ch: "XXXXXXXX"
+    ch: "宽度:"
 
 }
 locHeightSetTitle = {
     en: "Height:",
-    fr: "XXXXXXXX:",
+    fr: "Haut:",
     nl: "Hoogte:",
-    ch: "XXXXXXXX"
+    ch: "高度:"
 
 }
 locResolutionSetTitle = {
     en: "Resolution:",
-    fr: "XXXXXXXX:",
+    fr: "Résolution:",
     nl: "Resolutie:",
-    ch: "XXXXXXXX"
+    ch: "分辨率"
 
 }
 locColorModeSetTitle = {
     en: "Color Mode:",
-    fr: "XXXXXXXX:",
+    fr: "Mode de couleur:",
     nl: "Kleurenmodus:",
-    ch: "XXXXXXXX"
+    ch: "颜色模式:"
 
 }
 locColorProfileSetTitle = {
     en: "Color Profile:",
-    fr: "XXXXXXXX:",
+    fr: "Profil de couleur:",
     nl: "Kleurenprofiel:",
-    ch: "XXXXXXXX"
+    ch: "颜色配置文件:"
 
 }
 locTimelineSetTitle = {
     en: "Timeline:",
     fr: "Chronologie:",
     nl: "Tijdslijn:",
-    ch: "XXXXXXXX"
+    ch: "时间轴:"
 };
 locDurationSetTitle = {
     en: "Duration:",
-    fr: "XXXXXXXXX",
+    fr: "Durée:",
     nl: "Looptijd:",
-    ch: "XXXXXXXX"
+    ch: "持续时间:"
 };
 locSplitTLSetTitle = {
     en: "Split Timeline",
     fr: "Fractionner la chronologie",
     nl: "Splits tijdslijn",
-    ch: "XXXXXXXX"
+    ch: "分割时间轴"
 };
 locProjectPresetsSetTitle = {
     en: "Project Presets",
     fr: "Préréglages du projet",
     nl: "Project Voorinstellingen",
-    ch: "XXXXXXXX"
+    ch: "项目预设"
 };
 
 locNewSettingArrayLabel = {
@@ -189,13 +189,13 @@ locCreateBtn = {
     en: "Create",
     fr: "Créer",
     nl: "Maken",
-    ch: "XXXXXXXX"
+    ch: "创建"
 };
 locCancelBtn = {
     en: "Cancel",
     fr: "Annuler",
     nl: "Annuleer",
-    ch: "XXXXXXXX"
+    ch: "取消"
 };
 // dirty workaround > dialog womnt localize when called?!
 // Localize can only be used once?!
@@ -203,66 +203,66 @@ locDeletePresetBtn = {
     en: "Delete",
     fr: "Supprimer",
     nl: "Verwijder",
-    ch: "XXXXXXXX"
+    ch: "删除"
 };
 locCancelPresetBtn = {
     en: "Cancel",
     fr: "Annuler",
     nl: "Annuleer",
-    ch: "XXXXXXXX"
+    ch: "取消"
 };
 
 locNewPrsBtn = {
     en: "New",
     fr: "Nouveau",
     nl: "Nieuw",
-    ch: "XXXXXXXX"
+    ch: "新建"
 };
 locRemovePrsBtn = {
     en: "Remove",
     fr: "Éliminer",
     nl: "Verwijder",
-    ch: "XXXXXXXX"
+    ch: "移除"
 };
 locResetPrsBtn = {
     en: "Reset",
     fr: "Réinitialiser",
     nl: "Herstel",
-    ch: "XXXXXXXX"
+    ch: "重置"
 };
 
 // Descriptions
 locDurationDesc = {
     en: "Timeline duration ",
-    fr: "XXXXXXXXX",
+    fr: "Durée de la chronologie ",
     nl: "Tijdslijn looptijd ",
-    ch: "XXXXXXXX"
+    ch: "时间轴长度 "
 };
 
 // Tooltips
 locCreateBtnTLTP = {
     en: "Create document using setting",
-    fr: "XXXXXXXXX",
+    fr: "Créer un document à l'aide des paramètres",
     nl: "Maak document met instelling",
-    ch: "XXXXXXXX"
+    ch: "使用设置创建文档"
 };
 locCancelBtnTLTP = {
     en: "Cancel document creation",
-    fr: "XXXXXXXXX",
+    fr: "Annuler la création du document",
     nl: "Annuleer document aanmaken",
-    ch: "XXXXXXXX"
+    ch: "取消创建文档"
 };
 locSetFrTimecodeTLTP = {
     en: "Set frames or timecode > 00:00:00:00",
-    fr: "XXXXXXXXX",
+    fr: "Définir l'image ou le timecode > 00:00:00:00",
     nl: "Voer frames of tijdsnotering in > 00:00:00:00",
-    ch: "XXXXXXXX"
+    ch: "设置帧或时间码 > 00:00:00:00"
 };
 locSplitTLTP = {
     en: "Splits the Timeline by 1 or 2 frames",
-    fr: "XXXXXXXXX",
+    fr: "Réglez l'image ou le timecode sur 1 image ou 2 images",
     nl: "Splits de tijdslijn in 1 of 2 frames ",
-    ch: "XXXXXXXX"
+    ch: "设置帧或时间码为1帧或者2帧"
 };
 // the drop down list indexes for color profiles
 var colorProfile = new String();

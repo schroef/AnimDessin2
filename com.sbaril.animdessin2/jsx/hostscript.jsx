@@ -581,20 +581,20 @@ locCustomFrameStepDialog = {
     en: "Set Custom Frame Step",
     fr: "Définir une étape de cadre personnalisée",
     nl: "Stel in aangepaste frame stap",
-    ch: "设置自定义框架步骤"
+    ch: "设置自定义帧步数"
 };
 
 locFrameStep = {
     en: "Frame Step",
     fr: "Étape du cadre",
     nl: "Stap frames",
-    ch: "框架步骤"
+    ch: "帧步数"
 };
 locFrameStepTooltipTwo = {
     en: "The number is the amount of frames which will be stepped over.",
     fr: "Le nombre correspond au nombre d'images qui seront franchies.",
     nl: "Het getal is het aantal frames waarover wordt gestapt.",
-    ch: "该数字是要跨越的帧数。"
+    ch: "该数字是要跳过的帧数。"
 };
 locFrameLength = {
     en: "Frame length",
@@ -606,7 +606,19 @@ locFrameLengthTooltipTwo = {
     en: "The length of each frame on the time. This is needed to select the correct frame.",
     fr: "La durée de chaque image à l'heure. Ceci est nécessaire pour sélectionner le bon cadre.",
     nl: "De lengte van de frames op de tijdlijn. Deze is nodig om de juiste frame te selecteren.",
-    ch: "时间上每帧的长度。 这是选择正确框架所必需的。"
+    ch: "时间上每帧的长度。需要选择正确帧."
+};
+locCancelBtn = {
+    en: "Cancel",
+    fr: "Annuler",
+    nl: "Annuleer",
+    ch: "取消"
+};
+locOkBtn = {
+    en: "OK",
+    fr: "OK",
+    nl: "OK",
+    ch: "好",
 };
 ///////////////////////////////////////////////////
 // custom frame step Dialog
@@ -634,8 +646,8 @@ function frameStepDialog(customFrameStep, frameLength) {
 
     // var exportInfo = new Object();
     //     exportInfo.frameStep = frameStepStr;
-    var cancelBtnStr = "Cancel";
-    var okBtnStr = "OK";
+    var cancelBtnStr = localize(locCancelBtn);
+    var okBtnStr = localize(locOkBtn);
     // FRAMERENAME
     // ===========
     var dlgMain = new Window("dialog"); 
@@ -748,14 +760,14 @@ locCreateCustomFrameDialog = {
     en: "Set create custom frame",
     fr: "Ajouter custom couche",
     nl: "Stel in aangepaste frame",
-    ch: "设置创建自定义框架"
+    ch: "设置自定义帧"
 };
 // Localize AnimD2_createCustomFrameMain
 locCreateCustomFrame = {
     en: "Add custom frame",
     fr: "Ajouter custom couche",
     nl: "Aangepaste frame toevoegen",
-    ch: "添加自定义框架"
+    ch: "添加自定义帧"
 };
 locFrameLength = {
     en: "Frame length",
@@ -767,7 +779,7 @@ locFrameLengthTooltip = {
     en: "Length of the custom frame",
     fr: "Longueur du cadre personnalisé",
     nl: "De lengte van de aangepaste frame",
-    ch: "自定义框架的长度"
+    ch: "自定义帧长"
 };
 ///////////////////////////////////////////////////
 // Custom Frame Step Action from jsx
@@ -894,8 +906,8 @@ function createCustomFrameDialog(createCustomFrame) {
 
     // var exportInfo = new Object();
     //     exportInfo.frameStep = frameStepStr;
-    var cancelBtnStr = "Cancel";
-    var okBtnStr = "OK";
+    var cancelBtnStr = localize(locCancelBtn);
+    var okBtnStr = localize(locOkBtn);
     // FRAMERENAME
     // ===========
     var dlgMain = new Window("dialog"); 
