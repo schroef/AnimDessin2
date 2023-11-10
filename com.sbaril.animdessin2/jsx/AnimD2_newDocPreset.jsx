@@ -23,7 +23,7 @@ var strLayerNaming = {
 var strDocBackgroundColor = {
     en: "Background Color:",
     fr: "Couleur de l'arrière plan:",
-    nl: "Voorgrondgrond Kleur:",
+    nl: "Voorgrond Kleur:",
     ch: "背景色",
 };//localize('$$$/JavaScripts/AD2newDocPreset/ProjectBackgroundColor=Background Color:')
 var strDocColorWhite = {
@@ -47,7 +47,7 @@ var strDocColorGray = {
 var strDocFgColorOther = {
     en: "Foreground Color",
     fr: "Couleur de premier plan",
-    nl: "Voorgrondgrond Kleur",
+    nl: "Voorgrond Kleur",
     ch: "前景色",
 };//localize('$$$/JavaScripts/AD2newDocPreset/ColorForeground=Foreground Color')
 var strDocBgColorOther = {
