@@ -75,7 +75,7 @@ Msg = {
 // Localize AnimD2_canvasSize.jsx
 locCanvasSize = {
     en: "Set canvas size of document",
-    fr: "XXXX",
+    fr: "Définir la taille du canevas du document",
     nl: "Stel canvasgrootte in van document",
     ch: "设置文档的画布大小"
 };
@@ -89,14 +89,14 @@ locColorBlue = {
 // Localize AnimD2_colorGlobalHide.jsx
 locColorGlobalHide = {
     en: "Hide all overlays",
-    fr: "XXXX",
+    fr: "Masquer toutes les superpositions",
     nl: "Verberg alle kleurbedekkingen",
     ch: "隐藏所有叠加层"
 };
 // Localize AnimD2_colorGlobalShow.jsx
 locColorGlobalShow = {
     en: "Show all overlays",
-    fr: "XXXX",
+    fr: "Afficher toutes les superpositions",
     nl: "Toon alle kleurbedekkingen",
     ch: "显示所有叠加"
 };
@@ -110,21 +110,21 @@ locColorGreen = {
 // Localize AnimD2_colorNone.jsx
 locColorNone = {
     en: "Clear all layer effects",
-    fr: "XXXX",
+    fr: "Effacer tous les effets de calque",
     nl: "Verwijder alle laag effecten",
     ch: "清除所有图层效果"
 };
 // Localize AnimD2_colorNoneFXHideAll.jsx
 locColorNoneFXHideAll = {
     en: "Hide all layers effects",
-    fr: "XXXX",
+    fr: "Masquer tous les effets de calques",
     nl: "Verberg alle laag effecten",
     ch: "隐藏所有图层效果"
 };
 // Localize AnimD2_colorNoneFXShowAll.jsx
 locColorNoneFXShowAll = {
     en: "Show all layers effects",
-    fr: "XXXX",
+    fr: "Afficher tous les effets de calques",
     nl: "Toon alle laag effecten",
     ch: "显示所有图层效果"
 };
@@ -236,14 +236,14 @@ locFramePlusFive = {
 // Localize AnimD2_frameMinusOne.jsx
 locFramePlusOne = {
     en: "Expose 1 frame more",
-    fr: "XXXXXXXXX",
+    fr: "Exposer 1 image de plus",
     nl: "Geef 1 frame meer weer",
     ch: "多曝光 1 帧"
 };
 // Localize AnimD2_frameMinusTen.jsx
 locFramePlusTen = {
     en: "Expose 10 frames more",
-    fr: "XXXXXXXXX",
+    fr: "Exposer 10 images de plus",
     nl: "Geef 10 frames meer weer",
     ch: "再曝光 10 帧"
 };
@@ -362,6 +362,13 @@ locSplitToFramesGroup = {
     fr: "XXXXXXXXX",
     nl: "Splits laag 1 franes en maak video groep",
     ch: "将图层拆分为 1 帧并制作视频组"
+};
+// Localize AnimD2_splitToFrames2FrGroup.jsx
+locSplitToFrames2FrGroup = {
+    en: "Split layer into 2 frames and make video group",
+    fr: "XXXXXXXXX",
+    nl: "Splits laag 2 franes en maak video groep",
+    ch: "将图层拆分为 2 帧并制作视频组"
 };
 // Localize AnimD2_playheadSplitGroup.jsx
 locPlayheadSplitGroup = {

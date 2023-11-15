@@ -57,16 +57,26 @@ function playheadEndArea() {
         
         // Offical code not working > Why??? > returns illegal argument
         // VIDEO TIMELINE
-        var idslct = charIDToTypeID( 'slct' );
-        var desc471 = new ActionDescriptor();
-        var idnull = charIDToTypeID( 'null' );
-        var ref412 = new ActionReference();
-        var idMnspsp = charIDToTypeID( 'Mn ' );
-        var idMnIt = charIDToTypeID( 'MnIt' );
-        var idtimelineGoToWorkAreaEnd = stringIDToTypeID( 'timelineGoToWorkAreaEnd' );
+        // var idslct = charIDToTypeID( 'slct' );
+        // var desc471 = new ActionDescriptor();
+        // var idnull = charIDToTypeID( 'null' );
+        // var ref412 = new ActionReference();
+        // var idMnspsp = charIDToTypeID( 'Mn ' );
+        // var idMnIt = charIDToTypeID( 'MnIt' );
+        // var idtimelineGoToWorkAreaEnd = stringIDToTypeID( 'timelineGoToWorkAreaEnd' );
+        // ref412.putEnumerated( idMnspsp, idMnIt, idtimelineGoToWorkAreaEnd ); 
+        // desc471.putReference( idnull, ref412 ); 
+        // executeAction( idslct, desc471, DialogModes.ALL ); 
+        var idslct = charIDToTypeID( 'slct' ); 
+        var desc471 = new ActionDescriptor(); 
+        var idnull = charIDToTypeID( 'null' ); 
+        var ref412 = new ActionReference(); 
+        var idMnspsp = charIDToTypeID( 'Mn ' ); 
+        var idMnIt = charIDToTypeID( 'MnIt' ); 
+        var idtimelineGoToWorkAreaEnd = stringIDToTypeID( 'timelineGoToLastFrame' ); // timelineSetEndOfWorkArea // timelineGoToWorkAreaStart // timelineGoToWorkAreaEnd //timelineGoToWorkAreaStart
         ref412.putEnumerated( idMnspsp, idMnIt, idtimelineGoToWorkAreaEnd ); 
         desc471.putReference( idnull, ref412 ); 
-        executeAction( idslct, desc471, DialogModes.ALL ); 
+        executeAction( idslct, desc471, DialogModes.ALL );// } catch(e){if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;} else{alert(localize(\"$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available\"));}}",
   
         // NEEDS WORK, need to find framerate and length of video
 
@@ -97,8 +107,9 @@ function playheadEndArea() {
 
     // Allows for cancel without feedback message
     } catch(e){
-        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
-        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+        alert(e)
+        // if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+        // else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
   }
 };
 

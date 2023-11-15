@@ -116,8 +116,48 @@ function getTimelineLength() {
     return A;
 }
 
+
+
 // Paul Riggot
-function gotoFrame(Frame) {
+function gotoFrame(Frame,frameLength) {
+    var curFr = timelineCurrentFrame();
+    // correct frame on Windows
+    // curFr = curFr - 1;
+    if (Number(Frame) > Number(curFr)) {
+        // return [num1 - num2, 'Frwr', 6]
+        var customFrameStep = Number(Frame) - Number(curFr);
+        var directionMove = 'Frwr';
+        var directionFrame = 6;
+    } else {
+        // return [num2 - num1, 'Bckw', 5]
+        var customFrameStep = Number(curFr) - Number(Frame);
+        var directionMove = 'Bckw';
+        var directionFrame = 5;
+    }
+    // alert(frameLength)
+    // alert(customFrameStep)
+    // Correct layers to step according to frame length
+    // var stepLayers = Math.abs(customFrameStep / Number(frameLength));
+    var stepLayers = Math.floor(customFrameStep / Number(frameLength));
+
+    // // we use loop to jump layers
+    // // TODO need to know how long each frame is. When using 2frames it will jump double the time
+    // // Divide customframestep / framelength > gets a rough number. Doesnt work nice with uneven frame numbers
+    // var stepLayers = Math.round(customFrameStep / frameLength);
+    // var stepLayers = Math.round(customFrameStep / frameLength);
+    for(i=0;i<stepLayers;i++){
+        // Set selection layer panel
+        var desc83 = new ActionDescriptor();
+        var ref48 = new ActionReference();
+        ref48.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID(directionMove) );
+        desc83.putReference( cTID('null'), ref48 );
+        desc83.putBoolean( cTID('MkVs'), false );
+        var list25 = new ActionList();
+        list25.putInteger( directionFrame );
+        desc83.putList( cTID('LyrI'), list25 );
+        executeAction( cTID('slct'), desc83, DialogModes.NO );
+    }
+
     frameRate = GetFrameRate();
     var desc69 = new ActionDescriptor();
     var ref33 = new ActionReference();
@@ -255,7 +295,24 @@ isMac = function() {
 };
 
 
-// Create AnimDessin folder romaing
+// Create AnimDessin in extension folder
+function getExtensionFolder(){
+//   var userData = Folder.userData;
+    // alert(SystemPath.EXTENSION)
+    alert(getSystemPath(SystemPath.EXTENSION))
+    // var extension = getSystemPath(SystemPath.EXTENSION);
+    // if (!extension || !extension.exists) {
+    //     extension = Folder("~");
+    // }
+//   var folder = new Folder(userData + "/animdessin2");
+
+//   if (!folder.exists) {
+//     folder.create();
+//   }
+//   return getSystemPath(SystemPath.EXTENSION)
+};
+
+// Create AnimDessin folder romaing Windows
 function getPrefFolder(){
   var userData = Folder.userData;
   if (!userData || !userData.exists) {
@@ -287,6 +344,7 @@ function keyPress(os){
     // alert(os)
     // $.sleep (100);
     // Check OS
+    // alert(os)
     if (os == "Windows") {
       // WIP get windows equilant code
     //   alert(os)
@@ -357,9 +415,11 @@ function keyPress(os){
             // var mb_keystrF = new File(File(app.path +'/Presets/Scripts/amd2-shortcut.vbs'));
             // var mb_keystrF = new File(File('C:/Program Files/Adobe/Adobe Photoshop 2021/Presets/Scripts/left.vbs'));
             // alert(File($.fileName).path)
+
             var mb_keystrF = new File(File(getPrefFolder()+'/amd2-shortcut.vbs'));
-            var str = 'Set WshShell = WScript.CreateObject("WScript.Shell")\
-                      WshShell.SendKeys "{RIGHT}"';
+            // var mb_keystrF = new File(File(getExtensionFolder()+'/amd2-shortcut.vbs'));
+            // alert(mb_keystrF)
+            var str = 'Set WshShell = WScript.CreateObject("WScript.Shell")\nWshShell.SendKeys "{UP}"';
             mb_keystrF.open('w');
             mb_keystrF.write(str);
             mb_keystrF.close();
@@ -389,10 +449,603 @@ function keyPress(os){
         // app.system('System.Windows.Forms.SendKeys::SendWait("Hi")') // notworking
     //   app.system('ctypes.windll.user32.mouse_event(2, 0, 0, 0,0)');
     //   app.system('cmd run'); // Works
-
+    // 123 left
+    // 124 right
+    // 125 down
+    // 126 up
     } else if (os == "Mac") {
         // alert(os)
-        app.system( 'osascript -e \'tell application "System Events" to key code "124"\'' ); 
+        app.system( 'osascript -e \'tell application "System Events" to key code "125"\'' ); 
         // app.system( 'osascript -e \'tell application "System Events" to key code "123" using command down\'' );
     }
+}
+
+
+///////////////////////////////////////////////////
+// Custom Frame Step Action from jsx
+///////////////////////////////////////////////////
+function cTID(s) { return app.charIDToTypeID(s); };
+function sTID(s) { return app.stringIDToTypeID(s); };
+
+function AnimD2_customFrameStep(customFrameStep,frameLength, direction) {
+    // alert(customFrameStep)
+    // alert(direction)0
+    // alert(frameLength)
+    if(customFrameStep=="null") customFrameStep = 1;
+    if(customFrameStep=="undefined") customFrameStep = 1;
+    if(frameLength=="null") frameLength = 1;
+    if(frameLength=="undefined") frameLength = 1;
+
+    if(frameLength=="false") {
+        alert("Frame Length is not Set") 
+        return
+    }
+    if(customFrameStep=="false") {
+        alert("No Custom Frame Set") 
+        return
+    }
+    ErrStrs = {}; 
+    ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
+    try {
+        // check what direction to go and use custom framesteps
+        if(direction=="prev") {
+            var directionMove = 'Bckw';
+            var directionFrame = 5;
+        } else {
+            var directionMove = 'Frwr';
+            var directionFrame = 6;
+        }
+
+        // we use loop to jump layers
+        // TODO need to know how long each frame is. When using 2frames it will jump double the time
+        // Divide customframestep / framelength > gets a rough number. Doesnt work nice with uneven frame numbers
+        // var stepLayers = Math.round(customFrameStep / frameLength);
+        var stepLayers = Math.floor(customFrameStep / frameLength);
+        for(i=0;i<stepLayers;i++){
+            // Set selection layer panel
+            var desc83 = new ActionDescriptor();
+            var ref48 = new ActionReference();
+            ref48.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID(directionMove) );
+            desc83.putReference( cTID('null'), ref48 );
+            desc83.putBoolean( cTID('MkVs'), false );
+            var list25 = new ActionList();
+            list25.putInteger( directionFrame );
+            desc83.putList( cTID('LyrI'), list25 );
+            executeAction( cTID('slct'), desc83, DialogModes.NO );
+        }
+
+        // https://www.ps-scripts.com/viewtopic.php?f=77&t=40409&p=169007&hilit=timeline#p169007
+        // Get frame numbers
+        var ref = new ActionReference();
+        ref.putProperty(stringIDToTypeID('property'), stringIDToTypeID('time'));
+        ref.putClass(stringIDToTypeID('timeline'), stringIDToTypeID('timeline'));
+        var desc = executeActionGet(ref); // <- it's here inside desc
+
+        var time_Seconds = desc.getObjectValue(stringIDToTypeID('time')).getInteger(stringIDToTypeID('seconds'))
+        var time_Frame = desc.getObjectValue(stringIDToTypeID('time')).getInteger(stringIDToTypeID('frame'))
+        var time_FrameRate = desc.getObjectValue(stringIDToTypeID('time')).getDouble(stringIDToTypeID('frameRate'))
+        
+        // check what direction to go and use custom framesteps
+        if(direction=="prev") {
+            var directionTime = time_Frame-=Number(customFrameStep);
+        } else {
+            var directionTime = time_Frame+=Number(customFrameStep);
+        }
+        // set to frame 0 if number is minus
+        if (directionTime.toString().indexOf('-')==0) directionTime = 0;
+        // alert(directionTime.toString().indexOf('-')==0)
+        // alert(directionTime.toString().indexOf('-'))
+        // alert(directionTime.toString().indexOf('-'))
+        // Set playhead to selection
+        // Move playhead 1 second
+        var idsetd = charIDToTypeID( "setd" );
+        var desc36 = new ActionDescriptor();
+        var idnull = charIDToTypeID( "null" );
+        var ref18 = new ActionReference();
+        var idPrpr = charIDToTypeID( "Prpr" );
+        var idtime = stringIDToTypeID( "time" );
+        ref18.putProperty( idPrpr, idtime );
+        var idtimeline = stringIDToTypeID( "timeline" );
+        ref18.putClass( idtimeline );
+        desc36.putReference( idnull, ref18 );
+        var idT = charIDToTypeID( "T   " );
+        var desc37 = new ActionDescriptor();
+        var idseconds = stringIDToTypeID( "seconds" );
+        desc37.putInteger( idseconds, time_Seconds );
+        var idframe = stringIDToTypeID( "frame" );
+        desc37.putInteger( idframe, directionTime );
+        var idframeRate = stringIDToTypeID( "frameRate" );
+        desc37.putDouble( idframeRate, time_FrameRate );
+        var idtimecode = stringIDToTypeID( "timecode" );
+        desc36.putObject( idT, idtimecode, desc37 );
+        executeAction( idsetd, desc36, DialogModes.NO );
+
+    // Allows for cancel without feedback message
+    } catch(e){
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+  }
+};
+
+// Trim Spaces
+// https://community.adobe.com/t5/indesign-discussions/trim-function-not-working-in-extendscript-is-there-a-way-to-replicate-the-functioning/m-p/7671887#M161781
+function trim (str) {
+    return str.replace(/^\s+/,'').replace(/\s+$/,'');
+}
+
+
+// /////////////////////////////////////////////////////////////////////
+
+// Localize CustomFrameStepDialog
+locCustomFrameStepDialog = {
+    en: "Set Custom Frame Step",
+    fr: "Définir une étape de cadre personnalisée",
+    nl: "Stel in aangepaste frame stap",
+    ch: "设置自定义帧步数"
+};
+
+locFrameStep = {
+    en: "Frame Step",
+    fr: "Étape du cadre",
+    nl: "Stap frames",
+    ch: "帧步数"
+};
+locFrameStepTooltipTwo = {
+    en: "The number is the amount of frames which will be stepped over.",
+    fr: "Le nombre correspond au nombre d'images qui seront franchies.",
+    nl: "Het getal is het aantal frames waarover wordt gestapt.",
+    ch: "该数字是要跳过的帧数。"
+};
+locFrameLength = {
+    en: "Frame length",
+    fr: "Longueur du cadre",
+    nl: "Lengte frame",
+    ch: "帧长"
+};
+locFrameLengthTooltipTwo = {
+    en: "The length of each frame on the time. This is needed to select the correct frame.",
+    fr: "La durée de chaque image à l'heure. Ceci est nécessaire pour sélectionner le bon cadre.",
+    nl: "De lengte van de frames op de tijdlijn. Deze is nodig om de juiste frame te selecteren.",
+    ch: "时间上每帧的长度。需要选择正确帧."
+};
+locCancelBtn = {
+    en: "Cancel",
+    fr: "Annuler",
+    nl: "Annuleer",
+    ch: "取消"
+};
+locOkBtn = {
+    en: "OK",
+    fr: "OK",
+    nl: "OK",
+    ch: "好",
+};
+///////////////////////////////////////////////////
+// custom frame step Dialog
+///////////////////////////////////////////////////
+function frameStepDialog(customFrameStep, frameLength) {
+    // var customFrameStep = customFrameStep;
+    // var frameLength = frameLength;
+    // alert(customFrameStep)
+    // alert(frameLength)
+    if(customFrameStep==null) customFrameStep = 1;
+    if(frameLength==null) frameLength = 1;
+    // if(customFrameStep=="undefined") customFrameStep = 1;
+    // if(frameLength=="undefined") frameLength = 1;
+    // alert(customFrameStep)
+    // alert(frameLength)
+
+    // customFrameStep = customFrameStep != "Set..." ? customFrameStep : "Set...";
+    // frameLength = frameLength != "Set..." ? frameLength : "Set...";
+    // if (customFrameStep=="undefined") customFrameStep = "Set..."
+    // if (frameLength==" undefined") frameLength = "Set..."
+    var runButtonID = 1;
+    var cancelButtonID = 2;
+    var frameStepStr = customFrameStep;
+    var frameLengthStr = frameLength;
+
+    // var exportInfo = new Object();
+    //     exportInfo.frameStep = frameStepStr;
+    var cancelBtnStr = localize(locCancelBtn);
+    var okBtnStr = localize(locOkBtn);
+    // FRAMERENAME
+    // ===========
+    var dlgMain = new Window("dialog"); 
+        dlgMain.text = localize(locCustomFrameStepDialog); //renameFrameTitleStr; 
+        dlgMain.preferredSize.width = 200; 
+        dlgMain.orientation = "column"; 
+        dlgMain.alignChildren = ["fill","top"]; 
+        dlgMain.spacing = 10; 
+        dlgMain.margins = 16; 
+
+    var frameStepGrp = dlgMain.add("group", undefined, {name: "frameStepGrp"}); 
+        frameStepGrp.orientation = "row"; 
+        frameStepGrp.alignChildren = ["left","top"]; 
+        frameStepGrp.spacing = 10; 
+        frameStepGrp.margins = 0; 
+
+    var customFrameStepLabel = frameStepGrp.add('statictext {properties: {name: "frameStepLabel"}}'); 
+        customFrameStepLabel.text = localize(locFrameStep); //exportInfo.frameStep;
+        customFrameStepLabel.preferredSize = [100,15];
+
+    var customFrameStepInput = frameStepGrp.add('edittext {properties: {name: "frameStep"}}'); 
+        customFrameStepInput.helpTip = localize(locFrameStepTooltipTwo); 
+        customFrameStepInput.text = trim(frameStepStr); //exportInfo.frameStep;
+        customFrameStepInput.active = true; // Set focus on input
+        customFrameStepInput.preferredSize = [45,15];
+    
+    var frameLengthGrp = dlgMain.add("group", undefined, {name: "frameLengthGrp"}); 
+        frameLengthGrp.orientation = "row"; 
+        frameLengthGrp.alignChildren = ["left","top"]; 
+        frameLengthGrp.spacing = 10; 
+        frameLengthGrp.margins = 0; 
+
+    var frameLengthLabel = frameLengthGrp.add('statictext {properties: {name: "frameLengthLabel"}}'); 
+        frameLengthLabel.text = localize(locFrameLength); //exportInfo.frameStep;
+        frameLengthLabel.preferredSize = [100,15];
+
+    var customFrameLengthInput = frameLengthGrp.add('edittext {properties: {name: "customFrameLengthInput"}}'); 
+        customFrameLengthInput.helpTip = localize(locFrameLengthTooltipTwo); 
+        customFrameLengthInput.text = trim(frameLengthStr); //exportInfo.frameStep;
+        customFrameLengthInput.active = false; // Set focus on input
+        customFrameLengthInput.preferredSize = [45,15];
+
+    // GROUP1
+    // ======
+    var group1 = dlgMain.add("group", undefined, {name: "group1"}); 
+        group1.orientation = "row"; 
+        group1.alignChildren = ["right","top"]; 
+        group1.spacing = 10; 
+        group1.margins = 0; 
+
+    var cancel = group1.add("button", undefined, undefined, {name: "cancel"}); 
+        cancel.text = cancelBtnStr; 
+        // cancel.preferredSize.width = 70; 
+    
+    cancel.onClick = function() {
+        dlgMain.close(cancelButtonID);
+    }
+
+    var ok = group1.add("button", undefined, undefined, {name: "ok"}); 
+        ok.text = okBtnStr; 
+        // ok.preferredSize.width = 80; 
+
+    var frameStepInput= customFrameStepInput.text;
+    var frameLengthInput= customFrameLengthInput.text;
+    customFrameStepInput.onChange = function(){
+        frameStepInput = customFrameStepInput.text;
+    }
+    frameLength.onChange = function(){
+        frameLengthInput = customFrameLengthInput.text;
+    }
+    if (frameStepInput == frameStepInput) frameStepInput
+    if (frameLengthInput == frameLengthInput) frameLengthInput
+
+    ok.onClick = function() {
+        frameStepInput = customFrameStepInput.text;
+        frameLengthInput = customFrameLengthInput.text;
+
+        // check if the setting is properly
+        if (frameStepInput.length == 0) {
+            alert(strAlertRename); // +" "+ strAlertFailure);
+            return;
+        }
+        if (frameLengthInput.length == 0) {
+            alert(strAlertRename); // +" "+ strAlertFailure);
+            return;
+        }
+        dlgMain.close(runButtonID);
+    }
+
+    // in case we double clicked the file
+    dlgMain.center();
+
+    var result = dlgMain.show();
+
+    if (cancelButtonID == result) {
+        // return result; // close to quit
+        return [frameStepInput, frameLengthInput]
+    }
+
+    // Get settings from Dialog
+    // exportInfo.frameStep = customFrameStep.text;
+    return [frameStepInput, frameLengthInput]
+}
+
+
+// /////////////////////////////////////////////////////////////////////
+
+// Localize createCustomFrameDialog
+locCreateCustomFrameDialog = {
+    en: "Set create custom frame",
+    fr: "Ajouter custom couche",
+    nl: "Stel in aangepaste frame",
+    ch: "设置自定义帧"
+};
+// Localize AnimD2_createCustomFrameMain
+locCreateCustomFrame = {
+    en: "Add custom frame",
+    fr: "Ajouter custom couche",
+    nl: "Aangepaste frame toevoegen",
+    ch: "添加自定义帧"
+};
+locFrameLength = {
+    en: "Frame length",
+    fr: "Longueur du cadre",
+    nl: "Lengte frame",
+    ch: "帧长"
+};
+locFrameLengthTooltip = {
+    en: "Length of the custom frame",
+    fr: "Longueur du cadre personnalisé",
+    nl: "De lengte van de aangepaste frame",
+    ch: "自定义帧长"
+};
+///////////////////////////////////////////////////
+// Custom Frame Step Action from jsx
+///////////////////////////////////////////////////
+function cTID(s) { return app.charIDToTypeID(s); };
+function sTID(s) { return app.stringIDToTypeID(s); };
+
+function AnimD2_createCustomFrameMain(customFrame) {
+     // set default at 3 if nothing set
+    if(customFrame==null) customFrame = 3
+    // correct start of 0
+    customFrame = customFrame -1;
+    ErrStrs = {}; 
+    ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
+    try {
+        // =======================================================
+        var idMk = charIDToTypeID("Mk  ");
+        var desc13 = new ActionDescriptor();
+        var idnull = charIDToTypeID("null");
+        var ref7 = new ActionReference();
+        var idLyr = charIDToTypeID("Lyr ");
+        ref7.putClass(idLyr);
+        desc13.putReference(idnull, ref7);
+        executeAction(idMk, desc13, DialogModes.NO);
+
+        // =======================================================
+        // Reduze the end of the layer to the actual frame
+        var idmoveOutTime = stringIDToTypeID("moveOutTime");
+        var desc99 = new ActionDescriptor();
+        executeAction(idmoveOutTime, desc99, DialogModes.NO);
+
+
+        // =======================================================
+        // Function to get the framerate of the actual documment
+        function GetFrameRate() {
+            var ref = new ActionReference();
+            ref.putProperty(charIDToTypeID('Prpr'), stringIDToTypeID("documentTimelineSettings"));
+            ref.putClass(stringIDToTypeID("timeline"));
+            var desc = new ActionDescriptor();
+            desc.putReference(charIDToTypeID('null'), ref);
+            var resultDesc = executeAction(charIDToTypeID('getd'), desc, DialogModes.NO);
+
+            return resultDesc.getDouble(stringIDToTypeID('frameRate'));
+        };
+
+        var idmoveOutTime = stringIDToTypeID("moveOutTime");
+        var desc123 = new ActionDescriptor();
+        var idtimeOffset = stringIDToTypeID("timeOffset");
+        var desc124 = new ActionDescriptor();
+        var idseconds = stringIDToTypeID("seconds");
+        desc124.putInteger(idseconds, 0);
+        var idframe = stringIDToTypeID("frame");
+        desc124.putInteger(idframe, customFrame); // Value 0=1; 1=2 …
+        var idframeRate = stringIDToTypeID("frameRate");
+        desc124.putDouble(idframeRate, GetFrameRate());
+        var idtimecode = stringIDToTypeID("timecode");
+        desc123.putObject(idtimeOffset, idtimecode, desc124);
+        executeAction(idmoveOutTime, desc123, DialogModes.NO);
+
+
+        // =======================================================
+        var idnextFrame = stringIDToTypeID("nextFrame");
+        var desc211 = new ActionDescriptor();
+        var idtoNextWholeSecond = stringIDToTypeID("toNextWholeSecond");
+        desc211.putBoolean(idtoNextWholeSecond, false);
+        executeAction(idnextFrame, desc211, DialogModes.NO);
+
+        // // check what direction to go and use custom framesteps
+        // var directionMove = 'Frwr';
+        // var directionFrame = 6;
+
+        // we use loop to jump layers
+        // TODO need to know how long each frame is. When using 2frames it will jump double the time
+        // Divide customFrame / framelength > gets a rough number. Doesnt work nice with uneven frame numbers
+        // var stepLayers = Math.round(customFrame / frameLength);
+        // var directionMove = 'Frwr';
+        // var directionFrame = 6;
+        // for(i=0;i<customFrame;i++){
+        //     // Set selection layer panel
+        //     var desc83 = new ActionDescriptor();
+        //     var ref48 = new ActionReference();
+        //     ref48.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID(directionMove) );
+        //     desc83.putReference( cTID('null'), ref48 );
+        //     desc83.putBoolean( cTID('MkVs'), false );
+        //     var list25 = new ActionList();
+        //     list25.putInteger( directionFrame );
+        //     desc83.putList( cTID('LyrI'), list25 );
+        //     executeAction( cTID('slct'), desc83, DialogModes.NO );
+        // }
+
+    // Allows for cancel without feedback message
+    } catch(e){
+        if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+        else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+  }
+};
+
+// AnimD2_createCustomFrameMain.Main =function(customFrame){
+//     AnimD2_createCustomFrameMain(customFrame)
+// }
+function AnimD2_createCustomFrame(customFrame) {
+    app.activeDocument.suspendHistory(localize(locCreateCustomFrame), "AnimD2_createCustomFrameMain('"+customFrame+"')");
+};
+
+///////////////////////////////////////////////////
+// Create Custom Frame Dialog
+///////////////////////////////////////////////////
+// function createCustomFrameDialogMain(createCustomFrame) {
+function createCustomFrameDialog(createCustomFrame) {
+    if(createCustomFrame==null) createCustomFrame = 3;
+    // if(createCustomFrame==null) {
+    //     createCustomFrame = 3
+    // }
+    // if(createCustomFrame=="undefined") createCustomFrame = 3;
+    // if(createCustomFrame=="EvalScript error") {
+    //     createCustomFrame = 3
+    // }
+    // alert(createCustomFrame=="EvalScript error")
+    // createCustomFrame = createCustomFrame != "Set..." ? createCustomFrame : "Set...";
+    // if (createCustomFrame=="undefined") createCustomFrame = "Set..."
+    var runButtonID = 1;
+    var cancelButtonID = 2;
+    var frameStepStr = createCustomFrame;
+
+    // var exportInfo = new Object();
+    //     exportInfo.frameStep = frameStepStr;
+    var cancelBtnStr = localize(locCancelBtn);
+    var okBtnStr = localize(locOkBtn);
+    // FRAMERENAME
+    // ===========
+    var dlgMain = new Window("dialog"); 
+        dlgMain.text = localize(locCreateCustomFrameDialog); //renameFrameTitleStr; 
+        dlgMain.preferredSize.width = 100; 
+        dlgMain.orientation = "column"; 
+        dlgMain.alignChildren = ["fill","top"]; 
+        dlgMain.spacing = 10; 
+        dlgMain.margins = 16; 
+
+    var customFrameGrp = dlgMain.add("group", undefined, {name: "customFrameGrp"}); 
+        customFrameGrp.orientation = "row"; 
+        customFrameGrp.alignChildren = ["left","top"]; 
+        customFrameGrp.spacing = 10; 
+        customFrameGrp.margins = 0; 
+
+    var createCustomFrameLabel = customFrameGrp.add('statictext {properties: {name: "frameLengthLabel"}}'); 
+        createCustomFrameLabel.text = localize(locFrameLength); //exportInfo.frameStep;
+        createCustomFrameLabel.preferredSize = [100,15];
+
+    var customFrame = customFrameGrp.add('edittext {properties: {name: "customFrame"}}'); 
+        customFrame.helpTip = localize(locFrameLengthTooltip); 
+        customFrame.text = frameStepStr; //trim(frameStepStr); //exportInfo.frameStep;
+        customFrame.active = true; // Set focus on input
+        customFrame.preferredSize = [45,15];
+
+    // GROUP1
+    // ======
+    var group1 = dlgMain.add("group", undefined, {name: "group1"}); 
+        group1.orientation = "row"; 
+        group1.alignChildren = ["right","top"]; 
+        group1.spacing = 10; 
+        group1.margins = 0; 
+
+    var cancel = group1.add("button", undefined, undefined, {name: "cancel"}); 
+        cancel.text = cancelBtnStr; 
+        // cancel.preferredSize.width = 70; 
+    
+    cancel.onClick = function() {
+        dlgMain.close(cancelButtonID);
+    }
+
+    var ok = group1.add("button", undefined, undefined, {name: "ok"}); 
+        ok.text = okBtnStr; 
+        // ok.preferredSize.width = 80; 
+
+    var customFrameInput= customFrame.text;
+    customFrame.onChange = function(){
+        customFrameInput = customFrame.text;
+    }
+
+    // if (customFrameInput == customFrameInput) customFrameInput
+
+    ok.onClick = function() {
+        customFrameInput = customFrame.text;
+        // check if the setting is properly
+        if (customFrameInput.length == 0) {
+            alert(strAlertRename); // +" "+ strAlertFailure);
+            return;
+        }
+        dlgMain.close(runButtonID);
+    }
+
+    // in case we double clicked the file
+    dlgMain.center();
+
+    var result = dlgMain.show();
+
+    if (cancelButtonID == result) {
+        // return result; // close to quit
+        return customFrameInput
+    }
+
+    // Get settings from Dialog
+    return customFrameInput
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Function: getExtensionFolder
+// Usage: return list of file names
+// Input: folder
+// Return: list of filenames
+///////////////////////////////////////////////////////////////////////////////
+function getExtensionFolder(){
+    // alert($.fileName)
+    alert('Filename '+$.fileName)
+    // alert($.fileName.split('/').slice(0, -2))
+    var extensionPath = $.fileName.split('/').slice(0, -2).join('/') + '/';
+    // var folderPath = extensionPath+'presets_json/';
+    // alert(extensionPath)
+    if(!Folder(extensionPath).exists){
+        alert("Can not find extension folder", "Warning")
+    } else {
+        return extensionPath
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Function: loadJsonPresetDoc
+// Usage: load preset in JSON format
+// Input: JOSN format file
+// Return: properties for document setup
+///////////////////////////////////////////////////////////////////////////////
+function loadJsonPresetDoc(presetFile){
+    extensionPath = getExtensionFolder();
+
+    // var extensionPath = $.fileName.split('/').slice(0, -2).join('/') + '/';
+    // var presetFilePath = new File(extensionPath + '/presets_json/'+ presetFile+'.json');
+    // new File(extensionPath + '/docPreset.json');
+    var presetFilePath = new File(extensionPath+ presetFile+'.json');
+
+    presetFilePath.open('r');
+    var contentDocPreset = presetFilePath.read(); //shows JSON structure
+    presetFilePath.close();
+    var readPreset = JSON.parse(contentDocPreset);
+
+    return readPreset
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Function: saveJsonPresetDoc
+// Usage: Save preset in JSON format
+// Input: exportInfo
+// Return: saved document in JSON format
+///////////////////////////////////////////////////////////////////////////////
+function saveJsonPresetDoc(exportInfo){
+    extensionPath = getExtensionFolder();
+    // var extensionPath = $.fileName.split('/').slice(0, -2).join('/') + '/';
+    // var presetFilePath = new File(extensionPath + '/presets_json/'+ exportInfo.docName+'.json');
+    alert('exportInfo '+exportInfo)
+    // alert(exportInfo.docName)
+    // var presetFilePath = new File(extensionPath+'/'+exportInfo.docName+'.json');
+    var presetFilePath = new File(extensionPath+'/frameLength.json');
+    // alert(presetFilePath)
+
+    presetFilePath.open("w");
+    presetFilePath.write(JSON.stringify(exportInfo));
+    presetFilePath.close();
+    // getJsonPresetFileNames(exportInfo);
+    return presetFilePath
 }

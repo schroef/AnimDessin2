@@ -78,17 +78,32 @@ function dragElement(elmnt) {
         // console.log(e.clientX)
     }
     function setDiv(e) {
+        
         // From PSfeatures 5
         var OSVersion = csInterface.getOSInformation();
         if (OSVersion.indexOf("Windows") >= 0) {
             // WIP get windows equilant code
             os = "Windows";
-          } else if (OSVersion.indexOf("Mac") >= 0) {
+        } else if (OSVersion.indexOf("Mac") >= 0) {
             os = "Mac";
-          }
+        }
         // var csInterface = new CSInterface();
         csInterface.evalScript("timelineFrameCount()", function (result) {
-            // Use OS to do keypress so we focus on playhead > dirty trick ;)
+            var frameLength = new Number(localStorage.getItem("frameLength"));
+            frameLength = frameLength == null ? 1 : frameLength;
+            localStorage.setItem("frameLength", String(frameLength));
+            
+            // var exportInfo = new Object();
+            // exportInfo.docName = "frameLength";
+            // exportInfo.frameLength = frameLength;
+            // send frame to timeline panel
+            var event = new CSEvent();
+            event.type = "com.sbaril.animdessin2.Panel.foo";
+            // event.scope = "GLOBAL";
+            event.scope = "APPLICATION";
+            event.data = frameLength;
+            csInterface.dispatchEvent(event);
+
             totFr = result;
             e = e || window.event;
             e.preventDefault();
@@ -97,8 +112,15 @@ function dragElement(elmnt) {
             pos = (totFr / window.innerWidth) * e.clientX;
             // gotoFrame(Seconds, Frame)
             posX = Math.floor(pos);
-            csInterface.evalScript("gotoFrame('" + (posX - 1) + "')");
+            // csInterface.evalScript("gotoFrame('" + (posX - 1) + "')");
+            // csInterface.evalScript("gotoFrame('"+(posX)+","+frameLength+"')");
+            csInterface.evalScript("gotoFrame('"+(posX)+"','"+frameLength+"')");
+            // Use OS to do keypress so we focus on playhead > dirty trick ;)
             csInterface.evalScript('keyPress("' + os + '")');
+
+            csInterface.evalScript("timelineCurrentFrame()", function(curFr){
+                $("#curFr").text(curFr);
+            });
         });
     }
 
@@ -110,6 +132,8 @@ function dragElement(elmnt) {
 // https://stackoverflow.com/questions/12295375/creating-timecode-from-frames/12295518#12295518
 function timecode(curFr) {
     var useTimeCode = localStorage.getItem("timeCode"); // Use timecode yes/no
+    // var currentFrame = Number();
+    // var fps = Number();
     if (useTimeCode == "true"){
         csInterface.evalScript("timelineFPS()", function (result) {
             fps = result;
@@ -144,6 +168,9 @@ $("#track").bind("mousemove", function (e) {
     $("#current").css({
         left: e.pageX - 4,
         //    top:   e.pageY
+    });
+    csInterface.evalScript("timelineCurrentFrame()", function(curFr){
+        $("#curFr").text(curFr);
     });
 });
 

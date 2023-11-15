@@ -525,8 +525,8 @@ body {
 
 /* .ttHide .tooltip { */
 .ttHide {
-    display: none !important;
-    visibility: hidden !important;
+    display: none;
+    visibility: hidden;
     /* opacity: 0 !important; */
 }
 /* .ttShow .tooltip { */

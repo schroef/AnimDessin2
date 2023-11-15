@@ -39,7 +39,7 @@ function sTID(s) { return app.stringIDToTypeI(s); };
 
 var layerInfo = applyToAllLayersInfo(docRef) 
 
-function splitToFramesGroup() {
+function splitToFrames2FrGroup() {
 
     ErrStrs = {}; 
     ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
@@ -107,7 +107,7 @@ function splitToFramesGroup() {
         // alert(sttFrm)
         // Select initial layer again > add tp select
         // selLyr(layerInfo[0].lyrIndex, 1);
-        splitNewDoc(1)
+        splitNewDoc(2)
         // gotoFrame(layerInfo[0].lyrIndex)
         gotoFrame(sttFrm)
         // selectById(layerInfo.length);
@@ -128,10 +128,10 @@ function splitToFramesGroup() {
 //=========================================
 //
 
-splitToFramesGroup.main = function() {
-    splitToFramesGroup();
-    // applyToAllLayers(splitToFramesGroup);
+splitToFrames2FrGroup.main = function() {
+    splitToFrames2FrGroup();
+    // applyToAllLayers(splitToFrames2FrGroup);
 };
 // splitToFramesGroup()
-app.activeDocument.suspendHistory(localize(locSplitToFramesGroup), 'splitToFramesGroup.main()');
+app.activeDocument.suspendHistory(localize(locSplitToFrames2FrGroup), 'splitToFrames2FrGroup.main()');
 // app.system( 'osascript -e \'tell application \"System Events\" to key code 123\'' ); 

@@ -75,9 +75,9 @@ function playheadPrevEdit() {
         var idseconds = stringIDToTypeID( "seconds" );
         desc37.putInteger( idseconds, time_Seconds );
         var idframe = stringIDToTypeID( "frame" );
-        desc37.putInteger( idframe, (time_Frame - 1) );
+        desc37.putInteger( idframe, (time_Frame-1) );
         var idframeRate = stringIDToTypeID( "frameRate" );
-        desc37.putDouble( idframeRate, time_FrameRate);
+        desc37.putDouble( idframeRate, time_FrameRate );
         var idtimecode = stringIDToTypeID( "timecode" );
         desc36.putObject( idT, idtimecode, desc37 );
         executeAction( idsetd, desc36, DialogModes.NO );

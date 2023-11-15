@@ -30,11 +30,23 @@ $.evalFile(new File(ScriptFilePath + '/AnimD2_applyToAllLayers.jsx'));
 
 function playheadLastFrame() {
 
-
     // Xtools catch works > why???
     ErrStrs = {}; 
     ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
     try {
+        // Select last layer in first layergroup
+        var layers = app.activeDocument.layers;
+        var doc = app.activeDocument;
+        var layer = layers[0];
+        if(layer.typename == 'LayerSet'){
+            var lyrs = app.activeDocument.layerSets[0].artLayers[0];
+            // var lyrs = app.activeDocument.layerSets[0].layers[app.activeDocument.layerSets[0].artLayers.length-1];
+        } else {
+            var lyrs = doc.layers[0];
+        }
+        doc.activeLayer = lyrs;
+
+        // Set playhead to last frame
         function ftn1() {
             function cTID(s) { return app.charIDToTypeID(s); };
             function sTID(s) { return app.stringIDToTypeID(s); };

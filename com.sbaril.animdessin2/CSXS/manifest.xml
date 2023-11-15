@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ExtensionManifest Version="5.0" ExtensionBundleId="com.sbaril.animdessin2" ExtensionBundleVersion="2.2.1" ExtensionBundleName="AnimDessin2"
+<ExtensionManifest Version="5.0" ExtensionBundleId="com.sbaril.animdessin2" ExtensionBundleVersion="2.2.2" ExtensionBundleName="AnimDessin2"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <Author>Stéphane Baril</Author>
@@ -33,7 +33,7 @@
     </LocaleList>
 
     <RequiredRuntimeList>
-      <RequiredRuntime Name="CSXS" Version="5.0" />
+      <RequiredRuntime Name="CSXS" Version="7.0" />
     </RequiredRuntimeList>
   </ExecutionEnvironment>
 
@@ -68,7 +68,7 @@
               <Width>1000</Width>
             </Size>
             <MinSize>
-              <Height>40</Height>
+              <Height>35</Height>
               <Width>50</Width>
             </MinSize>
             <MaxSize>
