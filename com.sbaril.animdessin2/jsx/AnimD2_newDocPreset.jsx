@@ -2836,7 +2836,7 @@ function setupProject(presetInfo){
     // var desc50 = new ActionDescriptor();
     // executeAction(idmoveInTime, desc50, DialogModes.NO);
     if (presetInfo.splitTmln) {
-        splitNewDoc(presetInfo.splitTmlnIndex+1)
+        splitNewDoc(exportInfo.splitTmlnIndex+1)
     }
     gotoFrame(0); // Move back at frame 1
     // alert(presetInfo.projectBgColorIndex == bgtransparent)
