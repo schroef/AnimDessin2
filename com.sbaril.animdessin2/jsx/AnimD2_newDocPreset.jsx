@@ -790,6 +790,26 @@ function placeTimeRef (name, font, size, color, frameColor) { // timecode + curr
 function cTID(s) { return app.charIDToTypeID(s); };
 function sTID(s) { return app.stringIDToTypeID(s); };
 
+
+///////////////////////////////////////////////////////////////////////////////
+// Function: getUserDataFolder
+// Usage: return list of file names
+// Input: folder
+// Return: list of filenames
+///////////////////////////////////////////////////////////////////////////////
+function getUserDataFolder(){
+    var userData = Folder.userData;
+    if (!userData || !userData.exists) {
+        userData = Folder("~");
+    }
+    
+    var folder = new Folder(userData + "/animdessin2");
+    if (!folder.exists) {
+        folder.create();
+    }
+    // alert(presetFolder)
+    return folder;
+}
 ///////////////////////////////////////////////////////////////////////////////
 // Function: getPresetsFolder
 // Usage: return list of file names
@@ -797,15 +817,32 @@ function sTID(s) { return app.stringIDToTypeID(s); };
 // Return: list of filenames
 ///////////////////////////////////////////////////////////////////////////////
 function getPresetsFolder(){
-    // alert($.fileName)
-    var extensionPath = $.fileName.split('/').slice(0, -2).join('/') + '/';
-    // alert(extensionPath)
-    var folderPath = extensionPath+'presets_json/';
-    if(!Folder(folderPath).exists){
-        alert("There is no preset folder names presets_json", "Warning")
-    } else {
-        return folderPath
+    // alert(Folder.commonFiles)
+    // alert(Folder.myDocuments)
+    // alert(Folder.application)
+    // alert(Folder.extension)
+    // alert(Folder.hostApplication)
+    // var extensionPath = $.fileName.split('/').slice(0, -2).join('/') + '/';
+    // var folderPath = extensionPath+'presets_json/';
+    // if(!Folder(folderPath).exists){
+    //     alert("There is no preset folder names presets_json", "Warning")
+    // } else {
+    //     return folderPath
+    // }
+    var userData = Folder.userData;
+    if (!userData || !userData.exists) {
+        userData = Folder("~");
     }
+    // var folder = new Folder(userData + "/animdessin2");
+    // var presetFolder = new Folder(folder + "/presets_json/");
+    var folder = new Folder(userData + "/animdessin2");
+    var presetFolder = new Folder(folder + "/presets_json");
+
+    if (!presetFolder.exists) {
+        presetFolder.create();
+    }
+    // alert(presetFolder)
+    return folder;
 }
 ///////////////////////////////////////////////////////////////////////////////
 // Function: getJsonPresetFileNames
@@ -817,9 +854,10 @@ function getJsonPresetFileNames(){
     result = new Array();
     folderPath = getPresetsFolder();
 
+    // var folderPath = File($.fileName).parent.parent.toString();
     // Get files from folder
     // https://stackoverflow.com/questions/28017561/need-extendscript-to-open-a-file-without-knowing-the-full-file-name
-    var fileName = Folder(folderPath).getFiles(); //Array of File objects
+    var fileName = Folder(folderPath+'/presets_json/').getFiles(); //Array of File objects
     // return array of files from folder
     // https://www.ps-scripts.com/viewtopic.php?t=23407
     var fileList = []; // Array of Strings
@@ -833,6 +871,8 @@ function getJsonPresetFileNames(){
         // https://stackoverflow.com/questions/423376/how-to-get-the-file-name-from-a-full-path-using-javascript
         // strp pathaddress from file
         var s = fileName[i].toString().replace(/^.*[\\\/]/, '').replace(".json",'');
+        // str.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_'));
+        // str.maketrans({char: "_" for char in " !@#$%^&*(){}:\";'[]<>,.\\/?"})
         s = s.replace(/^file:\/\//, "");
         if ($.os.match(/^Windows.*/))	// Pull off ":" from drive letter
             s = s.replace(/^\/(.):\//, "/$1/");
@@ -850,10 +890,12 @@ function getJsonPresetFileNames(){
 ///////////////////////////////////////////////////////////////////////////////
 function loadJsonPresetDoc(presetFile){
     folderPath = getPresetsFolder();
-
+    // var csInterface = new CSInterface(); 
+    // folderPath = csInterface.getSystemPath(SystemPath.EXTENSION)
+    // var folderPath = File($.fileName).parent.parent.toString();
     // var extensionPath = $.fileName.split('/').slice(0, -2).join('/') + '/';
     // var presetFilePath = new File(extensionPath + '/presets_json/'+ presetFile+'.json');
-    var presetFilePath = new File(folderPath+ presetFile+'.json');
+    var presetFilePath = new File(folderPath+'/presets_json/'+ presetFile+'.json');
 
     presetFilePath.open('r');
     var contentDocPreset = presetFilePath.read(); //shows JSON structure
@@ -871,9 +913,15 @@ function loadJsonPresetDoc(presetFile){
 ///////////////////////////////////////////////////////////////////////////////
 function saveJsonPresetDoc(exportInfo){
     folderPath = getPresetsFolder();
+    // var folderPath = File($.fileName).parent.parent;
+    // alert(folderPath)
+    // var folderPath = new Folder('C:/Program Files/Common Files/Adobe/CEP/extensions/animdessin2')
     // var extensionPath = $.fileName.split('/').slice(0, -2).join('/') + '/';
     // var presetFilePath = new File(extensionPath + '/presets_json/'+ exportInfo.docName+'.json');
-    var presetFilePath = new File(folderPath + exportInfo.docName+'.json');
+
+    // https://www.geeksforgeeks.org/replace-special-characters-in-a-string-with-underscore-_-in-javascript/
+    var presetFileName = exportInfo.docName.replace(/[&\/\\#, +!@()$~%.'":*?<>{}]/g, '-');
+    var presetFilePath = new File(folderPath + '/presets_json/'+ presetFileName+'.json');
 
     presetFilePath.open("w");
     presetFilePath.write(JSON.stringify(exportInfo));
@@ -931,7 +979,10 @@ function newProjectDialog(reuse) {
         //     frameRename(exportInfo.renameLayer);
         // }
         if(exportInfo){
-            var extensionPath = $.fileName.split('/').slice(0, -2).join('/') + '/';
+            // var extensionPath = $.fileName.split('/').slice(0, -2).join('/') + '/';
+            // var extensionPath = getPresetsFolder();
+            var extensionPath = getUserDataFolder();
+            // var folderPath = File($.fileName).parent.parent.toString();
             var presetFilePath = new File(extensionPath + '/docPreset.json');
             // newDocPreset(exportInfo)
 
@@ -1324,6 +1375,10 @@ function settingDialog(exportInfo) {
         projectnameInput.preferredSize.width = 311; 
         projectnameInput.alignment = ["center","fill"]; 
 
+        // Remove forbidden characters
+        projectnameInput.onChange = function(){
+            this.text = this.text.replace(/[&\/\\#, +!@()$~%.'":*?<>{}]/g, '-');
+        }
     // CANVASLABEL
     // ===========
     var canvasLabel = newDocCustomDialogBox.add("panel", undefined, undefined, {name: "canvasLabel"}); 
@@ -1947,8 +2002,11 @@ function settingDialog(exportInfo) {
             okBtn.onClick = function(){
                 deleteFile=true;
                 if (deleteFile){
-                    var extensionPath = $.fileName.split('/').slice(0, -2).join('/') + '/';
+                    // var extensionPath = $.fileName.split('/').slice(0, -2).join('/') + '/';
+                    var extensionPath = getPresetsFolder();
+                    // var extensionPath = File($.fileName).parent.parent.toString();
                     var presetFile = presetListDropDown.selection.text;
+                    // var presetFilePath = new File(extensionPath + '/presets_json/'+ presetFile+'.json');
                     var presetFilePath = new File(extensionPath + '/presets_json/'+ presetFile+'.json');
                     presetFilePath.remove();
                     // update filelist document presets
@@ -2836,7 +2894,7 @@ function setupProject(presetInfo){
     // var desc50 = new ActionDescriptor();
     // executeAction(idmoveInTime, desc50, DialogModes.NO);
     if (presetInfo.splitTmln) {
-        splitNewDoc(exportInfo.splitTmlnIndex+1)
+        splitNewDoc(presetInfo.splitTmlnIndex+1)
     }
     gotoFrame(0); // Move back at frame 1
     // alert(presetInfo.projectBgColorIndex == bgtransparent)

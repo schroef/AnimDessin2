@@ -1049,3 +1049,592 @@ function saveJsonPresetDoc(exportInfo){
     // getJsonPresetFileNames(exportInfo);
     return presetFilePath
 }
+
+
+// /////////////////////////////////////////////////////////////////////
+
+// Localize createCustomFrameDialog
+// locCreateCustomFrameDialog = {
+//     en: "Set create custom frame",
+//     fr: "Ajouter custom couche",
+//     nl: "Stel in aangepaste frame",
+//     ch: "设置自定义帧"
+// };
+// Localize AnimD2_createCustomFrameMain
+locOnionSkinExtras = {
+    en: "Onionskin Extras",
+    fr: "Onionskin Extras",
+    nl: "Onionskin Extras",
+    ch: "Onionskin Extras"
+};
+///////////////////////////////////////////////////////////////////////////////
+// Function: onionSkinExtras
+// Usage: send direction, before & after frames amount
+// Input: data
+// Return: layers with overlay
+///////////////////////////////////////////////////////////////////////////////
+function onionSkinExtras(direction, before, after, frame){
+    function isNumeric(n) {
+       return !isNaN(parseFloat(n)) && isFinite(n);
+    }
+    // alert(isNumeric(direction))
+    // alert(direction)
+    // alert(before)
+    // alert(after)
+    // alert(frame)
+    if(isNumeric(direction)){
+        curFr=direction;
+        if (Number(frame) > Number(curFr)) {
+            direction = 'next';
+        } else {
+            direction = 'prev';
+        }
+    }
+    before=Number(before);
+    after=Number(after);
+    // check what direction if used from scrubber.js
+    // var curFr = timelineCurrentFrame();
+    // alert(typeof(direction))
+    // alert(typeof(direction)=="Number")
+    if (direction="prev"){
+        try {
+            // =======================================================
+            // Clear all overlay fx
+            var desc597 = new ActionDescriptor();
+            var ref377 = new ActionReference();
+            ref377.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID('Trgt') );
+            desc597.putReference( cTID('null'), ref377 );
+            executeAction( sTID('disableLayerStyle'), desc597, DialogModes.NO );
+
+            // Clear all layer color
+            var desc306 = new ActionDescriptor();
+            var ref120 = new ActionReference();
+            ref120.putEnumerated(cTID('Lyr '), cTID('Ordn'), cTID('Trgt'));
+            desc306.putReference(cTID('null'), ref120);
+            var desc307 = new ActionDescriptor();
+            desc307.putEnumerated(cTID('Clr '), cTID('Clr '), cTID('None'));
+            desc306.putObject(cTID('T   '), cTID('Lyr '), desc307);
+            executeAction(cTID('setd'), desc306, DialogModes.NO);
+
+            // Allows for cancel without feedback message
+        } catch(e){
+            // if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+            // else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+        }
+
+
+        // After frames
+        var startFr = timelineCurrentFrame();
+        var orgFrame = timelineCurrentFrame();
+        var totFrm = startFr-before;
+
+        // Set selection layer panel
+        var desc83 = new ActionDescriptor();
+        var ref48 = new ActionReference();
+        ref48.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID('Bckw') );
+        desc83.putReference( cTID('null'), ref48 );
+        desc83.putBoolean( cTID('MkVs'), false );
+        var list25 = new ActionList();
+        list25.putInteger( 5 );
+        desc83.putList( cTID('LyrI'), list25 );
+        executeAction( cTID('slct'), desc83, DialogModes.NO );
+
+        // alert(sttFrm)
+        for (afterFrame=startFr;afterFrame > totFrm; afterFrame--){
+                            // =======================================================
+            // Add Blue Overlay to Later
+            var desc30 = new ActionDescriptor();
+            var ref10 = new ActionReference();
+            ref10.putProperty(cTID('Prpr'), cTID('Lefx'));
+            ref10.putEnumerated(cTID('Lyr '), cTID('Ordn'), cTID('Trgt'));
+            desc30.putReference(cTID('null'), ref10);
+            var desc31 = new ActionDescriptor();
+            desc31.putUnitDouble(cTID('Scl '), cTID('#Prc'), 100.000000);
+            var desc32 = new ActionDescriptor();
+            desc32.putBoolean(cTID('enab'), true);
+            desc32.putBoolean(sTID('present'), true);
+            desc32.putBoolean(sTID('showInDialog'), true);
+            desc32.putEnumerated(cTID('Md  '), cTID('BlnM'), cTID('Nrml'));
+            var desc33 = new ActionDescriptor();
+            desc33.putDouble(cTID('Rd  '), 0.000000);
+            desc33.putDouble(cTID('Grn '), 6.000000);
+            desc33.putDouble(cTID('Bl  '), 255.000000);
+            desc32.putObject(cTID('Clr '), cTID('RGBC'), desc33);
+            desc32.putUnitDouble(cTID('Opct'), cTID('#Prc'), 100.000000);
+            desc31.putObject(cTID('SoFi'), cTID('SoFi'), desc32);
+            desc30.putObject(cTID('T   '), cTID('Lefx'), desc31);
+            executeAction(cTID('setd'), desc30, DialogModes.NO);
+
+            // =======================================================
+            // Set Layer Color to Blue
+            var desc24 = new ActionDescriptor();
+            var ref9 = new ActionReference();
+            ref9.putEnumerated(cTID('Lyr '), cTID('Ordn'), cTID('Trgt'));
+            desc24.putReference(cTID('null'), ref9);
+            var desc25 = new ActionDescriptor();
+            desc25.putEnumerated(cTID('Clr '), cTID('Clr '), cTID('Bl  '));
+            desc24.putObject(cTID('T   '), cTID('Lyr '), desc25);
+            executeAction(cTID('setd'), desc24, DialogModes.NO);
+
+            // Set selection layer panel
+            var desc83 = new ActionDescriptor();
+            var ref48 = new ActionReference();
+            ref48.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID('Bckw') );
+            desc83.putReference( cTID('null'), ref48 );
+            desc83.putBoolean( cTID('MkVs'), false );
+            var list25 = new ActionList();
+            list25.putInteger( 5 );
+            desc83.putList( cTID('LyrI'), list25 );
+            executeAction( cTID('slct'), desc83, DialogModes.NO );
+            
+            // https://www.ps-scripts.com/viewtopic.php?f=77&t=40409&p=169007&hilit=timeline#p169007
+            // Get frame numers
+            var ref = new ActionReference();
+            ref.putProperty(stringIDToTypeID('property'), stringIDToTypeID('time'));
+            ref.putClass(stringIDToTypeID('timeline'), stringIDToTypeID('timeline'));
+            var desc = executeActionGet(ref); // <- it's here inside desc
+
+            var time_Seconds = desc.getObjectValue(stringIDToTypeID('time')).getInteger(stringIDToTypeID('seconds'))
+            var time_Frame = desc.getObjectValue(stringIDToTypeID('time')).getInteger(stringIDToTypeID('frame'))
+            var time_FrameRate = desc.getObjectValue(stringIDToTypeID('time')).getDouble(stringIDToTypeID('frameRate'))
+
+            // Set playhead to selection
+            // Move playhead 1 second
+            var idsetd = charIDToTypeID( "setd" );
+            var desc36 = new ActionDescriptor();
+            var idnull = charIDToTypeID( "null" );
+            var ref18 = new ActionReference();
+            var idPrpr = charIDToTypeID( "Prpr" );
+            var idtime = stringIDToTypeID( "time" );
+            ref18.putProperty( idPrpr, idtime );
+            var idtimeline = stringIDToTypeID( "timeline" );
+            ref18.putClass( idtimeline );
+            desc36.putReference( idnull, ref18 );
+            var idT = charIDToTypeID( "T   " );
+            var desc37 = new ActionDescriptor();
+            var idseconds = stringIDToTypeID( "seconds" );
+            desc37.putInteger( idseconds, time_Seconds );
+            var idframe = stringIDToTypeID( "frame" );
+            desc37.putInteger( idframe, (time_Frame-1) );
+            var idframeRate = stringIDToTypeID( "frameRate" );
+            desc37.putDouble( idframeRate, time_FrameRate );
+            var idtimecode = stringIDToTypeID( "timecode" );
+            desc36.putObject( idT, idtimecode, desc37 );
+            executeAction( idsetd, desc36, DialogModes.NO );
+        }
+
+        // Set selection layer panel
+        var desc80 = new ActionDescriptor();
+        var ref47 = new ActionReference();
+        ref47.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID('Frwr') );
+        desc80.putReference( cTID('null'), ref47 );
+        desc80.putBoolean( cTID('MkVs'), false );
+        var list24 = new ActionList();
+        list24.putInteger( 6 );
+        desc80.putList( cTID('LyrI'), list24 );
+        executeAction( cTID('slct'), desc80, DialogModes.NO );
+
+        var startFr = timelineCurrentFrame();
+        var totFrm = startFr+after+1;
+        // set layer in panel to original
+        for (beforeFrame=startFr;beforeFrame < totFrm; beforeFrame++){
+            // Set selection layer panel
+            var desc80 = new ActionDescriptor();
+            var ref47 = new ActionReference();
+            ref47.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID('Frwr') );
+            desc80.putReference( cTID('null'), ref47 );
+            desc80.putBoolean( cTID('MkVs'), false );
+            var list24 = new ActionList();
+            list24.putInteger( 6 );
+            desc80.putList( cTID('LyrI'), list24 );
+            executeAction( cTID('slct'), desc80, DialogModes.NO );
+        }
+    
+        var startFr = timelineCurrentFrame();
+
+        var totFrm = startFr+after;
+        for (beforeFrame=startFr;beforeFrame < totFrm; beforeFrame++){
+            
+            // =======================================================
+            // Add Red Overlay to Later
+            var desc30 = new ActionDescriptor();
+            var ref10 = new ActionReference();
+            ref10.putProperty(cTID('Prpr'), cTID('Lefx'));
+            ref10.putEnumerated(cTID('Lyr '), cTID('Ordn'), cTID('Trgt'));
+            desc30.putReference(cTID('null'), ref10);
+            var desc31 = new ActionDescriptor();
+            desc31.putUnitDouble(cTID('Scl '), cTID('#Prc'), 100.000000);
+            var desc32 = new ActionDescriptor();
+            desc32.putBoolean(cTID('enab'), true);
+            desc32.putBoolean(sTID('present'), true);
+            desc32.putBoolean(sTID('showInDialog'), true);
+            desc32.putEnumerated(cTID('Md  '), cTID('BlnM'), cTID('Nrml'));
+            var desc33 = new ActionDescriptor();
+            desc33.putDouble(cTID('Rd  '), 255.000000);
+            desc33.putDouble(cTID('Grn '), 0.000000);
+            desc33.putDouble(cTID('Bl  '), 0.000000);
+            desc32.putObject(cTID('Clr '), cTID('RGBC'), desc33);
+            desc32.putUnitDouble(cTID('Opct'), cTID('#Prc'), 100.000000);
+            desc31.putObject(cTID('SoFi'), cTID('SoFi'), desc32);
+            desc30.putObject(cTID('T   '), cTID('Lefx'), desc31);
+            executeAction(cTID('setd'), desc30, DialogModes.NO);
+
+            // =======================================================
+            // Set Layer Color to Red
+            var desc24 = new ActionDescriptor();
+            var ref9 = new ActionReference();
+            ref9.putEnumerated(cTID('Lyr '), cTID('Ordn'), cTID('Trgt'));
+            desc24.putReference(cTID('null'), ref9);
+            var desc25 = new ActionDescriptor();
+            desc25.putEnumerated(cTID('Clr '), cTID('Clr '), cTID('Rd  '));
+            desc24.putObject(cTID('T   '), cTID('Lyr '), desc25);
+            executeAction(cTID('setd'), desc24, DialogModes.NO);
+            
+            // Set selection layer panel
+            var desc80 = new ActionDescriptor();
+            var ref47 = new ActionReference();
+            ref47.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID('Frwr') );
+            desc80.putReference( cTID('null'), ref47 );
+            desc80.putBoolean( cTID('MkVs'), false );
+            var list24 = new ActionList();
+            list24.putInteger( 6 );
+            desc80.putList( cTID('LyrI'), list24 );
+            executeAction( cTID('slct'), desc80, DialogModes.NO );
+            
+            // https://www.ps-scripts.com/viewtopic.php?f=77&t=40409&p=169007&hilit=timeline#p169007
+            // Get frame numers
+            var ref = new ActionReference();
+            ref.putProperty(stringIDToTypeID('property'), stringIDToTypeID('time'));
+            ref.putClass(stringIDToTypeID('timeline'), stringIDToTypeID('timeline'));
+            var desc = executeActionGet(ref); // <- it's here inside desc
+
+            var time_Seconds = desc.getObjectValue(stringIDToTypeID('time')).getInteger(stringIDToTypeID('seconds'))
+            var time_Frame = desc.getObjectValue(stringIDToTypeID('time')).getInteger(stringIDToTypeID('frame'))
+            var time_FrameRate = desc.getObjectValue(stringIDToTypeID('time')).getDouble(stringIDToTypeID('frameRate'))
+
+            // Move playhead 1 second
+            var idsetd = charIDToTypeID( "setd" );
+            var desc36 = new ActionDescriptor();
+            var idnull = charIDToTypeID( "null" );
+            var ref18 = new ActionReference();
+            var idPrpr = charIDToTypeID( "Prpr" );
+            var idtime = stringIDToTypeID( "time" );
+            ref18.putProperty( idPrpr, idtime );
+            var idtimeline = stringIDToTypeID( "timeline" );
+            ref18.putClass( idtimeline );
+            desc36.putReference( idnull, ref18 );
+            var idT = charIDToTypeID( "T   " );
+            var desc37 = new ActionDescriptor();
+            var idseconds = stringIDToTypeID( "seconds" );
+            desc37.putInteger( idseconds, time_Seconds );
+            var idframe = stringIDToTypeID( "frame" );
+            desc37.putInteger( idframe, (time_Frame+1));
+            var idframeRate = stringIDToTypeID( "frameRate" );
+            desc37.putDouble( idframeRate, time_FrameRate );
+            var idtimecode = stringIDToTypeID( "timecode" );
+            desc36.putObject( idT, idtimecode, desc37 );
+            executeAction( idsetd, desc36, DialogModes.NO );
+            
+        }
+        // =======================================================
+        // Collaps FX for cleaner look
+        // var desc41 = new ActionDescriptor();
+        // executeAction( sTID('collapseAllGroupsEvent'), desc41, DialogModes.NO );
+
+        gotoFrame(orgFrame)
+        var startFr = timelineCurrentFrame();
+        var curFrm = 0;
+        var totFrm = startFr-before-1;
+        // set layer in panel to original
+        for (beforeFrame=startFr;beforeFrame > totFrm; beforeFrame--){
+            // Set selection layer panel
+            var desc83 = new ActionDescriptor();
+            var ref48 = new ActionReference();
+            ref48.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID('Bckw') );
+            desc83.putReference( cTID('null'), ref48 );
+            desc83.putBoolean( cTID('MkVs'), false );
+            var list25 = new ActionList();
+            list25.putInteger( 5 );
+            desc83.putList( cTID('LyrI'), list25 );
+            executeAction( cTID('slct'), desc83, DialogModes.NO );
+        }
+    }
+    if (direction="next"){
+        try {
+            // =======================================================
+            // Clear all overlay fx
+            var desc597 = new ActionDescriptor();
+            var ref377 = new ActionReference();
+            ref377.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID('Trgt') );
+            desc597.putReference( cTID('null'), ref377 );
+            executeAction( sTID('disableLayerStyle'), desc597, DialogModes.NO );
+
+            // Clear all layer color
+            var desc306 = new ActionDescriptor();
+            var ref120 = new ActionReference();
+            ref120.putEnumerated(cTID('Lyr '), cTID('Ordn'), cTID('Trgt'));
+            desc306.putReference(cTID('null'), ref120);
+            var desc307 = new ActionDescriptor();
+            desc307.putEnumerated(cTID('Clr '), cTID('Clr '), cTID('None'));
+            desc306.putObject(cTID('T   '), cTID('Lyr '), desc307);
+            executeAction(cTID('setd'), desc306, DialogModes.NO);
+
+            // Allows for cancel without feedback message
+        } catch(e){
+            // if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
+            // else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
+        }
+
+
+        // After frames
+        var startFr = timelineCurrentFrame();
+        var orgFrame = timelineCurrentFrame();
+        var totFrm = startFr+after;
+
+        // Set selection layer panel
+        var desc80 = new ActionDescriptor();
+        var ref47 = new ActionReference();
+        ref47.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID('Frwr') );
+        desc80.putReference( cTID('null'), ref47 );
+        desc80.putBoolean( cTID('MkVs'), false );
+        var list24 = new ActionList();
+        list24.putInteger( 6 );
+        desc80.putList( cTID('LyrI'), list24 );
+        executeAction( cTID('slct'), desc80, DialogModes.NO );
+
+        // alert(sttFrm)
+        for (afterFrame=startFr;afterFrame < totFrm; afterFrame++){
+            // afterFrame = afterFrame+1;
+            // alert(afterFrame)
+            // gotoFrame(afterFrame)
+            // =======================================================
+            // Add Red Overlay to Later
+            var desc30 = new ActionDescriptor();
+            var ref10 = new ActionReference();
+            ref10.putProperty(cTID('Prpr'), cTID('Lefx'));
+            ref10.putEnumerated(cTID('Lyr '), cTID('Ordn'), cTID('Trgt'));
+            desc30.putReference(cTID('null'), ref10);
+            var desc31 = new ActionDescriptor();
+            desc31.putUnitDouble(cTID('Scl '), cTID('#Prc'), 100.000000);
+            var desc32 = new ActionDescriptor();
+            desc32.putBoolean(cTID('enab'), true);
+            desc32.putBoolean(sTID('present'), true);
+            desc32.putBoolean(sTID('showInDialog'), true);
+            desc32.putEnumerated(cTID('Md  '), cTID('BlnM'), cTID('Nrml'));
+            var desc33 = new ActionDescriptor();
+            desc33.putDouble(cTID('Rd  '), 255.000000);
+            desc33.putDouble(cTID('Grn '), 0.000000);
+            desc33.putDouble(cTID('Bl  '), 0.000000);
+            desc32.putObject(cTID('Clr '), cTID('RGBC'), desc33);
+            desc32.putUnitDouble(cTID('Opct'), cTID('#Prc'), 100.000000);
+            desc31.putObject(cTID('SoFi'), cTID('SoFi'), desc32);
+            desc30.putObject(cTID('T   '), cTID('Lefx'), desc31);
+            executeAction(cTID('setd'), desc30, DialogModes.NO);
+
+            // =======================================================
+            // Set Layer Color to Red
+            var desc24 = new ActionDescriptor();
+            var ref9 = new ActionReference();
+            ref9.putEnumerated(cTID('Lyr '), cTID('Ordn'), cTID('Trgt'));
+            desc24.putReference(cTID('null'), ref9);
+            var desc25 = new ActionDescriptor();
+            desc25.putEnumerated(cTID('Clr '), cTID('Clr '), cTID('Rd  '));
+            desc24.putObject(cTID('T   '), cTID('Lyr '), desc25);
+            executeAction(cTID('setd'), desc24, DialogModes.NO);
+
+            // Set selection layer panel
+            var desc80 = new ActionDescriptor();
+            var ref47 = new ActionReference();
+            ref47.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID('Frwr') );
+            desc80.putReference( cTID('null'), ref47 );
+            desc80.putBoolean( cTID('MkVs'), false );
+            var list24 = new ActionList();
+            list24.putInteger( 6 );
+            desc80.putList( cTID('LyrI'), list24 );
+            executeAction( cTID('slct'), desc80, DialogModes.NO );
+            
+            // https://www.ps-scripts.com/viewtopic.php?f=77&t=40409&p=169007&hilit=timeline#p169007
+            // Get frame numers
+            var ref = new ActionReference();
+            ref.putProperty(stringIDToTypeID('property'), stringIDToTypeID('time'));
+            ref.putClass(stringIDToTypeID('timeline'), stringIDToTypeID('timeline'));
+            var desc = executeActionGet(ref); // <- it's here inside desc
+
+            var time_Seconds = desc.getObjectValue(stringIDToTypeID('time')).getInteger(stringIDToTypeID('seconds'))
+            var time_Frame = desc.getObjectValue(stringIDToTypeID('time')).getInteger(stringIDToTypeID('frame'))
+            var time_FrameRate = desc.getObjectValue(stringIDToTypeID('time')).getDouble(stringIDToTypeID('frameRate'))
+
+            // Move playhead 1 second
+            var idsetd = charIDToTypeID( "setd" );
+            var desc36 = new ActionDescriptor();
+            var idnull = charIDToTypeID( "null" );
+            var ref18 = new ActionReference();
+            var idPrpr = charIDToTypeID( "Prpr" );
+            var idtime = stringIDToTypeID( "time" );
+            ref18.putProperty( idPrpr, idtime );
+            var idtimeline = stringIDToTypeID( "timeline" );
+            ref18.putClass( idtimeline );
+            desc36.putReference( idnull, ref18 );
+            var idT = charIDToTypeID( "T   " );
+            var desc37 = new ActionDescriptor();
+            var idseconds = stringIDToTypeID( "seconds" );
+            desc37.putInteger( idseconds, time_Seconds );
+            var idframe = stringIDToTypeID( "frame" );
+            desc37.putInteger( idframe, (time_Frame+1));
+            var idframeRate = stringIDToTypeID( "frameRate" );
+            desc37.putDouble( idframeRate, time_FrameRate );
+            var idtimecode = stringIDToTypeID( "timecode" );
+            desc36.putObject( idT, idtimecode, desc37 );
+            executeAction( idsetd, desc36, DialogModes.NO );
+        }
+
+        // gotoFrame(orgFrame)
+        // Set selection layer panel
+        var desc83 = new ActionDescriptor();
+        var ref48 = new ActionReference();
+        ref48.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID('Bckw') );
+        desc83.putReference( cTID('null'), ref48 );
+        desc83.putBoolean( cTID('MkVs'), false );
+        var list25 = new ActionList();
+        list25.putInteger( 5 );
+        desc83.putList( cTID('LyrI'), list25 );
+        executeAction( cTID('slct'), desc83, DialogModes.NO );
+
+        var startFr = timelineCurrentFrame();
+        var totFrm = startFr-before-1;
+        // set layer in panel to original
+        for (beforeFrame=startFr;beforeFrame > totFrm; beforeFrame--){
+            // Set selection layer panel
+            var desc83 = new ActionDescriptor();
+            var ref48 = new ActionReference();
+            ref48.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID('Bckw') );
+            desc83.putReference( cTID('null'), ref48 );
+            desc83.putBoolean( cTID('MkVs'), false );
+            var list25 = new ActionList();
+            list25.putInteger( 5 );
+            desc83.putList( cTID('LyrI'), list25 );
+            executeAction( cTID('slct'), desc83, DialogModes.NO );
+        }
+    
+        var startFr = timelineCurrentFrame();
+
+        var totFrm = startFr-before;
+        for (beforeFrame=startFr;beforeFrame > totFrm; beforeFrame--){
+            // alert(orgFrame)
+            // alert(beforeFrame)
+            // gotoFrame((beforeFrame))
+
+            // =======================================================
+            // Add Blue Overlay to Later
+            var desc30 = new ActionDescriptor();
+            var ref10 = new ActionReference();
+            ref10.putProperty(cTID('Prpr'), cTID('Lefx'));
+            ref10.putEnumerated(cTID('Lyr '), cTID('Ordn'), cTID('Trgt'));
+            desc30.putReference(cTID('null'), ref10);
+            var desc31 = new ActionDescriptor();
+            desc31.putUnitDouble(cTID('Scl '), cTID('#Prc'), 100.000000);
+            var desc32 = new ActionDescriptor();
+            desc32.putBoolean(cTID('enab'), true);
+            desc32.putBoolean(sTID('present'), true);
+            desc32.putBoolean(sTID('showInDialog'), true);
+            desc32.putEnumerated(cTID('Md  '), cTID('BlnM'), cTID('Nrml'));
+            var desc33 = new ActionDescriptor();
+            desc33.putDouble(cTID('Rd  '), 0.000000);
+            desc33.putDouble(cTID('Grn '), 6.000000);
+            desc33.putDouble(cTID('Bl  '), 255.000000);
+            desc32.putObject(cTID('Clr '), cTID('RGBC'), desc33);
+            desc32.putUnitDouble(cTID('Opct'), cTID('#Prc'), 100.000000);
+            desc31.putObject(cTID('SoFi'), cTID('SoFi'), desc32);
+            desc30.putObject(cTID('T   '), cTID('Lefx'), desc31);
+            executeAction(cTID('setd'), desc30, DialogModes.NO);
+
+            // =======================================================
+            // Set Layer Color to Blue
+            var desc24 = new ActionDescriptor();
+            var ref9 = new ActionReference();
+            ref9.putEnumerated(cTID('Lyr '), cTID('Ordn'), cTID('Trgt'));
+            desc24.putReference(cTID('null'), ref9);
+            var desc25 = new ActionDescriptor();
+            desc25.putEnumerated(cTID('Clr '), cTID('Clr '), cTID('Bl  '));
+            desc24.putObject(cTID('T   '), cTID('Lyr '), desc25);
+            executeAction(cTID('setd'), desc24, DialogModes.NO);
+
+                // =======================================================
+            // Collaps FX for cleaner look
+            // var desc41 = new ActionDescriptor();
+            // executeAction( sTID('collapseAllGroupsEvent'), desc41, DialogModes.NO );
+
+            // Set selection layer panel
+            var desc83 = new ActionDescriptor();
+            var ref48 = new ActionReference();
+            ref48.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID('Bckw') );
+            desc83.putReference( cTID('null'), ref48 );
+            desc83.putBoolean( cTID('MkVs'), false );
+            var list25 = new ActionList();
+            list25.putInteger( 5 );
+            desc83.putList( cTID('LyrI'), list25 );
+            executeAction( cTID('slct'), desc83, DialogModes.NO );
+            
+            // https://www.ps-scripts.com/viewtopic.php?f=77&t=40409&p=169007&hilit=timeline#p169007
+            // Get frame numers
+            var ref = new ActionReference();
+            ref.putProperty(stringIDToTypeID('property'), stringIDToTypeID('time'));
+            ref.putClass(stringIDToTypeID('timeline'), stringIDToTypeID('timeline'));
+            var desc = executeActionGet(ref); // <- it's here inside desc
+
+            var time_Seconds = desc.getObjectValue(stringIDToTypeID('time')).getInteger(stringIDToTypeID('seconds'))
+            var time_Frame = desc.getObjectValue(stringIDToTypeID('time')).getInteger(stringIDToTypeID('frame'))
+            var time_FrameRate = desc.getObjectValue(stringIDToTypeID('time')).getDouble(stringIDToTypeID('frameRate'))
+
+            // Set playhead to selection
+            // Move playhead 1 second
+            var idsetd = charIDToTypeID( "setd" );
+            var desc36 = new ActionDescriptor();
+            var idnull = charIDToTypeID( "null" );
+            var ref18 = new ActionReference();
+            var idPrpr = charIDToTypeID( "Prpr" );
+            var idtime = stringIDToTypeID( "time" );
+            ref18.putProperty( idPrpr, idtime );
+            var idtimeline = stringIDToTypeID( "timeline" );
+            ref18.putClass( idtimeline );
+            desc36.putReference( idnull, ref18 );
+            var idT = charIDToTypeID( "T   " );
+            var desc37 = new ActionDescriptor();
+            var idseconds = stringIDToTypeID( "seconds" );
+            desc37.putInteger( idseconds, time_Seconds );
+            var idframe = stringIDToTypeID( "frame" );
+            desc37.putInteger( idframe, (time_Frame-1) );
+            var idframeRate = stringIDToTypeID( "frameRate" );
+            desc37.putDouble( idframeRate, time_FrameRate );
+            var idtimecode = stringIDToTypeID( "timecode" );
+            desc36.putObject( idT, idtimecode, desc37 );
+            executeAction( idsetd, desc36, DialogModes.NO );
+            
+        }
+            // =======================================================
+        // Collaps FX for cleaner look
+        // var desc41 = new ActionDescriptor();
+        // executeAction( sTID('collapseAllGroupsEvent'), desc41, DialogModes.NO );
+
+        gotoFrame(orgFrame)
+        var startFr = timelineCurrentFrame();
+        var curFrm = 0;
+        var totFrm = startFr+after+1;
+        // set layer in panel to original
+        for (beforeFrame=startFr;beforeFrame < totFrm; beforeFrame++){
+            // Set selection layer panel
+            var desc80 = new ActionDescriptor();
+            var ref47 = new ActionReference();
+            ref47.putEnumerated( cTID('Lyr '), cTID('Ordn'), cTID('Frwr') );
+            desc80.putReference( cTID('null'), ref47 );
+            desc80.putBoolean( cTID('MkVs'), false );
+            var list24 = new ActionList();
+            list24.putInteger( 6 );
+            desc80.putList( cTID('LyrI'), list24 );
+            executeAction( cTID('slct'), desc80, DialogModes.NO );
+        }
+    }
+}
+function AnimD2_onionSkinExtras(directiom, before, after, frame) {
+    app.activeDocument.suspendHistory(localize(locOnionSkinExtras), "onionSkinExtras('"+directiom+"','"+before+"','"+after+"','"+frame+"')");
+};

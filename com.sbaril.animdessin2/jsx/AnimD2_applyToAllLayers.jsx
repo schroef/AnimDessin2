@@ -405,6 +405,20 @@ locPlayheadTrimStart = {
     nl: "Begin frame/laag bijsnijden naar afspeelknop",
     ch: "将帧的开头修剪为播放头"
 };
+// Localize AnimD2_locplayheadPrevEdit.jsx
+locPlayheadPrevEdit = {
+    en: "Go to previous edit",
+    fr: "Aller à l'édition précédente",
+    nl: "Ga naar vorige edit",
+    ch: "转到上一个编辑"
+};
+// Localize locplayheadNextEdit.jsx
+locPlayheadNextEdit = {
+    en: "Go to next edit",
+    fr: "Aller à la modification suivante",
+    nl: "Ga naar volgende edit",
+    ch: "转到下一个编辑"
+};
 // Localize AnimD2_timelineSetFrameRate.jsx
 locTimelineSetFrameRate = {
     en: "Set timeline frame rate",

@@ -31,6 +31,10 @@ function cTID(s) { return app.charIDToTypeID(s); };
 function sTID(s) { return app.stringIDToTypeID(s); };
 
 function playheadNextEdit() {
+    onionExtra = "true";//"";//
+    var before = 1;
+    var after = 1;
+
 
     ErrStrs = {}; 
     ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
@@ -81,8 +85,9 @@ function playheadNextEdit() {
         desc36.putObject( idT, idtimecode, desc37 );
         executeAction( idsetd, desc36, DialogModes.NO );
 
-
-
+        if (onionExtra=="true"){
+            AnimD2_onionSkinExtras("next", before, after)
+        }
     // Allows for cancel without feedback message
     } catch(e){
         if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
@@ -103,6 +108,7 @@ playheadNextEdit.main = function() {
     // applyToAllLayers(playheadNextEdit);
 };
 
-playheadNextEdit.main();
+// playheadNextEdit.main();
 // Doesnt use history
-// app.activeDocument.suspendHistory(localize(locPlayheadNextEdit), 'playheadNextEdit.main()');
+app.activeDocument.suspendHistory(localize(locPlayheadNextEdit), 'playheadNextEdit.main()');
+// app.activeDocument.suspendHistory("Go to next edit", 'playheadNextEdit.main()');

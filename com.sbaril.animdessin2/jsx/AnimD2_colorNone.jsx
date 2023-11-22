@@ -36,6 +36,9 @@ function colorNone() {
     ErrStrs.USER_CANCELLED=localize("$$$/ScriptingSupport/Error/UserCancelled=User cancelled the operation");
 
     try {
+        // Select all layers, all in art group
+        // source; https://community.adobe.com/t5/photoshop-ecosystem-discussions/group-all-layers-except-the-back-layer/td-p/12193229
+        app.runMenuItem(stringIDToTypeID("selectAllLayers"));
         // =======================================================
         // Clear all overlay fx
         var desc597 = new ActionDescriptor();
@@ -56,9 +59,10 @@ function colorNone() {
         desc306.putObject(cTID('T   '), cTID('Lyr '), desc307);
         executeAction(cTID('setd'), desc306, DialogModes.NO);
 
-    
+    app.runMenuItem(stringIDToTypeID("selectNoLayers"));
     // Allows for cancel without feedback message
     } catch(e){
+        // alert(e)
         if (e.toString().indexOf(ErrStrs.USER_CANCELLED)!=-1) {;}
         else{alert(localize("$$$/ScriptingSupport/Error/CommandNotAvailable=The command is currently not available"));}
   }

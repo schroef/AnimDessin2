@@ -91,6 +91,8 @@ function dragElement(elmnt) {
         csInterface.evalScript("timelineFrameCount()", function (result) {
             var frameLength = new Number(localStorage.getItem("frameLength"));
             frameLength = frameLength == null ? 1 : frameLength;
+            // Hotfix for if frameLength returns 0
+            frameLength = frameLength == 0 ? 1 : frameLength;
             localStorage.setItem("frameLength", String(frameLength));
             
             // var exportInfo = new Object();
@@ -103,7 +105,7 @@ function dragElement(elmnt) {
             event.scope = "APPLICATION";
             event.data = frameLength;
             csInterface.dispatchEvent(event);
-
+            
             totFr = result;
             e = e || window.event;
             e.preventDefault();
@@ -117,9 +119,19 @@ function dragElement(elmnt) {
             csInterface.evalScript("gotoFrame('"+(posX)+"','"+frameLength+"')");
             // Use OS to do keypress so we focus on playhead > dirty trick ;)
             csInterface.evalScript('keyPress("' + os + '")');
+            var direction="prev";
 
+
+            // var curFr = timelineCurrentFrame();
+            // if (Number(frame) > Number(curFr)) {
+            //     direction = 'next';
+            // } else {
+            //     direction = 'prev';
+            // }
+            
             csInterface.evalScript("timelineCurrentFrame()", function(curFr){
                 $("#curFr").text(curFr);
+                csInterface.evalScript("AnimD2_onionSkinExtras('"+curFr+"','"+1+"','"+1+"','"+posX+"')");
             });
         });
     }
