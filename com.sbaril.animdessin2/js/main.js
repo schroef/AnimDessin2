@@ -855,7 +855,7 @@
             console.dir(e);
             switch (e.data.menuId) {
                 case "AboutItemAnimD2":
-                    csInterface.evalScript("alert('AnimDessin2 \\nVersion 2.2.2\\nPhotoshop CC 2015 to 2018+\\n©2018 Stephane Baril\\n©2020 Rombout Versluijs');");
+                    csInterface.evalScript("alert('AnimDessin2 \\nVersion 2.2.3\\nPhotoshop CC 2015 to 2018+\\n©2018 Stephane Baril\\n©2020 Rombout Versluijs');");
                     //\\nhttp://www.sbaril.me removed not working anymore
                     break;
                 case "OpenWebsiteAnimD2":
@@ -912,7 +912,7 @@
         function contextHandler(menuId) {
             switch (menuId) {
                 case "AboutItemAnimD2":
-                    csInterface.evalScript("alert('AnimDessin2 \\nVersion 2.2.2\\nPhotoshop CC 2015 to 2018+\\n©2018 Stephane Baril\\n©2020 Rombout Versluijs');");
+                    csInterface.evalScript("alert('AnimDessin2 \\nVersion 2.2.3\\nPhotoshop CC 2015 to 2018+\\n©2018 Stephane Baril\\n©2020 Rombout Versluijs');");
                     //\\nhttp://www.sbaril.me removed not working anymore
                     break;
                 case "OpenWebsiteAnimD2":
